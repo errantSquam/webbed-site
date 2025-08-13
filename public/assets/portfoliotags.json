@@ -1,0 +1,194 @@
+{
+    "oc": {
+        "fullName": "Original Character",
+        "tagType": "copyright"
+    },
+    "human": {
+        "fullName": "Human",
+        "tagType": "charatype"
+    },
+    "zephyr": {
+        "fullName": "Zephyr (OC)",
+        "tagType": "oc"
+    },
+    "snake": {
+        "fullName": "Snake",
+        "tagType": "species"
+    },
+    "scales": {
+        "fullName": "Scales",
+        "tagType": "misc"
+    },
+    "halfbody": {
+        "fullName": "Halfbody",
+        "tagType": "scope"
+    },
+    "mecha": {
+        "fullName": "mecha",
+        "tagType": "charatype"
+    },
+    "arelis": {
+        "fullName": "Arelis (OC)",
+        "tagType": "oc"
+    },
+    "fullbody": {
+        "fullName": "Fullbody",
+        "tagType": "scope"
+    },
+    "fanart": {
+        "fullName": "fanart",
+        "tagType": "copyright"
+    },
+    "fireemblem": {
+        "fullName": "fireemblem",
+        "tagType": "source"
+    },
+    "background": {
+        "fullName": "complexbg",
+        "tagType": "bg"
+    },
+    "anthro": {
+        "fullName": "anthro",
+        "tagType": "charatype"
+    },
+    "xenobladex": {
+        "fullName": "xenobladex",
+        "tagType": "source"
+    },
+    "otheroc": {
+        "fullName": "otheroc",
+        "tagType": "copyright"
+    },
+    "otter": {
+        "fullName": "otter",
+        "tagType": "species"
+    },
+    "charactersheet": {
+        "fullName": "charactersheet",
+        "tagType": "scope"
+    },
+    "digimon": {
+        "fullName": "digimon",
+        "tagType": "source"
+    },
+    "commission": {
+        "fullName": "commission",
+        "tagType": "misc"
+    },
+    "dragon": {
+        "fullName": "dragon",
+        "tagType": "species"
+    },
+    "artfight": {
+        "fullName": "artfight",
+        "tagType": "misc"
+    },
+    "dinosaur": {
+        "fullName": "dinosaur",
+        "tagType": "species"
+    },
+    "creature": {
+        "fullName": "creature",
+        "tagType": "charatype"
+    },
+    "wings": {
+        "fullName": "wings",
+        "tagType": "misc"
+    },
+    "chibi": {
+        "fullName": "chibi",
+        "tagType": "scope"
+    },
+    "bird": {
+        "fullName": "bird",
+        "tagType": "misc"
+    },
+    "pixelart": {
+        "fullName": "pixelart",
+        "tagType": "medium"
+    },
+    "animated": {
+        "fullName": "animated",
+        "tagType": "medium"
+    },
+    "gbafe": {
+        "fullName": "GBA Fire Emblem",
+        "tagType": "source"
+    },
+    "simplebg": {
+        "fullName": "simplebg",
+        "tagType": "bg"
+    },
+    "donkeykong": {
+        "fullName": "Donkey Kong",
+        "tagType": "source"
+    },
+    "ekaitz": {
+        "fullName": "Ekaitz (OC)",
+        "tagType": "oc"
+    },
+    "sword": {
+        "fullName": "sword",
+        "tagType": "misc"
+    },
+    "janus": {
+        "fullName": "Janus (OC)",
+        "tagType": "oc"
+    },
+    "pmd": {
+        "fullName": "Pokemon Mystery Dungeon",
+        "tagType": "source"
+    },
+    "talesof": {
+        "fullName": "Tales of",
+        "tagType": "source"
+    },
+    "ordell": {
+        "fullName": "Ordell (OC)",
+        "tagType": "oc"
+    },
+    "insect": {
+        "fullName": "insect",
+        "tagType": "species"
+    },
+    "instrument": {
+        "fullName": "instrument",
+        "tagType": "misc"
+    },
+    "cat": {
+        "fullName": "cat",
+        "tagType": "species"
+    },
+    "designbg": {
+        "fullName": "Graphic Design BG",
+        "tagType": "bg"
+    },
+    "rodent": {
+        "fullName": "rodent",
+        "tagType": "species"
+    },
+    "xenoblade2": {
+        "fullName": "xenoblade2",
+        "tagType": "source"
+    },
+    "fe10": {
+        "fullName": "FE10 (Tellius)",
+        "tagType": "source"
+    },
+    "bust": {
+        "fullName": "bust",
+        "tagType": "scope"
+    },
+    "valen": {
+        "fullName": "Valen (OC)",
+        "tagType": "oc"
+    },
+    "rock": {
+        "fullName": "rock",
+        "tagType": "misc"
+    },
+    "megaman": {
+        "fullName": "megaman",
+        "tagType": "source"
+    }
+}

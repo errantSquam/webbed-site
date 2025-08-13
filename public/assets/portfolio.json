@@ -1,192 +1,491 @@
 {
     "another zeph render.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "human",
+            "zephyr",
+            "snake",
+            "scales",
+            "halfbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "arelis renaissance study.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "human",
+            "mecha",
+            "arelis",
+            "fullbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "ares mr donut.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "fireemblem",
+            "human",
+            "halfbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "armory alley redraw.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "fanart",
+            "background",
+            "human",
+            "anthro",
+            "mecha",
+            "xenobladex",
+            "halfbody"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "chuji updated ref 2025.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "anthro",
+            "otter",
+            "fullbody",
+            "charactersheet"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "cinogard mrt comm sig.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "fanart",
+            "digimon",
+            "commission",
+            "dragon",
+            "anthro",
+            "halfbody",
+            "fullbody"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": "Commission. Background was provided by client."
     },
     "coda dino edition af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "dinosaur",
+            "creature",
+            "wings",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "dana af cubism.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "human",
+            "bird",
+            "wings",
+            "creature",
+            "halfbody"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "danarei comm sig.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "human",
+            "commission",
+            "bird",
+            "wings",
+            "creature",
+            "halfbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "danarei comm sprite for publishing.gif": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "human",
+            "commission",
+            "pixelart",
+            "animated",
+            "fireemblem",
+            "gbafe"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "darious af 2025.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "human",
+            "wings",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "digigirl phoenixmon.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "digimon",
+            "bird",
+            "wings",
+            "simplebg",
+            "creature",
+            "fullbody"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "dk ostrich.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "donkeykong",
+            "bird",
+            "creature",
+            "fullbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "duftmon comm siggy.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "digimon",
+            "commission",
+            "wings",
+            "mecha",
+            "fullbody",
+            "simplebg"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "ekaitz sword unsheathing small.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "ekaitz",
+            "snake",
+            "human",
+            "sword",
+            "simplebg",
+            "fullbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "gekkomon.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "digimon",
+            "creature",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "janus vs arelis.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "janus",
+            "arelis",
+            "human",
+            "halfbody",
+            "fullbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "metalgreymon pmd comm 500x.png": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "digimon",
+            "commission",
+            "pixelart",
+            "pmd",
+            "creature"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "microraptor vermy.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "dinosaur",
+            "wings",
+            "talesof",
+            "creature",
+            "fullbody"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "more dell wings render.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "ordell",
+            "wings",
+            "human",
+            "bird",
+            "fullbody"
+        ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "moth dragon scribble.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "janus",
+            "insect",
+            "creature",
+            "fullbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "niles af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "human",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "ordell card render 2 finalizing.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "ordell",
+            "human",
+            "wings",
+            "bird",
+            "mecha",
+            "simplebg",
+            "halfbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "ordell guitar chibi proll.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "ordell",
+            "human",
+            "wings",
+            "bird",
+            "instrument",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "rockuma af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "creature",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "rook comm journal with sig.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "anthro",
+            "commission",
+            "halfbody",
+            "cat"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "sarkis af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "human",
+            "creature",
+            "halfbody",
+            "dinosaur",
+            "designbg"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "selena af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "human",
+            "fullbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "shury af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "creature",
+            "artfight",
+            "rodent",  
+            "chibi",
+            "creature"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "siren comm watermark.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "xenoblade2",
+            "mecha",
+            "halfbody",
+            "simplebg"
+            ],
         "isVertical": true,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "star af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "rodent",
+            "fullbody",
+            "creature",
+            "simplebg"
+
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "stokori comm 1 anim.webp": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "commission",
+            "fireemblem",
+            "fe10",
+            "animated",
+            "halfbody"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "stokori comm 2 anim.webp": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "commission",
+            "fireemblem",
+            "fe10",
+            "animated",
+            "halfbody"
+
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "trunswicked comm with sig.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "commission",
+            "bust",
+            "dragon",
+            "creature",
+            "anthro"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "valen bagua study.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "valen",
+            "fullbody",
+            "simplebg",
+            "human",
+            "rock"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "valen render.jpg": {
-        "tags": [],
+        "tags": [
+            "oc",
+            "valen",
+            "halfbody",
+            "human",
+            "rock"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "vithaar af.jpg": {
-        "tags": [],
+        "tags": [
+            "otheroc",
+            "artfight",
+            "human",
+            "chibi"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     },
     "yammark comm.jpg": {
-        "tags": [],
+        "tags": [
+            "fanart",
+            "commission",
+            "megaman",
+            "bust",
+            "mecha"
+        ],
         "isVertical": false,
-        "priority": 0
+        "priority": 0,
+        "description": ""
     }
 }
