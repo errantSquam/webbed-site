@@ -63,33 +63,37 @@ export default function Gallery() {
 
         return <>
             <img src={"assets/pics/" + filename}
-                className={"object-cover h-64"}
+                className={"object-cover h-64 p-1"}
                 key={filename}
                 onClick={() => setIsOpen(true)} />
 
 
 
             <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
-                <div className="fixed inset-0 z-10 w-screen h-screen overflow-y-auto">
+                <div className="fixed inset-0 z-10 w-screen h-screen overflow-y-auto bg-black/70">
                     <div className="flex min-h-full items-center justify-between ">
                         <DialogPanel
                             transition
-                            className="w-full rounded-xl bg-black/70 p-6 duration-50 ease-in 
+                            className="w-full h-full duration-50 ease-in 
                             data-closed:transform-[scale(95%)] data-closed:opacity-0"
                         >
                             <DialogTitle as="h3" className="text-base/7 font-medium text-white">
 
                             </DialogTitle>
                             <div className="flex items-center justify-center">
-                                <div className="flex flex-row w-3/4 h-2/3">
+                                <div className="flex flex-row w-5/6  justify-between">
                                     <div className = "flex flex-col space-y-2">
                                         <p className="mt-2 text-sm/6 text-white/50">
                                             <div className="flex flex-row flex-wrap space-x-2 gap-y-2">
                                                 {fullTags.map((tag) => (<TagBlock tagData={tag} />))}
                                             </div>
                                         </p>
-                                        <p className = "text-white"><b>Description: </b>
+                                        <p className = "text-white text-sm"><b>Description: </b>
                                             {artDesc !== "" ? artDesc : <i>None</i> }
+                                        </p>
+
+                                        <p className = "text-white/80 text-sm">
+                                            {!portfolioJson[filename].isVertical && <i>Image can be scrolled!</i>}
                                         </p>
                                         
                                         <div className="mt-4">
@@ -105,8 +109,10 @@ export default function Gallery() {
                                             </Button>
                                         </div>
                                     </div>
+                                    <div className = "">
                                     <img src={"assets/pics/" + filename} className={"" + 
-                                        portfolioJson[filename].isVertical ? "max-w-4/5" : "max-w-sm "}/>
+                                        portfolioJson[filename].isVertical ? "max-w-4/5" : "max-h-1/2 "}/>
+                                    </div>
 
 
                                 </div>
@@ -132,7 +138,7 @@ export default function Gallery() {
                     {
                         Object.keys(portfolioJson).map((filename) => {
                             console.log(filename)
-                            return <div className=" p-1">
+                            return <div className="">
                                 <GalleryImage filename={filename} />
                             </div>
 
