@@ -143,12 +143,14 @@
             "commission",
             "dragon",
             "anthro",
+            "mecha",
             "halfbody",
             "fullbody"
+
             
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -3,
         "description": "Commission. Background was provided by client. Characters belong to <u><a href='https://bsky.app/profile/cinogard.bsky.social'>Cinogard</a></u>.",
         "date": 1751110531.4260585,
         "extension": "webp"
@@ -163,7 +165,7 @@
             "chibi"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -1,
         "description": "Art Fight Attack. Character belongs to <u><a href='https://bsky.app/profile/temorali.bsky.social'>Temorali.</a></u>",
         "date": 1752888075.6233754,
         "extension": "webp"
@@ -209,7 +211,7 @@
             "chibi"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -1,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/raichana.bsky.social'>Raichana</a></u>.",
         "date": 1752380961.5257106,
         "extension": "webp"
