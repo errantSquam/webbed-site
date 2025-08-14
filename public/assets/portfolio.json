@@ -13,7 +13,11 @@
         "priority": 0,
         "description": "Commission in FE6/7 style (no dark outlines). Character belongs to <u><a href='https://nisnow.art/'>Nisnow.</a></u>",
         "date": 1744443744.0,
-        "extension": "gif"
+        "extension": "gif",
+        "dimensions": [
+            2900,
+            2000
+        ]
     },
     "metalgreymon pmd comm 500x": {
         "tags": [
@@ -28,7 +32,11 @@
         "priority": 0,
         "description": "Commission in PMD style. Character belongs to <u><a href='https://bsky.app/profile/cinogard.bsky.social'>Cinogard.</a></u>",
         "date": 1745637686.0,
-        "extension": "png"
+        "extension": "png",
+        "dimensions": [
+            1000,
+            800
+        ]
     },
     "stokori comm 1 anim": {
         "tags": [
@@ -43,7 +51,11 @@
         "priority": 0,
         "description": "Commission. Character belongs to <u><a href='https://bsky.app/profile/stokori.art'>toko.</a></u>",
         "date": 1742094672.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1714,
+            1965
+        ]
     },
     "stokori comm 2 anim": {
         "tags": [
@@ -58,7 +70,11 @@
         "priority": 0,
         "description": "Commission. Character belongs to <u><a href='https://bsky.app/profile/stokori.art'>toko.</a></u>",
         "date": 1742264958.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2034,
+            2066
+        ]
     },
     "another zeph render": {
         "tags": [
@@ -73,7 +89,11 @@
         "priority": 0,
         "description": "",
         "date": 1748352707.1334307,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1523,
+            1814
+        ]
     },
     "arelis renaissance study": {
         "tags": [
@@ -87,7 +107,11 @@
         "priority": 0,
         "description": "",
         "date": 1741006446.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1736,
+            2456
+        ]
     },
     "ares mr donut": {
         "tags": [
@@ -100,7 +124,11 @@
         "priority": 0,
         "description": "",
         "date": 1747540767.3520305,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1250,
+            1400
+        ]
     },
     "armory alley redraw": {
         "tags": [
@@ -119,7 +147,11 @@
         "priority": 0,
         "description": "Xenoblade X fanart. Includes my OC with a few other cameos. <br/>Character credits: <li><u><a href='https://bsky.app/profile/chuji.bsky.social'>Chuji</a></u></li><li><u><a href = 'https://bsky.app/profile/pixelwhatever.bsky.social'>Augur</a></u></li>",
         "date": 1746508588.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2965,
+            1814
+        ]
     },
     "chuji updated ref 2025": {
         "tags": [
@@ -133,7 +165,11 @@
         "priority": 0,
         "description": "Character sheet for a friend. Character belongs to <u><a href='https://bsky.app/profile/chuji.bsky.social'>Chuji.</a></u>",
         "date": 1751692657.5496953,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2640,
+            2227
+        ]
     },
     "cinogard mrt comm sig": {
         "tags": [
@@ -146,14 +182,16 @@
             "mecha",
             "halfbody",
             "fullbody"
-
-            
         ],
         "isVertical": false,
         "priority": -3,
         "description": "Commission. Background was provided by client. Characters belong to <u><a href='https://bsky.app/profile/cinogard.bsky.social'>Cinogard</a></u>.",
         "date": 1751110531.4260585,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2867,
+            2150
+        ]
     },
     "coda dino edition af": {
         "tags": [
@@ -168,7 +206,11 @@
         "priority": -1,
         "description": "Art Fight Attack. Character belongs to <u><a href='https://bsky.app/profile/temorali.bsky.social'>Temorali.</a></u>",
         "date": 1752888075.6233754,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "dana af cubism": {
         "tags": [
@@ -184,7 +226,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://nisnow.art/'>Nisnow</a></u>.",
         "date": 1753180682.066377,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2480,
+            1761
+        ]
     },
     "danarei comm sig": {
         "tags": [
@@ -200,7 +246,11 @@
         "priority": 0,
         "description": "Character belongs to <u><a href='https://nisnow.art/'>Nisnow.</a></u>",
         "date": 1739083632.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2310,
+            3570
+        ]
     },
     "darious af 2025": {
         "tags": [
@@ -214,7 +264,11 @@
         "priority": -1,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/raichana.bsky.social'>Raichana</a></u>.",
         "date": 1752380961.5257106,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "digigirl phoenixmon": {
         "tags": [
@@ -230,7 +284,11 @@
         "priority": 0,
         "description": "Illustration for DigiGirl Zine Vol 3.",
         "date": 1740968480.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            5741,
+            4042
+        ]
     },
     "dk ostrich": {
         "tags": [
@@ -244,7 +302,11 @@
         "priority": 0,
         "description": "",
         "date": 1754576150.5913174,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1814,
+            1814
+        ]
     },
     "duftmon comm siggy": {
         "tags": [
@@ -260,7 +322,11 @@
         "priority": 0,
         "description": "",
         "date": 1744606460.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1792,
+            2867
+        ]
     },
     "ekaitz sword unsheathing small": {
         "tags": [
@@ -276,7 +342,11 @@
         "priority": 0,
         "description": "",
         "date": 1750602207.2879493,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1786,
+            2505
+        ]
     },
     "gekkomon": {
         "tags": [
@@ -289,7 +359,11 @@
         "priority": 0,
         "description": "",
         "date": 1755067489.151952,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "janus vs arelis": {
         "tags": [
@@ -304,7 +378,11 @@
         "priority": 0,
         "description": "",
         "date": 1754037722.7502885,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2227,
+            3053
+        ]
     },
     "microraptor vermy": {
         "tags": [
@@ -319,7 +397,11 @@
         "priority": 0,
         "description": "",
         "date": 1754303322.6536634,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2386,
+            1706
+        ]
     },
     "more dell wings render": {
         "tags": [
@@ -334,7 +416,11 @@
         "priority": 0,
         "description": "",
         "date": 1732449312.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            3767,
+            3536
+        ]
     },
     "moth dragon scribble": {
         "tags": [
@@ -348,7 +434,11 @@
         "priority": 0,
         "description": "",
         "date": 1753775448.9956152,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            2227,
+            2557
+        ]
     },
     "niles af": {
         "tags": [
@@ -361,7 +451,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/ryuzumisama.bsky.social'>RyuzumiSama</a></u>.",
         "date": 1753084581.1904619,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1240,
+            1240
+        ]
     },
     "ordell card render 2 finalizing": {
         "tags": [
@@ -378,7 +472,11 @@
         "priority": 0,
         "description": "",
         "date": 1727863516.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1761,
+            2480
+        ]
     },
     "ordell guitar chibi proll": {
         "tags": [
@@ -394,7 +492,11 @@
         "priority": 0,
         "description": "",
         "date": 1754210299.7054949,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "rockuma af": {
         "tags": [
@@ -407,7 +509,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/sandstormerart.bsky.social'>SandstormerArt</a></u>.",
         "date": 1753159133.2781875,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "rook comm journal with sig": {
         "tags": [
@@ -421,7 +527,11 @@
         "priority": 0,
         "description": "Commission. Character belongs to <u><a href='https://bsky.app/profile/chuji.bsky.social'>Chuji.</a></u>",
         "date": 1741966636.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "sarkis af": {
         "tags": [
@@ -437,7 +547,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
         "date": 1751615384.8251817,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1761,
+            2480
+        ]
     },
     "selena af": {
         "tags": [
@@ -450,7 +564,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/silvishinystar.bsky.social'>SilviShinyStar.</a></u>",
         "date": 1752981317.7917259,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "shury af": {
         "tags": [
@@ -465,7 +583,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://artfight.net/~dragonf1y'>dragonf1y.</a></u>",
         "date": 1752398879.4572246,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "siren comm watermark": {
         "tags": [
@@ -479,7 +601,11 @@
         "priority": 0,
         "description": "",
         "date": 1746775390.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            3497,
+            2480
+        ]
     },
     "star af": {
         "tags": [
@@ -494,7 +620,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/eondraws.bsky.social'>Eon.</a></u>",
         "date": 1752891293.7560096,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1548
+        ]
     },
     "trunswicked comm with sig": {
         "tags": [
@@ -509,7 +639,11 @@
         "priority": 0,
         "description": "Commission. Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
         "date": 1750319313.1993592,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1721,
+            1818
+        ]
     },
     "valen bagua study": {
         "tags": [
@@ -524,7 +658,11 @@
         "priority": 0,
         "description": "",
         "date": 1746708622.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "valen render": {
         "tags": [
@@ -538,7 +676,11 @@
         "priority": 0,
         "description": "",
         "date": 1730636192.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1814,
+            1814
+        ]
     },
     "vithaar af": {
         "tags": [
@@ -551,7 +693,11 @@
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/serennesart.bsky.social'>Sren.</a></u>",
         "date": 1753148622.3111882,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
     },
     "yammark comm": {
         "tags": [
@@ -565,6 +711,10 @@
         "priority": 0,
         "description": "",
         "date": 1745232900.0,
-        "extension": "webp"
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1565
+        ]
     }
 }

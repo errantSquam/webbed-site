@@ -5,6 +5,8 @@ import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import Select from "react-select"
 import makeAnimated from 'react-select/animated';
 import { createElement } from "react"
+import { Skeleton } from "@mui/material"
+
 const animatedComponents = makeAnimated();
 
 const tagsColorDict = {
@@ -24,7 +26,7 @@ const selectStyles = {
         ...baseStyles,
         backgroundColor: 'black',
         borderColor: 'var(--color-zinc-500)',
-        color:"white"
+        color: "white"
 
     }),
     menu: (menuStyles, state) => ({
@@ -43,7 +45,7 @@ const selectStyles = {
         return {
             ...styles,
             backgroundColor: colorvar,
-            color:"white"
+            color: "white"
         }
     },
     multiValueLabel: (styles, { data }) => {
@@ -51,17 +53,17 @@ const selectStyles = {
         return {
             ...styles,
             backgroundColor: colorvar,
-            color:"white"
+            color: "white"
         }
     },
     option: (styles, { data }) => {
-        
+
 
         return {
             ...styles,
             color: "white",
             backgroundColor: "rgba(0,0,0,0.5)"
-            
+
         }
     },
     groupHeading: (styles, { data }) => {
@@ -84,12 +86,12 @@ const selectStyles = {
 }
 
 const selectStylesExclude = () => {
-    let excludeStyles = {...selectStyles}
+    let excludeStyles = { ...selectStyles }
 
     let bgColor = `var(--color-red-900)`
     let textColor = `white`
     excludeStyles.multiValueLabel = (styles, { data }) => {
-    let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
+        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
         return {
             ...styles,
             borderStyle: "hidden",
@@ -97,27 +99,102 @@ const selectStylesExclude = () => {
             borderWidth: "3px",
             borderLeftStyle: "solid",
             backgroundColor: bgColor,
-            color:textColor
+            color: textColor
         }
     }
 
     excludeStyles.multiValue = (styles, { data }) => {
         let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-            return {
-                ...styles,
-                borderStyle: "solid",
-                borderColor: colorvar,
-                borderWidth: "3px",
-                borderLeftStyle: "hidden",
-                backgroundColor: bgColor,
-                color:textColor
-            }
+        return {
+            ...styles,
+            borderStyle: "solid",
+            borderColor: colorvar,
+            borderWidth: "3px",
+            borderLeftStyle: "hidden",
+            backgroundColor: bgColor,
+            color: textColor
         }
+    }
 
 
     return excludeStyles
 }
 
+const getFilteredArtIncludes = (portfolioJson, selectedFilters) => {
+    if (selectedFilters.include.length === 0) {
+        return Object.keys(portfolioJson)
+    }
+
+    return Object.keys(portfolioJson).filter((filename) => {
+
+        return selectedFilters.include.every((tag) => {
+            return portfolioJson[filename].tags.includes(tag.value)
+        })
+    })
+}
+
+const getFilteredArt = (portfolioJson, selectedFilters) => {
+    let includedArt = getFilteredArtIncludes(portfolioJson, selectedFilters)
+    if (selectedFilters.exclude.length === 0) {
+        return includedArt
+    }
+
+    return includedArt.filter((filename) => {
+
+        return selectedFilters.exclude.every((tag) => {
+            return !portfolioJson[filename].tags.includes(tag.value)
+        })
+    })
+
+}
+
+const getFilteredArtByDate = (portfolioJson, selectedFilters) => {
+    return getFilteredArt(portfolioJson, selectedFilters).toSorted((a, b) => portfolioJson[b].date - portfolioJson[a].date)
+}
+
+const getFilteredArtByPriority = (portfolioJson, selectedFilters) => {
+    return getFilteredArtByDate(portfolioJson, selectedFilters).toSorted((a, b) => {
+        let artArray = [portfolioJson[a], portfolioJson[b]]
+        let compareArray = [0, 0]
+
+        for (let i = 0; i < 2; i++) {
+            if (artArray[i].tags.includes("complexbg")) {
+                compareArray[i] += 1
+            } else if (artArray[i].tags.includes("simplebg")) {
+                compareArray[i] += 0.5
+            }
+            if (artArray[i].tags.includes("mecha")) {
+                compareArray[i] += 3
+            }
+            if (artArray[i].tags.includes("fullbody")) {
+                compareArray[i] += 2
+            } else if (artArray[i].tags.includes("halfbody")) {
+                compareArray[i] += 1
+            } else if (artArray[i].tags.includes("chibi")) {
+                compareArray[i] -= 2
+            }
+            if (artArray[i].tags.includes("animated")) {
+                compareArray[i] += 2
+            }
+            if (artArray[i].tags.includes("wings")) {
+                compareArray[i] += 1
+            }
+            if (artArray[i].tags.includes("oc")) {
+                compareArray[i] += 1
+            } else if (artArray[i].tags.includes("fanart")) {
+                compareArray[i] -= 1
+            }
+
+            if (artArray[i].tags.includes("charactersheet")) {
+                compareArray[i] += 1
+            }
+
+            compareArray[i] += artArray[i].priority
+        }
+
+        return compareArray[1] - compareArray[0]
+    })
+}
 
 export default function Gallery() {
 
@@ -130,42 +207,47 @@ export default function Gallery() {
             exclude: []
         }
     )
+    const [artList, setArtList] = useState([])
 
 
     const numGalleryCols = 3
 
 
     useEffect(() => {
-        fetch('assets/portfolio.json').then((res) => res.json()).then((data) => {
-            setPortfolioJson(data)
+        fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
+            setPortfolioJson(portfolioData)
 
-        })
-        fetch('assets/portfoliotags.json').then((res) => res.json()).then((portfolioData) => {
-            setPortfolioTags(portfolioData)
-            fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
-                let tempTagList = data
+            fetch('assets/portfoliotags.json').then((res) => res.json()).then((portfolioTagData) => {
+                setPortfolioTags(portfolioTagData)
+                fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
+                    let tempTagList = data
     
-                
-                let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
-                    console.log(tagType)
-                    return {
-                        label: tagType,
-                        options: tempTagList[tagType].map((tagName) => {
-                            console.log(portfolioData)
-                            return {
-                                value: tagName,
-                                label: portfolioData[tagName].fullName,
-                                "tagType": tagType
-                            }
-                        })
-                    }
+    
+                    let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
+                        console.log(tagType)
+                        return {
+                            label: tagType,
+                            options: tempTagList[tagType].map((tagName) => {
+                                console.log(portfolioTagData)
+                                return {
+                                    value: tagName,
+                                    label: portfolioTagData[tagName].fullName,
+                                    "tagType": tagType
+                                }
+                            })
+                        }
+                    })
+                    setGroupedTaglist(tempGroupTagList)
+    
+                    setArtList(getFilteredArtByPriority(portfolioData, selectedFilters))
+    
+    
                 })
-                setGroupedTaglist(tempGroupTagList)
-    
     
             })
-            
+
         })
+        
 
     }, [])
 
@@ -175,11 +257,9 @@ export default function Gallery() {
     }
 
     const GalleryImage = ({ filename }) => {
-        let [isOpen, setIsOpen] = useState(false)
+        const [isOpen, setIsOpen] = useState(false)
+        const [isLoaded, setIsLoaded] = useState(false)
 
-        function open() {
-            setIsOpen(true)
-        }
 
         function close() {
             setIsOpen(false)
@@ -199,20 +279,33 @@ export default function Gallery() {
         })
 
         let descString = portfolioJson[filename].description
-        
+
 
         let artDesc = createElement('span',
-            {dangerouslySetInnerHTML: {__html: descString}},
-            );
+            { dangerouslySetInnerHTML: { __html: descString } },
+        );
 
 
         return <>
-            <div className=" p-1 flex flex-row ">
+            <div className=" p-1 " key={filename}>
+                {!isLoaded &&
+                    <Skeleton
+                        variant="rectangular"
+                        className="bg-green-900 rounded-lg"
+                        animation="wave">
+                        <img src={"assets/pics/" + fileThumb()}
+                            className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
+                            onClick={() => setIsOpen(true)}/>
+                    </Skeleton>
+                }
+
                 <img src={"assets/pics/" + fileThumb()}
+                    style={{ display: !isLoaded ? 'none' : undefined }}
                     className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
-                    key={filename}
                     onClick={() => setIsOpen(true)} 
-                    loading = "lazy"/>
+                    onLoad = {() => setIsLoaded(true)}
+                    loading = "lazy"
+                    />
 
             </div>
 
@@ -308,80 +401,7 @@ export default function Gallery() {
         </div>
     );
 
-    const getFilteredArtIncludes = () => {
-        if (selectedFilters.include.length === 0) {
-            return Object.keys(portfolioJson)
-        }
-
-        return Object.keys(portfolioJson).filter((filename) => {
-
-            return selectedFilters.include.every((tag) => {
-                return portfolioJson[filename].tags.includes(tag.value)
-            })
-        })
-    }
-    const getFilteredArt = () => {
-        let includedArt = getFilteredArtIncludes()
-        if (selectedFilters.exclude.length === 0) {
-            return includedArt
-        }
-
-        return includedArt.filter((filename) => {
-
-            return selectedFilters.exclude.every((tag) => {
-                return !portfolioJson[filename].tags.includes(tag.value)
-            })
-        })
-
-    }
-
-    const getFilteredArtByDate = () => {
-        return getFilteredArt().toSorted((a, b) => portfolioJson[b].date - portfolioJson[a].date)
-    }
-
-    const getFilteredArtByPriority = () => {
-        return getFilteredArtByDate().toSorted((a, b) => {
-            let artArray = [portfolioJson[a], portfolioJson[b]]
-            let compareArray = [0, 0]
-
-            for (let i = 0; i < 2; i++) {
-                if (artArray[i].tags.includes("complexbg")) {
-                    compareArray[i] += 1
-                } else if (artArray[i].tags.includes("simplebg")) {
-                    compareArray[i] += 0.5
-                }
-                if (artArray[i].tags.includes("mecha")) {
-                    compareArray[i] += 3
-                }
-                if (artArray[i].tags.includes("fullbody")) {
-                    compareArray[i] += 2
-                } else if (artArray[i].tags.includes("halfbody")) {
-                    compareArray[i] += 1
-                } else if (artArray[i].tags.includes("chibi")) {
-                    compareArray[i] -= 2
-                }
-                if (artArray[i].tags.includes("animated")) {
-                    compareArray[i] += 2
-                }
-                if (artArray[i].tags.includes("wings")) {
-                    compareArray[i] += 1
-                }
-                if (artArray[i].tags.includes("oc")) {
-                    compareArray[i] += 1
-                } else if (artArray[i].tags.includes("fanart")) {
-                    compareArray[i] -= 1
-                }
-
-                if (artArray[i].tags.includes("charactersheet")) {
-                    compareArray[i] += 1
-                }
-
-                compareArray[i] += artArray[i].priority
-            }
-
-            return compareArray[1] - compareArray[0]
-        })
-    }
+    
 
     return (
         <div className="min-h-screen bg-zinc-800">
@@ -399,6 +419,7 @@ export default function Gallery() {
                                     let tempSelectedFilters = { ...selectedFilters }
                                     tempSelectedFilters.include = options
                                     setSelectedFilters(tempSelectedFilters)
+                                    setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
                                 }}
                                 styles={selectStyles}
 
@@ -421,6 +442,8 @@ export default function Gallery() {
                                     let tempSelectedFilters = { ...selectedFilters }
                                     tempSelectedFilters.exclude = options
                                     setSelectedFilters(tempSelectedFilters)
+                                    setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
+
                                 }}
                                 styles={selectStylesExclude()}
 
@@ -442,7 +465,7 @@ export default function Gallery() {
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
                     {
-                        getFilteredArtByPriority().map((filename) => {
+                        artList.map((filename) => {
                             return <div className="">
                                 <GalleryImage filename={filename} />
                             </div>
