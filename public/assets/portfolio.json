@@ -165,7 +165,7 @@
             "chibi"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -1,
         "description": "Art Fight Attack. Character belongs to <u><a href='https://bsky.app/profile/temorali.bsky.social'>Temorali.</a></u>",
         "date": 1752888075.6233754,
         "extension": "webp"

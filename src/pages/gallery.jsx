@@ -140,30 +140,31 @@ export default function Gallery() {
             setPortfolioJson(data)
 
         })
-        fetch('assets/portfoliotags.json').then((res) => res.json()).then((data) => {
-            setPortfolioTags(data)
-            
-        })
-        fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
-            let tempTagList = data
-            console.log(tempTagList)
-
-            
-            let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
-                return {
-                    label: tagType,
-                    options: tempTagList[tagType].map((tagName) => {
-                        return {
-                            value: tagName,
-                            label: portfolioTags[tagName].fullName,
-                            "tagType": tagType
-                        }
-                    })
-                }
+        fetch('assets/portfoliotags.json').then((res) => res.json()).then((portfolioData) => {
+            setPortfolioTags(portfolioData)
+            fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
+                let tempTagList = data
+    
+                
+                let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
+                    console.log(tagType)
+                    return {
+                        label: tagType,
+                        options: tempTagList[tagType].map((tagName) => {
+                            console.log(portfolioData)
+                            return {
+                                value: tagName,
+                                label: portfolioData[tagName].fullName,
+                                "tagType": tagType
+                            }
+                        })
+                    }
+                })
+                setGroupedTaglist(tempGroupTagList)
+    
+    
             })
-            setGroupedTaglist(tempGroupTagList)
-
-
+            
         })
 
     }, [])
@@ -198,11 +199,11 @@ export default function Gallery() {
         })
 
         let descString = portfolioJson[filename].description
+        
 
         let artDesc = createElement('span',
             {dangerouslySetInnerHTML: {__html: descString}},
             );
-
 
 
         return <>
@@ -210,7 +211,8 @@ export default function Gallery() {
                 <img src={"assets/pics/" + fileThumb()}
                     className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
                     key={filename}
-                    onClick={() => setIsOpen(true)} />
+                    onClick={() => setIsOpen(true)} 
+                    loading = "lazy"/>
 
             </div>
 
