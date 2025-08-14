@@ -189,11 +189,27 @@ const getFilteredArtByPriority = (portfolioJson, selectedFilters) => {
                 compareArray[i] += 1
             }
 
+            if (artArray[i].tags.includes("3d")) {
+                compareArray[i] -=4 //good lord the loading times
+            }
+
             compareArray[i] += artArray[i].priority
         }
 
         return compareArray[1] - compareArray[0]
     })
+}
+
+const SplashScreen = ({isLoading}) => {
+    return <div className={`transition-opacity duration-500 ${isLoading?"opacity-100":"opacity-0 pointer-events-none"} relative z-20` }>
+        <div className="fixed inset-0 z-10 w-full h-screen bg-zinc-800">
+            <div className = "flex h-full items-center justify-center text-center text-white flex flex-col">
+                <img src = "assets/shake him.gif" className = "h-20"/>
+                <div>Loading...</div>
+            </div>
+
+        </div>
+    </div>
 }
 
 export default function Gallery() {
@@ -208,6 +224,7 @@ export default function Gallery() {
         }
     )
     const [artList, setArtList] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
 
     const numGalleryCols = 3
@@ -221,14 +238,12 @@ export default function Gallery() {
                 setPortfolioTags(portfolioTagData)
                 fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
                     let tempTagList = data
-    
-    
+
+
                     let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
-                        console.log(tagType)
                         return {
                             label: tagType,
                             options: tempTagList[tagType].map((tagName) => {
-                                console.log(portfolioTagData)
                                 return {
                                     value: tagName,
                                     label: portfolioTagData[tagName].fullName,
@@ -238,16 +253,20 @@ export default function Gallery() {
                         }
                     })
                     setGroupedTaglist(tempGroupTagList)
-    
+
                     setArtList(getFilteredArtByPriority(portfolioData, selectedFilters))
-    
-    
+
+
+                }).then(() => {
+                    setTimeout(() => {
+                    setIsLoading(false)
+                    }, 500)
                 })
-    
+
             })
 
         })
-        
+
 
     }, [])
 
@@ -293,18 +312,19 @@ export default function Gallery() {
                         variant="rectangular"
                         className="bg-green-900 rounded-lg "
                         animation="wave">
-                        <div className = "h-64 object-cover" 
-                        style = {{
-                            aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]}}/>
+                        <div className="h-64 object-cover"
+                            style={{
+                                aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]
+                            }} />
                     </Skeleton>
                 }
 
                 <img src={"assets/pics/" + fileThumb()}
                     style={{ height: !isLoaded ? '0' : undefined }}
                     className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
-                    onClick={() => setIsOpen(true)} 
-                    onLoad = {() => setIsLoaded(true)}
-                    />
+                    onClick={() => setIsOpen(true)}
+                    onLoad={() => setIsLoaded(true)}
+                />
 
             </div>
 
@@ -400,10 +420,11 @@ export default function Gallery() {
         </div>
     );
 
-    
+
 
     return (
         <div className="min-h-screen bg-zinc-800 overflow-x-hidden ">
+            {<SplashScreen isLoading = {isLoading}/>}
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2">
                     <h1 className="text-2xl font-bold text-orange-100 font-pirulen">Gallery</h1>
@@ -479,23 +500,3 @@ export default function Gallery() {
     )
 
 }
-
-
-{/*<div className="flex flex-col px-10 w-2/3">
-                {jsonRange.map((index) => {
-                    return <div className="flex flex-row" key={index}>
-                        {
-                            [...Array(numGalleryCols).keys()].map((filenameIndex) => {
-                                let filename = Object.keys(portfolioJson)[(index + 1) * numGalleryCols + filenameIndex - 1]
-                                console.log(filename)
-                                return <img src={"assets/pics/" + filename}
-                                    className={"object-contain grow h-64"}
-                                    key={filenameIndex} />
-
-                            })
-                        }
-                    </div>
-                })
-                }
-            </div>
-*/}

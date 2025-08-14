@@ -204,7 +204,7 @@
         ],
         "isVertical": false,
         "priority": -1,
-        "description": "Art Fight Attack. Character belongs to <u><a href='https://bsky.app/profile/temorali.bsky.social'>Temorali.</a></u>",
+        "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/temorali.bsky.social'>Temorali.</a></u>",
         "date": 1752888075.6233754,
         "extension": "webp",
         "dimensions": [
@@ -715,6 +715,47 @@
         "dimensions": [
             1400,
             1565
+        ]
+    },
+    "desdemona": {
+        "tags": [
+            "3d",
+            "otheroc",
+            "fullbody",
+            "insect",
+            "anthro",
+            "animated",
+            "artfight"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
+        "date": 1751462705.5034597,
+        "extension": "webp",
+        "dimensions": [
+            975,
+            988
+        ]
+    },
+    "taxraptor model turnaround": {
+        "tags": [
+            "3d",
+            "otheroc",
+            "fullbody",
+            "dinosaur",
+            "creature",
+            "anthro",
+            "animated",
+            "artfight"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/racecarart.bsky.social'>Racecar.</a></u>",
+        "date": 1751979886.2350943,
+        "extension": "webp",
+        "dimensions": [
+            575,
+            564
         ]
     }
 }
