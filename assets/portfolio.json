@@ -1,5 +1,66 @@
 {
-    "another zeph render.jpg": {
+    "danarei comm sprite for publishing": {
+        "tags": [
+            "otheroc",
+            "human",
+            "commission",
+            "pixelart",
+            "animated",
+            "fireemblem",
+            "gbafe"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1744443744.0,
+        "extension": "gif"
+    },
+    "metalgreymon pmd comm 500x": {
+        "tags": [
+            "fanart",
+            "digimon",
+            "commission",
+            "pixelart",
+            "pmd",
+            "creature"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1745637686.0,
+        "extension": "png"
+    },
+    "stokori comm 1 anim": {
+        "tags": [
+            "otheroc",
+            "commission",
+            "fireemblem",
+            "fe10",
+            "animated",
+            "halfbody"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1742094672.0,
+        "extension": "webp"
+    },
+    "stokori comm 2 anim": {
+        "tags": [
+            "otheroc",
+            "commission",
+            "fireemblem",
+            "fe10",
+            "animated",
+            "halfbody"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1742264958.0,
+        "extension": "webp"
+    },
+    "another zeph render": {
         "tags": [
             "oc",
             "human",
@@ -12,9 +73,9 @@
         "priority": 0,
         "description": "",
         "date": 1748352707.1334307,
-        "thumb": "another zeph render_thumb.jpg"
+        "extension": "webp"
     },
-    "arelis renaissance study.jpg": {
+    "arelis renaissance study": {
         "tags": [
             "oc",
             "human",
@@ -26,9 +87,9 @@
         "priority": 0,
         "description": "",
         "date": 1741006446.0,
-        "thumb": "arelis renaissance study_thumb.jpg"
+        "extension": "webp"
     },
-    "ares mr donut.jpg": {
+    "ares mr donut": {
         "tags": [
             "fanart",
             "fireemblem",
@@ -39,9 +100,9 @@
         "priority": 0,
         "description": "",
         "date": 1747540767.3520305,
-        "thumb": "ares mr donut_thumb.jpg"
+        "extension": "webp"
     },
-    "armory alley redraw.jpg": {
+    "armory alley redraw": {
         "tags": [
             "oc",
             "otheroc",
@@ -57,9 +118,9 @@
         "priority": 0,
         "description": "",
         "date": 1746508588.0,
-        "thumb": "armory alley redraw_thumb.jpg"
+        "extension": "webp"
     },
-    "chuji updated ref 2025.jpg": {
+    "chuji updated ref 2025": {
         "tags": [
             "otheroc",
             "anthro",
@@ -71,9 +132,9 @@
         "priority": 0,
         "description": "",
         "date": 1751692657.5496953,
-        "thumb": "chuji updated ref 2025_thumb.jpg"
+        "extension": "webp"
     },
-    "cinogard mrt comm sig.jpg": {
+    "cinogard mrt comm sig": {
         "tags": [
             "otheroc",
             "fanart",
@@ -83,14 +144,15 @@
             "anthro",
             "halfbody",
             "fullbody"
+            
         ],
         "isVertical": false,
         "priority": 0,
         "description": "Commission. Background was provided by client.",
         "date": 1751110531.4260585,
-        "thumb": "cinogard mrt comm sig_thumb.jpg"
+        "extension": "webp"
     },
-    "coda dino edition af.jpg": {
+    "coda dino edition af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -103,9 +165,9 @@
         "priority": 0,
         "description": "",
         "date": 1752888075.6233754,
-        "thumb": "coda dino edition af_thumb.jpg"
+        "extension": "webp"
     },
-    "dana af cubism.jpg": {
+    "dana af cubism": {
         "tags": [
             "otheroc",
             "artfight",
@@ -119,9 +181,9 @@
         "priority": 0,
         "description": "",
         "date": 1753180682.066377,
-        "thumb": "dana af cubism_thumb.jpg"
+        "extension": "webp"
     },
-    "danarei comm sig.jpg": {
+    "danarei comm sig": {
         "tags": [
             "otheroc",
             "human",
@@ -135,24 +197,9 @@
         "priority": 0,
         "description": "",
         "date": 1739083632.0,
-        "thumb": "danarei comm sig_thumb.jpg"
+        "extension": "webp"
     },
-    "danarei comm sprite for publishing.gif": {
-        "tags": [
-            "otheroc",
-            "human",
-            "commission",
-            "pixelart",
-            "animated",
-            "fireemblem",
-            "gbafe"
-        ],
-        "isVertical": false,
-        "priority": 0,
-        "description": "",
-        "date": 1744443744.0
-    },
-    "darious af 2025.jpg": {
+    "darious af 2025": {
         "tags": [
             "otheroc",
             "artfight",
@@ -164,9 +211,9 @@
         "priority": 0,
         "description": "",
         "date": 1752380961.5257106,
-        "thumb": "darious af 2025_thumb.jpg"
+        "extension": "webp"
     },
-    "digigirl phoenixmon.jpg": {
+    "digigirl phoenixmon": {
         "tags": [
             "fanart",
             "digimon",
@@ -180,9 +227,9 @@
         "priority": 0,
         "description": "",
         "date": 1740968480.0,
-        "thumb": "digigirl phoenixmon_thumb.jpg"
+        "extension": "webp"
     },
-    "dk ostrich.jpg": {
+    "dk ostrich": {
         "tags": [
             "fanart",
             "donkeykong",
@@ -194,9 +241,9 @@
         "priority": 0,
         "description": "",
         "date": 1754576150.5913174,
-        "thumb": "dk ostrich_thumb.jpg"
+        "extension": "webp"
     },
-    "duftmon comm siggy.jpg": {
+    "duftmon comm siggy": {
         "tags": [
             "fanart",
             "digimon",
@@ -210,9 +257,9 @@
         "priority": 0,
         "description": "",
         "date": 1744606460.0,
-        "thumb": "duftmon comm siggy_thumb.jpg"
+        "extension": "webp"
     },
-    "ekaitz sword unsheathing small.jpg": {
+    "ekaitz sword unsheathing small": {
         "tags": [
             "oc",
             "ekaitz",
@@ -226,9 +273,9 @@
         "priority": 0,
         "description": "",
         "date": 1750602207.2879493,
-        "thumb": "ekaitz sword unsheathing small_thumb.jpg"
+        "extension": "webp"
     },
-    "gekkomon.jpg": {
+    "gekkomon": {
         "tags": [
             "fanart",
             "digimon",
@@ -239,9 +286,9 @@
         "priority": 0,
         "description": "",
         "date": 1755067489.151952,
-        "thumb": "gekkomon_thumb.jpg"
+        "extension": "webp"
     },
-    "janus vs arelis.jpg": {
+    "janus vs arelis": {
         "tags": [
             "oc",
             "janus",
@@ -254,23 +301,9 @@
         "priority": 0,
         "description": "",
         "date": 1754037722.7502885,
-        "thumb": "janus vs arelis_thumb.jpg"
+        "extension": "webp"
     },
-    "metalgreymon pmd comm 500x.png": {
-        "tags": [
-            "fanart",
-            "digimon",
-            "commission",
-            "pixelart",
-            "pmd",
-            "creature"
-        ],
-        "isVertical": false,
-        "priority": 0,
-        "description": "",
-        "date": 1745637686.0
-    },
-    "microraptor vermy.jpg": {
+    "microraptor vermy": {
         "tags": [
             "fanart",
             "dinosaur",
@@ -283,9 +316,9 @@
         "priority": 0,
         "description": "",
         "date": 1754303322.6536634,
-        "thumb": "microraptor vermy_thumb.jpg"
+        "extension": "webp"
     },
-    "more dell wings render.jpg": {
+    "more dell wings render": {
         "tags": [
             "oc",
             "ordell",
@@ -298,9 +331,9 @@
         "priority": 0,
         "description": "",
         "date": 1732449312.0,
-        "thumb": "more dell wings render_thumb.jpg"
+        "extension": "webp"
     },
-    "moth dragon scribble.jpg": {
+    "moth dragon scribble": {
         "tags": [
             "oc",
             "janus",
@@ -312,9 +345,9 @@
         "priority": 0,
         "description": "",
         "date": 1753775448.9956152,
-        "thumb": "moth dragon scribble_thumb.jpg"
+        "extension": "webp"
     },
-    "niles af.jpg": {
+    "niles af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -325,9 +358,9 @@
         "priority": 0,
         "description": "",
         "date": 1753084581.1904619,
-        "thumb": "niles af_thumb.jpg"
+        "extension": "webp"
     },
-    "ordell card render 2 finalizing.jpg": {
+    "ordell card render 2 finalizing": {
         "tags": [
             "oc",
             "ordell",
@@ -342,9 +375,9 @@
         "priority": 0,
         "description": "",
         "date": 1727863516.0,
-        "thumb": "ordell card render 2 finalizing_thumb.jpg"
+        "extension": "webp"
     },
-    "ordell guitar chibi proll.jpg": {
+    "ordell guitar chibi proll": {
         "tags": [
             "oc",
             "ordell",
@@ -358,9 +391,9 @@
         "priority": 0,
         "description": "",
         "date": 1754210299.7054949,
-        "thumb": "ordell guitar chibi proll_thumb.jpg"
+        "extension": "webp"
     },
-    "rockuma af.jpg": {
+    "rockuma af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -371,9 +404,9 @@
         "priority": 0,
         "description": "",
         "date": 1753159133.2781875,
-        "thumb": "rockuma af_thumb.jpg"
+        "extension": "webp"
     },
-    "rook comm journal with sig.jpg": {
+    "rook comm journal with sig": {
         "tags": [
             "otheroc",
             "anthro",
@@ -385,9 +418,9 @@
         "priority": 0,
         "description": "",
         "date": 1741966636.0,
-        "thumb": "rook comm journal with sig_thumb.jpg"
+        "extension": "webp"
     },
-    "sarkis af.jpg": {
+    "sarkis af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -401,9 +434,9 @@
         "priority": 0,
         "description": "",
         "date": 1751615384.8251817,
-        "thumb": "sarkis af_thumb.jpg"
+        "extension": "webp"
     },
-    "selena af.jpg": {
+    "selena af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -414,9 +447,9 @@
         "priority": 0,
         "description": "",
         "date": 1752981317.7917259,
-        "thumb": "selena af_thumb.jpg"
+        "extension": "webp"
     },
-    "shury af.jpg": {
+    "shury af": {
         "tags": [
             "otheroc",
             "creature",
@@ -429,9 +462,9 @@
         "priority": 0,
         "description": "",
         "date": 1752398879.4572246,
-        "thumb": "shury af_thumb.jpg"
+        "extension": "webp"
     },
-    "siren comm watermark.jpg": {
+    "siren comm watermark": {
         "tags": [
             "fanart",
             "xenoblade2",
@@ -443,9 +476,9 @@
         "priority": 0,
         "description": "",
         "date": 1746775390.0,
-        "thumb": "siren comm watermark_thumb.jpg"
+        "extension": "webp"
     },
-    "star af.jpg": {
+    "star af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -458,37 +491,9 @@
         "priority": 0,
         "description": "",
         "date": 1752891293.7560096,
-        "thumb": "star af_thumb.jpg"
+        "extension": "webp"
     },
-    "stokori comm 1 anim.webp": {
-        "tags": [
-            "otheroc",
-            "commission",
-            "fireemblem",
-            "fe10",
-            "animated",
-            "halfbody"
-        ],
-        "isVertical": true,
-        "priority": 0,
-        "description": "",
-        "date": 1742094672.0
-    },
-    "stokori comm 2 anim.webp": {
-        "tags": [
-            "otheroc",
-            "commission",
-            "fireemblem",
-            "fe10",
-            "animated",
-            "halfbody"
-        ],
-        "isVertical": true,
-        "priority": 0,
-        "description": "",
-        "date": 1742264958.0
-    },
-    "trunswicked comm with sig.jpg": {
+    "trunswicked comm with sig": {
         "tags": [
             "otheroc",
             "commission",
@@ -501,9 +506,9 @@
         "priority": 0,
         "description": "",
         "date": 1750319313.1993592,
-        "thumb": "trunswicked comm with sig_thumb.jpg"
+        "extension": "webp"
     },
-    "valen bagua study.jpg": {
+    "valen bagua study": {
         "tags": [
             "oc",
             "valen",
@@ -516,9 +521,9 @@
         "priority": 0,
         "description": "",
         "date": 1746708622.0,
-        "thumb": "valen bagua study_thumb.jpg"
+        "extension": "webp"
     },
-    "valen render.jpg": {
+    "valen render": {
         "tags": [
             "oc",
             "valen",
@@ -530,9 +535,9 @@
         "priority": 0,
         "description": "",
         "date": 1730636192.0,
-        "thumb": "valen render_thumb.jpg"
+        "extension": "webp"
     },
-    "vithaar af.jpg": {
+    "vithaar af": {
         "tags": [
             "otheroc",
             "artfight",
@@ -543,9 +548,9 @@
         "priority": 0,
         "description": "",
         "date": 1753148622.3111882,
-        "thumb": "vithaar af_thumb.jpg"
+        "extension": "webp"
     },
-    "yammark comm.jpg": {
+    "yammark comm": {
         "tags": [
             "fanart",
             "commission",
@@ -557,6 +562,6 @@
         "priority": 0,
         "description": "",
         "date": 1745232900.0,
-        "thumb": "yammark comm_thumb.jpg"
+        "extension": "webp"
     }
 }
