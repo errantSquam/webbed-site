@@ -104,7 +104,7 @@
         "tagType": "medium"
     },
     "gbafe": {
-        "fullName": "GBAFE",
+        "fullName": "GBA Fire Emblem",
         "tagType": "source"
     },
     "simplebg": {
@@ -164,7 +164,7 @@
         "tagType": "source"
     },
     "fe10": {
-        "fullName": "FE10",
+        "fullName": "FE10 (Tellius)",
         "tagType": "source"
     },
     "bust": {
@@ -190,5 +190,9 @@
     "zephyr": {
         "fullName": "Zephyr",
         "tagType": "oc"
+    },
+    "3d": {
+        "fullName": "3D Modelling",
+        "tagType": "medium"
     }
 }

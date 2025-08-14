@@ -42,25 +42,27 @@
     ],
     "source": [
         "fireemblem",
-        "gbafe",
-        "fe10",
         "xenobladex",
-        "xenoblade2",
         "digimon",
+        "gbafe",
         "donkeykong",
         "pmd",
         "talesof",
+        "xenoblade2",
+        "fe10",
         "megaman"
     ],
     "medium": [
         "pixelart",
-        "animated"
+        "animated",
+        "3d"
     ],
     "misc": [
         "scales",
         "commission",
         "artfight",
         "wings",
+        "bird",
         "sword",
         "instrument",
         "rock"
