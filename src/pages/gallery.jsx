@@ -293,14 +293,14 @@ export default function Gallery() {
                         variant="rectangular"
                         className="bg-green-900 rounded-lg"
                         animation="wave">
-                        <img src={"assets/pics/" + fileThumb()}
-                            className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
-                            onClick={() => setIsOpen(true)}/>
+                        <div className = "min-h-64" 
+                        style = {{
+                            aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]}}/>
                     </Skeleton>
                 }
 
                 <img src={"assets/pics/" + fileThumb()}
-                    style={{ display: !isLoaded ? 'none' : undefined }}
+                    style={{ height: !isLoaded ? '0' : undefined }}
                     className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
                     onClick={() => setIsOpen(true)} 
                     onLoad = {() => setIsLoaded(true)}
