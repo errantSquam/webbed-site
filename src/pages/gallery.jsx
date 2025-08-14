@@ -2,14 +2,19 @@ import { React, useState } from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import Select from "react-select"
+import makeAnimated from 'react-select/animated';
+const animatedComponents = makeAnimated();
+
 
 
 export default function Gallery() {
 
     const [portfolioJson, setPortfolioJson] = useState({})
     const [portfolioTags, setPortfolioTags] = useState({})
+    const [groupedTaglist, setGroupedTaglist] = useState([])
     const tagsColorDict = {
-        "oc": "bg-amber-400",
+        "oc": "bg-amber-600",
         "bg": "bg-purple-400",
         "medium": "bg-blue-400",
         "charatype": "bg-fuchsia-400",
@@ -30,6 +35,31 @@ export default function Gallery() {
         })
         fetch('assets/portfoliotags.json').then((res) => res.json()).then((data) => {
             setPortfolioTags(data)
+            let tempTagList = {}
+
+            for (let i = 0; i < Object.keys(data).length; i++) {
+                let tagName =  Object.keys(data)[i]
+                let tagtype = data[tagName].tagType
+                if (tempTagList[tagtype] === undefined) {
+                    tempTagList[tagtype] = [tagName]
+                } else{
+                    tempTagList[tagtype].push(tagName)
+                }
+            }
+
+            let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
+                return {label: tagType,
+                        options: tempTagList[tagType].map((tagName) => {
+                            return {value: tagName,
+                            label: <span className = {"px-2 rounded text-white " + tagsColorDict[tagType]}>{data[tagName].fullName}</span>,
+                            "tagType": tagType
+                            }
+                        })
+                }
+            })
+            console.log(tempGroupTagList)
+            setGroupedTaglist(tempGroupTagList)
+            
 
         })
 
@@ -58,31 +88,31 @@ export default function Gallery() {
 
         let artDesc = portfolioJson[filename].description
 
-        console.log(fullTags)
+        //console.log(fullTags)
 
 
         return <>
-            <img src={"assets/pics/" + filename}
-                className={"object-cover h-64 p-1"}
+            <div className = " p-1 flex flex-row">
+                <img src={"assets/pics/" + filename}
+                className={"object-cover h-64 rounded-lg"}
                 key={filename}
                 onClick={() => setIsOpen(true)} />
+
+            </div>
 
 
 
             <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
-                <div className="fixed inset-0 z-10 w-screen h-screen overflow-y-auto bg-black/70">
-                    <div className="flex min-h-full items-center justify-between ">
+                <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
+                    <div className="flex min-h-full items-center justify-center">
                         <DialogPanel
                             transition
-                            className="w-full h-full duration-50 ease-in 
+                            className="duration-50 ease-in 
                             data-closed:transform-[scale(95%)] data-closed:opacity-0"
                         >
-                            <DialogTitle as="h3" className="text-base/7 font-medium text-white">
-
-                            </DialogTitle>
-                            <div className="flex items-center justify-center">
-                                <div className="flex flex-row w-5/6  justify-between">
-                                    <div className = "flex flex-col space-y-2">
+                            <div className="h-full flex items-center justify-center">
+                                <div className="flex flex-row px-4 justify-center">
+                                    <div className = "flex flex-col space-y-2 pt-2 max-w-1/4">
                                         <p className="mt-2 text-sm/6 text-white/50">
                                             <div className="flex flex-row flex-wrap space-x-2 gap-y-2">
                                                 {fullTags.map((tag) => (<TagBlock tagData={tag} />))}
@@ -92,9 +122,7 @@ export default function Gallery() {
                                             {artDesc !== "" ? artDesc : <i>None</i> }
                                         </p>
 
-                                        <p className = "text-white/80 text-sm">
-                                            {!portfolioJson[filename].isVertical && <i>Image can be scrolled!</i>}
-                                        </p>
+                                    
                                         
                                         <div className="mt-4">
                                             <Button
@@ -109,10 +137,12 @@ export default function Gallery() {
                                             </Button>
                                         </div>
                                     </div>
-                                    <div className = "">
-                                    <img src={"assets/pics/" + filename} className={"" + 
-                                        portfolioJson[filename].isVertical ? "max-w-4/5" : "max-h-1/2 "}/>
+                                    
+                                    <div className={"grow-3 flex items-center justify-center"}>
+                                        <img src={"assets/pics/" + filename}
+                                        className = {"max-h-screen py-4"}/>
                                     </div>
+                                    
 
 
                                 </div>
@@ -127,17 +157,69 @@ export default function Gallery() {
 
     }
 
+    const formatGroupLabel = (data) => (
+        <div>
+          <span>{data.label}</span>
+        </div>
+      );
 
     return (
-        <div className="bg-slate-800">
-            <div className="py-10 px-10 flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold text-orange-600">Gallery</h1>
-                <div className="text-green-400">pics go here</div>
-                <div className="text-green-400">back to <Link to="/"><u>home</u></Link></div>
+        <div className="min-h-screen bg-zinc-800">
+            <div className=" px-10 flex flex-col items-center text-center">
+                <div className = "py-1 w-screen bg-orange-900 mb-2">
+                    <h1 className="text-2xl font-bold text-orange-100 font-pirulen">Gallery</h1>
+                </div>
+                <div className="text-green-400 mb-2">back to <Link to="/"><u>home</u></Link></div>
+
+                <div className="text-green-400">filter :)</div>
+
+                <div className = "w-2/3 text-left text-sm">
+                    <Select 
+                    styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          backgroundColor: 'black',
+                          borderColor: 'var(--color-zinc-500)',
+                          
+                        }),
+                        menu: (menuStyles, state) => ({
+                            ...menuStyles,
+                            backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
+                            
+                          }),
+                        option: (menuStyles, state) => ({
+                            ...menuStyles,
+                            backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
+                            
+                          }),
+                        
+                        input: (inputStyles, state) => ({
+                            ...inputStyles,
+                            backgroundColor: 'black',
+                            color: "white"
+                          }),
+                        multiValue: (styles, { data }) => {
+                            let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
+                              return{...styles,
+                              backgroundColor: colorvar,}
+                            },
+                      }}
+                    
+                      components = {{IndicatorSeparator:() => null}}
+                    
+                    options = {groupedTaglist} 
+
+                    formatGroupLabel = {formatGroupLabel} key = {groupedTaglist}
+                    
+                    
+                    placeholder = "Tag search..."
+                    isMulti
+                    />
+                </div>
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 p-5 gap-y-2">
                     {
                         Object.keys(portfolioJson).map((filename) => {
-                            console.log(filename)
+                            //console.log(filename)
                             return <div className="">
                                 <GalleryImage filename={filename} />
                             </div>
