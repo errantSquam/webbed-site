@@ -8,9 +8,11 @@
             "scales",
             "halfbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1748352707.1334307,
+        "thumb": "another zeph render_thumb.jpg"
     },
     "arelis renaissance study.jpg": {
         "tags": [
@@ -20,9 +22,11 @@
             "arelis",
             "fullbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1741006446.0,
+        "thumb": "arelis renaissance study_thumb.jpg"
     },
     "ares mr donut.jpg": {
         "tags": [
@@ -31,9 +35,11 @@
             "human",
             "halfbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1747540767.3520305,
+        "thumb": "ares mr donut_thumb.jpg"
     },
     "armory alley redraw.jpg": {
         "tags": [
@@ -47,9 +53,11 @@
             "xenobladex",
             "halfbody"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1746508588.0,
+        "thumb": "armory alley redraw_thumb.jpg"
     },
     "chuji updated ref 2025.jpg": {
         "tags": [
@@ -59,9 +67,11 @@
             "fullbody",
             "charactersheet"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1751692657.5496953,
+        "thumb": "chuji updated ref 2025_thumb.jpg"
     },
     "cinogard mrt comm sig.jpg": {
         "tags": [
@@ -74,9 +84,11 @@
             "halfbody",
             "fullbody"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": "Commission. Background was provided by client."
+        "description": "Commission. Background was provided by client.",
+        "date": 1751110531.4260585,
+        "thumb": "cinogard mrt comm sig_thumb.jpg"
     },
     "coda dino edition af.jpg": {
         "tags": [
@@ -89,7 +101,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1752888075.6233754,
+        "thumb": "coda dino edition af_thumb.jpg"
     },
     "dana af cubism.jpg": {
         "tags": [
@@ -101,9 +115,11 @@
             "creature",
             "halfbody"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1753180682.066377,
+        "thumb": "dana af cubism_thumb.jpg"
     },
     "danarei comm sig.jpg": {
         "tags": [
@@ -115,9 +131,11 @@
             "creature",
             "halfbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1739083632.0,
+        "thumb": "danarei comm sig_thumb.jpg"
     },
     "danarei comm sprite for publishing.gif": {
         "tags": [
@@ -129,9 +147,10 @@
             "fireemblem",
             "gbafe"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1744443744.0
     },
     "darious af 2025.jpg": {
         "tags": [
@@ -143,7 +162,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1752380961.5257106,
+        "thumb": "darious af 2025_thumb.jpg"
     },
     "digigirl phoenixmon.jpg": {
         "tags": [
@@ -155,9 +176,11 @@
             "creature",
             "fullbody"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1740968480.0,
+        "thumb": "digigirl phoenixmon_thumb.jpg"
     },
     "dk ostrich.jpg": {
         "tags": [
@@ -169,7 +192,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1754576150.5913174,
+        "thumb": "dk ostrich_thumb.jpg"
     },
     "duftmon comm siggy.jpg": {
         "tags": [
@@ -181,9 +206,11 @@
             "fullbody",
             "simplebg"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1744606460.0,
+        "thumb": "duftmon comm siggy_thumb.jpg"
     },
     "ekaitz sword unsheathing small.jpg": {
         "tags": [
@@ -195,9 +222,11 @@
             "simplebg",
             "fullbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1750602207.2879493,
+        "thumb": "ekaitz sword unsheathing small_thumb.jpg"
     },
     "gekkomon.jpg": {
         "tags": [
@@ -208,7 +237,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1755067489.151952,
+        "thumb": "gekkomon_thumb.jpg"
     },
     "janus vs arelis.jpg": {
         "tags": [
@@ -219,9 +250,11 @@
             "halfbody",
             "fullbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1754037722.7502885,
+        "thumb": "janus vs arelis_thumb.jpg"
     },
     "metalgreymon pmd comm 500x.png": {
         "tags": [
@@ -232,9 +265,10 @@
             "pmd",
             "creature"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1745637686.0
     },
     "microraptor vermy.jpg": {
         "tags": [
@@ -245,9 +279,11 @@
             "creature",
             "fullbody"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1754303322.6536634,
+        "thumb": "microraptor vermy_thumb.jpg"
     },
     "more dell wings render.jpg": {
         "tags": [
@@ -258,9 +294,11 @@
             "bird",
             "fullbody"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1732449312.0,
+        "thumb": "more dell wings render_thumb.jpg"
     },
     "moth dragon scribble.jpg": {
         "tags": [
@@ -270,9 +308,11 @@
             "creature",
             "fullbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1753775448.9956152,
+        "thumb": "moth dragon scribble_thumb.jpg"
     },
     "niles af.jpg": {
         "tags": [
@@ -283,7 +323,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1753084581.1904619,
+        "thumb": "niles af_thumb.jpg"
     },
     "ordell card render 2 finalizing.jpg": {
         "tags": [
@@ -296,9 +338,11 @@
             "simplebg",
             "halfbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1727863516.0,
+        "thumb": "ordell card render 2 finalizing_thumb.jpg"
     },
     "ordell guitar chibi proll.jpg": {
         "tags": [
@@ -312,7 +356,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1754210299.7054949,
+        "thumb": "ordell guitar chibi proll_thumb.jpg"
     },
     "rockuma af.jpg": {
         "tags": [
@@ -323,7 +369,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1753159133.2781875,
+        "thumb": "rockuma af_thumb.jpg"
     },
     "rook comm journal with sig.jpg": {
         "tags": [
@@ -335,7 +383,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1741966636.0,
+        "thumb": "rook comm journal with sig_thumb.jpg"
     },
     "sarkis af.jpg": {
         "tags": [
@@ -347,9 +397,11 @@
             "dinosaur",
             "designbg"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1751615384.8251817,
+        "thumb": "sarkis af_thumb.jpg"
     },
     "selena af.jpg": {
         "tags": [
@@ -360,20 +412,24 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1752981317.7917259,
+        "thumb": "selena af_thumb.jpg"
     },
     "shury af.jpg": {
         "tags": [
             "otheroc",
             "creature",
             "artfight",
-            "rodent",  
+            "rodent",
             "chibi",
             "creature"
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1752398879.4572246,
+        "thumb": "shury af_thumb.jpg"
     },
     "siren comm watermark.jpg": {
         "tags": [
@@ -382,10 +438,12 @@
             "mecha",
             "halfbody",
             "simplebg"
-            ],
-        "isVertical": true,
+        ],
+        "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1746775390.0,
+        "thumb": "siren comm watermark_thumb.jpg"
     },
     "star af.jpg": {
         "tags": [
@@ -395,11 +453,12 @@
             "fullbody",
             "creature",
             "simplebg"
-
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1752891293.7560096,
+        "thumb": "star af_thumb.jpg"
     },
     "stokori comm 1 anim.webp": {
         "tags": [
@@ -410,9 +469,10 @@
             "animated",
             "halfbody"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1742094672.0
     },
     "stokori comm 2 anim.webp": {
         "tags": [
@@ -422,11 +482,11 @@
             "fe10",
             "animated",
             "halfbody"
-
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1742264958.0
     },
     "trunswicked comm with sig.jpg": {
         "tags": [
@@ -437,9 +497,11 @@
             "creature",
             "anthro"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1750319313.1993592,
+        "thumb": "trunswicked comm with sig_thumb.jpg"
     },
     "valen bagua study.jpg": {
         "tags": [
@@ -452,7 +514,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1746708622.0,
+        "thumb": "valen bagua study_thumb.jpg"
     },
     "valen render.jpg": {
         "tags": [
@@ -464,7 +528,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1730636192.0,
+        "thumb": "valen render_thumb.jpg"
     },
     "vithaar af.jpg": {
         "tags": [
@@ -475,7 +541,9 @@
         ],
         "isVertical": false,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1753148622.3111882,
+        "thumb": "vithaar af_thumb.jpg"
     },
     "yammark comm.jpg": {
         "tags": [
@@ -485,8 +553,10 @@
             "bust",
             "mecha"
         ],
-        "isVertical": false,
+        "isVertical": true,
         "priority": 0,
-        "description": ""
+        "description": "",
+        "date": 1745232900.0,
+        "thumb": "yammark comm_thumb.jpg"
     }
 }
