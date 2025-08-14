@@ -1,0 +1,68 @@
+{
+    "copyright": [
+        "oc",
+        "fanart",
+        "otheroc"
+    ],
+    "charatype": [
+        "human",
+        "mecha",
+        "anthro",
+        "creature"
+    ],
+    "scope": [
+        "halfbody",
+        "fullbody",
+        "charactersheet",
+        "chibi",
+        "bust"
+    ],
+    "bg": [
+        "simplebg",
+        "designbg",
+        "complexbg"
+    ],
+    "species": [
+        "snake",
+        "otter",
+        "dragon",
+        "dinosaur",
+        "insect",
+        "cat",
+        "rodent"
+    ],
+    "oc": [
+        "arelis",
+        "ekaitz",
+        "janus",
+        "ordell",
+        "valen",
+        "zephyr"
+    ],
+    "source": [
+        "fireemblem",
+        "xenobladex",
+        "digimon",
+        "gbafe",
+        "donkeykong",
+        "pmd",
+        "talesof",
+        "xenoblade2",
+        "fe10",
+        "megaman"
+    ],
+    "medium": [
+        "pixelart",
+        "animated"
+    ],
+    "misc": [
+        "scales",
+        "commission",
+        "artfight",
+        "wings",
+        "bird",
+        "sword",
+        "instrument",
+        "rock"
+    ]
+}

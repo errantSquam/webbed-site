@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import Select from "react-select"
 import makeAnimated from 'react-select/animated';
+import { createElement } from "react"
 const animatedComponents = makeAnimated();
 
 const tagsColorDict = {
@@ -117,6 +118,7 @@ const selectStylesExclude = () => {
     return excludeStyles
 }
 
+
 export default function Gallery() {
 
     const [portfolioJson, setPortfolioJson] = useState({})
@@ -140,25 +142,20 @@ export default function Gallery() {
         })
         fetch('assets/portfoliotags.json').then((res) => res.json()).then((data) => {
             setPortfolioTags(data)
-            let tempTagList = {}
+            
+        })
+        fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
+            let tempTagList = data
+            console.log(tempTagList)
 
-            for (let i = 0; i < Object.keys(data).length; i++) {
-                let tagName = Object.keys(data)[i]
-                let tagtype = data[tagName].tagType
-                if (tempTagList[tagtype] === undefined) {
-                    tempTagList[tagtype] = [tagName]
-                } else {
-                    tempTagList[tagtype].push(tagName)
-                }
-            }
-
+            
             let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
                 return {
                     label: tagType,
                     options: tempTagList[tagType].map((tagName) => {
                         return {
                             value: tagName,
-                            label: data[tagName].fullName,
+                            label: portfolioTags[tagName].fullName,
                             "tagType": tagType
                         }
                     })
@@ -171,7 +168,6 @@ export default function Gallery() {
 
     }, [])
 
-    let jsonRange = [...Array(Math.floor(Object.keys(portfolioJson).length / numGalleryCols)).keys()]
 
     const TagBlock = ({ tagData }) => {
         return <span className={"px-2 py-1 text-xs text-white rounded " + tagsColorDict[tagData.tagType]}>{tagData.fullName}</span>
@@ -201,14 +197,18 @@ export default function Gallery() {
             return Object.keys(portfolioTags).length !== 0 && portfolioTags[tag]
         })
 
-        let artDesc = portfolioJson[filename].description
+        let descString = portfolioJson[filename].description
+
+        let artDesc = createElement('span',
+            {dangerouslySetInnerHTML: {__html: descString}},
+            );
 
 
 
         return <>
-            <div className=" p-1 flex flex-row">
+            <div className=" p-1 flex flex-row ">
                 <img src={"assets/pics/" + fileThumb()}
-                    className={"object-cover h-64 rounded-lg"}
+                    className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
                     key={filename}
                     onClick={() => setIsOpen(true)} />
 
@@ -245,7 +245,7 @@ export default function Gallery() {
                                                 </div>
                                             </p>
                                             <p className="text-white text-sm"><b>Description: </b>
-                                                {artDesc !== "" ? artDesc : <i>None</i>}
+                                                {descString !== "" ? artDesc : <i>None</i>}
                                             </p>
 
 
@@ -355,6 +355,8 @@ export default function Gallery() {
                     compareArray[i] += 2
                 } else if (artArray[i].tags.includes("halfbody")) {
                     compareArray[i] += 1
+                } else if (artArray[i].tags.includes("chibi")) {
+                    compareArray[i] -= 2
                 }
                 if (artArray[i].tags.includes("animated")) {
                     compareArray[i] += 2
@@ -371,6 +373,8 @@ export default function Gallery() {
                 if (artArray[i].tags.includes("charactersheet")) {
                     compareArray[i] += 1
                 }
+
+                compareArray[i] += artArray[i].priority
             }
 
             return compareArray[1] - compareArray[0]
