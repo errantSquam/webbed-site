@@ -56,7 +56,7 @@
         "tagType": "source"
     },
     "otheroc": {
-        "fullName": "Others' OCs",
+        "fullName": "otheroc",
         "tagType": "copyright"
     },
     "otter": {
@@ -190,5 +190,9 @@
     "megaman": {
         "fullName": "megaman",
         "tagType": "source"
+    },
+    "complexbg": {
+        "fullName": "complexbg",
+        "tagType": "misc"
     }
 }
