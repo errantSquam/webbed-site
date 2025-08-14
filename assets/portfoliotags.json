@@ -93,7 +93,7 @@
     },
     "bird": {
         "fullName": "Bird",
-        "tagType": "misc"
+        "tagType": "species"
     },
     "pixelart": {
         "fullName": "Pixel Art",

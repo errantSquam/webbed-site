@@ -11,11 +11,11 @@
         "creature"
     ],
     "scope": [
+        "chibi",
+        "bust",
         "halfbody",
         "fullbody",
-        "charactersheet",
-        "chibi",
-        "bust"
+        "charactersheet"
     ],
     "bg": [
         "simplebg",
@@ -29,7 +29,8 @@
         "dinosaur",
         "insect",
         "cat",
-        "rodent"
+        "rodent",
+        "bird"
     ],
     "oc": [
         "arelis",
@@ -60,7 +61,6 @@
         "commission",
         "artfight",
         "wings",
-        "bird",
         "sword",
         "instrument",
         "rock"
