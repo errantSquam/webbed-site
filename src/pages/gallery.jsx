@@ -291,9 +291,9 @@ export default function Gallery() {
                 {!isLoaded &&
                     <Skeleton
                         variant="rectangular"
-                        className="bg-green-900 rounded-lg"
+                        className="bg-green-900 rounded-lg "
                         animation="wave">
-                        <div className = "min-h-64" 
+                        <div className = "h-64 object-cover" 
                         style = {{
                             aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]}}/>
                     </Skeleton>
@@ -304,7 +304,6 @@ export default function Gallery() {
                     className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
                     onClick={() => setIsOpen(true)} 
                     onLoad = {() => setIsLoaded(true)}
-                    loading = "lazy"
                     />
 
             </div>
@@ -404,7 +403,7 @@ export default function Gallery() {
     
 
     return (
-        <div className="min-h-screen bg-zinc-800">
+        <div className="min-h-screen bg-zinc-800 overflow-x-hidden ">
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2">
                     <h1 className="text-2xl font-bold text-orange-100 font-pirulen">Gallery</h1>
