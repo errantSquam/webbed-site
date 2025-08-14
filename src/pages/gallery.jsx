@@ -6,7 +6,116 @@ import Select from "react-select"
 import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 
+const tagsColorDict = {
+    "oc": "bg-amber-600",
+    "bg": "bg-purple-400",
+    "medium": "bg-blue-400",
+    "charatype": "bg-fuchsia-400",
+    "copyright": "bg-indigo-400",
+    "scope": "bg-red-400",
+    "species": "bg-teal-400",
+    "source": "bg-green-400",
+    "misc": "bg-slate-400"
+}
 
+const selectStyles = {
+    control: (baseStyles, state) => ({
+        ...baseStyles,
+        backgroundColor: 'black',
+        borderColor: 'var(--color-zinc-500)',
+        color:"white"
+
+    }),
+    menu: (menuStyles, state) => ({
+        ...menuStyles,
+        backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
+
+    }),
+
+    input: (inputStyles, state) => ({
+        ...inputStyles,
+        backgroundColor: 'black',
+        color: "white"
+    }),
+    multiValue: (styles, { data }) => {
+        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
+        return {
+            ...styles,
+            backgroundColor: colorvar,
+            color:"white"
+        }
+    },
+    multiValueLabel: (styles, { data }) => {
+        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
+        return {
+            ...styles,
+            backgroundColor: colorvar,
+            color:"white"
+        }
+    },
+    option: (styles, { data }) => {
+        
+
+        return {
+            ...styles,
+            color: "white",
+            backgroundColor: "rgba(0,0,0,0.5)"
+            
+        }
+    },
+    groupHeading: (styles, { data }) => {
+        let colorvar = `var(--${tagsColorDict[data.label]})`.replace("bg", "color")
+        return {
+            ...styles,
+            color: "white"
+        }
+    },
+    group: (styles, { data }) => {
+        let colorvar = `var(--${tagsColorDict[data.label]})`.replace("bg", "color")
+        return {
+            ...styles,
+            backgroundColor: colorvar,
+            color: "white",
+            paddingBottom: 0
+        }
+    },
+
+}
+
+const selectStylesExclude = () => {
+    let excludeStyles = {...selectStyles}
+
+    let bgColor = `var(--color-red-900)`
+    let textColor = `white`
+    excludeStyles.multiValueLabel = (styles, { data }) => {
+    let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
+        return {
+            ...styles,
+            borderStyle: "hidden",
+            borderColor: colorvar,
+            borderWidth: "3px",
+            borderLeftStyle: "solid",
+            backgroundColor: bgColor,
+            color:textColor
+        }
+    }
+
+    excludeStyles.multiValue = (styles, { data }) => {
+        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
+            return {
+                ...styles,
+                borderStyle: "solid",
+                borderColor: colorvar,
+                borderWidth: "3px",
+                borderLeftStyle: "hidden",
+                backgroundColor: bgColor,
+                color:textColor
+            }
+        }
+
+
+    return excludeStyles
+}
 
 export default function Gallery() {
 
@@ -19,17 +128,7 @@ export default function Gallery() {
             exclude: []
         }
     )
-    const tagsColorDict = {
-        "oc": "bg-amber-600",
-        "bg": "bg-purple-400",
-        "medium": "bg-blue-400",
-        "charatype": "bg-fuchsia-400",
-        "copyright": "bg-indigo-400",
-        "scope": "bg-red-400",
-        "species": "bg-teal-400",
-        "source": "bg-green-400",
-        "misc": "bg-slate-400"
-    }
+
 
     const numGalleryCols = 3
 
@@ -59,13 +158,12 @@ export default function Gallery() {
                     options: tempTagList[tagType].map((tagName) => {
                         return {
                             value: tagName,
-                            label: <span className={"px-2 rounded text-white " + tagsColorDict[tagType]}>{data[tagName].fullName}</span>,
+                            label: data[tagName].fullName,
                             "tagType": tagType
                         }
                     })
                 }
             })
-            console.log(tempGroupTagList)
             setGroupedTaglist(tempGroupTagList)
 
 
@@ -76,7 +174,6 @@ export default function Gallery() {
     let jsonRange = [...Array(Math.floor(Object.keys(portfolioJson).length / numGalleryCols)).keys()]
 
     const TagBlock = ({ tagData }) => {
-        console.log(tagData)
         return <span className={"px-2 py-1 text-xs text-white rounded " + tagsColorDict[tagData.tagType]}>{tagData.fullName}</span>
     }
 
@@ -223,14 +320,13 @@ export default function Gallery() {
     }
     const getFilteredArt = () => {
         let includedArt = getFilteredArtIncludes()
-        console.log(includedArt)
         if (selectedFilters.exclude.length === 0) {
             return includedArt
         }
 
         return includedArt.filter((filename) => {
 
-            return selectedFilters.exclude.some((tag) => {
+            return selectedFilters.exclude.every((tag) => {
                 return !portfolioJson[filename].tags.includes(tag.value)
             })
         })
@@ -276,7 +372,6 @@ export default function Gallery() {
                     compareArray[i] += 1
                 }
             }
-            console.log(compareArray)
 
             return compareArray[1] - compareArray[0]
         })
@@ -284,7 +379,7 @@ export default function Gallery() {
 
     return (
         <div className="min-h-screen bg-zinc-800">
-            <div className=" px-10 flex flex-col items-center text-center">
+            <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2">
                     <h1 className="text-2xl font-bold text-orange-100 font-pirulen">Gallery</h1>
                 </div>
@@ -299,42 +394,11 @@ export default function Gallery() {
                                     tempSelectedFilters.include = options
                                     setSelectedFilters(tempSelectedFilters)
                                 }}
-                                styles={{
-                                    control: (baseStyles, state) => ({
-                                        ...baseStyles,
-                                        backgroundColor: 'black',
-                                        borderColor: 'var(--color-zinc-500)',
-
-                                    }),
-                                    menu: (menuStyles, state) => ({
-                                        ...menuStyles,
-                                        backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
-
-                                    }),
-                                    option: (menuStyles, state) => ({
-                                        ...menuStyles,
-                                        backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
-
-                                    }),
-
-                                    input: (inputStyles, state) => ({
-                                        ...inputStyles,
-                                        backgroundColor: 'black',
-                                        color: "white"
-                                    }),
-                                    multiValue: (styles, { data }) => {
-                                        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-                                        return {
-                                            ...styles,
-                                            backgroundColor: colorvar,
-                                        }
-                                    },
-                                }}
+                                styles={selectStyles}
 
                                 components={{ IndicatorSeparator: () => null }}
 
                                 options={groupedTaglist}
-
                                 formatGroupLabel={formatGroupLabel} key={groupedTaglist}
 
 
@@ -352,37 +416,7 @@ export default function Gallery() {
                                     tempSelectedFilters.exclude = options
                                     setSelectedFilters(tempSelectedFilters)
                                 }}
-                                styles={{
-                                    control: (baseStyles, state) => ({
-                                        ...baseStyles,
-                                        backgroundColor: 'black',
-                                        borderColor: 'var(--color-zinc-500)',
-
-                                    }),
-                                    menu: (menuStyles, state) => ({
-                                        ...menuStyles,
-                                        backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
-
-                                    }),
-                                    option: (menuStyles, state) => ({
-                                        ...menuStyles,
-                                        backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
-
-                                    }),
-
-                                    input: (inputStyles, state) => ({
-                                        ...inputStyles,
-                                        backgroundColor: 'black',
-                                        color: "white"
-                                    }),
-                                    multiValue: (styles, { data }) => {
-                                        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-                                        return {
-                                            ...styles,
-                                            backgroundColor: colorvar,
-                                        }
-                                    },
-                                }}
+                                styles={selectStylesExclude()}
 
                                 components={{ IndicatorSeparator: () => null }}
 
