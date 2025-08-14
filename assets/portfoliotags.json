@@ -7,10 +7,6 @@
         "fullName": "Human",
         "tagType": "charatype"
     },
-    "zephyr": {
-        "fullName": "Zephyr (OC)",
-        "tagType": "oc"
-    },
     "snake": {
         "fullName": "Snake",
         "tagType": "species"
@@ -24,11 +20,11 @@
         "tagType": "scope"
     },
     "mecha": {
-        "fullName": "mecha",
+        "fullName": "Mecha",
         "tagType": "charatype"
     },
     "arelis": {
-        "fullName": "Arelis (OC)",
+        "fullName": "Arelis",
         "tagType": "oc"
     },
     "fullbody": {
@@ -36,79 +32,75 @@
         "tagType": "scope"
     },
     "fanart": {
-        "fullName": "fanart",
+        "fullName": "Fanart",
         "tagType": "copyright"
     },
     "fireemblem": {
-        "fullName": "fireemblem",
+        "fullName": "Fire Emblem",
         "tagType": "source"
     },
-    "background": {
-        "fullName": "complexbg",
-        "tagType": "bg"
-    },
     "anthro": {
-        "fullName": "anthro",
+        "fullName": "Anthro",
         "tagType": "charatype"
     },
     "xenobladex": {
-        "fullName": "xenobladex",
+        "fullName": "Xenoblade X",
         "tagType": "source"
     },
     "otheroc": {
-        "fullName": "otheroc",
+        "fullName": "Others' OCs",
         "tagType": "copyright"
     },
     "otter": {
-        "fullName": "otter",
+        "fullName": "Otter",
         "tagType": "species"
     },
     "charactersheet": {
-        "fullName": "charactersheet",
+        "fullName": "Character Sheet",
         "tagType": "scope"
     },
     "digimon": {
-        "fullName": "digimon",
+        "fullName": "Digimon",
         "tagType": "source"
     },
     "commission": {
-        "fullName": "commission",
+        "fullName": "Commission",
         "tagType": "misc"
     },
     "dragon": {
-        "fullName": "dragon",
+        "fullName": "Dragon",
         "tagType": "species"
     },
     "artfight": {
-        "fullName": "artfight",
+        "fullName": "Art Fight",
         "tagType": "misc"
     },
     "dinosaur": {
-        "fullName": "dinosaur",
+        "fullName": "Dinosaur",
         "tagType": "species"
     },
     "creature": {
-        "fullName": "creature",
+        "fullName": "Creature",
         "tagType": "charatype"
     },
     "wings": {
-        "fullName": "wings",
+        "fullName": "Wings",
         "tagType": "misc"
     },
     "chibi": {
-        "fullName": "chibi",
+        "fullName": "Chibi",
         "tagType": "scope"
     },
     "bird": {
-        "fullName": "bird",
+        "fullName": "Bird",
         "tagType": "misc"
     },
     "pixelart": {
-        "fullName": "pixelart",
+        "fullName": "Pixel Art",
         "tagType": "medium"
     },
     "animated": {
-        "fullName": "animated",
+        "fullName": "Animated",
         "tagType": "medium"
     },
     "gbafe": {
@@ -116,7 +108,7 @@
         "tagType": "source"
     },
     "simplebg": {
-        "fullName": "simplebg",
+        "fullName": "Simple BG",
         "tagType": "bg"
     },
     "donkeykong": {
@@ -124,15 +116,15 @@
         "tagType": "source"
     },
     "ekaitz": {
-        "fullName": "Ekaitz (OC)",
+        "fullName": "Ekaitz",
         "tagType": "oc"
     },
     "sword": {
-        "fullName": "sword",
+        "fullName": "Sword",
         "tagType": "misc"
     },
     "janus": {
-        "fullName": "Janus (OC)",
+        "fullName": "Janus",
         "tagType": "oc"
     },
     "pmd": {
@@ -144,19 +136,19 @@
         "tagType": "source"
     },
     "ordell": {
-        "fullName": "Ordell (OC)",
+        "fullName": "Ordell",
         "tagType": "oc"
     },
     "insect": {
-        "fullName": "insect",
+        "fullName": "Insect",
         "tagType": "species"
     },
     "instrument": {
-        "fullName": "instrument",
+        "fullName": "Instrument",
         "tagType": "misc"
     },
     "cat": {
-        "fullName": "cat",
+        "fullName": "Cat",
         "tagType": "species"
     },
     "designbg": {
@@ -164,11 +156,11 @@
         "tagType": "bg"
     },
     "rodent": {
-        "fullName": "rodent",
+        "fullName": "Rodent",
         "tagType": "species"
     },
     "xenoblade2": {
-        "fullName": "xenoblade2",
+        "fullName": "Xenoblade 2",
         "tagType": "source"
     },
     "fe10": {
@@ -176,23 +168,27 @@
         "tagType": "source"
     },
     "bust": {
-        "fullName": "bust",
+        "fullName": "Bust",
         "tagType": "scope"
     },
     "valen": {
-        "fullName": "Valen (OC)",
+        "fullName": "Valen",
         "tagType": "oc"
     },
     "rock": {
-        "fullName": "rock",
+        "fullName": "Rock",
         "tagType": "misc"
     },
     "megaman": {
-        "fullName": "megaman",
+        "fullName": "Mega Man",
         "tagType": "source"
     },
     "complexbg": {
-        "fullName": "complexbg",
-        "tagType": "misc"
+        "fullName": "Complex BG",
+        "tagType": "bg"
+    },
+    "zephyr": {
+        "fullName": "Zephyr",
+        "tagType": "oc"
     }
 }
