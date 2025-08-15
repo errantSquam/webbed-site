@@ -14,6 +14,7 @@ import { TypeAnimation } from "react-type-animation"
 import "../stylesfunctions/typeStyle.css"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { useSearchParams } from "react-router-dom"
+import { preload } from "react-dom"
 
 const GallerySelect = ({ onChange, styles, options, value }) => {
     const formatGroupLabel = (data) => (
@@ -48,6 +49,15 @@ const GalleryFilter = ({ title, onChange, styles, options, value }) => {
     </div>
 }
 
+const PaginationArrow = ({ iconName, onClick, isActive }) => {
+    return <div className={`${isActive ? "transition hover:scale-125 hover:text-lime-400 text-green-500 cursor-pointer" :
+        "text-zinc-500"} flex flex-col items-center justify-center select-none`}
+        onClick={onClick}>
+        <Icon icon={iconName} className="text-3xl md:text-5xl" />
+    </div>
+}
+
+
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -62,13 +72,15 @@ export default function Gallery() {
     )
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [currentImage, setCurrentImage] = useState("")
-
-
-    const numGalleryCols = 3
-
 
     useEffect(() => {
+        let tempSearchParams = searchParams
+        if (tempSearchParams.page === undefined) {
+            tempSearchParams.page = 1
+
+            setSearchParams({ page: 1 })
+        }
+
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             setPortfolioJson(portfolioData)
 
@@ -108,22 +120,30 @@ export default function Gallery() {
 
     }, [])
 
+    useEffect(() => {
+        getArtListPreloads().map((filename) => {
+            let filepath = filename + "." + portfolioJson[filename].extension
+            let img = new Image()
+            img.src = filepath
+        })
 
-
+    }, [searchParams.get("page")])
 
     const GalleryImage = ({ filename }) => {
         const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
         const [isLoaded, setIsLoaded] = useState(false)
 
+        let paramName = filename.split(" ").join("+")
+
         function handleOpen() {
             setIsOpen(true)
-            let paramName = filename.split(" ").join("+")
-            history.pushState({}, "Gallery", `#/gallery?art=${paramName}`)
+            history.pushState({}, "Gallery", `${window.location.hash}&art=${paramName}`)
         }
 
         function handleClose() {
             setIsOpen(false)
-            history.pushState({}, "Gallery", "#/gallery")
+            let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
+            history.pushState({}, "Gallery", newUrl)
 
         }
 
@@ -145,7 +165,7 @@ export default function Gallery() {
 
 
         return <>
-            <div className=" p-1 " key={filename}>
+            <div className=" p-1 ">
                 {!isLoaded &&
                     <div className="bg-zinc-900 ">
                         <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
@@ -193,15 +213,15 @@ export default function Gallery() {
                                     md:py-10 
                                     pr-2 md:max-w-1/3">
                                         <div className="flex flex-col space-y-2 items-center md:items-start">
-                                            <p className="mt-2 text-sm/6 text-white/50">
+                                            <div className="mt-2 text-sm/6 text-white/50">
                                                 <div className="flex flex-row 
                                                 items-center justify-center 
                                                 md:justify-start
                                                 flex-wrap space-x-2 gap-y-2
                                                 ">
-                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} />))}
+                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key = {tag}/>))}
                                                 </div>
-                                            </p>
+                                            </div>
                                             <p className="text-white text-sm"><b>Description: </b>
                                                 {descString !== "" ? artDesc : <i>None</i>}
                                             </p>
@@ -258,7 +278,6 @@ export default function Gallery() {
 
     }
 
-
     function handleSelect(options, currKey, oppKey) {
         let tempSelectedFilters = { ...selectedFilters }
         tempSelectedFilters[currKey] = options
@@ -277,18 +296,86 @@ export default function Gallery() {
     }
 
 
+    function getArtListByPage(page) {
+        let startIndex = (page - 1) * 10
+        let endIndex = Math.min((page - 1) * 10 + 10, artList.length)
+
+        return artList.slice(startIndex, endIndex)
+    }
+    function getArtListPaginated() {
+        let page = Number(searchParams.get("page"))
+        return getArtListByPage(page)
+    }
+
+    function getArtListPreloads() {
+        let page = Number(searchParams.get("page"))
+        let array1 = []
+        let array2 = []
+
+        if (page > 1) {
+            array1 = getArtListPaginated(page - 1)
+        }
+
+        if ((page - 1) * 10 + 10 < artList.length - 1) {
+            array2 = getArtListPaginated(page + 1)
+        }
+
+        return array1.concat(array2)
+    }
+
+    function isArrowActive(direction) {
+        let page = Number(searchParams.get("page"))
+        if (direction === "previous") {
+            if (page === 1) {
+                return false
+            }
+        } else {
+            if ((page - 1) * 10 + 10 >= artList.length - 1) {
+                return false
+            }
+        }
+
+        return true
+    }
+
+    function handlePage(direction) {
+        let page = Number(searchParams.get("page"))
+        let tempSearchParams = searchParams
+        if (direction === "previous" && isArrowActive("previous")) {
+            tempSearchParams.set("page", page - 1)
+        }
+
+        else if (direction === "next" && isArrowActive("next")) {
+            tempSearchParams.set("page", page + 1)
+        }
+        setSearchParams(tempSearchParams.toString())
+    }
+
+
+
+
 
     return (
         <div className="min-h-screen bg-zinc-800 overflow-x-hidden ">
             {<SplashScreen isLoading={isLoading} />}
+            <div className="fixed bottom-0 w-full flex flex-row justify-between px-3 md:px-7 pb-2 mb-2">
+                <PaginationArrow
+                    iconName="ion:caret-back-circle-outline"
+                    isActive={isArrowActive("previous")}
+                    onClick={() => handlePage("previous")} />
+                <PaginationArrow
+                    iconName="ion:caret-forward-circle-outline"
+                    isActive={isArrowActive("next")}
+                    onClick={() => handlePage("next")} />
+            </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center">
                     <div className="text-2xl font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2">
-                        <Icon icon = "clarity:eye-solid" className = "text-2xl text-green-300/70"/>
+                        <Icon icon="clarity:eye-solid" className="text-2xl text-green-300/70" />
                         <span>
-                        Gallery
+                            Gallery
                         </span>
-                        <Icon icon = "clarity:eye-solid" className = "text-2xl text-green-300/70 -ml-0.5"/>
+                        <Icon icon="clarity:eye-solid" className="text-2xl text-green-300/70 -ml-0.5" />
 
                     </div>
                 </div>
@@ -309,46 +396,46 @@ export default function Gallery() {
                         value={selectedFilters.exclude}
                     />
                 </div>
-                <div className="text-green-400 mt-2 flex flex-row items-center space-x-2">
-                    <Icon icon = "lets-icons:back"/>
-                    <span>back to <Link to="/"><u>home</u></Link>
-                    <TypeAnimation
-                sequence = {[
-                    "?",
-                    10000,
-                    " :)",
-                    5000,
-                    "?",
-                    10000,
-                    ". watch snek dance.",
-                    2000,
-                    "?",
-                    10000,
-                    ", or maybe not. stay and enjoy the art.",
-                    10000,
-                    "?",
-                    10000
-                ]}
-                speed = {70}
-                cursor = {false}
-                className = "type"
-                repeat = {Infinity}
-                /></span>
-                
-                </div>
+                <Link to="/"><div className="text-green-400 mt-2 flex flex-row items-center space-x-2">
+                    <Icon icon="lets-icons:back" />
+                    <span>back to <u>home</u>
+                        <TypeAnimation
+                            sequence={[
+                                "?",
+                                10000,
+                                " :)",
+                                5000,
+                                "?",
+                                10000,
+                                ". watch snek dance.",
+                                2000,
+                                "?",
+                                10000,
+                                ", or maybe not. stay and enjoy the art.",
+                                10000,
+                                "?",
+                                10000
+                            ]}
+                            speed={70}
+                            cursor={false}
+                            className="type"
+                            repeat={Infinity}
+                        /></span>
 
-                
+                </div></Link>
+
+
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
                     {
-                        artList.map((filename) => {
-                            return <div className="">
+                        getArtListPaginated().map((filename) => {
+                            return <div className="" key = {filename}>
                                 <GalleryImage filename={filename} />
                             </div>
 
                         })
                     }
-                    </div>
+                </div>
             </div>
         </div>
 
