@@ -3,211 +3,46 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import Select from "react-select"
-import makeAnimated from 'react-select/animated';
 import { createElement } from "react"
 import { Skeleton } from "@mui/material"
+import tagsColorDict from "../stylesfunctions/tagsColorDict"
+import { selectStyles, selectStylesExclude } from "../stylesfunctions/selectStyles"
+import { getFilteredArtByPriority } from "../stylesfunctions/artFilter"
+import SplashScreen from "../components/splashscreen"
+import { TagBlock } from "../components/galleryComponents"
+import { TypeAnimation } from "react-type-animation"
+import "../stylesfunctions/typeStyle.css"
+import { Icon } from "@iconify/react/dist/iconify.js"
 
-const animatedComponents = makeAnimated();
+const GallerySelect = ({ onChange, styles, options, value }) => {
+    const formatGroupLabel = (data) => (
+        <div>
+            <span>{data.label}</span>
+        </div>
+    );
 
-const tagsColorDict = {
-    "oc": "bg-amber-600",
-    "bg": "bg-purple-400",
-    "medium": "bg-blue-400",
-    "charatype": "bg-fuchsia-400",
-    "copyright": "bg-indigo-400",
-    "scope": "bg-red-400",
-    "species": "bg-teal-400",
-    "source": "bg-green-400",
-    "misc": "bg-slate-400"
+    return <Select
+        onChange={onChange}
+        styles={styles}
+        components={{ IndicatorSeparator: () => null }}
+        options={options}
+        formatGroupLabel={formatGroupLabel} key={options}
+        value={value}
+        placeholder="Tag search..."
+        isMulti
+    />
 }
 
-const selectStyles = {
-    control: (baseStyles, state) => ({
-        ...baseStyles,
-        backgroundColor: 'black',
-        borderColor: 'var(--color-zinc-500)',
-        color: "white"
-
-    }),
-    menu: (menuStyles, state) => ({
-        ...menuStyles,
-        backgroundColor: state.isFocused ? 'var(--color-zinc-800)' : 'black',
-
-    }),
-
-    input: (inputStyles, state) => ({
-        ...inputStyles,
-        backgroundColor: 'black',
-        color: "white"
-    }),
-    multiValue: (styles, { data }) => {
-        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-        return {
-            ...styles,
-            backgroundColor: colorvar,
-            color: "white"
-        }
-    },
-    multiValueLabel: (styles, { data }) => {
-        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-        return {
-            ...styles,
-            backgroundColor: colorvar,
-            color: "white"
-        }
-    },
-    option: (styles, { data }) => {
-
-
-        return {
-            ...styles,
-            color: "white",
-            backgroundColor: "rgba(0,0,0,0.5)"
-
-        }
-    },
-    groupHeading: (styles, { data }) => {
-        let colorvar = `var(--${tagsColorDict[data.label]})`.replace("bg", "color")
-        return {
-            ...styles,
-            color: "white"
-        }
-    },
-    group: (styles, { data }) => {
-        let colorvar = `var(--${tagsColorDict[data.label]})`.replace("bg", "color")
-        return {
-            ...styles,
-            backgroundColor: colorvar,
-            color: "white",
-            paddingBottom: 0
-        }
-    },
-
-}
-
-const selectStylesExclude = () => {
-    let excludeStyles = { ...selectStyles }
-
-    let bgColor = `var(--color-red-900)`
-    let textColor = `white`
-    excludeStyles.multiValueLabel = (styles, { data }) => {
-        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-        return {
-            ...styles,
-            borderStyle: "hidden",
-            borderColor: colorvar,
-            borderWidth: "3px",
-            borderLeftStyle: "solid",
-            backgroundColor: bgColor,
-            color: textColor
-        }
-    }
-
-    excludeStyles.multiValue = (styles, { data }) => {
-        let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
-        return {
-            ...styles,
-            borderStyle: "solid",
-            borderColor: colorvar,
-            borderWidth: "3px",
-            borderLeftStyle: "hidden",
-            backgroundColor: bgColor,
-            color: textColor
-        }
-    }
-
-
-    return excludeStyles
-}
-
-const getFilteredArtIncludes = (portfolioJson, selectedFilters) => {
-    if (selectedFilters.include.length === 0) {
-        return Object.keys(portfolioJson)
-    }
-
-    return Object.keys(portfolioJson).filter((filename) => {
-
-        return selectedFilters.include.every((tag) => {
-            return portfolioJson[filename].tags.includes(tag.value)
-        })
-    })
-}
-
-const getFilteredArt = (portfolioJson, selectedFilters) => {
-    let includedArt = getFilteredArtIncludes(portfolioJson, selectedFilters)
-    if (selectedFilters.exclude.length === 0) {
-        return includedArt
-    }
-
-    return includedArt.filter((filename) => {
-
-        return selectedFilters.exclude.every((tag) => {
-            return !portfolioJson[filename].tags.includes(tag.value)
-        })
-    })
-
-}
-
-const getFilteredArtByDate = (portfolioJson, selectedFilters) => {
-    return getFilteredArt(portfolioJson, selectedFilters).toSorted((a, b) => portfolioJson[b].date - portfolioJson[a].date)
-}
-
-const getFilteredArtByPriority = (portfolioJson, selectedFilters) => {
-    return getFilteredArtByDate(portfolioJson, selectedFilters).toSorted((a, b) => {
-        let artArray = [portfolioJson[a], portfolioJson[b]]
-        let compareArray = [0, 0]
-
-        for (let i = 0; i < 2; i++) {
-            if (artArray[i].tags.includes("complexbg")) {
-                compareArray[i] += 1
-            } else if (artArray[i].tags.includes("simplebg")) {
-                compareArray[i] += 0.5
-            }
-            if (artArray[i].tags.includes("mecha")) {
-                compareArray[i] += 3
-            }
-            if (artArray[i].tags.includes("fullbody")) {
-                compareArray[i] += 2
-            } else if (artArray[i].tags.includes("halfbody")) {
-                compareArray[i] += 1
-            } else if (artArray[i].tags.includes("chibi")) {
-                compareArray[i] -= 2
-            }
-            if (artArray[i].tags.includes("animated")) {
-                compareArray[i] += 2
-            }
-            if (artArray[i].tags.includes("wings")) {
-                compareArray[i] += 1
-            }
-            if (artArray[i].tags.includes("oc")) {
-                compareArray[i] += 1
-            } else if (artArray[i].tags.includes("fanart")) {
-                compareArray[i] -= 1
-            }
-
-            if (artArray[i].tags.includes("charactersheet")) {
-                compareArray[i] += 1
-            }
-
-            if (artArray[i].tags.includes("3d")) {
-                compareArray[i] -=4 //good lord the loading times
-            }
-
-            compareArray[i] += artArray[i].priority
-        }
-
-        return compareArray[1] - compareArray[0]
-    })
-}
-
-const SplashScreen = ({isLoading}) => {
-    return <div className={`transition-opacity duration-500 ${isLoading?"opacity-100":"opacity-0 pointer-events-none"} relative z-20` }>
-        <div className="fixed inset-0 z-10 w-full h-screen bg-zinc-800">
-            <div className = "flex h-full items-center justify-center text-center text-white flex flex-col">
-                <img src = "assets/shake him.gif" className = "h-20"/>
-                <div>Loading...</div>
-            </div>
-
+const GalleryFilter = ({ title, onChange, styles, options, value }) => {
+    return <div className="flex flex-col w-full">
+        <div className="text-green-400 font-pirulen">{title}</div>
+        <div className=" text-left text-sm">
+            <GallerySelect
+                onChange={onChange}
+                styles={styles}
+                options={options}
+                value={value}
+            />
         </div>
     </div>
 }
@@ -259,7 +94,7 @@ export default function Gallery() {
 
                 }).then(() => {
                     setTimeout(() => {
-                    setIsLoading(false)
+                        setIsLoading(false)
                     }, 500)
                 })
 
@@ -271,9 +106,7 @@ export default function Gallery() {
     }, [])
 
 
-    const TagBlock = ({ tagData }) => {
-        return <span className={"px-2 py-1 text-xs text-white rounded " + tagsColorDict[tagData.tagType]}>{tagData.fullName}</span>
-    }
+
 
     const GalleryImage = ({ filename }) => {
         const [isOpen, setIsOpen] = useState(false)
@@ -308,19 +141,19 @@ export default function Gallery() {
         return <>
             <div className=" p-1 " key={filename}>
                 {!isLoaded &&
-                    <div className = "bg-zinc-900 ">
-                    <div className = "animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
-                    <div className = "absolute z-10 text-green-500 font-bold font-pirulen">LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
-                    <Skeleton
-                        variant="rectangular"
-                        className="bg-zinc-900 rounded-lg "
-                        animation="wave">
-                        <div className="h-64 object-cover flex flex-col items-center"
-                            style={{
-                                aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]
-                            }}/>
-                    </Skeleton>
-                    </div>
+                    <div className="bg-zinc-900 ">
+                        <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
+                            <div className="absolute z-10 text-green-500 font-bold font-pirulen">LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
+                            <Skeleton
+                                variant="rectangular"
+                                className="bg-zinc-900 rounded-lg "
+                                animation="wave">
+                                <div className="h-64 object-cover flex flex-col items-center"
+                                    style={{
+                                        aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]
+                                    }} />
+                            </Skeleton>
+                        </div>
                     </div>
                 }
 
@@ -360,7 +193,7 @@ export default function Gallery() {
                                                 md:justify-start
                                                 flex-wrap space-x-2 gap-y-2
                                                 ">
-                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} />))}
+                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} />))}
                                                 </div>
                                             </p>
                                             <p className="text-white text-sm"><b>Description: </b>
@@ -419,96 +252,84 @@ export default function Gallery() {
 
     }
 
-    const formatGroupLabel = (data) => (
-        <div>
-            <span>{data.label}</span>
-        </div>
-    );
+
+    function handleSelect(options, currKey, oppKey) {
+        let tempSelectedFilters = { ...selectedFilters }
+        tempSelectedFilters[currKey] = options
+
+        let range = [...Array(options.length).keys()]
+
+        range.map((index) => {
+            let option = options[index]
+            if (tempSelectedFilters[oppKey].includes(option)) {
+                tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => i !== option)
+            }
+        })
+
+        setSelectedFilters(tempSelectedFilters)
+        setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
+    }
 
 
 
     return (
         <div className="min-h-screen bg-zinc-800 overflow-x-hidden ">
-            {<SplashScreen isLoading = {isLoading}/>}
+            {<SplashScreen isLoading={isLoading} />}
             <div className=" md:px-10 flex flex-col items-center text-center">
-                <div className="py-1 w-screen bg-orange-900 mb-2">
-                    <h1 className="text-2xl font-bold text-orange-100 font-pirulen">Gallery</h1>
+                <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center">
+                    <div className="text-2xl font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2">
+                        <Icon icon = "clarity:eye-solid" className = "text-2xl text-green-300/70"/>
+                        <span>
+                        Gallery
+                        </span>
+                        <Icon icon = "clarity:eye-solid" className = "text-2xl text-green-300/70 -ml-0.5"/>
+
+                    </div>
                 </div>
 
                 <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4">
-                    <div className="flex flex-col w-full">
-                        <div className="text-green-400 font-pirulen">INCLUDES</div>
-                        <div className=" text-left text-sm">
-                            <Select
-                                onChange={(options) => {
-                                    let tempSelectedFilters = { ...selectedFilters }
-                                    tempSelectedFilters.include = options
-
-                                    let range = [...Array(options.length).keys()]
-                                    
-                                    range.map((index) => {
-                                        let option = options[index]
-                                        if (tempSelectedFilters.exclude.includes(option)){
-                                            tempSelectedFilters.exclude = tempSelectedFilters.exclude.filter((i) => i!== option)
-                                        }
-                                    })
-
-                                    setSelectedFilters(tempSelectedFilters)
-                                    setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
-                                }}
-                                styles={selectStyles}
-
-                                components={{ IndicatorSeparator: () => null }}
-
-                                options={groupedTaglist}
-                                formatGroupLabel={formatGroupLabel} key={groupedTaglist}
-
-                                value = {selectedFilters.include}
-
-
-                                placeholder="Tag search..."
-                                isMulti
-                            />
-                        </div>
-                    </div>
-                    <div className="flex flex-col w-full">
-                        <div className="text-green-400 font-pirulen">EXCLUDES</div>
-                        <div className=" text-left text-sm">
-                            <Select
-                                onChange={(options) => {
-                                    let tempSelectedFilters = { ...selectedFilters }
-                                    tempSelectedFilters.exclude = options
-
-                                    let range = [...Array(options.length).keys()]
-                                    
-                                    range.map((index) => {
-                                        let option = options[index]
-                                        if (tempSelectedFilters.include.includes(option)){
-                                            tempSelectedFilters.include = tempSelectedFilters.include.filter((i) => i!== option)
-                                        }
-                                    })
-
-                                    setSelectedFilters(tempSelectedFilters)
-                                    setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
-
-                                }}
-                                styles={selectStylesExclude()}
-
-                                components={{ IndicatorSeparator: () => null }}
-
-                                options={groupedTaglist}
-
-                                formatGroupLabel={formatGroupLabel} key={groupedTaglist}
-                                value = {selectedFilters.exclude}
-
-
-                                placeholder="Tag search..."
-                                isMulti
-                            />
-                        </div>
-                    </div>
+                    <GalleryFilter
+                        title="#INCLUDES"
+                        onChange={(options) => { handleSelect(options, "include", "exclude") }}
+                        styles={selectStyles}
+                        options={groupedTaglist}
+                        value={selectedFilters.include}
+                    />
+                    <GalleryFilter
+                        title="#EXCLUDES"
+                        onChange={(options) => { handleSelect(options, "exclude", "include") }}
+                        styles={selectStylesExclude()}
+                        options={groupedTaglist}
+                        value={selectedFilters.exclude}
+                    />
                 </div>
-                <div className="text-green-400 mt-2">back to <Link to="/"><u>home</u></Link> :)</div>
+                <div className="text-green-400 mt-2 flex flex-row items-center space-x-2">
+                    <Icon icon = "lets-icons:back"/>
+                    <span>back to <Link to="/"><u>home</u></Link>
+                    <TypeAnimation
+                sequence = {[
+                    "?",
+                    10000,
+                    " :)",
+                    5000,
+                    "?",
+                    10000,
+                    ". watch snek dance.",
+                    2000,
+                    "?",
+                    10000,
+                    ", or maybe not. stay and enjoy the art.",
+                    10000,
+                    "?",
+                    10000
+                ]}
+                speed = {70}
+                cursor = {false}
+                className = "type"
+                repeat = {Infinity}
+                /></span>
+                
+                </div>
 
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
