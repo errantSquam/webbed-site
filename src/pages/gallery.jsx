@@ -48,11 +48,18 @@ const GalleryFilter = ({ title, onChange, styles, options, value }) => {
     </div>
 }
 
-const PaginationArrow = ({ iconName, onClick, isActive }) => {
-    return <div className={`${isActive ? "transition hover:scale-125 hover:text-lime-400 text-green-500 cursor-pointer" :
-        "text-zinc-500"} flex flex-col items-center justify-center select-none`}
-        onClick={onClick}>
-        <Icon icon={iconName} className="text-3xl md:text-5xl" />
+const PaginationArrow = ({ iconName, onClick, isActive, textType = "previous"}) => {
+    return <div className = {`flex flex-row items-center justify-center ${isActive ? 
+        "transition hover:scale-125 hover:text-lime-400 text-green-500 cursor-pointer" :
+            "text-zinc-500"} gap-x-0.5 md:gap-x-2 bg-black/70 rounded-lg py-1 md:py-2 px-1 md:px-2`}
+            style = {{ WebkitTransform: "translateZ(0px)"}}
+    onClick={onClick}>
+        {textType === "next" && <div className = {`font-pirulen text-sm md:text-3xl`}>NEXT</div>}
+        <div className={` flex flex-col items-center justify-center select-none`}
+            >
+            <Icon icon={iconName} className="text-2xl md:text-4xl" />
+        </div>
+        {textType === "previous" && <div className = {`font-pirulen text-sm md:text-3xl`}>PREV</div>}
     </div>
 }
 
@@ -113,7 +120,7 @@ export default function Gallery() {
                 }).then(() => {
                     setTimeout(() => {
                         setIsLoading(false)
-                    }, 500)
+                    }, 2000)
                 })
 
             })
@@ -381,15 +388,17 @@ export default function Gallery() {
     return (
         <div className="min-h-screen bg-zinc-800 overflow-x-hidden ">
             {<SplashScreen isLoading={isLoading} />}
-            <div className="fixed bottom-0 w-full flex flex-row justify-between px-3 md:px-7 pb-2 mb-2">
+            <div className="fixed bottom-0 w-full flex flex-row justify-between px-3 md:px-10 pb-2 mb-2 z-9">
                 <PaginationArrow
                     iconName="ion:caret-back-circle-outline"
                     isActive={isArrowActive("previous")}
-                    onClick={() => handlePage("previous")} />
+                    onClick={() => handlePage("previous")} 
+                    textType = "previous"/>
                 <PaginationArrow
                     iconName="ion:caret-forward-circle-outline"
                     isActive={isArrowActive("next")}
-                    onClick={() => handlePage("next")} />
+                    onClick={() => handlePage("next")} 
+                    textType = "next"/>
             </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center cursor-pointer select-none"

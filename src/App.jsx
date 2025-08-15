@@ -6,6 +6,11 @@ import Gallery from './pages/gallery';
 
 
 function App() {
+
+  const loadingChicken = new Image();
+  loadingChicken.src = "assets/shake him.gif";
+  window["assets/shake him.gif"] = loadingChicken;
+  
   return (
     <HashRouter>
             <Routes>

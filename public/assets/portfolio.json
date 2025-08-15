@@ -41,6 +41,7 @@
     "stokori comm 1 anim": {
         "tags": [
             "otheroc",
+            "human",
             "commission",
             "fireemblem",
             "fe10",
@@ -60,6 +61,7 @@
     "stokori comm 2 anim": {
         "tags": [
             "otheroc",
+            "human",
             "commission",
             "fireemblem",
             "fe10",
@@ -281,7 +283,7 @@
             "fullbody"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": 1,
         "description": "Illustration for DigiGirl Zine Vol 3.",
         "date": 1740968480.0,
         "extension": "webp",
@@ -414,7 +416,8 @@
             "owl",
             "dinosaur",
             "microraptor",
-            "fullbody"
+            "fullbody",
+            "instrument"
         ],
         "isVertical": false,
         "priority": 0,
@@ -534,7 +537,7 @@
             "cat"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": 2,
         "description": "Commission. Character belongs to <u><a href='https://bsky.app/profile/chuji.bsky.social'>Chuji.</a></u>",
         "date": 1741966636.0,
         "extension": "webp",
@@ -815,7 +818,7 @@
             "shitpost"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -2,
         "description": "",
         "date": 1734398656.0,
         "extension": "webp",
@@ -866,7 +869,8 @@
             "fullbody",
             "simplebg",
             "commission",
-            "reindeer"
+            "reindeer",
+            "anthro"
         ],
         "isVertical": true,
         "priority": 0,
@@ -908,7 +912,7 @@
             "animated"
         ],
         "isVertical": true,
-        "priority": 0,
+        "priority": -1,
         "description": "",
         "date": 1755262313.985025,
         "extension": "gif",
@@ -935,7 +939,7 @@
 
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -1,
         "description": "",
         "date": 1754976554.0211463,
         "extension": "webp",
@@ -965,23 +969,7 @@
             800
         ]
     },
-    "kiryu eating money": {
-        "tags": [
-            "fanart",
-            "yakuza",
-            "bust",
-            "human"
-        ],
-        "isVertical": true,
-        "priority": 0,
-        "description": "",
-        "date": 1672734168.0,
-        "extension": "webp",
-        "dimensions": [
-            1400,
-            1593
-        ]
-    },
+
     "majima spritesheet large": {
         "tags": [
             "pmd",
@@ -1044,10 +1032,11 @@
             "fireemblem",
             "fe9",
             "animated",
-            "halfbody"
+            "halfbody",
+            "human"
         ],
         "isVertical": true,
-        "priority": 0,
+        "priority": -2,
         "description": "Commission. Character belongs to ilovethelag.",
         "date": 1755262521.68959,
         "extension": "gif",
@@ -1061,7 +1050,8 @@
             "3d",
             "animated",
             "oc",
-            "ekaitz"
+            "ekaitz",
+            "human"
         ],
         "isVertical": true,
         "priority": 3,
@@ -1166,7 +1156,7 @@
             "simplebg"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -1,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
         "date": 1752219320.5472622,
         "extension": "webp",
@@ -1182,7 +1172,8 @@
             "pokemon",
             "dragon",
             "fullbody",
-            "simplebg"
+            "simplebg",
+            "creature"
         ],
         "isVertical": true,
         "priority": 0,
@@ -1201,7 +1192,9 @@
             "fireemblem",
             "bust",
             "otheroc",
-            "animated"
+            "animated",
+            "anthro",
+            "otter"
 
         ],
         "isVertical": false,
