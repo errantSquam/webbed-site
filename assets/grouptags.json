@@ -22,6 +22,12 @@
         "designbg",
         "complexbg"
     ],
+    "medium": [
+        "pixelart",
+        "animated",
+        "3d",
+        "vector"
+    ],
     "species": [
         "snake",
         "otter",
@@ -36,12 +42,6 @@
         "reindeer",
         "dog",
         "duck"
-    ],
-    "medium": [
-        "pixelart",
-        "animated",
-        "3d",
-        "vector"
     ],
     "oc": [
         "arelis",
