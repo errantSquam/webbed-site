@@ -104,7 +104,16 @@ export default function Gallery() {
                     })
                     setGroupedTaglist(tempGroupTagList)
 
-                    setArtList(getFilteredArtByPriority(portfolioData, selectedFilters))
+                    let tempArtList = getFilteredArtByPriority(portfolioData, selectedFilters)
+                    setArtList(tempArtList)
+
+
+                    getArtListPreloads(tempArtList, portfolioData).map((filename) => {
+                        let filepath = filename + "." + portfolioData[filename].extension
+                        let img = new Image()
+                        img.src = filepath
+                    })
+                    
 
 
                 }).then(() => {
@@ -121,7 +130,7 @@ export default function Gallery() {
     }, [])
 
     useEffect(() => {
-        getArtListPreloads().map((filename) => {
+        getArtListPreloads(artList,portfolioJson).map((filename) => {
             let filepath = filename + "." + portfolioJson[filename].extension
             let img = new Image()
             img.src = filepath
@@ -307,10 +316,13 @@ export default function Gallery() {
         return getArtListByPage(page)
     }
 
-    function getArtListPreloads() {
+    function getArtListPreloads(artList, portfolioJson) {
         let page = Number(searchParams.get("page"))
         let array1 = []
         let array2 = []
+        let array3 = artList.filter((filename) => {
+            return portfolioJson[filename].tags.includes("3d")
+        })
 
         if (page > 1) {
             array1 = getArtListPaginated(page - 1)
@@ -320,7 +332,7 @@ export default function Gallery() {
             array2 = getArtListPaginated(page + 1)
         }
 
-        return array1.concat(array2)
+        return [...new Set(array1.concat(array2).concat(array3))]
     }
 
     function isArrowActive(direction) {
