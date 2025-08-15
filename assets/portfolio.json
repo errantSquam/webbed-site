@@ -965,23 +965,7 @@
             800
         ]
     },
-    "kiryu eating money": {
-        "tags": [
-            "fanart",
-            "yakuza",
-            "bust",
-            "human"
-        ],
-        "isVertical": true,
-        "priority": 0,
-        "description": "",
-        "date": 1672734168.0,
-        "extension": "webp",
-        "dimensions": [
-            1400,
-            1593
-        ]
-    },
+
     "majima spritesheet large": {
         "tags": [
             "pmd",
