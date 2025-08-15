@@ -194,5 +194,69 @@
     "3d": {
         "fullName": "3D Modelling",
         "tagType": "medium"
+    },
+    "microraptor": {
+        "fullName": "Microraptor",
+        "tagType": "species"
+    },
+    "owl": {
+        "fullName": "Owl",
+        "tagType": "species"
+    },
+    "shitpost": {
+        "fullName": "Shitpost",
+        "tagType": "misc"
+    },
+    "onepiece": {
+        "fullName": "One Piece",
+        "tagType": "source"
+    },
+    "reindeer": {
+        "fullName": "Reindeer",
+        "tagType": "species"
+    },
+    "pyre": {
+        "fullName": "Pyre",
+        "tagType": "oc"
+    },
+    "goldensun": {
+        "fullName": "Golden Sun",
+        "tagType": "source"
+    },
+    "yakuza": {
+        "fullName": "Yakuza/LAD",
+        "tagType": "source"
+    },
+    "medabots": {
+        "fullName": "Medabots",
+        "tagType": "source"
+    },
+    "fe9": {
+        "fullName": "FE9",
+        "tagType": "source"
+    },
+    "gahoole": {
+        "fullName": "Guardians of Ga'hoole",
+        "tagType": "source"
+    },
+    "pokemon": {
+        "fullName": "Pokemon",
+        "tagType": "source"
+    },
+    "dog": {
+        "fullName": "Dog",
+        "tagType": "species"
+    },
+    "vector": {
+        "fullName": "Vector",
+        "tagType": "medium"
+    },
+    "duck": {
+        "fullName": "Duck",
+        "tagType": "species"
+    },
+    "dafeng": {
+        "fullName": "\u5927\u5949\u6253\u66f4\u4eba",
+        "tagType": "source"
     }
 }

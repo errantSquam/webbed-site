@@ -388,6 +388,7 @@
         "tags": [
             "fanart",
             "dinosaur",
+            "microraptor",
             "wings",
             "talesof",
             "creature",
@@ -410,6 +411,9 @@
             "wings",
             "human",
             "bird",
+            "owl",
+            "dinosaur",
+            "microraptor",
             "fullbody"
         ],
         "isVertical": false,
@@ -464,6 +468,9 @@
             "human",
             "wings",
             "bird",
+            "owl",
+            "dinosaur",
+            "microraptor",
             "mecha",
             "simplebg",
             "halfbody"
@@ -485,6 +492,9 @@
             "human",
             "wings",
             "bird",
+            "owl",
+            "dinosaur",
+            "microraptor",
             "instrument",
             "chibi"
         ],
@@ -727,7 +737,7 @@
             "animated",
             "artfight"
         ],
-        "isVertical": true,
+        "isVertical": false,
         "priority": 0,
         "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
         "date": 1751462705.5034597,
@@ -756,6 +766,491 @@
         "dimensions": [
             575,
             564
+        ]
+    },
+    "1 lesser whistling duck": {
+        "tags": [
+            "bird",
+            "duck",
+            "chibi",
+            "creature"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1733294794.0,
+        "extension": "webp",
+        "dimensions": [
+            1162,
+            1162
+        ]
+    },
+    "another a4 render maybe ekaitz": {
+        "tags": [
+            "oc",
+            "ekaitz",
+            "human",
+            "snake",
+            "fullbody",
+            "sword"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1746426494.0,
+        "extension": "webp",
+        "dimensions": [
+            1761,
+            2480
+        ]
+    },
+    "baby ordell render": {
+        "tags": [
+            "oc",
+            "ordell",
+            "human",
+            "owl",
+            "bird",
+            "chibi",
+            "shitpost"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1734398656.0,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
+    },
+    "cassowary chibi": {
+        "tags": [
+            "bird",
+            "chibi",
+            "creature"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1733278314.0,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
+    },
+    "choona": {
+        "tags": [
+            "otheroc",
+            "anthro",
+            "otter",
+            "halfbody",
+            "simplebg",
+            "artfight"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/chuji.bsky.social'>Chuji.</a></u>",
+        "date": 1751523626.3082688,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
+    },
+    "chopper comm": {
+        "tags": [
+            "fanart",
+            "onepiece",
+            "fullbody",
+            "simplebg",
+            "commission",
+            "reindeer"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1746260574.0,
+        "extension": "webp",
+        "dimensions": [
+            1761,
+            2480
+        ]
+    },
+    "ekaitz walk cycle large": {
+        "tags": [
+            "oc",
+            "ekaitz",
+            "human",
+            "snake",
+            "pixelart",
+            "fullbody",
+            "animated"
+
+        ],
+        "isVertical": true,
+        "priority": -5,
+        "description": "",
+        "date": 1719822668.0,
+        "extension": "gif",
+        "dimensions": [
+            320,
+            480
+        ]
+    },
+    "ekaitz-face-animated": {
+        "tags": [
+            "oc",
+            "ekaitz",
+            "human",
+            "bust",
+            "animated"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1755262313.985025,
+        "extension": "gif",
+        "dimensions": [
+            400,
+            555
+        ]
+    },
+    "env study that turned into ekaitz fishing": {
+        "tags": [
+            "oc",
+            "ekaitz",
+            "ordell",
+            "pyre",
+            "complexbg",
+            "fullbody",
+            "human",
+            "creature",
+            "snake",
+            "bird",
+            "owl",
+            "microraptor",
+            "dinosaur"
+
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1754976554.0211463,
+        "extension": "webp",
+        "dimensions": [
+            2227,
+            1814
+        ]
+    },
+    "garet comm pmd large": {
+        "tags": [
+            "pmd",
+            "pixelart",
+            "commission",
+            "fanart",
+            "goldensun",
+            "bust",
+            "human"
+
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1755261524.8258195,
+        "extension": "png",
+        "dimensions": [
+            1000,
+            800
+        ]
+    },
+    "kiryu eating money": {
+        "tags": [
+            "fanart",
+            "yakuza",
+            "bust",
+            "human"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1672734168.0,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1593
+        ]
+    },
+    "majima spritesheet large": {
+        "tags": [
+            "pmd",
+            "pixelart",
+            "commission",
+            "fanart",
+            "yakuza",
+            "bust",
+            "human"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1755261644.0,
+        "extension": "png",
+        "dimensions": [
+            1000,
+            1600
+        ]
+    },
+    "medabots at": {
+        "tags": [
+            "mecha",
+            "fanart",
+            "medabots",
+            "fullbody"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1746877050.0,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
+    },
+    "nick non af": {
+        "tags": [
+            "otheroc",
+            "cat",
+            "mecha",
+            "fullbody",
+            "creature"
+        ],
+        "isVertical": false,
+        "priority": -3,
+        "description": "Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
+        "date": 1754553568.4804485,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ]
+    },
+    "ocre-fe9-comm-neutral": {
+        "tags": [
+            "commission",
+            "otheroc",
+            "fireemblem",
+            "fe9",
+            "animated",
+            "halfbody"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "Commission. Character belongs to ilovethelag.",
+        "date": 1755262521.68959,
+        "extension": "gif",
+        "dimensions": [
+            1160,
+            1480
+        ]
+    },
+    "one snillion dollars very very small": {
+        "tags": [
+            "3d",
+            "animated",
+            "oc",
+            "ekaitz"
+        ],
+        "isVertical": true,
+        "priority": 3,
+        "description": "3D, but bump map is manually painted in Photoshop. For fun, and to print as a real coin :)",
+        "date": 1723044126.0,
+        "extension": "gif",
+        "dimensions": [
+            480,
+            500
+        ]
+    },
+    "ordell walk cycle": {
+        "tags": [
+            "oc",
+            "ordell",
+            "human",
+            "bird",
+            "owl",
+            "pixelart",
+            "fullbody",
+            "animated"
+        ],
+        "isVertical": true,
+        "priority": -5,
+        "description": "",
+        "date": 1718443070.0,
+        "extension": "gif",
+        "dimensions": [
+            320,
+            480
+        ]
+    },
+    "otulissa martin": {
+        "tags": [
+            "bird",
+            "owl",
+            "creature",
+            "fanart",
+            "gahoole",
+            "wings",
+            "fullbody"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1749634744.2815988,
+        "extension": "webp",
+        "dimensions": [
+            2143,
+            1917
+        ]
+    },
+    "pick pmd comm large watermarked": {
+        "tags": [
+            "pmd",
+            "pixelart",
+            "commission",
+            "fanart",
+            "bust",
+            "pokemon",
+            "bird",
+            "creature"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Commission. Character belongs to Pick.",
+        "date": 1723787758.0,
+        "extension": "png",
+        "dimensions": [
+            1000,
+            800
+        ]
+    },
+    "sebastien pmd comm watermark": {
+        "tags": [            
+        "pmd",
+        "pixelart",
+        "commission",
+        "otheroc",
+        "bust",
+        "owl",
+        "bird",
+        "anthro"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Commission. Character belongs to Sebastien.",
+        "date": 1723949338.0,
+        "extension": "png",
+        "dimensions": [
+            1000,
+            800
+        ]
+    },
+    "shepherd af 1": {
+        "tags": [
+            "otheroc",
+            "dog",
+            "fullbody",
+            "creature",
+            "artfight",
+            "simplebg"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
+        "date": 1752219320.5472622,
+        "extension": "webp",
+        "dimensions": [
+            2480,
+            1761
+        ]
+    },
+    "stormy shield comm": {
+        "tags": [
+            "otheroc",
+            "fanart",
+            "pokemon",
+            "dragon",
+            "fullbody",
+            "simplebg"
+        ],
+        "isVertical": true,
+        "priority": 0,
+        "description": "Commission for a shield. Character belongs to Stormyman.",
+        "date": 1733105480.0,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1945
+        ]
+    },
+    "TalkAnim": {
+        "tags": [
+            "pixelart",
+            "gbafe",
+            "fireemblem",
+            "bust",
+            "otheroc",
+            "animated"
+
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Character belongs to <u><a href='https://bsky.app/profile/chuji.bsky.social'>Chuji.</a></u>",
+        "date": 1755261947.8484566,
+        "extension": "gif",
+        "dimensions": [
+            264,
+            264
+        ]
+    },
+    "utyaviknes": {
+        "tags": [
+            "vector",
+            "animated",
+            "duck",
+            "otheroc",
+            "artfight",
+            "creature",
+            "chibi"
+
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a href='https://kimmyocs.onrender.com/'>Kimmy.</a></u>",
+        "date": 1755262473.048853,
+        "extension": "gif",
+        "dimensions": [
+            500,
+            500
+        ]
+    },
+    "xuqian doodle": {
+        "tags": [
+            "human",
+            "fanart",
+            "dafeng",
+            "halfbody"
+
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1736955222.0,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
         ]
     }
 }
