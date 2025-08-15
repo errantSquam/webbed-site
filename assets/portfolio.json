@@ -416,7 +416,8 @@
             "owl",
             "dinosaur",
             "microraptor",
-            "fullbody"
+            "fullbody",
+            "instrument"
         ],
         "isVertical": false,
         "priority": 0,
