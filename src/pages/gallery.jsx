@@ -14,7 +14,6 @@ import { TypeAnimation } from "react-type-animation"
 import "../stylesfunctions/typeStyle.css"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { useSearchParams } from "react-router-dom"
-import { preload } from "react-dom"
 
 const GallerySelect = ({ onChange, styles, options, value }) => {
     const formatGroupLabel = (data) => (
@@ -73,13 +72,15 @@ export default function Gallery() {
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
+    const numArtPerPage = 20
+
     useEffect(() => {
         let tempSearchParams = searchParams
-        if (tempSearchParams.page === undefined) {
+        if (tempSearchParams.get("page") === null) {
             tempSearchParams.page = 1
 
             setSearchParams({ page: 1 })
-        }
+        } 
 
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             setPortfolioJson(portfolioData)
@@ -106,13 +107,6 @@ export default function Gallery() {
 
                     let tempArtList = getFilteredArtByPriority(portfolioData, selectedFilters)
                     setArtList(tempArtList)
-
-
-                    getArtListPreloads(tempArtList, portfolioData).map((filename) => {
-                        let filepath = filename + "." + portfolioData[filename].extension
-                        let img = new Image()
-                        img.src = filepath
-                    })
                     
 
 
@@ -130,11 +124,9 @@ export default function Gallery() {
     }, [])
 
     useEffect(() => {
-        getArtListPreloads(artList,portfolioJson).map((filename) => {
-            let filepath = filename + "." + portfolioJson[filename].extension
-            let img = new Image()
-            img.src = filepath
-        })
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 500)
 
     }, [searchParams.get("page")])
 
@@ -178,7 +170,11 @@ export default function Gallery() {
                 {!isLoaded &&
                     <div className="bg-zinc-900 ">
                         <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
-                            <div className="absolute z-10 text-green-500 font-bold font-pirulen">LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
+                            <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
+                                <div>LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
+                                {portfolioJson[filename].tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
+                                </div>
+                            
                             <Skeleton
                                 variant="rectangular"
                                 className="bg-zinc-900 rounded-lg "
@@ -246,7 +242,7 @@ export default function Gallery() {
                                         bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
                                         shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
                                         data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
-                                        data-open:bg-gray-700"
+                                        data-open:bg-gray-700 cursor-pointer select-none"
                                                 onClick={handleClose}
                                             >
                                                 Close
@@ -300,39 +296,24 @@ export default function Gallery() {
             }
         })
 
+        let newArtList = getFilteredArtByPriority(portfolioJson, tempSelectedFilters)
+
         setSelectedFilters(tempSelectedFilters)
-        setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
+        setArtList(newArtList)
+        getLatestPage(newArtList)
+
     }
 
 
     function getArtListByPage(page) {
-        let startIndex = (page - 1) * 10
-        let endIndex = Math.min((page - 1) * 10 + 10, artList.length)
+        let startIndex = (page - 1) * numArtPerPage
+        let endIndex = Math.min((page - 1) * numArtPerPage + numArtPerPage, artList.length)
 
         return artList.slice(startIndex, endIndex)
     }
     function getArtListPaginated() {
         let page = Number(searchParams.get("page"))
         return getArtListByPage(page)
-    }
-
-    function getArtListPreloads(artList, portfolioJson) {
-        let page = Number(searchParams.get("page"))
-        let array1 = []
-        let array2 = []
-        let array3 = artList.filter((filename) => {
-            return portfolioJson[filename].tags.includes("3d")
-        })
-
-        if (page > 1) {
-            array1 = getArtListPaginated(page - 1)
-        }
-
-        if ((page - 1) * 10 + 10 < artList.length - 1) {
-            array2 = getArtListPaginated(page + 1)
-        }
-
-        return [...new Set(array1.concat(array2).concat(array3))]
     }
 
     function isArrowActive(direction) {
@@ -342,7 +323,7 @@ export default function Gallery() {
                 return false
             }
         } else {
-            if ((page - 1) * 10 + 10 >= artList.length - 1) {
+            if ((page - 1) * numArtPerPage + numArtPerPage >= artList.length - 1) {
                 return false
             }
         }
@@ -352,15 +333,45 @@ export default function Gallery() {
 
     function handlePage(direction) {
         let page = Number(searchParams.get("page"))
-        let tempSearchParams = searchParams
         if (direction === "previous" && isArrowActive("previous")) {
-            tempSearchParams.set("page", page - 1)
+            handlePageNumber(page - 1)
         }
 
         else if (direction === "next" && isArrowActive("next")) {
-            tempSearchParams.set("page", page + 1)
+            handlePageNumber(page + 1)
         }
-        setSearchParams(tempSearchParams.toString())
+
+    }
+
+    function handlePageNumber(page, doLoad = true) {
+        let currPage = Number(searchParams.get("page"))
+        if (page == currPage){
+            return
+        }
+
+        let tempSearchParams = searchParams
+        if (doLoad) {
+            setIsLoading(true)
+        }
+
+        setTimeout(() => {
+            window.scrollTo(0,0);
+            tempSearchParams.set("page", page)
+        
+        setSearchParams(tempSearchParams.toString())}, 300)
+        
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 600)
+    }
+
+    function getLatestPage(artList) {
+        let page = Number(searchParams.get("page"))
+        if ( (page - 1) * numArtPerPage > artList.length) {
+            let newPageNum = Math.floor(artList.length/numArtPerPage) + 1
+            //I have no idea if this calculation works but it currently works with my shitty test case
+            handlePageNumber(newPageNum, false)
+        }
     }
 
 
@@ -381,7 +392,8 @@ export default function Gallery() {
                     onClick={() => handlePage("next")} />
             </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
-                <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center">
+                <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center cursor-pointer select-none"
+                onClick = {() => handlePageNumber(1)}>
                     <div className="text-2xl font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2">
                         <Icon icon="clarity:eye-solid" className="text-2xl text-green-300/70" />
                         <span>
@@ -454,3 +466,36 @@ export default function Gallery() {
     )
 
 }
+
+/*
+    const CURSOR_CLASS_NAME = 'type';
+
+[
+                                "?",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                10000,
+                                (el) => el.classList.add(CURSOR_CLASS_NAME),
+                                " :)",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                5000,
+                                (el) => el.classList.add(CURSOR_CLASS_NAME),
+                                "?",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                10000,
+                                (el) => el.classList.add(CURSOR_CLASS_NAME),
+                                ". watch snek dance.",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                2000,
+                                (el) => el.classList.add(CURSOR_CLASS_NAME),
+                                "?",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                10000,
+                                (el) => el.classList.add(CURSOR_CLASS_NAME),
+                                ", or maybe not. stay and enjoy the art.",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                10000,
+                                (el) => el.classList.add(CURSOR_CLASS_NAME),
+                                "?",
+                                (el) => el.classList.remove(CURSOR_CLASS_NAME),
+                                10000
+                            ]*/
