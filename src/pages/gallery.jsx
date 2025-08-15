@@ -308,15 +308,20 @@ export default function Gallery() {
         return <>
             <div className=" p-1 " key={filename}>
                 {!isLoaded &&
+                    <div className = "bg-zinc-900 ">
+                    <div className = "animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
+                    <div className = "absolute z-10 text-green-500 font-bold font-pirulen">LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
                     <Skeleton
                         variant="rectangular"
-                        className="bg-green-900 rounded-lg "
+                        className="bg-zinc-900 rounded-lg "
                         animation="wave">
-                        <div className="h-64 object-cover"
+                        <div className="h-64 object-cover flex flex-col items-center"
                             style={{
                                 aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]
-                            }} />
+                            }}/>
                     </Skeleton>
+                    </div>
+                    </div>
                 }
 
                 <img src={"assets/pics/" + fileThumb()}
@@ -438,6 +443,16 @@ export default function Gallery() {
                                 onChange={(options) => {
                                     let tempSelectedFilters = { ...selectedFilters }
                                     tempSelectedFilters.include = options
+
+                                    let range = [...Array(options.length).keys()]
+                                    
+                                    range.map((index) => {
+                                        let option = options[index]
+                                        if (tempSelectedFilters.exclude.includes(option)){
+                                            tempSelectedFilters.exclude = tempSelectedFilters.exclude.filter((i) => i!== option)
+                                        }
+                                    })
+
                                     setSelectedFilters(tempSelectedFilters)
                                     setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
                                 }}
@@ -447,6 +462,8 @@ export default function Gallery() {
 
                                 options={groupedTaglist}
                                 formatGroupLabel={formatGroupLabel} key={groupedTaglist}
+
+                                value = {selectedFilters.include}
 
 
                                 placeholder="Tag search..."
@@ -461,6 +478,16 @@ export default function Gallery() {
                                 onChange={(options) => {
                                     let tempSelectedFilters = { ...selectedFilters }
                                     tempSelectedFilters.exclude = options
+
+                                    let range = [...Array(options.length).keys()]
+                                    
+                                    range.map((index) => {
+                                        let option = options[index]
+                                        if (tempSelectedFilters.include.includes(option)){
+                                            tempSelectedFilters.include = tempSelectedFilters.include.filter((i) => i!== option)
+                                        }
+                                    })
+
                                     setSelectedFilters(tempSelectedFilters)
                                     setArtList(getFilteredArtByPriority(portfolioJson, tempSelectedFilters))
 
@@ -472,6 +499,7 @@ export default function Gallery() {
                                 options={groupedTaglist}
 
                                 formatGroupLabel={formatGroupLabel} key={groupedTaglist}
+                                value = {selectedFilters.exclude}
 
 
                                 placeholder="Tag search..."
