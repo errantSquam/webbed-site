@@ -145,7 +145,7 @@ export default theme;`}function wg(e){return typeof e=="number"?`${(e*100).toFix
                                         bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white \r
                                         shadow-inner shadow-white/10 focus:not-data-focus:outline-none \r
                                         data-focus:outline data-focus:outline-white data-hover:bg-gray-600 \r
-                                        data-open:bg-gray-700`,onClick:H,children:"Close"})})]}),Z.jsx("div",{className:" md:flex items-center justify-center hidden",children:Z.jsx("img",{src:"assets/pics/"+te(),className:"max-h-screen py-4"})}),Z.jsx("div",{className:"mt-4 w-full flex items-center justify-center md:hidden",children:Z.jsx(um,{className:`w-2/3 flex items-center justify-center\r
+                                        data-open:bg-gray-700 cursor-pointer select-none`,onClick:H,children:"Close"})})]}),Z.jsx("div",{className:" md:flex items-center justify-center hidden",children:Z.jsx("img",{src:"assets/pics/"+te(),className:"max-h-screen py-4"})}),Z.jsx("div",{className:"mt-4 w-full flex items-center justify-center md:hidden",children:Z.jsx(um,{className:`w-2/3 flex items-center justify-center\r
                                                     gap-2 rounded-md \r
                                         bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white \r
                                         shadow-inner shadow-white/10 focus:not-data-focus:outline-none \r
