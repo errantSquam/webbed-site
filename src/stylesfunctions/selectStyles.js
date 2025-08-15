@@ -19,6 +19,7 @@ export const selectStyles = {
         backgroundColor: 'black',
         color: "white"
     }),
+    
     multiValue: (styles, { data }) => {
         let colorvar = `var(--${tagsColorDict[data.tagType]})`.replace("bg", "color")
         return {
@@ -41,7 +42,10 @@ export const selectStyles = {
         return {
             ...styles,
             color: "white",
-            backgroundColor: "rgba(0,0,0,0.5)"
+            backgroundColor: "rgba(0,0,0,0.5)",
+            ":hover": {
+                backgroundColor: "rgba(146, 146, 146, 0.5)"
+            }
 
         }
     },
