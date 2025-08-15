@@ -115,17 +115,16 @@ export default function Gallery() {
         const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
         const [isLoaded, setIsLoaded] = useState(false)
 
-
-        
-
         function handleOpen() {
             setIsOpen(true)
-            setSearchParams({art: filename})
+            let paramName = filename.split(" ").join("+")
+            history.pushState({}, "Gallery", `#/gallery?art=${paramName}`)
         }
 
         function handleClose() {
             setIsOpen(false)
-            setSearchParams({art: ""})
+            history.pushState({}, "Gallery", "#/gallery")
+
         }
 
         function filePath() {
