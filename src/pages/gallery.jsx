@@ -13,6 +13,7 @@ import { TagBlock } from "../components/galleryComponents"
 import { TypeAnimation } from "react-type-animation"
 import "../stylesfunctions/typeStyle.css"
 import { Icon } from "@iconify/react/dist/iconify.js"
+import { useSearchParams } from "react-router-dom"
 
 const GallerySelect = ({ onChange, styles, options, value }) => {
     const formatGroupLabel = (data) => (
@@ -48,6 +49,7 @@ const GalleryFilter = ({ title, onChange, styles, options, value }) => {
 }
 
 export default function Gallery() {
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const [portfolioJson, setPortfolioJson] = useState({})
     const [portfolioTags, setPortfolioTags] = useState({})
@@ -60,6 +62,7 @@ export default function Gallery() {
     )
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [currentImage, setCurrentImage] = useState("")
 
 
     const numGalleryCols = 3
@@ -109,21 +112,25 @@ export default function Gallery() {
 
 
     const GalleryImage = ({ filename }) => {
-        const [isOpen, setIsOpen] = useState(false)
+        const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
         const [isLoaded, setIsLoaded] = useState(false)
 
 
-        function close() {
+        
+
+        function handleOpen() {
+            setIsOpen(true)
+            setSearchParams({art: filename})
+        }
+
+        function handleClose() {
             setIsOpen(false)
+            setSearchParams({art: ""})
         }
 
         function filePath() {
             return filename + "." + portfolioJson[filename].extension
 
-        }
-
-        function fileThumb() {
-            return filePath()
         }
 
         let fullTags = portfolioJson[filename].tags.map((tag) => {
@@ -157,10 +164,10 @@ export default function Gallery() {
                     </div>
                 }
 
-                <img src={"assets/pics/" + fileThumb()}
+                <img src={"assets/pics/" + filePath()}
                     style={{ height: !isLoaded ? '0' : undefined }}
                     className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => handleOpen()}
                     onLoad={() => setIsLoaded(true)}
                 />
 
@@ -168,7 +175,7 @@ export default function Gallery() {
 
 
 
-            <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
+            <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={handleClose}>
                 <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
                     <div className="px-10 flex min-h-full items-center justify-center">
                         <DialogPanel
@@ -212,7 +219,7 @@ export default function Gallery() {
                                         shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
                                         data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
                                         data-open:bg-gray-700"
-                                                onClick={close}
+                                                onClick={handleClose}
                                             >
                                                 Close
                                             </Button>
@@ -232,7 +239,7 @@ export default function Gallery() {
                                         shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
                                         data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
                                         data-open:bg-gray-700"
-                                            onClick={close}
+                                            onClick={handleClose}
                                         >
                                             Close
                                         </Button>
@@ -331,6 +338,7 @@ export default function Gallery() {
                 
                 </div>
 
+                
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
                     {
@@ -341,8 +349,7 @@ export default function Gallery() {
 
                         })
                     }
-
-                </div>
+                    </div>
             </div>
         </div>
 
