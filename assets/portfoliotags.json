@@ -286,5 +286,9 @@
     "rhist": {
         "fullName": "Radiant Historia",
         "tagType": "source"
+    },
+    "illust": {
+        "fullName": "Illustration",
+        "tagType": "medium"
     }
 }
