@@ -283,8 +283,8 @@ export default function Gallery() {
                                                 md:justify-start
                                                 flex-wrap space-x-2 gap-y-2
                                                 ">
-                                                    {fullTags.map((tag) => 
-                                                        (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={tag} />))}
+                                                    {fullTags.map((tag, index) => 
+                                                        (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={index} />))}
                                                 </div>
                                             </div>
                                             <p className="text-white text-sm"><b>Description: </b>
