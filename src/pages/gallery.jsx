@@ -20,30 +20,45 @@ import { PaginationNav } from "../components/paginationComponents"
 
 const ErrorMessage = () => {
     const [gangnamSnake, setGangnamSnake] = useState(false)
-    return <div className = "flex flex-col items-center justify-center h-full text-green-500/70">
-    <TypeAnimation
-        sequence={[
-            "          ",
-            2000,
-            "hmmmmm yes this page is out of bounds.",
-            500,
-            "hmmmmm yes this page is out of bounds. perhaps you should return.",
-            () => setGangnamSnake(true)
-        ]}
-        speed={70}
-        cursor={false}
-        className="type"
-        repeat={0}
-    />
-    <img src = "assets/gangnamsnake.webp" className = {`transition duration-500 
-        ${gangnamSnake?  "opacity-30" : "opacity-0"}`}
-        style = {{filter: "sepia(100%) saturate(300%) hue-rotate(65deg)" //kiwami
+    return <div className="flex flex-col items-center justify-center h-full text-green-500/70">
+        <TypeAnimation
+            sequence={[
+                "          ",
+                2000,
+                "hmmmmm yes, there's nothing here.",
+                500,
+                "hmmmmm yes, there's nothing here. unless...?",
+                () => setGangnamSnake(true)
+            ]}
+            speed={70}
+            cursor={false}
+            className="type"
+            repeat={0}
+        />
+        <img src="assets/gangnamsnake.webp" className={`transition duration-500 
+        ${gangnamSnake ? "opacity-30" : "opacity-0"}`}
+            style={{
+                filter: "sepia(100%) saturate(300%) hue-rotate(65deg)" //kiwami
 
-        }}/>
+            }} />
 
     </div>
 }
+function handleUrlQuery(urlString, paramName, data) {
+    let paramString = `${paramName}=`
+    if (data === "") {
+        urlString = urlString.replace(new RegExp(`&${paramName}=([^&]*)`), ``)
+        urlString = urlString.replace(new RegExp(`${paramName}=([^&]*)`), ``)
 
+    } else if (urlString.includes(paramString)) {
+        urlString = urlString.replace(new RegExp(`&${paramName}=([^&]*)`), `&${paramName}=${data}`)
+        urlString = urlString.replace(new RegExp(`${paramName}=([^&]*)`), `${paramName}=${data}`)
+
+    } else {
+        urlString += "&" + paramString + data
+    }
+    return urlString
+}
 
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -61,6 +76,14 @@ export default function Gallery() {
     const [isLoading, setIsLoading] = useState(true)
 
     const numArtPerPage = 20
+
+    const convertTagToSelectLabel = (tagName, portfolioData) => {
+        return {
+            value: tagName,
+            label: portfolioData[tagName].fullName,
+            "tagType": portfolioData[tagName].tagType
+        }
+    }
 
     useEffect(() => {
         let tempSearchParams = searchParams
@@ -85,18 +108,55 @@ export default function Gallery() {
                         return {
                             label: tagType,
                             options: tempTagList[tagType].map((tagName) => {
-                                return {
-                                    value: tagName,
-                                    label: portfolioTagData[tagName].fullName,
-                                    "tagType": tagType
-                                }
+                                return convertTagToSelectLabel(tagName, portfolioTagData)
                             })
                         }
                     })
                     setGroupedTaglist(tempGroupTagList)
 
-                    let tempArtList = getFilteredArtByPriority(portfolioData, selectedFilters)
+
+                    //handle the freakin search params. may refactor this out later...?
+                    let paramIncludes = tempSearchParams.get("include")
+                    let paramExcludes = tempSearchParams.get("exclude")
+
+                    let tempSelectedFilters = selectedFilters
+
+                    if (paramIncludes !== null) {
+                        paramIncludes = paramIncludes.split(",")
+
+                        tempSelectedFilters.include = paramIncludes.map((filterName) => {
+                            try {
+                                return convertTagToSelectLabel(filterName, portfolioTagData)
+                            } catch {
+
+                            }
+                        }).filter((filterName) => {
+                            return filterName !== undefined
+                        })
+
+                        if (tempSelectedFilters.include.length === 0) {
+                            searchParams.delete('include')
+                            setSearchParams(searchParams)
+                        }
+                    }
+                    if (paramExcludes !== null) {
+                        paramExcludes = paramExcludes.split(",")
+
+                        tempSelectedFilters.exclude = paramExcludes.map((filterName) => {
+                            return convertTagToSelectLabel(filterName, portfolioTagData)
+                        })
+
+                    }
+
+
+
+                    //then push it into selected filters! todo.
+                    setSelectedFilters(tempSelectedFilters)
+
+                    let tempArtList = getFilteredArtByPriority(portfolioData, tempSelectedFilters)
                     setArtList(tempArtList)
+
+
 
 
 
@@ -115,9 +175,7 @@ export default function Gallery() {
 
     useEffect(() => {
         let currPage = getCurrentPage()
-        if (currPage < 1|| isNaN(currPage)) {
-            console.log(currPage)
-            console.log(getLastPage(artList))
+        if (currPage < 1 || isNaN(currPage)) {
             handlePageNumber(1)
         }
         setTimeout(() => {
@@ -135,12 +193,16 @@ export default function Gallery() {
 
         function handleOpen() {
             setIsOpen(true)
-            history.pushState({}, "Gallery", `${window.location.hash}&art=${paramName}`)
+            let urlString = window.location.hash 
+            urlString = handleUrlQuery(urlString, "art", paramName)
+            history.pushState({}, "Gallery", urlString)
         }
 
         function handleClose() {
             setIsOpen(false)
             let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
+            newUrl = newUrl.replace(`art=${paramName}`, "")
+            
             history.pushState({}, "Gallery", newUrl)
 
         }
@@ -221,7 +283,8 @@ export default function Gallery() {
                                                 md:justify-start
                                                 flex-wrap space-x-2 gap-y-2
                                                 ">
-                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={tag} />))}
+                                                    {fullTags.map((tag) => 
+                                                        (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={tag} />))}
                                                 </div>
                                             </div>
                                             <p className="text-white text-sm"><b>Description: </b>
@@ -280,18 +343,64 @@ export default function Gallery() {
 
     }
 
+    function writeTagsToParams(selectedFilters) {
+
+        let tempSelectedFilters = { ...selectedFilters }
+        let includeFilters = tempSelectedFilters.include
+        let excludeFilters = tempSelectedFilters.exclude
+
+
+        function handleFilter(filter) {
+            let tempValue = filter.value
+            tempValue = tempValue.split(" ").join("+")
+            return tempValue
+        }
+
+
+
+        includeFilters = includeFilters.map((filter) => {
+            return handleFilter(filter)
+        })
+
+        excludeFilters = excludeFilters.map((filter) => {
+            return handleFilter(filter)
+        })
+
+        includeFilters = includeFilters.join(",")
+        excludeFilters = excludeFilters.join(",")
+
+        let urlString = window.location.hash
+        urlString = handleUrlQuery(urlString, "include", includeFilters)
+
+        urlString = handleUrlQuery(urlString, "exclude", excludeFilters)
+
+
+
+        history.pushState({}, "Gallery", urlString)
+
+        /*function handleOpen() {
+            setIsOpen(true)
+            history.pushState({}, "Gallery", `${window.location.hash}&art=${paramName}`)
+        }*/
+
+    }
+
     function handleSelect(options, currKey, oppKey) {
         let tempSelectedFilters = { ...selectedFilters }
         tempSelectedFilters[currKey] = options
 
         let range = [...Array(options.length).keys()]
 
-        range.map((index) => {
+        range.forEach((index) => {
             let option = options[index]
             if (tempSelectedFilters[oppKey].includes(option)) {
                 tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => i !== option)
             }
         })
+
+        writeTagsToParams(tempSelectedFilters)
+
+
 
         let newArtList = getFilteredArtByPriority(portfolioJson, tempSelectedFilters)
 
@@ -454,8 +563,8 @@ export default function Gallery() {
 
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
-                    {getArtListPaginated().length === 0 && 
-                        <ErrorMessage/>}
+                    {getArtListPaginated().length === 0 &&
+                        <ErrorMessage />}
                     {
                         getArtListPaginated().map((filename) => {
                             return <div className="" key={filename}>
