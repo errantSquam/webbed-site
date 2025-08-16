@@ -15,6 +15,7 @@ import "../stylesfunctions/typeStyle.css"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { useSearchParams } from "react-router-dom"
 
+
 const GallerySelect = ({ onChange, styles, options, value }) => {
     const formatGroupLabel = (data) => (
         <div>
@@ -63,12 +64,13 @@ const PaginationArrow = ({ iconName, onClick, isActive, textType = "previous" })
     </div>
 }
 
-const PaginationNav = ({isArrowActive, handlePage, artList, pageDisplay}) =>{
+const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pageDisplayCurrent, pageDisplayMax }) => {
     const [pageAtBottom, setAtBottom] = useState(false)
+    const [currentPage, setCurrentPage] = useState(pageDisplayCurrent)
 
 
     const handleScroll = () => {
-        if ((window.innerHeight + window.scrollY +100) >= document.body.offsetHeight) {
+        if ((window.innerHeight + window.scrollY + 100) >= document.body.offsetHeight) {
             setAtBottom(true)
         } else {
             setAtBottom(false)
@@ -77,29 +79,74 @@ const PaginationNav = ({isArrowActive, handlePage, artList, pageDisplay}) =>{
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-      
-          return () => {
+
+        return () => {
             window.removeEventListener('scroll', handleScroll);
-          };
+        };
     }, [])
+
+    useEffect(() => {
+        setCurrentPage(pageDisplayCurrent)
+    }, [pageDisplayCurrent])
+
+    const updatePage = () => {
+        let newVal = currentPage
+
+        if (isNaN(newVal)) {
+            newVal = pageDisplayCurrent
+        }
+
+        if (newVal < 1) {
+            newVal = 1
+        } else if (newVal > pageDisplayMax) {
+            newVal = pageDisplayMax
+        }
+        newVal = Math.floor(newVal)
+
+        if (newVal === currentPage) {
+            return
+        }
+        setCurrentPage(newVal)
+        handlePageNumber(newVal, true)
+    }
+
+    const inputWidth = "w-10"
 
     return <div className={`fixed bottom-0 w-full flex flex-row justify-between md:justify-around 
         items-center transition  ${pageAtBottom ? "opacity-100" : "opacity-50"} hover:opacity-100
         bg-black/90
         px-3 md:px-10 z-9`}>
-            <PaginationArrow
-                iconName="fa7-regular:circle-left"
-                isActive={isArrowActive("previous")}
-                onClick={() => handlePage("previous")}
-                textType="previous" />
-            <div className="text-white/70 font-pirulen md:text-2xl md:absolute">
-                <span className="hidden md:inline">PAGE</span> {pageDisplay}</div>
-            <PaginationArrow
-                iconName="fa7-regular:circle-right"
-                isActive={isArrowActive("next")}
-                onClick={() => handlePage("next")}
-                textType="next" />
+        <PaginationArrow
+            iconName="fa7-regular:circle-left"
+            isActive={isArrowActive("previous")}
+            onClick={() => handlePage("previous")}
+            textType="previous" />
+        <div className="text-white/70 font-pirulen md:text-2xl md:absolute flex flex-row gap-x-1">
+            <span className="hidden md:inline">PAGE </span>
+            <form onSubmit={() => { updatePage() }}
+                className="inline">
+                <input
+                    type="text"
+
+                    value={currentPage}
+                    onChange={(e) => {
+                        let newval = e.target.value
+                        setCurrentPage(newval)
+                    }}
+                    onBlur={() => { updatePage() }}
+
+                    className={`${inputWidth} items-center text-center`}
+                />
+            </form>
+            <div>/</div>
+            <div className={`${inputWidth} text-center inline`}>{pageDisplayMax}</div>
         </div>
+        <PaginationArrow
+            iconName="fa7-regular:circle-right"
+            isActive={isArrowActive("next")}
+            onClick={() => handlePage("next")}
+            textType="next" />
+    </div>
 }
 
 export default function Gallery() {
@@ -437,10 +484,11 @@ export default function Gallery() {
             {<SplashScreen isLoading={isLoading} />}
             <div>
                 <PaginationNav
-                isArrowActive={isArrowActive}
-                handlePage={handlePage}
-                artList={artList}
-                pageDisplay={`${getCurrentPage(artList)}/${getLastPage(artList)}`}/>
+                    isArrowActive={isArrowActive}
+                    handlePage={handlePage}
+                    handlePageNumber={handlePageNumber}
+                    pageDisplayCurrent={getCurrentPage()}
+                    pageDisplayMax={getLastPage(artList)} />
             </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center cursor-pointer select-none"

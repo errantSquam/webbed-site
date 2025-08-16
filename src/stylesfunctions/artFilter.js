@@ -72,6 +72,10 @@ export const getFilteredArtByPriority = (portfolioJson, selectedFilters) => {
                 compareArray[i] -=4 //good lord the loading times
             }
 
+            if (artArray[i].tags.includes("fe5")) {
+                compareArray[i]-=2
+            }
+
             compareArray[i] += artArray[i].priority
         }
 
