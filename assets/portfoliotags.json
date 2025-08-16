@@ -164,7 +164,7 @@
         "tagType": "source"
     },
     "fe10": {
-        "fullName": "FE10",
+        "fullName": "FE10 (Tellius)",
         "tagType": "source"
     },
     "bust": {
@@ -257,6 +257,34 @@
     },
     "dafeng": {
         "fullName": "\u5927\u5949\u6253\u66f4\u4eba",
+        "tagType": "source"
+    },
+    "irl": {
+        "fullName": "Real Life",
+        "tagType": "copyright"
+    },
+    "trinityblood": {
+        "fullName": "Trinity Blood",
+        "tagType": "source"
+    },
+    "turtle": {
+        "fullName": "Turtle",
+        "tagType": "species"
+    },
+    "fe5": {
+        "fullName": "FE5",
+        "tagType": "source"
+    },
+    "xenoblade3": {
+        "fullName": "Xenoblade 3",
+        "tagType": "source"
+    },
+    "owlcroraptor": {
+        "fullName": "Owlcroraptor",
+        "tagType": "oc"
+    },
+    "rhist": {
+        "fullName": "Radiant Historia",
         "tagType": "source"
     }
 }

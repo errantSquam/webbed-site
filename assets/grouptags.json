@@ -2,7 +2,8 @@
     "copyright": [
         "oc",
         "fanart",
-        "otheroc"
+        "otheroc",
+        "irl"
     ],
     "charatype": [
         "human",
@@ -35,6 +36,7 @@
         "reindeer",
         "otter",
         "snake",
+        "turtle",
         "dinosaur",
         "bird",
         "microraptor",
@@ -46,16 +48,20 @@
     "oc": [
         "arelis",
         "ekaitz",
-        "janus",
         "ordell",
         "valen",
         "zephyr",
-        "pyre"
+        "pyre",
+        "janus",
+        "owlcroraptor"
     ],
     "source": [
-        "fireemblem",
+        "xenoblade2",
+        "xenoblade3",
         "xenobladex",
         "digimon",
+        "fireemblem",
+        "fe5",
         "gbafe",
         "fe9",
         "fe10",
@@ -63,14 +69,15 @@
         "pokemon",
         "pmd",
         "talesof",
-        "xenoblade2",
         "megaman",
         "onepiece",
         "goldensun",
         "yakuza",
         "medabots",
         "gahoole",
-        "dafeng"
+        "dafeng",
+        "trinityblood",
+        "rhist"
     ],
     "misc": [
         "scales",
