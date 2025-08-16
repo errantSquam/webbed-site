@@ -48,21 +48,59 @@ const GalleryFilter = ({ title, onChange, styles, options, value }) => {
     </div>
 }
 
-const PaginationArrow = ({ iconName, onClick, isActive, textType = "previous"}) => {
-    return <div className = {`flex flex-row items-center justify-center ${isActive ? 
+const PaginationArrow = ({ iconName, onClick, isActive, textType = "previous" }) => {
+    return <div className={`flex flex-row items-center justify-center ${isActive ?
         "transition hover:scale-125 hover:text-lime-400 text-green-500 cursor-pointer" :
-            "text-zinc-500"} gap-x-0.5 md:gap-x-2 rounded-lg py-1 md:py-2 px-1 md:px-2`}
-            style = {{ WebkitTransform: "translateZ(0px)"}}
-    onClick={onClick}>
-        {textType === "next" && <div className = {`font-pirulen text-sm md:text-2xl`}>NEXT</div>}
+        "text-zinc-500"} gap-x-0.5 md:gap-x-2 rounded-lg py-1 md:py-2 px-1 md:px-2`}
+        style={{ WebkitTransform: "translateZ(0px)" }}
+        onClick={onClick}>
+        {textType === "next" && <div className={`font-pirulen text-sm md:text-2xl`}>NEXT</div>}
         <div className={` flex flex-col items-center justify-center select-none`}
-            >
+        >
             <Icon icon={iconName} className="text-2xl md:text-4xl" />
         </div>
-        {textType === "previous" && <div className = {`font-pirulen text-sm md:text-2xl`}>PREV</div>}
+        {textType === "previous" && <div className={`font-pirulen text-sm md:text-2xl`}>PREV</div>}
     </div>
 }
 
+const PaginationNav = ({isArrowActive, handlePage, artList, pageDisplay}) =>{
+    const [pageAtBottom, setAtBottom] = useState(false)
+
+
+    const handleScroll = () => {
+        if ((window.innerHeight + window.scrollY +100) >= document.body.offsetHeight) {
+            setAtBottom(true)
+        } else {
+            setAtBottom(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+      
+          return () => {
+            window.removeEventListener('scroll', handleScroll);
+          };
+    }, [])
+
+    return <div className={`fixed bottom-0 w-full flex flex-row justify-between md:justify-around 
+        items-center transition  ${pageAtBottom ? "opacity-100" : "opacity-50"} hover:opacity-100
+        bg-black/90
+        px-3 md:px-10 z-9`}>
+            <PaginationArrow
+                iconName="fa7-regular:circle-left"
+                isActive={isArrowActive("previous")}
+                onClick={() => handlePage("previous")}
+                textType="previous" />
+            <div className="text-white/70 font-pirulen md:text-2xl md:absolute">
+                <span className="hidden md:inline">PAGE</span> {pageDisplay}</div>
+            <PaginationArrow
+                iconName="fa7-regular:circle-right"
+                isActive={isArrowActive("next")}
+                onClick={() => handlePage("next")}
+                textType="next" />
+        </div>
+}
 
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -78,7 +116,6 @@ export default function Gallery() {
     )
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [pageAtBottom, setAtBottom] = useState(false)
 
     const numArtPerPage = 20
 
@@ -88,7 +125,7 @@ export default function Gallery() {
             tempSearchParams.page = 1
 
             setSearchParams({ page: 1 })
-        } 
+        }
 
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             setPortfolioJson(portfolioData)
@@ -115,7 +152,7 @@ export default function Gallery() {
 
                     let tempArtList = getFilteredArtByPriority(portfolioData, selectedFilters)
                     setArtList(tempArtList)
-                    
+
 
 
                 }).then(() => {
@@ -137,6 +174,7 @@ export default function Gallery() {
         }, 500)
 
     }, [searchParams.get("page")])
+
 
     const GalleryImage = ({ filename }) => {
         const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
@@ -181,8 +219,8 @@ export default function Gallery() {
                             <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
                                 <div>LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
                                 {portfolioJson[filename].tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
-                                </div>
-                            
+                            </div>
+
                             <Skeleton
                                 variant="rectangular"
                                 className="bg-zinc-900 rounded-lg "
@@ -232,7 +270,7 @@ export default function Gallery() {
                                                 md:justify-start
                                                 flex-wrap space-x-2 gap-y-2
                                                 ">
-                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key = {tag}/>))}
+                                                    {fullTags.map((tag) => (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={tag} />))}
                                                 </div>
                                             </div>
                                             <p className="text-white text-sm"><b>Description: </b>
@@ -353,7 +391,7 @@ export default function Gallery() {
 
     function handlePageNumber(page, doLoad = true) {
         let currPage = getCurrentPage()
-        if (page == currPage){
+        if (page == currPage) {
             return
         }
 
@@ -363,11 +401,12 @@ export default function Gallery() {
         }
 
         setTimeout(() => {
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
             tempSearchParams.set("page", page)
-        
-        setSearchParams(tempSearchParams.toString())}, 300)
-        
+
+            setSearchParams(tempSearchParams.toString())
+        }, 300)
+
         setTimeout(() => {
             setIsLoading(false)
         }, 600)
@@ -375,8 +414,8 @@ export default function Gallery() {
 
     function getLatestPage(artList) {
         let page = getCurrentPage()
-        if ( (page - 1) * numArtPerPage > artList.length) {
-            
+        if ((page - 1) * numArtPerPage > artList.length) {
+
             //I have no idea if this calculation works but it currently works with my shitty test case
             handlePageNumber(getLastPage(artList), false)
         }
@@ -387,44 +426,25 @@ export default function Gallery() {
     }
 
     function getLastPage(artList) {
-        return Math.floor(artList.length/numArtPerPage) + 1
+        return Math.floor(artList.length / numArtPerPage) + 1
     }
 
-    const handleScroll = (e) => {
-        console.log(Math.abs(element.scrollHeight - (element.scrollTop + element.clientHeight)))
-        const bottom = Math.abs(element.scrollHeight - (element.scrollTop + element.clientHeight)) <= 1
-        if (bottom) {
-            setAtBottom(true)
-         } else {
-            setAtBottom(false)
-         }
-      }
 
 
 
     return (
-        <div className="min-h-screen bg-zinc-800 overflow-x-hidden " onScroll = {handleScroll}>
+        <div className="min-h-screen bg-zinc-800 overflow-x-hidden " >
             {<SplashScreen isLoading={isLoading} />}
-            <div className={`fixed bottom-0 w-full flex flex-row justify-between md:justify-around 
-            items-center transition  ${pageAtBottom ? "opacity-100" : "opacity-50"} hover:opacity-100
-            bg-black/70
-            px-3 md:px-10 z-9`}>
-                <PaginationArrow
-                    iconName="fa7-regular:circle-left"
-                    isActive={isArrowActive("previous")}
-                    onClick={() => handlePage("previous")} 
-                    textType = "previous"/>
-                <div className = "text-white/70 font-pirulen md:text-2xl md:absolute">
-                <span className = "hidden md:inline">PAGE</span> {getCurrentPage(artList)}/{getLastPage(artList)}</div>
-                <PaginationArrow
-                    iconName="fa7-regular:circle-right"
-                    isActive={isArrowActive("next")}
-                    onClick={() => handlePage("next")} 
-                    textType = "next"/>
+            <div>
+                <PaginationNav
+                isArrowActive={isArrowActive}
+                handlePage={handlePage}
+                artList={artList}
+                pageDisplay={`${getCurrentPage(artList)}/${getLastPage(artList)}`}/>
             </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center cursor-pointer select-none"
-                onClick = {() => handlePageNumber(1)}>
+                    onClick={() => handlePageNumber(1)}>
                     <div className="text-2xl font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2">
                         <Icon icon="clarity:eye-solid" className="text-2xl text-green-300/70" />
                         <span>
@@ -484,7 +504,7 @@ export default function Gallery() {
                     key={selectedFilters}>
                     {
                         getArtListPaginated().map((filename) => {
-                            return <div className="" key = {filename}>
+                            return <div className="" key={filename}>
                                 <GalleryImage filename={filename} />
                             </div>
 
