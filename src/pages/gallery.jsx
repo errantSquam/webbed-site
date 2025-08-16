@@ -51,15 +51,15 @@ const GalleryFilter = ({ title, onChange, styles, options, value }) => {
 const PaginationArrow = ({ iconName, onClick, isActive, textType = "previous"}) => {
     return <div className = {`flex flex-row items-center justify-center ${isActive ? 
         "transition hover:scale-125 hover:text-lime-400 text-green-500 cursor-pointer" :
-            "text-zinc-500"} gap-x-0.5 md:gap-x-2 bg-black/70 rounded-lg py-1 md:py-2 px-1 md:px-2`}
+            "text-zinc-500"} gap-x-0.5 md:gap-x-2 rounded-lg py-1 md:py-2 px-1 md:px-2`}
             style = {{ WebkitTransform: "translateZ(0px)"}}
     onClick={onClick}>
-        {textType === "next" && <div className = {`font-pirulen text-sm md:text-3xl`}>NEXT</div>}
+        {textType === "next" && <div className = {`font-pirulen text-sm md:text-2xl`}>NEXT</div>}
         <div className={` flex flex-col items-center justify-center select-none`}
             >
             <Icon icon={iconName} className="text-2xl md:text-4xl" />
         </div>
-        {textType === "previous" && <div className = {`font-pirulen text-sm md:text-3xl`}>PREV</div>}
+        {textType === "previous" && <div className = {`font-pirulen text-sm md:text-2xl`}>PREV</div>}
     </div>
 }
 
@@ -78,6 +78,7 @@ export default function Gallery() {
     )
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [pageAtBottom, setAtBottom] = useState(false)
 
     const numArtPerPage = 20
 
@@ -319,12 +320,12 @@ export default function Gallery() {
         return artList.slice(startIndex, endIndex)
     }
     function getArtListPaginated() {
-        let page = Number(searchParams.get("page"))
+        let page = getCurrentPage()
         return getArtListByPage(page)
     }
 
     function isArrowActive(direction) {
-        let page = Number(searchParams.get("page"))
+        let page = getCurrentPage()
         if (direction === "previous") {
             if (page === 1) {
                 return false
@@ -339,7 +340,7 @@ export default function Gallery() {
     }
 
     function handlePage(direction) {
-        let page = Number(searchParams.get("page"))
+        let page = getCurrentPage()
         if (direction === "previous" && isArrowActive("previous")) {
             handlePageNumber(page - 1)
         }
@@ -351,7 +352,7 @@ export default function Gallery() {
     }
 
     function handlePageNumber(page, doLoad = true) {
-        let currPage = Number(searchParams.get("page"))
+        let currPage = getCurrentPage()
         if (page == currPage){
             return
         }
@@ -373,29 +374,50 @@ export default function Gallery() {
     }
 
     function getLatestPage(artList) {
-        let page = Number(searchParams.get("page"))
+        let page = getCurrentPage()
         if ( (page - 1) * numArtPerPage > artList.length) {
-            let newPageNum = Math.floor(artList.length/numArtPerPage) + 1
+            
             //I have no idea if this calculation works but it currently works with my shitty test case
-            handlePageNumber(newPageNum, false)
+            handlePageNumber(getLastPage(artList), false)
         }
     }
 
+    function getCurrentPage() {
+        return Number(searchParams.get("page"))
+    }
 
+    function getLastPage(artList) {
+        return Math.floor(artList.length/numArtPerPage) + 1
+    }
+
+    const handleScroll = (e) => {
+        console.log(Math.abs(element.scrollHeight - (element.scrollTop + element.clientHeight)))
+        const bottom = Math.abs(element.scrollHeight - (element.scrollTop + element.clientHeight)) <= 1
+        if (bottom) {
+            setAtBottom(true)
+         } else {
+            setAtBottom(false)
+         }
+      }
 
 
 
     return (
-        <div className="min-h-screen bg-zinc-800 overflow-x-hidden ">
+        <div className="min-h-screen bg-zinc-800 overflow-x-hidden " onScroll = {handleScroll}>
             {<SplashScreen isLoading={isLoading} />}
-            <div className="fixed bottom-0 w-full flex flex-row justify-between px-3 md:px-10 pb-2 mb-2 z-9">
+            <div className={`fixed bottom-0 w-full flex flex-row justify-between md:justify-around 
+            items-center transition  ${pageAtBottom ? "opacity-100" : "opacity-50"} hover:opacity-100
+            bg-black/70
+            px-3 md:px-10 z-9`}>
                 <PaginationArrow
-                    iconName="ion:caret-back-circle-outline"
+                    iconName="fa7-regular:circle-left"
                     isActive={isArrowActive("previous")}
                     onClick={() => handlePage("previous")} 
                     textType = "previous"/>
+                <div className = "text-white/70 font-pirulen md:text-2xl md:absolute">
+                <span className = "hidden md:inline">PAGE</span> {getCurrentPage(artList)}/{getLastPage(artList)}</div>
                 <PaginationArrow
-                    iconName="ion:caret-forward-circle-outline"
+                    iconName="fa7-regular:circle-right"
                     isActive={isArrowActive("next")}
                     onClick={() => handlePage("next")} 
                     textType = "next"/>
