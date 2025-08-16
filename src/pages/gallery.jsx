@@ -9,145 +9,41 @@ import tagsColorDict from "../stylesfunctions/tagsColorDict"
 import { selectStyles, selectStylesExclude } from "../stylesfunctions/selectStyles"
 import { getFilteredArtByPriority } from "../stylesfunctions/artFilter"
 import SplashScreen from "../components/splashscreen"
-import { TagBlock } from "../components/galleryComponents"
+import { TagBlock, GalleryFilter } from "../components/galleryComponents"
 import { TypeAnimation } from "react-type-animation"
 import "../stylesfunctions/typeStyle.css"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { useSearchParams } from "react-router-dom"
+import { PaginationNav } from "../components/paginationComponents"
 
 
-const GallerySelect = ({ onChange, styles, options, value }) => {
-    const formatGroupLabel = (data) => (
-        <div>
-            <span>{data.label}</span>
-        </div>
-    );
 
-    return <Select
-        onChange={onChange}
-        styles={styles}
-        components={{ IndicatorSeparator: () => null }}
-        options={options}
-        formatGroupLabel={formatGroupLabel} key={options}
-        value={value}
-        placeholder="Tag search..."
-        isMulti
+const ErrorMessage = () => {
+    const [gangnamSnake, setGangnamSnake] = useState(false)
+    return <div className = "flex flex-col items-center justify-center h-full text-green-500/70">
+    <TypeAnimation
+        sequence={[
+            "          ",
+            2000,
+            "hmmmmm yes this page is out of bounds.",
+            500,
+            "hmmmmm yes this page is out of bounds. perhaps you should return.",
+            () => setGangnamSnake(true)
+        ]}
+        speed={70}
+        cursor={false}
+        className="type"
+        repeat={0}
     />
-}
+    <img src = "assets/gangnamsnake.webp" className = {`transition duration-500 
+        ${gangnamSnake?  "opacity-30" : "opacity-0"}`}
+        style = {{filter: "sepia(100%) saturate(300%) hue-rotate(65deg)" //kiwami
 
-const GalleryFilter = ({ title, onChange, styles, options, value }) => {
-    return <div className="flex flex-col w-full">
-        <div className="text-green-400 font-pirulen">{title}</div>
-        <div className=" text-left text-sm">
-            <GallerySelect
-                onChange={onChange}
-                styles={styles}
-                options={options}
-                value={value}
-            />
-        </div>
+        }}/>
+
     </div>
 }
 
-const PaginationArrow = ({ iconName, onClick, isActive, textType = "previous" }) => {
-    return <div className={`flex flex-row items-center justify-center ${isActive ?
-        "transition hover:scale-125 hover:text-lime-400 text-green-500 cursor-pointer" :
-        "text-zinc-500"} gap-x-0.5 md:gap-x-2 rounded-lg py-1 md:py-2 px-1 md:px-2`}
-        style={{ WebkitTransform: "translateZ(0px)" }}
-        onClick={onClick}>
-        {textType === "next" && <div className={`font-pirulen text-sm md:text-2xl`}>NEXT</div>}
-        <div className={` flex flex-col items-center justify-center select-none`}
-        >
-            <Icon icon={iconName} className="text-2xl md:text-4xl" />
-        </div>
-        {textType === "previous" && <div className={`font-pirulen text-sm md:text-2xl`}>PREV</div>}
-    </div>
-}
-
-const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pageDisplayCurrent, pageDisplayMax }) => {
-    const [pageAtBottom, setAtBottom] = useState(false)
-    const [currentPage, setCurrentPage] = useState(pageDisplayCurrent)
-
-
-    const handleScroll = () => {
-        if ((window.innerHeight + window.scrollY + 100) >= document.body.offsetHeight) {
-            setAtBottom(true)
-        } else {
-            setAtBottom(false)
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [])
-
-    useEffect(() => {
-        setCurrentPage(pageDisplayCurrent)
-    }, [pageDisplayCurrent])
-
-    const updatePage = () => {
-        let newVal = currentPage
-
-        if (isNaN(newVal) || newVal === "") {
-            newVal = pageDisplayCurrent
-        }
-
-        if (newVal < 1) {
-            newVal = 1
-        } else if (newVal > pageDisplayMax) {
-            newVal = pageDisplayMax
-        }
-        newVal = Math.floor(newVal)
-
-        if (newVal === currentPage) {
-            return
-        }
-        setCurrentPage(newVal)
-        handlePageNumber(newVal, true)
-    }
-
-    const inputWidth = "w-10"
-
-    return <div className={`fixed bottom-0 w-full flex flex-row justify-between md:justify-around 
-        items-center transition  ${pageAtBottom ? "opacity-100" : "opacity-50"} hover:opacity-100
-        bg-black/90
-        px-3 md:px-10 z-9`}>
-        <PaginationArrow
-            iconName="fa7-regular:circle-left"
-            isActive={isArrowActive("previous")}
-            onClick={() => handlePage("previous")}
-            textType="previous" />
-        <div className="text-white/70 font-pirulen md:text-2xl md:absolute flex flex-row gap-x-1">
-            <span className="hidden md:inline">PAGE </span>
-            <form onSubmit={() => { updatePage() }}
-                className="inline">
-                <input
-                    type="text"
-
-                    value={currentPage}
-                    onChange={(e) => {
-                        let newval = e.target.value
-                        setCurrentPage(newval)
-                    }}
-                    onBlur={() => { updatePage() }}
-
-                    className={`${inputWidth} items-center text-center`}
-                />
-            </form>
-            <div>/</div>
-            <div className={`${inputWidth} text-center inline`}>{pageDisplayMax}</div>
-        </div>
-        <PaginationArrow
-            iconName="fa7-regular:circle-right"
-            isActive={isArrowActive("next")}
-            onClick={() => handlePage("next")}
-            textType="next" />
-    </div>
-}
 
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -219,7 +115,9 @@ export default function Gallery() {
 
     useEffect(() => {
         let currPage = getCurrentPage()
-        if (currPage < 1|| isNaN(currPage) || currPage > getLastPage(artList)) {
+        if (currPage < 1|| isNaN(currPage)) {
+            console.log(currPage)
+            console.log(getLastPage(artList))
             handlePageNumber(1)
         }
         setTimeout(() => {
@@ -486,7 +384,7 @@ export default function Gallery() {
 
 
     return (
-        <div className="min-h-screen bg-zinc-800 overflow-x-hidden " >
+        <div className="min-h-screen bg-zinc-800 overflow-x-hidden pb-10" >
             {<SplashScreen isLoading={isLoading} />}
             <div>
                 <PaginationNav
@@ -557,9 +455,7 @@ export default function Gallery() {
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
                     {getArtListPaginated().length === 0 && 
-                    <div className = "flex flex-col items-center h-full text-green-500/70">
-                        <div>you have stumbled upon the Error Page... Please Report.</div>
-                        </div>}
+                        <ErrorMessage/>}
                     {
                         getArtListPaginated().map((filename) => {
                             return <div className="" key={filename}>
