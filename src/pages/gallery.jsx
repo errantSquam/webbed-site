@@ -92,7 +92,7 @@ const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pageDispla
     const updatePage = () => {
         let newVal = currentPage
 
-        if (isNaN(newVal)) {
+        if (isNaN(newVal) || newVal === "") {
             newVal = pageDisplayCurrent
         }
 
@@ -168,11 +168,13 @@ export default function Gallery() {
 
     useEffect(() => {
         let tempSearchParams = searchParams
-        if (tempSearchParams.get("page") === null) {
+        let paramPage = tempSearchParams.get("page")
+        if (paramPage === null || isNaN(paramPage)) {
             tempSearchParams.page = 1
 
             setSearchParams({ page: 1 })
         }
+
 
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             setPortfolioJson(portfolioData)
@@ -216,6 +218,10 @@ export default function Gallery() {
     }, [])
 
     useEffect(() => {
+        let currPage = getCurrentPage()
+        if (currPage < 1|| isNaN(currPage) || currPage > getLastPage(artList)) {
+            handlePageNumber(1)
+        }
         setTimeout(() => {
             setIsLoading(false)
         }, 500)
@@ -550,6 +556,10 @@ export default function Gallery() {
 
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
                     key={selectedFilters}>
+                    {getArtListPaginated().length === 0 && 
+                    <div className = "flex flex-col items-center h-full text-green-500/70">
+                        <div>you have stumbled upon the Error Page... Please Report.</div>
+                        </div>}
                     {
                         getArtListPaginated().map((filename) => {
                             return <div className="" key={filename}>
