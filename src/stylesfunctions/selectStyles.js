@@ -65,6 +65,13 @@ export const selectStyles = {
             paddingBottom: 0
         }
     },
+    placeholder: (styles, {data}) => {
+        return {
+            ...styles,
+            position: 'absolute',
+            color:"var(--color-zinc-500)"
+        }
+    }
 
 }
 

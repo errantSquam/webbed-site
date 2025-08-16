@@ -384,7 +384,7 @@ export default function Gallery() {
 
 
     return (
-        <div className="min-h-screen bg-zinc-800 overflow-x-hidden pb-10" >
+        <div className="min-h-screen bg-zinc-800 overflow-x-hidden pb-15" >
             {<SplashScreen isLoading={isLoading} />}
             <div>
                 <PaginationNav

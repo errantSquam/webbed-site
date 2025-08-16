@@ -21,7 +21,7 @@ export const GallerySelect = ({ onChange, styles, options, value }) => {
         options={options}
         formatGroupLabel={formatGroupLabel} key={options}
         value={value}
-        placeholder="Tag search..."
+        placeholder="Type to search..."
         isMulti
     />
 }
