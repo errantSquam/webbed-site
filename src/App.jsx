@@ -3,6 +3,7 @@ import './App.css';
 import { HashRouter, Route, Routes, Link } from "react-router-dom";
 import DancingSnek from './pages/dancingsnek';
 import Gallery from './pages/gallery';
+import Commissions from './pages/comms';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Routes>
                 <Route path = "/" element = {<DancingSnek/>}/>
                 <Route path="/gallery" element={<Gallery/>} />
+                <Route path="/commissions" element = {<Commissions/>}/>
             </Routes>
         </HashRouter>
   );

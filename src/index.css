@@ -15,8 +15,25 @@
   src: url("../assets/fonts/pirulen rg.woff");
 }
 
+@font-face {
+  font-family: Jura;
+  font-style: normal;
+  src: url("../assets/fonts/Jura-SemiBold.woff");
+}
+@font-face {
+  font-family: Jura;
+  src: url("../assets/fonts/Jura-Bold.woff");
+  font-weight: bold;
+}
+@font-face {
+  font-family: Jura;
+  src: url("../assets/fonts/Jura-Light.woff");
+  font-weight: lighter;
+}
+
 @theme {
   --font-pirulen: "Pirulen"; 
+  --font-jura: "Jura";
 }
 
 @layer base {

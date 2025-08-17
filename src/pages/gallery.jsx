@@ -2,7 +2,6 @@ import { React, useState } from "react"
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
-import Select from "react-select"
 import { createElement } from "react"
 import { Skeleton } from "@mui/material"
 import tagsColorDict from "../stylesfunctions/tagsColorDict"
@@ -16,7 +15,43 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 import { useSearchParams } from "react-router-dom"
 import { PaginationNav } from "../components/paginationComponents"
 
+const BackToHome = () => {                
 
+    return <Link to="/"><div className="text-green-400 flex flex-row items-center space-x-2">
+    <Icon icon="lets-icons:back" />
+    <span>back to <u>home</u>
+        <TypeAnimation
+            sequence={[
+                "?",
+                10000,
+                " :)",
+                5000,
+                "?",
+                10000,
+                ". watch snek dance.",
+                2000,
+                "?",
+                10000,
+                ", or maybe not. stay and enjoy the art.",
+                10000,
+                "?",
+                10000
+            ]}
+            speed={70}
+            cursor={false}
+            className="type"
+            repeat={Infinity}
+        /></span>
+
+</div></Link>}
+
+const CommissionsButton =() => {
+    return <Link to = "/commissions"><div className = {`text-green-500 flex flex-row space-x-1 items-center justify-center font-jura font-bold
+        bg-zinc-900 px-2 py-1 rounded-md cursor-pointer select-none transition hover:scale-105`}>
+            <Icon icon = "mdi:art"/>
+            <div>Commissions</div>
+        </div></Link>
+}
 
 const ErrorMessage = () => {
     const [gangnamSnake, setGangnamSnake] = useState(false)
@@ -515,8 +550,9 @@ export default function Gallery() {
 
                     </div>
                 </div>
+                <CommissionsButton/>
 
-                <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4">
+                <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2">
                     <GalleryFilter
                         title="#INCLUDES"
                         onChange={(options) => { handleSelect(options, "include", "exclude") }}
@@ -532,33 +568,8 @@ export default function Gallery() {
                         value={selectedFilters.exclude}
                     />
                 </div>
-                <Link to="/"><div className="text-green-400 mt-2 flex flex-row items-center space-x-2">
-                    <Icon icon="lets-icons:back" />
-                    <span>back to <u>home</u>
-                        <TypeAnimation
-                            sequence={[
-                                "?",
-                                10000,
-                                " :)",
-                                5000,
-                                "?",
-                                10000,
-                                ". watch snek dance.",
-                                2000,
-                                "?",
-                                10000,
-                                ", or maybe not. stay and enjoy the art.",
-                                10000,
-                                "?",
-                                10000
-                            ]}
-                            speed={70}
-                            cursor={false}
-                            className="type"
-                            repeat={Infinity}
-                        /></span>
-
-                </div></Link>
+                
+                
 
 
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
@@ -574,6 +585,7 @@ export default function Gallery() {
                         })
                     }
                 </div>
+
             </div>
         </div>
 
