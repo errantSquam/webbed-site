@@ -10,4 +10,11 @@ const SplashScreen = ({isLoading}) => {
     </div>
 }
 
+export function chickenLoading(timeout, setIsLoading){
+    setTimeout(() => {
+        setIsLoading(false)
+    }, timeout)
+}
+
+
 export default SplashScreen

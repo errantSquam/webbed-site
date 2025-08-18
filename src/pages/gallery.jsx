@@ -18,41 +18,193 @@ import { PaginationNav } from "../components/paginationComponents"
 import { CommissionsButton, ErrorMessage } from "../components/galleryComponents"
 import handleUrlQuery from "../stylesfunctions/handleUrlQuery"
 
-const cleanImportedFilters = ({searchParams, setSearchParams, tempSearchParams, selectedFilters, setSelectedFilters}) => {
-    let paramIncludes = tempSearchParams.get("include")
-    let paramExcludes = tempSearchParams.get("exclude")
+import { convertTagToSelectLabel, handleFilterParams } from "../stylesfunctions/apiFilter"
+import { chickenLoading } from "../components/splashscreen"
 
-    let tempSelectedFilters = selectedFilters
+const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
 
-    if (paramIncludes !== null) {
-        paramIncludes = paramIncludes.split(",")
+    let portfolioTags = tagData
 
-        tempSelectedFilters.include = paramIncludes.map((filterName) => {
-            try {
-                return convertTagToSelectLabel(filterName, portfolioTagData)
-            } catch {
-
-            }
-        }).filter((filterName) => {
-            return filterName !== undefined
-        })
-
-        if (tempSelectedFilters.include.length === 0) {
-            searchParams.delete('include')
-            setSearchParams(searchParams)
-        }
-    }
-    if (paramExcludes !== null) {
-        paramExcludes = paramExcludes.split(",")
-
-        tempSelectedFilters.exclude = paramExcludes.map((filterName) => {
-            return convertTagToSelectLabel(filterName, portfolioTagData)
-        })
+    function filePath() {
+        return filename + "." + jsonData.extension
 
     }
-    setSelectedFilters(tempSelectedFilters)
+    let fullTags = jsonData.tags.map((tag) => {
+        return Object.keys(portfolioTags).length !== 0 && portfolioTags[tag]
+    })
+
+    let descString = jsonData.description
+
+
+    let artDesc = createElement('span',
+        { dangerouslySetInnerHTML: { __html: descString } },
+    );
+
+    const CloseButton = () => {
+        return <Button
+            className="w-2/3 flex items-center justify-center
+                                        gap-2 rounded-md 
+                            bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
+                            shadow-inner shadow-white/10 cursor-pointer select-none"
+            onClick={handleClose}
+        >
+            Close
+        </Button>
+    }
+
+    return <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={handleClose}>
+        <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
+            <div className="px-10 flex min-h-full items-center justify-center">
+                <DialogPanel
+                    transition
+                    className="duration-50 ease-in 
+                data-closed:transform-[scale(95%)] data-closed:opacity-0"
+                >
+                    <div className="h-full w-full flex items-center justify-center">
+                        <div className="flex flex-col md:flex-row justify-center">
+                            <div className={"flex items-center justify-center md:hidden"}>
+                                <img src={"assets/pics/" + filePath()}
+                                    className={"max-h-screen py-4"} />
+                            </div>
+                            <div className="flex flex-col justify-between 
+                        md:py-10 
+                        pr-2 md:max-w-1/3">
+                                <div className="flex flex-col space-y-2 items-center md:items-start">
+                                    <div className="mt-2 text-sm/6 text-white/50">
+                                        <div className="flex flex-row 
+                                    items-center justify-center 
+                                    md:justify-start
+                                    flex-wrap space-x-2 gap-y-2
+                                    ">
+                                            {fullTags.map((tag, index) =>
+                                                (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={index} />))}
+                                        </div>
+                                    </div>
+                                    <p className="text-white text-sm"><b>Description: </b>
+                                        {descString !== "" ? artDesc : <i>None</i>}
+                                    </p>
+                                </div>
+                                <div className="mt-4 w-full hidden md:inline">
+                                    <CloseButton/>
+                                </div>
+                            </div>
+                            <div className={" md:flex items-center justify-center hidden"}>
+                                <img src={"assets/pics/" + filePath()}
+                                    className={"max-h-screen py-4"} />
+                            </div>
+
+                            <div className="mt-4 w-full flex items-center justify-center md:hidden">
+                                <CloseButton/>
+                            </div>
+                        </div>
+                    </div>
+                </DialogPanel>
+            </div>
+        </div>
+    </Dialog>
 }
 
+const GalleryImage = ({ filename, jsonData, tagData }) => {
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    let paramName = filename.split(" ").join("+")
+
+    function handleOpen() {
+        setIsOpen(true)
+        let urlString = window.location.hash
+        urlString = handleUrlQuery(urlString, "art", paramName)
+        history.pushState({}, "Gallery", urlString)
+    }
+
+    function handleClose() {
+        setIsOpen(false)
+        let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
+        newUrl = newUrl.replace(`art=${paramName}`, "")
+
+        history.pushState({}, "Gallery", newUrl)
+
+    }
+
+    function filePath() {
+        return filename + "." + jsonData.extension
+
+    }
+
+    return <>
+        <div className=" p-1 ">
+            {!isLoaded &&
+                <div className="bg-zinc-900 ">
+                    <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
+                        <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
+                            <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
+                            {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
+                        </div>
+
+                        <Skeleton
+                            variant="rectangular"
+                            className="bg-zinc-900 rounded-lg "
+                            animation="wave">
+                            <div className="h-64 object-cover flex flex-col items-center"
+                                style={{
+                                    aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
+                                }} />
+                        </Skeleton>
+                    </div>
+                </div>
+            }
+
+            <img src={"assets/pics/" + filePath()}
+                style={{ height: !isLoaded ? '0' : undefined }}
+                className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
+                onClick={() => handleOpen()}
+                onLoad={() => setIsLoaded(true)}
+            />
+
+        </div>
+        <GalleryModal isOpen={isOpen} handleClose={handleClose}
+            filename={filename}
+            jsonData={jsonData}
+            tagData={tagData}
+        />
+
+    </>
+}
+
+const HiddenModal = ({ filename, jsonData, tagData }) => {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const [isOpen, setIsOpen] = useState(false)
+    useEffect(() => {
+        setIsOpen(filename !==null)
+
+    }, [])
+
+    
+
+
+    function handleClose() {
+        let paramName = ""
+        if (filename !== null) {
+            paramName = filename.split(" ").join("+")
+        }
+        setIsOpen(false)
+        let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
+        newUrl = newUrl.replace(`art=${paramName}`, "")
+
+        history.pushState({}, "Gallery", newUrl)
+        searchParams.delete("art")
+        setSearchParams(searchParams)
+
+    }
+
+    return filename !== null && <GalleryModal isOpen = {isOpen} 
+    filename = {filename}
+    handleClose = {handleClose} jsonData = {jsonData} tagData = {tagData}/>
+
+
+}
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -67,36 +219,26 @@ export default function Gallery() {
     )
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [hiddenArt, setHiddenArt] = useState(null) 
+    //this is never getting closed for the sake of no rerenders, i guess
 
     const numArtPerPage = 20
 
-    const convertTagToSelectLabel = (tagName, portfolioData) => {
-        return {
-            value: tagName,
-            label: portfolioData[tagName].fullName,
-            "tagType": portfolioData[tagName].tagType
-        }
-    }
 
     useEffect(() => {
         let tempSearchParams = searchParams
         let paramPage = tempSearchParams.get("page")
         if (paramPage === null || isNaN(paramPage)) {
-            tempSearchParams.page = 1
+            paramPage = 1
 
             setSearchParams({ page: 1 })
         }
 
 
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
-            setPortfolioJson(portfolioData)
-
             fetch('assets/portfoliotags.json').then((res) => res.json()).then((portfolioTagData) => {
-                setPortfolioTags(portfolioTagData)
                 fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
                     let tempTagList = data
-
-
                     let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
                         return {
                             label: tagType,
@@ -105,21 +247,42 @@ export default function Gallery() {
                             })
                         }
                     })
-                    setGroupedTaglist(tempGroupTagList)
 
-                    cleanImportedFilters(searchParams, setSearchParams, tempSearchParams, selectedFilters, setSelectedFilters)
+                    let tempSelectedFilters = ["include", "exclude"]
+                        .reduce((accumulator, filterType) => {
+                            return (handleFilterParams(filterType, tempSearchParams, accumulator))
+                        }, selectedFilters)
+
+                    new Array("include", "exclude").forEach((filterType) => {
+                        if (tempSelectedFilters[filterType] === null) {
+                            return
+                        }
+                        if (tempSelectedFilters[filterType].length === 0) {
+                            searchParams.delete(filterType)
+                            setSearchParams(searchParams)
+                        }
+                    })
 
                     let tempArtList = getFilteredArtByPriority(portfolioData, tempSelectedFilters)
+
+                    let hiddenArt = tempSearchParams.get("art")
+                    console.log(hiddenArt)
+                    if (hiddenArt !== null){
+                        let tempPageArtList = getArtListByPage(tempArtList, paramPage)
+                        if (tempPageArtList.includes(hiddenArt)){
+                            hiddenArt = null
+                        }
+                    }
+
+                    setHiddenArt(hiddenArt)
+                    setPortfolioJson(portfolioData)
+                    setPortfolioTags(portfolioTagData)
+                    setGroupedTaglist(tempGroupTagList)
+                    setSelectedFilters(tempSelectedFilters)
                     setArtList(tempArtList)
 
-
-
-
-
                 }).then(() => {
-                    setTimeout(() => {
-                        setIsLoading(false)
-                    }, 2000)
+                    chickenLoading(2000, setIsLoading)
                 })
 
             })
@@ -134,170 +297,11 @@ export default function Gallery() {
         if (currPage < 1 || isNaN(currPage)) {
             handlePageNumber(1)
         }
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 500)
+        chickenLoading(500, setIsLoading)
 
     }, [searchParams.get("page")])
 
 
-    const GalleryImage = ({ filename }) => {
-        const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
-        const [isLoaded, setIsLoaded] = useState(false)
-
-        let paramName = filename.split(" ").join("+")
-
-        function handleOpen() {
-            setIsOpen(true)
-            let urlString = window.location.hash
-            urlString = handleUrlQuery(urlString, "art", paramName)
-            history.pushState({}, "Gallery", urlString)
-        }
-
-        function handleClose() {
-            setIsOpen(false)
-            let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
-            newUrl = newUrl.replace(`art=${paramName}`, "")
-
-            history.pushState({}, "Gallery", newUrl)
-
-        }
-
-        function filePath() {
-            return filename + "." + portfolioJson[filename].extension
-
-        }
-
-        let fullTags = portfolioJson[filename].tags.map((tag) => {
-            return Object.keys(portfolioTags).length !== 0 && portfolioTags[tag]
-        })
-
-        let descString = portfolioJson[filename].description
-
-
-        let artDesc = createElement('span',
-            { dangerouslySetInnerHTML: { __html: descString } },
-        );
-
-
-        return <>
-            <div className=" p-1 ">
-                {!isLoaded &&
-                    <div className="bg-zinc-900 ">
-                        <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
-                            <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
-                                <div>LOADING{portfolioJson[filename].tags.includes("3d") && " 3D"}...</div>
-                                {portfolioJson[filename].tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
-                            </div>
-
-                            <Skeleton
-                                variant="rectangular"
-                                className="bg-zinc-900 rounded-lg "
-                                animation="wave">
-                                <div className="h-64 object-cover flex flex-col items-center"
-                                    style={{
-                                        aspectRatio: portfolioJson[filename].dimensions[0] / portfolioJson[filename].dimensions[1]
-                                    }} />
-                            </Skeleton>
-                        </div>
-                    </div>
-                }
-
-                <img src={"assets/pics/" + filePath()}
-                    style={{ height: !isLoaded ? '0' : undefined }}
-                    className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
-                    onClick={() => handleOpen()}
-                    onLoad={() => setIsLoaded(true)}
-                />
-
-            </div>
-
-
-
-            <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={handleClose}>
-                <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
-                    <div className="px-10 flex min-h-full items-center justify-center">
-                        <DialogPanel
-                            transition
-                            className="duration-50 ease-in 
-                            data-closed:transform-[scale(95%)] data-closed:opacity-0"
-                        >
-
-                            <div className="h-full w-full flex items-center justify-center">
-                                <div className="flex flex-col md:flex-row justify-center">
-                                    <div className={"flex items-center justify-center md:hidden"}>
-                                        <img src={"assets/pics/" + filePath()}
-                                            className={"max-h-screen py-4"} />
-                                    </div>
-                                    <div className="flex flex-col justify-between 
-                                    md:py-10 
-                                    pr-2 md:max-w-1/3">
-                                        <div className="flex flex-col space-y-2 items-center md:items-start">
-                                            <div className="mt-2 text-sm/6 text-white/50">
-                                                <div className="flex flex-row 
-                                                items-center justify-center 
-                                                md:justify-start
-                                                flex-wrap space-x-2 gap-y-2
-                                                ">
-                                                    {fullTags.map((tag, index) =>
-                                                        (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={index} />))}
-                                                </div>
-                                            </div>
-                                            <p className="text-white text-sm"><b>Description: </b>
-                                                {descString !== "" ? artDesc : <i>None</i>}
-                                            </p>
-
-
-
-
-                                        </div>
-                                        <div className="mt-4 w-full hidden md:inline">
-                                            <Button
-                                                className="w-2/3 flex items-center justify-center
-                                                    gap-2 rounded-md 
-                                        bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
-                                        shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
-                                        data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
-                                        data-open:bg-gray-700 cursor-pointer select-none"
-                                                onClick={handleClose}
-                                            >
-                                                Close
-                                            </Button>
-                                        </div>
-                                    </div>
-
-                                    <div className={" md:flex items-center justify-center hidden"}>
-                                        <img src={"assets/pics/" + filePath()}
-                                            className={"max-h-screen py-4"} />
-                                    </div>
-
-                                    <div className="mt-4 w-full flex items-center justify-center md:hidden">
-                                        <Button
-                                            className="w-2/3 flex items-center justify-center
-                                                    gap-2 rounded-md 
-                                        bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
-                                        shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
-                                        data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
-                                        data-open:bg-gray-700"
-                                            onClick={handleClose}
-                                        >
-                                            Close
-                                        </Button>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-
-                        </DialogPanel>
-                    </div>
-                </div>
-            </Dialog>
-
-        </>
-
-    }
 
     function writeTagsToParams(selectedFilters) {
 
@@ -334,10 +338,6 @@ export default function Gallery() {
 
         history.pushState({}, "Gallery", urlString)
 
-        /*function handleOpen() {
-            setIsOpen(true)
-            history.pushState({}, "Gallery", `${window.location.hash}&art=${paramName}`)
-        }*/
 
     }
 
@@ -367,7 +367,7 @@ export default function Gallery() {
     }
 
 
-    function getArtListByPage(page) {
+    function getArtListByPage(artList, page) {
         let startIndex = (page - 1) * numArtPerPage
         let endIndex = Math.min((page - 1) * numArtPerPage + numArtPerPage, artList.length)
 
@@ -375,7 +375,7 @@ export default function Gallery() {
     }
     function getArtListPaginated() {
         let page = getCurrentPage()
-        return getArtListByPage(page)
+        return getArtListByPage(artList,page)
     }
 
     function isArrowActive(direction) {
@@ -423,9 +423,7 @@ export default function Gallery() {
             setSearchParams(tempSearchParams.toString())
         }, 300)
 
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 600)
+        chickenLoading(600, setIsLoading)
     }
 
     function getLatestPage(artList) {
@@ -500,12 +498,17 @@ export default function Gallery() {
                     {
                         getArtListPaginated().map((filename) => {
                             return <div className="" key={filename}>
-                                <GalleryImage filename={filename} />
+                                <GalleryImage filename={filename}
+                                    jsonData={portfolioJson[filename]}
+                                    tagData={portfolioTags} />
                             </div>
 
                         })
                     }
                 </div>
+                <HiddenModal 
+                key = {hiddenArt}
+                filename = {hiddenArt} jsonData = {portfolioJson[hiddenArt]} tagData = {portfolioTags}/>
 
             </div>
         </div>

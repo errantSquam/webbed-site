@@ -2,7 +2,7 @@ import { React, useState } from "react"
 import Select from "react-select"
 import "../stylesfunctions/typeStyle.css"
 import { TypeAnimation } from "react-type-animation"
-import { Icon } from "@mui/material"
+import { Icon } from "@iconify/react/dist/iconify.js"
 import { Link } from "react-router-dom"
 const BackToHome = () => {                
 

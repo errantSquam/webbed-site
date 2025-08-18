@@ -11,6 +11,7 @@ import { motion } from "motion/react"
 import { AnimatePresence } from "motion/react"
 import { TableOfContents } from "../components/tosComponents"
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { chickenLoading } from "../components/splashscreen"
 
 
 const ImageExample = ({ fileName, portfolioJson }) => {
@@ -197,9 +198,7 @@ export default function Commissions() {
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 300)
+        chickenLoading(300, setIsLoading)
     }, [])
 
 
