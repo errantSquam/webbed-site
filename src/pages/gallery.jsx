@@ -194,8 +194,8 @@ const HiddenModal = ({ filename, jsonData, tagData }) => {
         newUrl = newUrl.replace(`art=${paramName}`, "")
 
         history.pushState({}, "Gallery", newUrl)
-        searchParams.delete("art")
-        setSearchParams(searchParams)
+        //searchParams.delete("art")
+        //setSearchParams(searchParams)
 
     }
 
@@ -247,11 +247,12 @@ export default function Gallery() {
                             })
                         }
                     })
-
                     let tempSelectedFilters = ["include", "exclude"]
                         .reduce((accumulator, filterType) => {
-                            return (handleFilterParams(filterType, tempSearchParams, accumulator))
+                            return (handleFilterParams(filterType, tempSearchParams, accumulator, portfolioTagData))
                         }, selectedFilters)
+
+                    //console.log(tempSelectedFilters)
 
                     new Array("include", "exclude").forEach((filterType) => {
                         if (tempSelectedFilters[filterType] === null) {
@@ -266,7 +267,6 @@ export default function Gallery() {
                     let tempArtList = getFilteredArtByPriority(portfolioData, tempSelectedFilters)
 
                     let hiddenArt = tempSearchParams.get("art")
-                    console.log(hiddenArt)
                     if (hiddenArt !== null){
                         let tempPageArtList = getArtListByPage(tempArtList, paramPage)
                         if (tempPageArtList.includes(hiddenArt)){
@@ -316,8 +316,6 @@ export default function Gallery() {
             return tempValue
         }
 
-
-
         includeFilters = includeFilters.map((filter) => {
             return handleFilter(filter)
         })
@@ -349,15 +347,15 @@ export default function Gallery() {
 
         range.forEach((index) => {
             let option = options[index]
+            console.log(option)
+            console.log(tempSelectedFilters[oppKey])
             if (tempSelectedFilters[oppKey].includes(option)) {
+                console.log("yes!")
                 tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => i !== option)
             }
         })
 
         writeTagsToParams(tempSelectedFilters)
-
-
-
         let newArtList = getFilteredArtByPriority(portfolioJson, tempSelectedFilters)
 
         setSelectedFilters(tempSelectedFilters)

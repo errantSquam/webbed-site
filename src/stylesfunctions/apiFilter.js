@@ -6,7 +6,7 @@ export const convertTagToSelectLabel = (tagName, portfolioData) => {
     }
 }
 
-export const handleFilterParams = (filterType, tempSearchParams, selectedFilters) => {
+export const handleFilterParams = (filterType, tempSearchParams, selectedFilters, portfolioTagData) => {
     let paramFilter = tempSearchParams.get(filterType)
     let tempSelectedFilters = selectedFilters
     if (paramFilter !== null) {
@@ -15,9 +15,12 @@ export const handleFilterParams = (filterType, tempSearchParams, selectedFilters
         tempSelectedFilters[filterType] = paramFilter.map((filterName) => {
             try {
                 return convertTagToSelectLabel(filterName, portfolioTagData)
-            } catch {
+            } catch (error) {
+                console.log("dame da error")
+                console.log(error)
 
             }
+        console.log(tempSelectedFilters)
         }).filter((filterName) => {
             return filterName !== undefined
         })
