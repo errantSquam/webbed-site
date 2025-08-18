@@ -11,7 +11,10 @@ import { motion } from "motion/react"
 import { AnimatePresence } from "motion/react"
 
 const ExampleTab = () => {
-    return <div> examples</div>
+    return <div className = "w-full"> 
+        <Header>Examples </Header>
+        
+    </div>
 }
 
 const FeesTab = () => {
@@ -36,21 +39,29 @@ const tabDict = {
     }
 }
 
-const MotionTab = ({ tabDict, prevTab }) => {
+const MotionTab = ({ tabDict, direction }) => {
     let tab = tabDict.tab
 
-    const isLeft = () => { return prevTab.index > tabDict.index}
+    const variants = {
+        hidden: (direction) =>{
+            
+            return { x: !direction ? "-10%" : "10%",
+            opacity: "0%"
+        }},
+        hiddenExit: (direction) =>({ x: direction ? "-10%" : "10%",
+            opacity: "0%"
+        }),
+        visible: {opacity: "100%", x: "0%"}
+
+    }
+    
 
     return <motion.div className="w-full flex flex-col items-center"
-        initial={{ x: isLeft() ? "-25%" : "25%",
-                    opacity: "0%"
-        }}
-        animate={{ x: "0%",
-                    opacity:"100%"
-         }}
-        exit={{ x: isLeft() ? "25%" : "-25%",
-                opacity: "0%"
-         }}
+        initial = "hidden"
+        animate = "visible"
+        exit = "hiddenExit"
+        variants = {variants}
+        custom = {direction}
          transition = {{duration:0.1}}
     >{tab}
 
@@ -79,6 +90,8 @@ export default function Commissions() {
     const [currentTab, setCurrentTab] = useState("gen")
     const [prevTab, setPrevTab] = useState("gen")
     const [isLoading, setIsLoading] = useState(true)
+
+    let direction = tabDict[prevTab].index > tabDict[currentTab].index
 
     function handleTabSetting(tab) {
         if (tab === currentTab) {return}
@@ -115,10 +128,11 @@ export default function Commissions() {
                 handleTabSetting={handleTabSetting} />
             <hr className="w-3/4" />
 
-
-            <AnimatePresence mode = "wait">
-                {<MotionTab tabDict={tabDict[currentTab]} prevTab = {prevTab} key={tabDict[currentTab].fullName} />}
+            <div className = "w-3/4">
+            <AnimatePresence mode = "wait" custom = {direction}>
+                {<MotionTab tabDict={tabDict[currentTab]} direction = {direction} key={tabDict[currentTab].fullName} />}
             </AnimatePresence>
+            </div>
 
             <hr className="w-3/4" />
             <div className="italic py-2"

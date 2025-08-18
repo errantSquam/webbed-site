@@ -10,7 +10,7 @@ const MagicWord = () => {
     //If you're inspect elementing to find the magic word, uhhhhh congratulations. Go read the ToS.
 
     return <div className="flex flex-row flex-wrap">
-        {magicWordPreview.map((chara) => <span>{chara !== " " ? chara : <span>&nbsp;</span>}</span>)}
+        {magicWordPreview.map((chara, index) => <span key = {chara + index}>{chara !== " " ? chara : <span>&nbsp;</span>}</span>)}
         <div className={`flex flex-row transition duration-300 border 
             
             ${!isPressed ? "border-zinc-400 hover:border-green-500" : "border-green-500"}
@@ -181,18 +181,44 @@ const ToCListing = ({ children, id }) => {
     return <li onClick={() => { handleScroll(id) }} className="select-none cursor-pointer"><u>{children}</u></li>
 }
 
-const TableOfContents = () => {
-    //general rights guide payment credits
+const TableOfContents = ({tocDict, children}) => {
+
     return <div>
         <Header icon="teenyicons:bookmark-solid">TABLE OF CONTENTS</Header>
         <ul className="list-decimal text-center md:text-start md:ml-15 md:text-lg font-jura font-bold">
-            <ToCListing id="general">General Information</ToCListing>
-            <ToCListing id="rights">Image Rights and Usage</ToCListing>
-            <ToCListing id="guide">Commission Guidelines & Protocols</ToCListing>
-            <ToCListing id="payment">Payment</ToCListing>
-            <ToCListing id="credits">Credits & Licensing</ToCListing>
+            {Object.keys(tocDict).map((key, index) => {
+                let value = tocDict[key]
+                return <ToCListing id={value.id} key = {key + index}>{value.title}</ToCListing>
+            })}
         </ul>
-        <br />
+        {children}
+    </div>
+}
+
+const GeneralTableOfContents = () => {
+    let generalToCDict = {
+        "gen": {
+            id: "general",
+            title: "General Information"
+        },
+        "rights" :{
+            id: "rights",
+            title:"Image Rights and Usage"
+        },
+        "guide" :{
+            id: "guide",
+            title:"Commission Guidelines & Protocols"
+        },
+        "pay" :{
+            id: "payment",
+            title:"Payment"
+        },
+        "cred" :{
+            id: "credits",
+            title:"Credits & Licensing"
+        }
+    }
+    return <TableOfContents tocDict = {generalToCDict}><br />
         <div className = "flex flex-col space-y-2">
         <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
             <div className={`flex flex-row items-center gap-x-2 text-green-500 
@@ -212,14 +238,13 @@ const TableOfContents = () => {
                 <span>View more examples in the Gallery.</span>
             </div>
         </Link>
-        </div>
-    </div>
+        </div></TableOfContents>
 }
 
 export const GeneralTab = () => {
-
-    return <div className="w-3/4 space-y-4">
-        <TableOfContents />
+    
+    return <div className="w-full space-y-4">
+        <GeneralTableOfContents/>
         <hr />
         <GeneralInfo />
         <hr />
