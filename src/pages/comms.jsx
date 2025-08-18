@@ -134,7 +134,7 @@ export default function Commissions() {
         <SplashScreen isLoading={isLoading} />
         <Invisidiv />
         <Invisidiv2 />
-        <div className="min-h-screen w-screen bg-zinc-800 text-zinc-300 items-center justify-start flex flex-col py-5 px-5 md:px-10">
+        <div className="min-h-screen max-w-screen bg-zinc-800 text-zinc-300 items-center justify-start flex flex-col py-5 px-5 md:px-10">
             <div className="text-xl font-pirulen text-white text-center" id="top"><Invisidiv />Commissions Terms of Service</div>
 
 

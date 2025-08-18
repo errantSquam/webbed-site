@@ -133,7 +133,7 @@ const BustTab = ({ portfolioJson }) => {
 }
 
 const HalfbodyTab = ({ portfolioJson }) => {
-    return <CommExample title="Halfbody - $120+" portfolioJson={portfolioJson}>
+    return <CommExample id = "halfbody" title="Halfbody - $120+" portfolioJson={portfolioJson}>
         Standard halfbody. Most detailed textures come free (unless stated in Additional Fees), though please specify the level of realism if necessary.
         <br />(e.g. the cat anthros have different levels of fur detail)<br />
 
