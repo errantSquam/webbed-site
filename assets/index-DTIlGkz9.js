@@ -215,9 +215,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                                         gap-2 rounded-md \r
                             bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white \r
                             shadow-inner shadow-white/10 cursor-pointer select-none`,onClick:t,children:"Close"});return v.jsx(Wx,{open:e,as:"div",className:"relative z-10 focus:outline-none",onClose:t,children:v.jsx("div",{className:"fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70",children:v.jsx("div",{className:"px-10 flex min-h-full items-center justify-center",children:v.jsx(Tp,{transition:!0,className:`duration-50 ease-in \r
-                data-closed:transform-[scale(95%)] data-closed:opacity-0`,children:v.jsx("div",{className:"h-full w-full flex items-center justify-center",children:v.jsxs("div",{className:"flex flex-col md:flex-row justify-center",children:[v.jsx("div",{className:"flex items-center justify-center md:hidden",children:v.jsx("img",{src:"assets/pics/"+l(),className:"max-h-screen py-4"})}),v.jsxs("div",{className:`flex flex-col justify-between \r
+                data-closed:transform-[scale(95%)] data-closed:opacity-0`,children:v.jsx("div",{className:"h-full w-full flex items-center justify-center",children:v.jsxs("div",{className:"flex flex-col md:flex-row justify-center",children:[v.jsx("div",{className:"flex items-center justify-center md:hidden",children:v.jsx("img",{src:"assets/pics/"+l(),className:"max-h-screen py-4 object-scale-down"})}),v.jsxs("div",{className:`flex flex-col justify-between \r
                         md:py-10 \r
-                        pr-2 md:max-w-1/3`,children:[v.jsxs("div",{className:"flex flex-col space-y-2 items-center md:items-start",children:[v.jsx("div",{className:"mt-2 text-sm/6 text-white/50",children:v.jsx("div",{className:`flex flex-row \r
+                        pr-2 md:max-w-1/3`,onClick:t,children:[v.jsxs("div",{className:"flex flex-col space-y-2 items-center md:items-start",onClick:g=>g.stopPropagation(),children:[v.jsx("div",{className:"mt-2 text-sm/6 text-white/50",children:v.jsx("div",{className:`flex flex-row \r
                                     items-center justify-center \r
                                     md:justify-start\r
                                     flex-wrap space-x-2 gap-y-2\r
