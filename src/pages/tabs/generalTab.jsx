@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 import { LightHr, Header } from "../../components/tosComponents"
 import { Invisidiv, Invisidiv2 } from "../../stylesfunctions/meeboviescript"
 import { Link } from "react-router-dom"
+import { TableOfContents } from "../../components/tosComponents"
 const MagicWord = () => {
     const [isPressed, setIsPressed] = useState(false)
     let magicWordPreview = "Click on the magic word to prove you've read the ToS -> ".split('')
@@ -175,25 +176,6 @@ const Licensing = () => {
     </div>
 }
 
-const ToCListing = ({ children, id }) => {
-    const handleScroll = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-
-    return <li onClick={() => { handleScroll(id) }} className="select-none cursor-pointer"><u>{children}</u></li>
-}
-
-const TableOfContents = ({tocDict, children}) => {
-
-    return <div>
-        <Header icon="teenyicons:bookmark-solid">TABLE OF CONTENTS</Header>
-        <ul className="list-decimal text-center md:text-start md:ml-15 md:text-lg font-jura font-bold">
-            {Object.keys(tocDict).map((key, index) => {
-                let value = tocDict[key]
-                return <ToCListing id={value.id} key = {key + index}>{value.title}</ToCListing>
-            })}
-        </ul>
-        {children}
-    </div>
-}
 
 const GeneralTableOfContents = () => {
     let generalToCDict = {
