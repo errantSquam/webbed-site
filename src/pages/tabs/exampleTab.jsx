@@ -424,7 +424,7 @@ export const ExampleTab = ({ portfolioJson }) => {
             <p>Price quoted is base price, though some of these examples are more detailed and may cost more. </p>
             <p>Please see 'Additional Fees' for more information!</p>
             <br />
-            <p>You can also click on the images to see them in gallery view.</p>
+            <p>You can also <b className = "text-green-500">click on the images</b> to see a larger preview!</p>
 
         </TableOfContents>
         <hr />

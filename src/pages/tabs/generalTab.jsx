@@ -7,10 +7,10 @@ import { Link } from "react-router-dom"
 import { TableOfContents } from "../../components/tosComponents"
 const MagicWord = () => {
     const [isPressed, setIsPressed] = useState(false)
-    let magicWordPreview = "Click on the magic word to prove you've read the ToS -> ".split('')
+    let magicWordPreview = "Click on the magic word to prove you've read the ToS (it copies to clipboard) -> ".split('')
     //If you're inspect elementing to find the magic word, uhhhhh congratulations. Go read the ToS.
 
-    return <div className="flex flex-row flex-wrap">
+    return <div><div className="flex flex-row flex-wrap">
         {magicWordPreview.map((chara, index) => <span key = {chara + index}>{chara !== " " ? chara : <span>&nbsp;</span>}</span>)}
         <div className={`flex flex-row transition duration-300 border 
             
@@ -18,11 +18,18 @@ const MagicWord = () => {
             ${isPressed ? "bg-zinc-700/0" : "bg-zinc-800"}
             ${isPressed ? "text-zinc-300" : "text-zinc-800"} 
             px-2 
-            ${!isPressed && "cursor-pointer"}`}
-            onClick={() => setIsPressed(true)}>
+            ${"cursor-pointer"}`}
+            onClick={() => 
+            {setIsPressed(true)
+                navigator.clipboard.writeText("snemj")
+            }}>
             snemj
         </div>
-
+        
+    </div>
+    {isPressed &&   
+        <div className = "mt-2">You may submit your request <u><a href="https://forms.gle/hepVgfnUVBVBAtNm7">here</a></u> after copying it!</div>
+        }
     </div>
 }
 
@@ -236,8 +243,9 @@ export const GeneralTab = () => {
         <hr />
         <Payment />
         <MagicWord />
-        <div>You may submit your request <u><a href="https://forms.gle/hepVgfnUVBVBAtNm7">here</a></u> after copying it!</div>
         <hr />
+        <img src = "assets/gangnamsnake.webp"/>
+        <hr/>
         <Licensing />
 
     </div>

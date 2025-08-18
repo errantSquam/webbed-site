@@ -163,7 +163,8 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
 
             <img src={"assets/pics/" + filePath()}
                 style={{ height: !isLoaded ? '0' : undefined }}
-                className={"object-cover h-64 rounded-lg transition hover:scale-105 hover:border-2 hover:border-green-400 hover:cursor-pointer"}
+                className={`object-cover h-64 rounded-lg transition border-2 border-green-400/0 hover:scale-105 
+                        hover:border-green-400 hover:cursor-pointer`}
                 onClick={() => handleOpen()}
                 onLoad={() => setIsLoaded(true)}
             />

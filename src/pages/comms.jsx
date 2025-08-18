@@ -12,6 +12,7 @@ import { AnimatePresence } from "motion/react"
 import { TableOfContents } from "../components/tosComponents"
 import { chickenLoading } from "../components/splashscreen"
 import ExampleTab from "./tabs/exampleTab"
+import { useSearchParams } from "react-router-dom"
 
 
 const FeesTab = () => {
@@ -69,13 +70,14 @@ const MotionTab = ({ tabDict, direction }) => {
     </motion.div>
 }
 
-const TabDisplay = ({ tabDict, handleTabSetting }) => {
+const TabDisplay = ({ tabDict, handleTabSetting, currentTab }) => {
     let tabList = Object.keys(tabDict).map((id) => {
         let fullName = tabDict[id].fullName
         return <div
             onClick={() => handleTabSetting(id)}
             key={id}
-            className="cursor-pointer select-none"
+            className={`cursor-pointer select-none px-2 transition duration-200 rounded
+                ${currentTab === id ? "bg-zinc-600" : "bg-zinc-600/0"}`}
         >
             {fullName}
         </div>
@@ -83,35 +85,81 @@ const TabDisplay = ({ tabDict, handleTabSetting }) => {
         return [prev, <span>|</span>, curr]
     })
 
-    return <div className="flex flex-row gap-x-2"> {tabList} </div>
+    return <div className="flex flex-row font-jura font-bold"> 
+    {tabList}
+    </div>
 
 }
 
+const IntroTab = () => {
+    return <div className = "flex flex-col w-full">
+        <Header>INTRO</Header>
+    Hello, and welcome to my commissions page! <br/>
+    Here's what you need to get started:
+    <ol className = "list-decimal ml-10 space-y-1">   
+        <li>Check the Examples section to see what you'd like.</li>
+        <li>Read the General Information section.
+            <div className = "list-none ml-3">❗ <b>Important!</b> Once you reach the end, you'll find a <i>magic word</i> to submit your request.</div>
+            <div className = "ml-3">(This is proof you agree to the terms, so please don't skip to the end.)</div></li>
+        <li>Submit your request!</li>
+    </ol>
+    <br/>
+    Here are some quick links for you:
+    <div className = "flex flex-col space-y-2 my-4">
+    <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
+                <div className={`flex flex-row items-center gap-x-2 text-green-500 
+                text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500
+                transition duration-100
+                hover:bg-zinc-700`}>
+                    <Icon icon="mdi:arrow-right-bold" className="text-lg" />
+                    <span>Submit your request in the form!</span>
+                </div>
+            </a>
+            <Link to="/gallery">
+                <div className={`flex flex-row items-center gap-x-2 text-green-500 
+                text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500
+                transition duration-100
+                hover:bg-zinc-700`}>
+                    <Icon icon="mdi:arrow-right-bold" className="text-lg" />
+                    <span>View more examples in the Gallery.</span>
+                </div>
+            </Link>
+    </div>
+    </div>
+}
 export default function Commissions() {
-    const [currentTab, setCurrentTab] = useState("gen")
-    const [prevTab, setPrevTab] = useState("gen")
+    const [currentTab, setCurrentTab] = useState("intro")
+    const [prevTab, setPrevTab] = useState("intro")
     const [isLoading, setIsLoading] = useState(true)
     const [portfolioJson, setPortfolioJson] = useState({})
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const tabDict = {
-        "gen": {
-            fullName: "General Info",
-            tab: <GeneralTab />,
-            index: 0
+        "intro": {
+            fullName: "Introduction",
+            tab: <IntroTab/>,
+            index:0
         },
         "eg": {
             fullName: "Examples",
             tab: <ExampleTab portfolioJson={portfolioJson} />,
             index: 1
         },
+        "gen": {
+            fullName: "General Info",
+            tab: <GeneralTab />,
+            index: 2
+        },
         "fees": {
             fullName: "Additional Fees",
             tab: <FeesTab />,
-            index: 2
+            index: 3
         }
     }
 
     useEffect(() => {
+        setCurrentTab(searchParams.get("tab"))
+        setPrevTab(searchParams.get("tab"))
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             setPortfolioJson(portfolioData)
         })
@@ -123,6 +171,10 @@ export default function Commissions() {
         if (tab === currentTab) { return }
         setPrevTab(currentTab)
         setCurrentTab(tab)
+        searchParams.set("tab", tab) 
+        let urlString = window.location.hash.split("?")[0] + "?tab=" + tab
+        history.pushState({}, "Commissions", urlString)
+
     }
 
     useEffect(() => {
@@ -149,7 +201,8 @@ export default function Commissions() {
             <Invisidiv2 />
             <TabDisplay
                 tabDict={tabDict}
-                handleTabSetting={handleTabSetting} />
+                handleTabSetting={handleTabSetting} 
+                currentTab = {currentTab}/>
             <hr className="w-3/4" />
 
             <div className="w-3/4">
