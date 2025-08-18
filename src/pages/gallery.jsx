@@ -124,6 +124,8 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
         newUrl = newUrl.replace(`art=${paramName}`, "")
 
         history.pushState({}, "Gallery", newUrl)
+        searchParams.delete("art")
+        setSearchParams(searchParams)
 
     }
 
@@ -172,7 +174,7 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
     </>
 }
 
-const HiddenModal = ({ filename, jsonData, tagData }) => {
+const HiddenModal = ({ filename, jsonData, tagData, handleParams }) => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [isOpen, setIsOpen] = useState(false)
@@ -190,19 +192,14 @@ const HiddenModal = ({ filename, jsonData, tagData }) => {
             paramName = filename.split(" ").join("+")
         }
         setIsOpen(false)
-        let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
-        newUrl = newUrl.replace(`art=${paramName}`, "")
-
-        history.pushState({}, "Gallery", newUrl)
-        //searchParams.delete("art")
-        //setSearchParams(searchParams)
+        searchParams.delete("art")
+        setSearchParams(searchParams)
 
     }
 
     return filename !== null && <GalleryModal isOpen = {isOpen} 
     filename = {filename}
     handleClose = {handleClose} jsonData = {jsonData} tagData = {tagData}/>
-
 
 }
 export default function Gallery() {
@@ -329,12 +326,20 @@ export default function Gallery() {
 
         let urlString = window.location.hash
         urlString = handleUrlQuery(urlString, "include", includeFilters)
+        
 
         urlString = handleUrlQuery(urlString, "exclude", excludeFilters)
 
 
 
         history.pushState({}, "Gallery", urlString)
+
+        if (includeFilters !== ""){
+            searchParams.set("include", includeFilters)
+        }
+        if (excludeFilters !== "") {
+            searchParams.set("exclude", excludeFilters)
+        }
 
 
     }
@@ -347,10 +352,8 @@ export default function Gallery() {
 
         range.forEach((index) => {
             let option = options[index]
-            console.log(option)
-            console.log(tempSelectedFilters[oppKey])
             if (tempSelectedFilters[oppKey].includes(option)) {
-                console.log("yes!")
+
                 tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => i !== option)
             }
         })
