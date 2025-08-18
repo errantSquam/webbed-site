@@ -15,84 +15,42 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 import { useSearchParams } from "react-router-dom"
 import { PaginationNav } from "../components/paginationComponents"
 
-const BackToHome = () => {                
+import { CommissionsButton, ErrorMessage } from "../components/galleryComponents"
+import handleUrlQuery from "../stylesfunctions/handleUrlQuery"
 
-    return <Link to="/"><div className="text-green-400 flex flex-row items-center space-x-2">
-    <Icon icon="lets-icons:back" />
-    <span>back to <u>home</u>
-        <TypeAnimation
-            sequence={[
-                "?",
-                10000,
-                " :)",
-                5000,
-                "?",
-                10000,
-                ". watch snek dance.",
-                2000,
-                "?",
-                10000,
-                ", or maybe not. stay and enjoy the art.",
-                10000,
-                "?",
-                10000
-            ]}
-            speed={70}
-            cursor={false}
-            className="type"
-            repeat={Infinity}
-        /></span>
+const cleanImportedFilters = ({searchParams, setSearchParams, tempSearchParams, selectedFilters, setSelectedFilters}) => {
+    let paramIncludes = tempSearchParams.get("include")
+    let paramExcludes = tempSearchParams.get("exclude")
 
-</div></Link>}
+    let tempSelectedFilters = selectedFilters
 
-const CommissionsButton =() => {
-    return <Link to = "/commissions"><div className = {`text-green-500 flex flex-row space-x-1 items-center justify-center font-jura font-bold
-        bg-zinc-900 px-2 py-1 rounded-md cursor-pointer select-none transition hover:scale-105`}>
-            <Icon icon = "mdi:art"/>
-            <div>Commissions</div>
-        </div></Link>
-}
+    if (paramIncludes !== null) {
+        paramIncludes = paramIncludes.split(",")
 
-const ErrorMessage = () => {
-    const [gangnamSnake, setGangnamSnake] = useState(false)
-    return <div className="flex flex-col items-center justify-center h-full text-green-500/70">
-        <TypeAnimation
-            sequence={[
-                "          ",
-                2000,
-                "hmmmmm yes, there's nothing here.",
-                500,
-                "hmmmmm yes, there's nothing here. unless...?",
-                () => setGangnamSnake(true)
-            ]}
-            speed={70}
-            cursor={false}
-            className="type"
-            repeat={0}
-        />
-        <img src="assets/gangnamsnake.webp" className={`transition duration-500 
-        ${gangnamSnake ? "opacity-30" : "opacity-0"}`}
-            style={{
-                filter: "sepia(100%) saturate(300%) hue-rotate(65deg)" //kiwami
+        tempSelectedFilters.include = paramIncludes.map((filterName) => {
+            try {
+                return convertTagToSelectLabel(filterName, portfolioTagData)
+            } catch {
 
-            }} />
+            }
+        }).filter((filterName) => {
+            return filterName !== undefined
+        })
 
-    </div>
-}
-function handleUrlQuery(urlString, paramName, data) {
-    let paramString = `${paramName}=`
-    if (data === "") {
-        urlString = urlString.replace(new RegExp(`&${paramName}=([^&]*)`), ``)
-        urlString = urlString.replace(new RegExp(`${paramName}=([^&]*)`), ``)
-
-    } else if (urlString.includes(paramString)) {
-        urlString = urlString.replace(new RegExp(`&${paramName}=([^&]*)`), `&${paramName}=${data}`)
-        urlString = urlString.replace(new RegExp(`${paramName}=([^&]*)`), `${paramName}=${data}`)
-
-    } else {
-        urlString += "&" + paramString + data
+        if (tempSelectedFilters.include.length === 0) {
+            searchParams.delete('include')
+            setSearchParams(searchParams)
+        }
     }
-    return urlString
+    if (paramExcludes !== null) {
+        paramExcludes = paramExcludes.split(",")
+
+        tempSelectedFilters.exclude = paramExcludes.map((filterName) => {
+            return convertTagToSelectLabel(filterName, portfolioTagData)
+        })
+
+    }
+    setSelectedFilters(tempSelectedFilters)
 }
 
 export default function Gallery() {
@@ -149,44 +107,7 @@ export default function Gallery() {
                     })
                     setGroupedTaglist(tempGroupTagList)
 
-
-                    //handle the freakin search params. may refactor this out later...?
-                    let paramIncludes = tempSearchParams.get("include")
-                    let paramExcludes = tempSearchParams.get("exclude")
-
-                    let tempSelectedFilters = selectedFilters
-
-                    if (paramIncludes !== null) {
-                        paramIncludes = paramIncludes.split(",")
-
-                        tempSelectedFilters.include = paramIncludes.map((filterName) => {
-                            try {
-                                return convertTagToSelectLabel(filterName, portfolioTagData)
-                            } catch {
-
-                            }
-                        }).filter((filterName) => {
-                            return filterName !== undefined
-                        })
-
-                        if (tempSelectedFilters.include.length === 0) {
-                            searchParams.delete('include')
-                            setSearchParams(searchParams)
-                        }
-                    }
-                    if (paramExcludes !== null) {
-                        paramExcludes = paramExcludes.split(",")
-
-                        tempSelectedFilters.exclude = paramExcludes.map((filterName) => {
-                            return convertTagToSelectLabel(filterName, portfolioTagData)
-                        })
-
-                    }
-
-
-
-                    //then push it into selected filters! todo.
-                    setSelectedFilters(tempSelectedFilters)
+                    cleanImportedFilters(searchParams, setSearchParams, tempSearchParams, selectedFilters, setSelectedFilters)
 
                     let tempArtList = getFilteredArtByPriority(portfolioData, tempSelectedFilters)
                     setArtList(tempArtList)
@@ -228,7 +149,7 @@ export default function Gallery() {
 
         function handleOpen() {
             setIsOpen(true)
-            let urlString = window.location.hash 
+            let urlString = window.location.hash
             urlString = handleUrlQuery(urlString, "art", paramName)
             history.pushState({}, "Gallery", urlString)
         }
@@ -237,7 +158,7 @@ export default function Gallery() {
             setIsOpen(false)
             let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
             newUrl = newUrl.replace(`art=${paramName}`, "")
-            
+
             history.pushState({}, "Gallery", newUrl)
 
         }
@@ -318,7 +239,7 @@ export default function Gallery() {
                                                 md:justify-start
                                                 flex-wrap space-x-2 gap-y-2
                                                 ">
-                                                    {fullTags.map((tag, index) => 
+                                                    {fullTags.map((tag, index) =>
                                                         (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={index} />))}
                                                 </div>
                                             </div>
@@ -550,7 +471,7 @@ export default function Gallery() {
 
                     </div>
                 </div>
-                <CommissionsButton/>
+                <CommissionsButton />
 
                 <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2">
                     <GalleryFilter
@@ -568,8 +489,8 @@ export default function Gallery() {
                         value={selectedFilters.exclude}
                     />
                 </div>
-                
-                
+
+
 
 
                 <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
