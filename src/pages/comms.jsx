@@ -85,7 +85,7 @@ const TabDisplay = ({ tabDict, handleTabSetting, currentTab }) => {
         return [prev, <span>|</span>, curr]
     })
 
-    return <div className="flex flex-row font-jura font-bold"> 
+    return <div className="flex flex-row flex-wrap items-center justify-center font-jura font-bold"> 
     {tabList}
     </div>
 
@@ -158,8 +158,10 @@ export default function Commissions() {
     }
 
     useEffect(() => {
-        setCurrentTab(searchParams.get("tab"))
-        setPrevTab(searchParams.get("tab"))
+        if (searchParams.get("tab") !== null){
+            setCurrentTab(searchParams.get("tab"))
+            setPrevTab(searchParams.get("tab"))
+        }
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             setPortfolioJson(portfolioData)
         })

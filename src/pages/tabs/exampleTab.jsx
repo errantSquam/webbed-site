@@ -426,6 +426,16 @@ export const ExampleTab = ({ portfolioJson }) => {
             <br />
             <p>You can also <b className = "text-green-500">click on the images</b> to see a larger preview!</p>
 
+        
+                <Link to="/gallery">
+                    <div className={`flex flex-row items-center gap-x-2 text-green-500 mt-2
+                    text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500
+                    transition duration-100
+                    hover:bg-zinc-700`}>
+                        <Icon icon="mdi:arrow-right-bold" className="text-lg" />
+                        <span>View more examples in the Gallery.</span>
+                    </div>
+                </Link>
         </TableOfContents>
         <hr />
         <ChibiTab portfolioJson={portfolioJson} />
