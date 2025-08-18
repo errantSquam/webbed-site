@@ -5,12 +5,16 @@ import DancingSnek from './pages/dancingsnek';
 import Gallery from './pages/gallery';
 import Commissions from './pages/comms';
 
+function preloadImage(src){
+  const toPreload = new Image();
+  toPreload.src = src 
+  window[src] = toPreload
+}
 
 function App() {
 
-  const loadingChicken = new Image();
-  loadingChicken.src = "assets/shake him.gif";
-  window["assets/shake him.gif"] = loadingChicken;
+  preloadImage("assets/shake him.gif")
+  preloadImage("gangnamsnake.webp")
   
   return (
     <HashRouter>

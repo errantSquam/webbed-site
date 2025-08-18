@@ -64,12 +64,14 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                         <div className="flex flex-col md:flex-row justify-center">
                             <div className={"flex items-center justify-center md:hidden"}>
                                 <img src={"assets/pics/" + filePath()}
-                                    className={"max-h-screen py-4"} />
+                                    className={"max-h-screen py-4 object-scale-down"} />
                             </div>
                             <div className="flex flex-col justify-between 
                         md:py-10 
-                        pr-2 md:max-w-1/3">
-                                <div className="flex flex-col space-y-2 items-center md:items-start">
+                        pr-2 md:max-w-1/3"
+                        onClick = {handleClose}>
+                                <div className="flex flex-col space-y-2 items-center md:items-start"
+                                onClick = {(e) => (e.stopPropagation())}>
                                     <div className="mt-2 text-sm/6 text-white/50">
                                         <div className="flex flex-row 
                                     items-center justify-center 
@@ -80,12 +82,14 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                                                 (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={index} />))}
                                         </div>
                                     </div>
-                                    <p className="text-white text-sm"><b>Description: </b>
+                                    <p className="text-white text-sm"
+    
+                                    ><b>Description: </b>
                                         {descString !== "" ? artDesc : <i>None</i>}
                                     </p>
                                 </div>
                                 <div className="mt-4 w-full hidden md:inline">
-                                    <CloseButton/>
+                                    <CloseButton />
                                 </div>
                             </div>
                             <div className={" md:flex items-center justify-center hidden"}>
@@ -94,7 +98,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                             </div>
 
                             <div className="mt-4 w-full flex items-center justify-center md:hidden">
-                                <CloseButton/>
+                                <CloseButton />
                             </div>
                         </div>
                     </div>
@@ -179,11 +183,11 @@ const HiddenModal = ({ filename, jsonData, tagData, handleParams }) => {
 
     const [isOpen, setIsOpen] = useState(false)
     useEffect(() => {
-        setIsOpen(filename !==null)
+        setIsOpen(filename !== null)
 
     }, [])
 
-    
+
 
 
     function handleClose() {
@@ -197,9 +201,9 @@ const HiddenModal = ({ filename, jsonData, tagData, handleParams }) => {
 
     }
 
-    return filename !== null && <GalleryModal isOpen = {isOpen} 
-    filename = {filename}
-    handleClose = {handleClose} jsonData = {jsonData} tagData = {tagData}/>
+    return filename !== null && <GalleryModal isOpen={isOpen}
+        filename={filename}
+        handleClose={handleClose} jsonData={jsonData} tagData={tagData} />
 
 }
 export default function Gallery() {
@@ -216,7 +220,7 @@ export default function Gallery() {
     )
     const [artList, setArtList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const [hiddenArt, setHiddenArt] = useState(null) 
+    const [hiddenArt, setHiddenArt] = useState(null)
     //this is never getting closed for the sake of no rerenders, i guess
 
     const numArtPerPage = 20
@@ -264,9 +268,9 @@ export default function Gallery() {
                     let tempArtList = getFilteredArtByPriority(portfolioData, tempSelectedFilters)
 
                     let hiddenArt = tempSearchParams.get("art")
-                    if (hiddenArt !== null){
+                    if (hiddenArt !== null) {
                         let tempPageArtList = getArtListByPage(tempArtList, paramPage)
-                        if (tempPageArtList.includes(hiddenArt)){
+                        if (tempPageArtList.includes(hiddenArt)) {
                             hiddenArt = null
                         }
                     }
@@ -326,7 +330,7 @@ export default function Gallery() {
 
         let urlString = window.location.hash
         urlString = handleUrlQuery(urlString, "include", includeFilters)
-        
+
 
         urlString = handleUrlQuery(urlString, "exclude", excludeFilters)
 
@@ -334,7 +338,7 @@ export default function Gallery() {
 
         history.pushState({}, "Gallery", urlString)
 
-        if (includeFilters !== ""){
+        if (includeFilters !== "") {
             searchParams.set("include", includeFilters)
         }
         if (excludeFilters !== "") {
@@ -376,7 +380,7 @@ export default function Gallery() {
     }
     function getArtListPaginated() {
         let page = getCurrentPage()
-        return getArtListByPage(artList,page)
+        return getArtListByPage(artList, page)
     }
 
     function isArrowActive(direction) {
@@ -507,9 +511,9 @@ export default function Gallery() {
                         })
                     }
                 </div>
-                <HiddenModal 
-                key = {hiddenArt}
-                filename = {hiddenArt} jsonData = {portfolioJson[hiddenArt]} tagData = {portfolioTags}/>
+                <HiddenModal
+                    key={hiddenArt}
+                    filename={hiddenArt} jsonData={portfolioJson[hiddenArt]} tagData={portfolioTags} />
 
             </div>
         </div>
