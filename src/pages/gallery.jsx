@@ -22,6 +22,7 @@ import { convertTagToSelectLabel, handleFilterParams } from "../stylesfunctions/
 import { chickenLoading } from "../components/splashscreen"
 
 const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
+    const [isLoaded, setIsLoaded] = useState(false)
 
     let portfolioTags = tagData
 
@@ -52,9 +53,54 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
         </Button>
     }
 
-    return <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={handleClose}>
+    //console.log(isLoaded)
+
+    const ImageWithSkeleton = ({isMobile = true}) => {
+
+        let objStyle = !isMobile ? {height:"75vh"} : {width:"75vw"}
+
+        return <div className = "flex py-2">
+            <div className = "absolute z-10">
+            {<img src={"assets/pics/" + filePath()}
+            className={`object-scale-down rounded-lg
+                        ${isLoaded ? `` : "opacity-50 blur-sm"}
+                            `}
+            style={objStyle}
+            onLoad={() => setIsLoaded(true)}
+            fetchPriority="high"
+        />}
+        </div>
+            {<div className={!isLoaded && `bg-zinc-900`}>
+                <div className={!isLoaded && `animate-pulse flex flex-row items-center justify-center 
+                                            shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`}>
+                    {!isLoaded && <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
+                        <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
+                        {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
+                    </div>}
+                    
+                    <Skeleton
+                        variant="rectangular"
+                        className={"" + !isLoaded ? " rounded-lg " : ""}
+                        animation="wave"
+                        >
+                            <div
+                            style={{
+                                ...objStyle,
+                                aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1],
+                                
+                            }}>
+                                <img src="favicon.ico" style = {{aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1], ...objStyle}} />
+                            </div>
+                    </Skeleton>
+                </div>
+            </div>
+            }
+        </div>
+    }
+
+    return <Dialog open={isOpen} as="div" className="relative z-100 focus:outline-none w-full" onClose={handleClose}>
         <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
-            <div className="px-10 flex min-h-full items-center justify-center">
+            <div className="px-10 flex max-w-screen min-h-full items-center justify-center">
                 <DialogPanel
                     transition
                     className="duration-50 ease-in 
@@ -63,15 +109,14 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                     <div className="h-full w-full flex items-center justify-center">
                         <div className="flex flex-col md:flex-row justify-center">
                             <div className={"flex items-center justify-center md:hidden"}>
-                                <img src={"assets/pics/" + filePath()}
-                                    className={"max-h-screen py-4 object-scale-down"} />
+                                <ImageWithSkeleton isMobile = {true}/>
                             </div>
                             <div className="flex flex-col justify-between 
                         md:py-10 
                         pr-2 md:max-w-1/3"
-                        onClick = {handleClose}>
+                                onClick={handleClose}>
                                 <div className="flex flex-col space-y-2 items-center md:items-start"
-                                onClick = {(e) => (e.stopPropagation())}>
+                                    onClick={(e) => (e.stopPropagation())}>
                                     <div className="mt-2 text-sm/6 text-white/50">
                                         <div className="flex flex-row 
                                     items-center justify-center 
@@ -83,7 +128,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                                         </div>
                                     </div>
                                     <p className="text-white text-sm"
-    
+
                                     ><b>Description: </b>
                                         {descString !== "" ? artDesc : <i>None</i>}
                                     </p>
@@ -93,8 +138,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                                 </div>
                             </div>
                             <div className={" md:flex items-center justify-center hidden"}>
-                                <img src={"assets/pics/" + filePath()}
-                                    className={"max-h-screen py-4"} />
+                                <div className="max-h-screen py-4"><ImageWithSkeleton isMobile = {false}/></div>
                             </div>
 
                             <div className="mt-4 w-full flex items-center justify-center md:hidden">
@@ -138,7 +182,9 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
 
     }
 
-    function thumbFilePath() { 
+    function thumbFilePath() {
+        return filePath()
+
         if (jsonData.hasThumb) {
             return `/thumb/${filename}_thumb.${jsonData.extension}`
 
@@ -147,37 +193,46 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
         }
     }
 
-    return <>
-        <div className=" p-1 ">
-            {
-                <div className="bg-zinc-900 absolute h-64">
-                    <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
-                        <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
-                            <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
-                            {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
-                        </div>
+    let objSize = `object-cover w-64 md:w-auto md:h-64`
 
-                        <Skeleton
-                            variant="rectangular"
-                            className="bg-zinc-900 rounded-lg "
-                            animation="wave">
-                            <div className="h-64 object-cover flex flex-col items-center"
-                                style={{
-                                    aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
-                                }} />
-                        </Skeleton>
-                    </div>
+    return <>
+        <div className={`p-1 `}>
+            <div className = {`${isLoaded ? `transition border-2 border-green-400/0 hover:scale-105 
+                            hover:border-green-400 hover:cursor-pointer` : "opacity-50"} 
+                            absolute z-10 rounded-lg overflow-hidden`}>
+            {<img src={"assets/pics/" + thumbFilePath()}
+                style={{}}
+                className={`${objSize} 
+                        ${!isLoaded &&"blur-sm"}
+                            `}
+                onClick={() => {isLoaded && handleOpen()}}
+                onLoad={() => setIsLoaded(true)}
+                fetchPriority="low"
+            />}
+            </div>
+            {<div className={!isLoaded && `bg-zinc-900`}>
+                <div className={!isLoaded && `animate-pulse flex flex-row items-center justify-center 
+                        shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`}>
+                    {!isLoaded && <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
+                        <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
+                        {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
+                    </div>}
+
+                    <Skeleton
+                        variant="rectangular"
+                        className={!isLoaded ? "bg-zinc-900 rounded-lg " : "bg-zinc-900/0"}
+                        animation="wave">
+                        <div className = {objSize}
+                            style={{
+                                aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
+                            }}><img src = "favicon.ico" style={{
+                                aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
+                            }} className ={`${objSize}`}/></div>
+                    </Skeleton>
                 </div>
+            </div>
             }
 
-            <img src={"assets/pics/" + thumbFilePath()}
-                style={{  }}
-                className={`object-cover h-64 rounded-lg transition border-2 border-green-400/0 hover:scale-105 
-                        hover:border-green-400 hover:cursor-pointer z-12`}
-                onClick={() => handleOpen()}
-                onLoad={() => setIsLoaded(true)}
-                fetchPriority="high"
-            />
 
         </div>
         <GalleryModal isOpen={isOpen} handleClose={handleClose}
@@ -234,7 +289,7 @@ export default function Gallery() {
     const [hiddenArt, setHiddenArt] = useState(null)
     //this is never getting closed for the sake of no rerenders, i guess
 
-    const numArtPerPage = 20
+    const numArtPerPage = 10
 
 
     useEffect(() => {
@@ -485,9 +540,9 @@ export default function Gallery() {
 
                     </div>
                 </div>
-                <div className = "hidden md:inline"><CommissionsButton /></div>
+                <div className="hidden md:inline"><CommissionsButton /></div>
 
-                <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2">
+                <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2 z-50">
                     <GalleryFilter
                         title="#INCLUDES"
                         onChange={(options) => { handleSelect(options, "include", "exclude") }}
@@ -504,12 +559,13 @@ export default function Gallery() {
                     />
                 </div>
 
-                <div className = "inline md:hidden mt-2"><CommissionsButton /></div>
+                <div className="inline md:hidden mt-2"><CommissionsButton /></div>
 
 
 
 
-                <div className="flex flex-row justify-evenly flex-wrap w-4/5 px-5 py-2 gap-y-2"
+                <div className="flex flex-col md:flex-row justify-evenly items-center 
+                md:flex-wrap w-4/5 md:px-5 py-2 gap-y-2"
                     key={selectedFilters}>
                     {getArtListPaginated().length === 0 &&
                         <ErrorMessage />}

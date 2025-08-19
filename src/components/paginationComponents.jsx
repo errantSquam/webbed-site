@@ -44,7 +44,8 @@ export const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pag
         setCurrentPage(pageDisplayCurrent)
     }, [pageDisplayCurrent])
 
-    const updatePage = () => {
+    const updatePage = (event) => {
+        event.preventDefault();
         let newVal = currentPage
 
         if (isNaN(newVal) || newVal === "") {
@@ -70,7 +71,7 @@ export const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pag
     return <div className={`fixed bottom-0 w-full flex flex-row justify-between md:justify-around 
         items-center transition duration-300 ${pageAtBottom ? "opacity-100" : "opacity-50"} hover:opacity-100
         bg-black/90
-        py-3 md:py-0 px-3 sm:px-5 md:px-10 z-9`}>
+        py-3 md:py-0 px-3 sm:px-5 md:px-10 z-50`}>
         <PaginationArrow
             iconName="fa7-regular:circle-left"
             isActive={isArrowActive("previous")}
@@ -78,7 +79,7 @@ export const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pag
             textType="previous" />
         <div className="text-white/70 font-pirulen md:text-2xl md:absolute flex flex-row gap-x-1">
             <span className="hidden md:inline">PAGE </span>
-            <form onSubmit={() => { updatePage() }}
+            <form onSubmit={(e) => { updatePage(e) }}
                 className="inline">
                 <input
                     type="text"
@@ -90,7 +91,7 @@ export const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pag
                     }}
                     onBlur={() => { updatePage() }}
 
-                    className={`${inputWidth} items-center text-center`}
+                    className={`${inputWidth} items-center text-center underline`}
                 />
             </form>
             <div>/</div>
