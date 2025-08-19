@@ -14,8 +14,8 @@ function preloadImage(src){
 function App() {
 
   preloadImage("assets/shake him.gif")
-  preloadImage("assets/favicon.ico")
-  preloadImage("assets/gangnamsnake.webp")
+  preloadImage("favicon.ico")
+  //preloadImage("assets/gangnamsnake.webp")
   
   return (
     <HashRouter>

@@ -67,7 +67,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                             `}
             style={objStyle}
             onLoad={() => setIsLoaded(true)}
-            fetchPriority="high"
+            fetchpriority="high"
         />}
         </div>
             {<div className={!isLoaded && `bg-zinc-900`}>
@@ -207,12 +207,12 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
                             `}
                 onClick={() => {isLoaded && handleOpen()}}
                 onLoad={() => setIsLoaded(true)}
-                fetchPriority="low"
+                fetchpriority="high"
             />}
             </div>
-            {<div className={!isLoaded && `bg-zinc-900`}>
-                <div className={!isLoaded && `animate-pulse flex flex-row items-center justify-center 
-                        shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`}>
+            {<div className={!isLoaded ? `bg-zinc-900` : ""}>
+                <div className={!isLoaded ? `animate-pulse flex flex-row items-center justify-center 
+                        shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`: ""}>
                     {!isLoaded && <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
                         <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
                         {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
