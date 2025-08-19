@@ -185,12 +185,12 @@ const MotionTab = ({ tabDict, direction }) => {
         hidden: (direction) => {
 
             return {
-                x: !direction ? "-25%" : "25%",
+                x: direction ? "-25%" : "25%",
                 opacity: "0%"
             }
         },
         hiddenExit: (direction) => ({
-            x: direction ? "-25%" : "25%",
+            x: !direction ? "-25%" : "25%",
             opacity: "0%"
         }),
         visible: { opacity: "100%", x: "0%" }
@@ -231,14 +231,14 @@ const TabDisplay = ({ tabDict, handleTabSetting, currentTab }) => {
 
 }
 
-const IntroTab = () => {
+const IntroTab = ({setCurrentTab}) => {
     return <div className="flex flex-col w-full">
         <Header>INTRO</Header>
         <div>Hello, and welcome to my commissions page! <br />
             Here's what you need to get started <i className="text-green-500">(see the tabs above)</i>:</div>
         <ol className="list-decimal ml-10 space-y-1">
-            <li>Check the Examples section to see what you'd like.</li>
-            <li>Read the General Information section.
+            <li>Check the <u className = "cursor-pointer" onClick = {() => setCurrentTab("eg")}>Examples</u> section to see what you'd like.</li>
+            <li>Read the <u className = "cursor-pointer" onClick = {() => setCurrentTab("gen")}>General Information</u> section.
                 <div className="list-none ml-3">❗ <b>Important!</b> Once you reach the end, you'll find a <i>magic word</i> to submit your request.</div>
                 <div className="ml-3">(This is proof you agree to the terms, so please don't skip to the end.)</div></li>
             <li>Submit your request!</li>
@@ -277,12 +277,12 @@ export default function Commissions() {
     const tabDict = {
         "intro": {
             fullName: "Introduction",
-            tab: <IntroTab />,
+            tab: <IntroTab setCurrentTab = {setCurrentTab}/>,
             index: 0
         },
         "eg": {
             fullName: "Examples",
-            tab: <ExampleTab portfolioJson={portfolioJson} />,
+            tab: <ExampleTab portfolioJson={portfolioJson} setCurrentTab = {setCurrentTab}/>,
             index: 1
         },
         "gen": {

@@ -386,7 +386,7 @@ const SpritesTab = ({ portfolioJson }) => {
         </Link></div><br />
     </CommExample>
 }
-export const ExampleTab = ({ portfolioJson }) => {
+export const ExampleTab = ({ portfolioJson, setCurrentTab }) => {
     return <div className="w-full space-y-4">
         <Header>Examples </Header>
         <TableOfContents tocDict={{
@@ -422,7 +422,7 @@ export const ExampleTab = ({ portfolioJson }) => {
         }}><br />
             <p>The following shows various examples of art offered.</p>
             <p>Price quoted is base price, though some of these examples are more detailed and may cost more. </p>
-            <p>Please see 'Additional Fees' for more information!</p>
+            <p>Please see <u className = "cursor-pointer" onClick = {() => setCurrentTab("fees")}>'Additional Fees'</u> for more information!</p>
             <br />
             <p>You can also <b className = "text-green-500">click on the images</b> to see a larger preview!</p>
 

@@ -138,10 +138,19 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
 
     }
 
+    function thumbFilePath() { 
+        if (jsonData.hasThumb) {
+            return `/thumb/${filename}_thumb.${jsonData.extension}`
+
+        } else {
+            return filePath()
+        }
+    }
+
     return <>
         <div className=" p-1 ">
-            {!isLoaded &&
-                <div className="bg-zinc-900 ">
+            {
+                <div className="bg-zinc-900 absolute h-64">
                     <div className="animate-pulse flex flex-row items-center justify-center shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500">
                         <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
                             <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
@@ -161,12 +170,13 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
                 </div>
             }
 
-            <img src={"assets/pics/" + filePath()}
-                style={{ height: !isLoaded ? '0' : undefined }}
+            <img src={"assets/pics/" + thumbFilePath()}
+                style={{  }}
                 className={`object-cover h-64 rounded-lg transition border-2 border-green-400/0 hover:scale-105 
-                        hover:border-green-400 hover:cursor-pointer`}
+                        hover:border-green-400 hover:cursor-pointer z-12`}
                 onClick={() => handleOpen()}
                 onLoad={() => setIsLoaded(true)}
+                fetchPriority="high"
             />
 
         </div>

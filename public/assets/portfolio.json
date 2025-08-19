@@ -18,7 +18,8 @@
         "dimensions": [
             2900,
             2000
-        ]
+        ],
+        "hasThumb": false
     },
     "metalgreymon pmd comm 500x": {
         "tags": [
@@ -38,7 +39,8 @@
         "dimensions": [
             1000,
             800
-        ]
+        ],
+        "hasThumb": false
     },
     "stokori comm 1 anim": {
         "tags": [
@@ -59,7 +61,8 @@
         "dimensions": [
             1714,
             1965
-        ]
+        ],
+        "hasThumb": false
     },
     "stokori comm 2 anim": {
         "tags": [
@@ -80,7 +83,8 @@
         "dimensions": [
             2034,
             2066
-        ]
+        ],
+        "hasThumb": false
     },
     "another zeph render": {
         "tags": [
@@ -101,7 +105,8 @@
         "dimensions": [
             1523,
             1814
-        ]
+        ],
+        "hasThumb": true
     },
     "arelis renaissance study": {
         "tags": [
@@ -121,7 +126,8 @@
         "dimensions": [
             1736,
             2456
-        ]
+        ],
+        "hasThumb": true
     },
     "ares mr donut": {
         "tags": [
@@ -139,7 +145,8 @@
         "dimensions": [
             1250,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "armory alley redraw": {
         "tags": [
@@ -163,7 +170,8 @@
         "dimensions": [
             2965,
             1814
-        ]
+        ],
+        "hasThumb": true
     },
     "chuji updated ref 2025": {
         "tags": [
@@ -182,7 +190,8 @@
         "dimensions": [
             2640,
             2227
-        ]
+        ],
+        "hasThumb": true
     },
     "cinogard mrt comm sig": {
         "tags": [
@@ -205,7 +214,8 @@
         "dimensions": [
             2867,
             2150
-        ]
+        ],
+        "hasThumb": true
     },
     "coda dino edition af": {
         "tags": [
@@ -225,7 +235,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "dana af cubism": {
         "tags": [
@@ -246,7 +257,8 @@
         "dimensions": [
             2480,
             1761
-        ]
+        ],
+        "hasThumb": true
     },
     "danarei comm sig": {
         "tags": [
@@ -267,7 +279,8 @@
         "dimensions": [
             2310,
             3570
-        ]
+        ],
+        "hasThumb": true
     },
     "darious af 2025": {
         "tags": [
@@ -286,7 +299,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "digigirl phoenixmon": {
         "tags": [
@@ -307,7 +321,8 @@
         "dimensions": [
             5741,
             4042
-        ]
+        ],
+        "hasThumb": true
     },
     "dk ostrich": {
         "tags": [
@@ -326,7 +341,8 @@
         "dimensions": [
             1814,
             1814
-        ]
+        ],
+        "hasThumb": true
     },
     "duftmon comm siggy": {
         "tags": [
@@ -347,7 +363,8 @@
         "dimensions": [
             1792,
             2867
-        ]
+        ],
+        "hasThumb": true
     },
     "ekaitz sword unsheathing small": {
         "tags": [
@@ -368,7 +385,8 @@
         "dimensions": [
             1786,
             2505
-        ]
+        ],
+        "hasThumb": true
     },
     "gekkomon": {
         "tags": [
@@ -386,7 +404,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "janus vs arelis": {
         "tags": [
@@ -406,7 +425,8 @@
         "dimensions": [
             2227,
             3053
-        ]
+        ],
+        "hasThumb": true
     },
     "microraptor vermy": {
         "tags": [
@@ -427,7 +447,8 @@
         "dimensions": [
             2386,
             1706
-        ]
+        ],
+        "hasThumb": true
     },
     "more dell wings render": {
         "tags": [
@@ -451,7 +472,8 @@
         "dimensions": [
             3767,
             3536
-        ]
+        ],
+        "hasThumb": true
     },
     "moth dragon scribble": {
         "tags": [
@@ -470,7 +492,8 @@
         "dimensions": [
             2227,
             2557
-        ]
+        ],
+        "hasThumb": true
     },
     "niles af": {
         "tags": [
@@ -488,7 +511,8 @@
         "dimensions": [
             1240,
             1240
-        ]
+        ],
+        "hasThumb": true
     },
     "ordell card render 2 finalizing": {
         "tags": [
@@ -513,7 +537,8 @@
         "dimensions": [
             1761,
             2480
-        ]
+        ],
+        "hasThumb": true
     },
     "ordell guitar chibi proll": {
         "tags": [
@@ -537,7 +562,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "rockuma af": {
         "tags": [
@@ -555,7 +581,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "rook comm journal with sig": {
         "tags": [
@@ -575,7 +602,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "sarkis af": {
         "tags": [
@@ -596,7 +624,8 @@
         "dimensions": [
             1761,
             2480
-        ]
+        ],
+        "hasThumb": true
     },
     "selena af": {
         "tags": [
@@ -614,7 +643,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "shury af": {
         "tags": [
@@ -634,7 +664,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "siren comm watermark": {
         "tags": [
@@ -653,7 +684,8 @@
         "dimensions": [
             3497,
             2480
-        ]
+        ],
+        "hasThumb": true
     },
     "star af": {
         "tags": [
@@ -673,7 +705,8 @@
         "dimensions": [
             1400,
             1548
-        ]
+        ],
+        "hasThumb": true
     },
     "trunswicked comm with sig": {
         "tags": [
@@ -693,7 +726,8 @@
         "dimensions": [
             1721,
             1818
-        ]
+        ],
+        "hasThumb": true
     },
     "valen bagua study": {
         "tags": [
@@ -713,7 +747,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "valen render": {
         "tags": [
@@ -732,7 +767,8 @@
         "dimensions": [
             1814,
             1814
-        ]
+        ],
+        "hasThumb": true
     },
     "vithaar af": {
         "tags": [
@@ -750,7 +786,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "yammark comm": {
         "tags": [
@@ -769,7 +806,8 @@
         "dimensions": [
             1400,
             1565
-        ]
+        ],
+        "hasThumb": true
     },
     "desdemona": {
         "tags": [
@@ -789,7 +827,8 @@
         "dimensions": [
             975,
             988
-        ]
+        ],
+        "hasThumb": false
     },
     "taxraptor model turnaround": {
         "tags": [
@@ -810,7 +849,8 @@
         "dimensions": [
             575,
             564
-        ]
+        ],
+        "hasThumb": false
     },
     "1 lesser whistling duck": {
         "tags": [
@@ -829,7 +869,8 @@
         "dimensions": [
             1162,
             1162
-        ]
+        ],
+        "hasThumb": true
     },
     "another a4 render maybe ekaitz": {
         "tags": [
@@ -849,7 +890,8 @@
         "dimensions": [
             1761,
             2480
-        ]
+        ],
+        "hasThumb": true
     },
     "baby ordell render": {
         "tags": [
@@ -870,7 +912,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "cassowary chibi": {
         "tags": [
@@ -888,7 +931,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "choona": {
         "tags": [
@@ -908,7 +952,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "chopper comm": {
         "tags": [
@@ -929,7 +974,8 @@
         "dimensions": [
             1761,
             2480
-        ]
+        ],
+        "hasThumb": true
     },
     "ekaitz walk cycle large": {
         "tags": [
@@ -949,7 +995,8 @@
         "dimensions": [
             320,
             480
-        ]
+        ],
+        "hasThumb": false
     },
     "ekaitz-face-animated": {
         "tags": [
@@ -968,7 +1015,8 @@
         "dimensions": [
             400,
             555
-        ]
+        ],
+        "hasThumb": false
     },
     "env study that turned into ekaitz fishing": {
         "tags": [
@@ -995,7 +1043,8 @@
         "dimensions": [
             2227,
             1814
-        ]
+        ],
+        "hasThumb": true
     },
     "garet comm pmd large": {
         "tags": [
@@ -1015,7 +1064,8 @@
         "dimensions": [
             1000,
             800
-        ]
+        ],
+        "hasThumb": false
     },
     "majima spritesheet large": {
         "tags": [
@@ -1034,7 +1084,8 @@
         "dimensions": [
             1000,
             1600
-        ]
+        ],
+        "hasThumb": false
     },
     "medabots at": {
         "tags": [
@@ -1053,7 +1104,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "nick non af": {
         "tags": [
@@ -1072,7 +1124,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "ocre-fe9-comm-neutral": {
         "tags": [
@@ -1093,7 +1146,8 @@
         "dimensions": [
             1160,
             1480
-        ]
+        ],
+        "hasThumb": false
     },
     "one snillion dollars very very small": {
         "tags": [
@@ -1112,7 +1166,8 @@
         "dimensions": [
             480,
             500
-        ]
+        ],
+        "hasThumb": false
     },
     "ordell walk cycle": {
         "tags": [
@@ -1133,7 +1188,8 @@
         "dimensions": [
             320,
             480
-        ]
+        ],
+        "hasThumb": false
     },
     "otulissa martin": {
         "tags": [
@@ -1154,7 +1210,8 @@
         "dimensions": [
             2143,
             1917
-        ]
+        ],
+        "hasThumb": true
     },
     "pick pmd comm large watermarked": {
         "tags": [
@@ -1175,7 +1232,8 @@
         "dimensions": [
             1000,
             800
-        ]
+        ],
+        "hasThumb": false
     },
     "sebastien pmd comm watermark": {
         "tags": [
@@ -1196,7 +1254,8 @@
         "dimensions": [
             1000,
             800
-        ]
+        ],
+        "hasThumb": false
     },
     "shepherd af 1": {
         "tags": [
@@ -1216,7 +1275,8 @@
         "dimensions": [
             2480,
             1761
-        ]
+        ],
+        "hasThumb": true
     },
     "stormy shield comm": {
         "tags": [
@@ -1237,7 +1297,8 @@
         "dimensions": [
             1400,
             1945
-        ]
+        ],
+        "hasThumb": true
     },
     "TalkAnim": {
         "tags": [
@@ -1258,7 +1319,8 @@
         "dimensions": [
             264,
             264
-        ]
+        ],
+        "hasThumb": false
     },
     "utyaviknes": {
         "tags": [
@@ -1278,7 +1340,8 @@
         "dimensions": [
             500,
             500
-        ]
+        ],
+        "hasThumb": false
     },
     "xuqian doodle": {
         "tags": [
@@ -1296,7 +1359,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "abel comm sig": {
         "tags": [
@@ -1316,7 +1380,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "another rock study": {
         "tags": [
@@ -1336,7 +1401,8 @@
         "dimensions": [
             1400,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "August_FE5": {
         "tags": [
@@ -1355,7 +1421,8 @@
         "dimensions": [
             80,
             64
-        ]
+        ],
+        "hasThumb": false
     },
     "check out this sick new skell": {
         "tags": [
@@ -1375,7 +1442,8 @@
         "dimensions": [
             3214,
             2800
-        ]
+        ],
+        "hasThumb": true
     },
     "Diarmuid_FE5": {
         "tags": [
@@ -1394,7 +1462,8 @@
         "dimensions": [
             80,
             64
-        ]
+        ],
+        "hasThumb": false
     },
     "Karin_FE5": {
         "tags": [
@@ -1413,7 +1482,8 @@
         "dimensions": [
             80,
             64
-        ]
+        ],
+        "hasThumb": false
     },
     "kiyu spritesheet large": {
         "tags": [
@@ -1432,7 +1502,8 @@
         "dimensions": [
             1000,
             800
-        ]
+        ],
+        "hasThumb": false
     },
     "ordell creature 2": {
         "tags": [
@@ -1455,7 +1526,8 @@
         "dimensions": [
             2231,
             1406
-        ]
+        ],
+        "hasThumb": true
     },
     "otter crow comm": {
         "tags": [
@@ -1475,7 +1547,8 @@
         "dimensions": [
             2100,
             2721
-        ]
+        ],
+        "hasThumb": true
     },
     "quill comm sig": {
         "tags": [
@@ -1494,7 +1567,8 @@
         "dimensions": [
             1814,
             1814
-        ]
+        ],
+        "hasThumb": true
     },
     "rhino hippo qilin": {
         "tags": [
@@ -1511,7 +1585,8 @@
         "dimensions": [
             1752,
             1628
-        ]
+        ],
+        "hasThumb": true
     },
     "rosch comm final": {
         "tags": [
@@ -1530,7 +1605,8 @@
         "dimensions": [
             1299,
             1299
-        ]
+        ],
+        "hasThumb": true
     },
     "Safy_FE5": {
         "tags": [
@@ -1549,7 +1625,8 @@
         "dimensions": [
             80,
             64
-        ]
+        ],
+        "hasThumb": false
     },
     "sea rock study": {
         "tags": [
@@ -1569,7 +1646,8 @@
         "dimensions": [
             1400,
             1261
-        ]
+        ],
+        "hasThumb": true
     },
     "skell sylvalum big ball": {
         "tags": [
@@ -1579,7 +1657,6 @@
             "complexbg",
             "fanart",
             "illust"
-
         ],
         "isVertical": false,
         "priority": -2,
@@ -1589,7 +1666,8 @@
         "dimensions": [
             1609,
             1131
-        ]
+        ],
+        "hasThumb": true
     },
     "skell zine render v2": {
         "tags": [
@@ -1608,7 +1686,8 @@
         "dimensions": [
             2456,
             1736
-        ]
+        ],
+        "hasThumb": true
     },
     "slashy comm watermark": {
         "tags": [
@@ -1627,7 +1706,8 @@
         "dimensions": [
             2227,
             1400
-        ]
+        ],
+        "hasThumb": true
     },
     "Tina_FE5": {
         "tags": [
@@ -1646,6 +1726,7 @@
         "dimensions": [
             80,
             64
-        ]
+        ],
+        "hasThumb": false
     }
 }

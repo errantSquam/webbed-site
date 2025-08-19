@@ -40,7 +40,7 @@ export const CommissionsButton =() => {
     return <Link to = "/commissions"><div className = {`text-green-500 flex flex-row space-x-1 items-center justify-center font-jura font-bold
         bg-zinc-900 px-2 py-1 rounded-md cursor-pointer select-none transition hover:scale-105`}>
             <Icon icon = "mdi:art"/>
-            <div>Commissions</div>
+            <div>Order a Commission</div>
         </div></Link>
 }
 
