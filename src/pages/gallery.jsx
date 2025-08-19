@@ -107,20 +107,20 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                 data-closed:transform-[scale(95%)] data-closed:opacity-0"
                 >
                     <div className="h-full w-full flex items-center justify-center">
-                        <div className="flex flex-col md:flex-row justify-center">
-                            <div className={"flex items-center justify-center md:hidden"}>
+                        <div className="flex flex-col lg:flex-row justify-center">
+                            <div className={"flex items-center justify-center lg:hidden"}>
                                 <ImageWithSkeleton isMobile = {true}/>
                             </div>
                             <div className="flex flex-col justify-between 
-                        md:py-10 
-                        pr-2 md:max-w-1/3"
+                        lg:py-10 
+                        pr-2 lg:max-w-1/3"
                                 onClick={handleClose}>
-                                <div className="flex flex-col space-y-2 items-center md:items-start"
+                                <div className="flex flex-col space-y-2 items-center lg:items-start"
                                     onClick={(e) => (e.stopPropagation())}>
                                     <div className="mt-2 text-sm/6 text-white/50">
                                         <div className="flex flex-row 
                                     items-center justify-center 
-                                    md:justify-start
+                                    lg:justify-start
                                     flex-wrap space-x-2 gap-y-2
                                     ">
                                             {fullTags.map((tag, index) =>
@@ -133,15 +133,15 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                                         {descString !== "" ? artDesc : <i>None</i>}
                                     </p>
                                 </div>
-                                <div className="mt-4 w-full hidden md:inline">
+                                <div className="mt-4 w-full hidden lg:inline">
                                     <CloseButton />
                                 </div>
                             </div>
-                            <div className={" md:flex items-center justify-center hidden"}>
+                            <div className={" lg:flex items-center justify-center hidden"}>
                                 <div className="max-h-screen py-4"><ImageWithSkeleton isMobile = {false}/></div>
                             </div>
 
-                            <div className="mt-4 w-full flex items-center justify-center md:hidden">
+                            <div className="mt-4 w-full flex items-center justify-center lg:hidden">
                                 <CloseButton />
                             </div>
                         </div>
@@ -196,7 +196,7 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
     let objSize = `object-cover w-64 md:w-auto md:h-64`
 
     return <>
-        <div className={`p-1 `}>
+        <div className={`p-1 mx-1`}>
             <div className = {`${isLoaded ? `transition border-2 border-green-400/0 hover:scale-105 
                             hover:border-green-400 hover:cursor-pointer` : "opacity-50"} 
                             absolute z-10 rounded-lg overflow-hidden`}>

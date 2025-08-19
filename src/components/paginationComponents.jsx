@@ -45,7 +45,9 @@ export const PaginationNav = ({ isArrowActive, handlePage, handlePageNumber, pag
     }, [pageDisplayCurrent])
 
     const updatePage = (event) => {
-        event.preventDefault();
+        if (event !== undefined) {
+            event.preventDefault();
+        }
         let newVal = currentPage
 
         if (isNaN(newVal) || newVal === "") {
