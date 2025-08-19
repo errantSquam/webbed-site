@@ -93,6 +93,12 @@ const ImageRights = () => {
                 </ul>
             </li>
         </ul>
+        <LightHr/>
+        <div>Art dimensions are around 2000x2000px, 300dpi, and assumed to be displayed in RGB (digital) by default.&nbsp;
+            <b>Please specify if you'd like it printed.</b>
+            <br/><br/>
+            I have experience working with prints and various forms of merchandise (stickers, badges, acrylic charms, some cloth-based products, etc.).<br/>I may be able to advise if you specify ahead of time.
+            </div>
     </div>
 }
 
@@ -105,8 +111,7 @@ const Guidelines = () => {
             Once a commission request has been approved and payment has been received, I will inform the commissioner of their place in the commissions queue as well as an estimate of when I will begin their commission.
             For more details regarding payment procedures, please read the <b className="cursor-pointer"
                 onClick={() => document.getElementById("payment")?.scrollIntoView({ behavior: 'smooth' })}><u>"Payment"</u></b> section.
-            <br />
-            <LightHr />
+            <br /><br/>
             I will send the commissioner a sketch for approval before continuing the commission.
             This is the only time the commissioner is permitted to request changes freely.
             During the sketch phase, the commissioner is allowed up to a limit of <b>TWO (2) significant change requests.</b>
@@ -122,10 +127,10 @@ const Guidelines = () => {
                 <li>“The proportions look slightly off” - I may already be aware/working on it but I still appreciate reminders</li>
                 <li>“It would be nice if you made this area slightly lighter/darker…” Minor value changes are a-okay.</li>
             </ul><br />
-            However, when it comes to technical critique, please try to batch your list of revisions instead of sending them one by one. <b>I will entertain a limit of TWO (2) <u>lists</u> of revisions per major update, which I will communicate.</b> (Typically sketch/render, though I may break the process up into more WIPs for larger commissions. <i>(&gt;100 USD)</i>)
+            However, when it comes to technical critique, please try to batch your list of revisions instead of sending them one by one. <b>I will entertain a limit of TWO (2) <u>lists</u> of revisions per major update, which I will communicate.</b> 
+            <br/><br/>Typically, the two phases are <b>sketch/render</b>, though I may break the process up into more WIPs for larger commissions. <i>(&gt;100 USD)</i><br/> Please specify if you'd like more back and forth.
             <br /><br />
             At the end of the day what counts as significant will be up to my discretion, but I will inform you as such.
-            <br /><br />
             A redraw of any type of commission will count as a separate commission, and will be charged as such.
 
         </div>
@@ -224,6 +229,7 @@ const GeneralTableOfContents = () => {
 export const GeneralTab = () => {
     
     return <div className="w-full space-y-4">
+        <Header> General </Header>
         <GeneralTableOfContents/>
         <hr />
         <GeneralInfo />

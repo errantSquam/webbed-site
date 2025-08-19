@@ -475,7 +475,7 @@ export default function Gallery() {
 
                     </div>
                 </div>
-                <CommissionsButton />
+                <div className = "hidden md:inline"><CommissionsButton /></div>
 
                 <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2">
                     <GalleryFilter
@@ -493,6 +493,8 @@ export default function Gallery() {
                         value={selectedFilters.exclude}
                     />
                 </div>
+
+                <div className = "inline md:hidden mt-2"><CommissionsButton /></div>
 
 
 
