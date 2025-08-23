@@ -26,10 +26,21 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
 
     let portfolioTags = tagData
 
+
     function filePath() {
         return filename + "." + jsonData.extension
 
     }
+
+    function cloudinaryPath() { 
+        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath.replace(" ", "_")}`
+    }
+
+    function addDefaultSrc(e) {
+        e.target.src = "assets/pics/" + filePath()
+    }
+
+
     let fullTags = jsonData.tags.map((tag) => {
         return Object.keys(portfolioTags).length !== 0 && portfolioTags[tag]
     })
@@ -57,11 +68,12 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
 
     const ImageWithSkeleton = ({isMobile = true}) => {
 
-        let objStyle = !isMobile ? {height:"75vh"} : {width:"75vw"}
+        let objStyle = !isMobile ? (jsonData.isVertical ? {height: "90vh"}:{height:"75vh"}) : {width:"75vw"}
 
         return <div className = "flex py-2">
             <div className = "absolute z-10">
-            {<img src={"assets/pics/" + filePath()}
+            {<img src={cloudinaryPath()}
+            onError = {addDefaultSrc}
             className={`object-scale-down rounded-lg
                         ${isLoaded ? `` : "opacity-50 blur-sm"}
                             `}
@@ -70,9 +82,9 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
             fetchpriority="high"
         />}
         </div>
-            {<div className={!isLoaded && `bg-zinc-900`}>
-                <div className={!isLoaded && `animate-pulse flex flex-row items-center justify-center 
-                                            shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`}>
+            {<div className={!isLoaded ? `bg-zinc-900` : ""}>
+                <div className={!isLoaded ? `animate-pulse flex flex-row items-center justify-center 
+                                            shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`: ""}>
                     {!isLoaded && <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
                         <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
                         {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}

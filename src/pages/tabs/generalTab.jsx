@@ -214,6 +214,12 @@ const GeneralTableOfContents = () => {
     }
     return <TableOfContents tocDict = {generalToCDict}><br />
         <div className = "flex flex-col space-y-2">
+
+        <div>If you plan on utilizing the artwork for <b>environmental activism</b> (e.g. raising funds for wildlife conservation) or a&nbsp;
+        <b>collaborative project</b> for a fandom I've shown interest in (e.g. music album), I may be willing to discount my prices!
+        Do consider reaching out with your budget. 
+        
+        <br/><br/><i>(ToS terms still apply and I will be strict about my workload. Haggling/lowballing will not be entertained.)</i></div>
         <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
             <div className={`flex flex-row items-center gap-x-2 text-green-500 
             text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500

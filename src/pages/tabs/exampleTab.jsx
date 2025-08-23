@@ -209,7 +209,7 @@ const FullbodyTab = ({ portfolioJson }) => {
 const RefSheetsTab = ({ portfolioJson }) => {
     return <CommExample id="refsheet" title="Reference Sheets ($400-500+)" portfolioJson={portfolioJson}>
         Reference sheets! Can just be front/back flats, or even shaded. (More $$$ for shaded.)
-        Please ask me for a quote so we can discuss. <br />
+        Please ask me for a quote so we can discuss. Price estimate is for <i>lightly shaded, front/side/back turnarounds.</i><br/><br />
         Unlike what's stated in the ToS, I will likely have a back-and-forth with you to finalize details.<br /><br />
 
         If designing a character from scratch, there'll be an extra fee. Reference images/moodboards GREATLY preferred. I am unlikely to take on your commission if your request is unclear.
@@ -250,9 +250,15 @@ const RefSheetsTab = ({ portfolioJson }) => {
 
         <div className="flex flex-row flex-wrap">
             <ImageExample fileName="chuji updated ref 2025" portfolioJson={portfolioJson} height="md:h-100" />
+            <ImageExample fileName="ankou redesign maybe" portfolioJson={portfolioJson} height="md:h-100" />
 
         </div>
-    </CommExample>
+        <div>For character design, I also have my own original setting (inspired by JRPGs and speculative biology).&nbsp;
+            <a href = "https://itaku.ee/profile/errantsquam/gallery/47487"
+            target="_blank"
+            rel="noopener noreferrer"><u>You can view a collection of the references here.</u></a> 
+            </div>
+        </CommExample>
 }
 
 const BGTab = ({ portfolioJson }) => {
