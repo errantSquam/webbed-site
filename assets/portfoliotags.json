@@ -290,5 +290,9 @@
     "illust": {
         "fullName": "Illustration",
         "tagType": "medium"
+    },
+    "ankou": {
+        "fullName": "Ankou",
+        "tagType": "oc"
     }
 }
