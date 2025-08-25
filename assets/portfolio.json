@@ -1736,8 +1736,8 @@
             "ankou",
             "charactersheet",
             "fullbody",
-            "owl"
-
+            "owl",
+            "illust"
         ],
         "isVertical": false,
         "priority": -4,
@@ -1762,7 +1762,8 @@
             "dinosaur",
             "halfbody",
             "fullbody",
-            "owl"
+            "owl",
+            "illust"
         ],
         "isVertical": false,
         "priority": 0,
@@ -1772,6 +1773,26 @@
         "dimensions": [
             1409,
             1000
+        ],
+        "hasThumb": false
+    },
+    "silvally fe crop": {
+        "tags": [
+            "fanart",
+            "pokemon",
+            "creature",
+            "gbafe",
+            "animated",
+            "pixelart"
+        ],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1756094972.6471803,
+        "extension": "gif",
+        "dimensions": [
+            485,
+            400
         ],
         "hasThumb": false
     }
