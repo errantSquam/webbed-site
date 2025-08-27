@@ -52,7 +52,7 @@ const GeneralInfo = () => {
     </div>
 }
 
-const ImageRights = () => {
+const ImageRights = ({setCurrentTab}) => {
     return <div id="rights">
         <Header icon="material-symbols:wall-art">IMAGE RIGHTS AND USAGE</Header>
 
@@ -62,7 +62,14 @@ const ImageRights = () => {
 
         The commissioner must not claim my work as theirs.<br /><br />
 
-        If you do not want the art to be posted until a certain date/time, please discuss with me ahead of time. If the art is for commercial purposes, I will likely discuss this with you further.<br />
+        If you do not want the art to be posted until a certain date/time, please discuss with me ahead of time. If the art is for commercial purposes, I will likely discuss this with you further. 
+        <br/><br/>
+        <u className = "cursor-pointer"
+        onClick = {() => {
+            setCurrentTab("fees")
+            document.getElementById("commercial")?.scrollIntoView({ behavior: 'smooth' })
+        }}
+        >(See 'Commercial Fees' under the Additional Fees section.)</u><br />
 
         <LightHr />
         If the commissioner wishes to use commissioned image(s) for <b>commercial or profit purposes</b>, including prints and redistribution of the commissioned image(s), it must be <b>specified beforehand.</b><br /><br />
@@ -232,7 +239,7 @@ const GeneralTableOfContents = () => {
         </div></TableOfContents>
 }
 
-export const GeneralTab = () => {
+export const GeneralTab = ({setCurrentTab}) => {
     
     return <div className="w-full space-y-4">
         <Header> General </Header>
@@ -240,7 +247,7 @@ export const GeneralTab = () => {
         <hr />
         <GeneralInfo />
         <hr />
-        <ImageRights />
+        <ImageRights setCurrentTab={setCurrentTab}/>
         <hr />
         <Guidelines />
         <hr />

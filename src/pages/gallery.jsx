@@ -21,6 +21,8 @@ import handleUrlQuery from "../stylesfunctions/handleUrlQuery"
 import { convertTagToSelectLabel, handleFilterParams } from "../stylesfunctions/apiFilter"
 import { chickenLoading } from "../components/splashscreen"
 
+import { ContactButton } from "../components/galleryComponents"
+
 const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -32,8 +34,8 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
 
     }
 
-    function cloudinaryPath() { 
-        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath.replace(" ", "_")}`
+    function cloudinaryPath() {
+        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath().replaceAll(" ", "_")}`
     }
 
     function addDefaultSrc(e) {
@@ -66,22 +68,22 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
 
     //console.log(isLoaded)
 
-    const ImageWithSkeleton = ({isMobile = true}) => {
+    const ImageWithSkeleton = ({ isMobile = true }) => {
 
-        let objStyle = !isMobile ? (jsonData.isVertical ? {height: "90vh"}:{height:"75vh"}) : {width:"75vw"}
+        let objStyle = !isMobile ? (jsonData.isVertical ? { height: "90vh" } : { height: "75vh" }) : { width: "75vw" }
 
-        return <div className = "flex py-2">
-            <div className = "absolute z-10">
-            {<img src={cloudinaryPath()}
-            onError = {addDefaultSrc}
-            className={`object-scale-down rounded-lg
+        return <div className="flex py-2">
+            <div className="absolute z-10">
+                {<img src={cloudinaryPath()}
+                    onError={addDefaultSrc}
+                    className={`object-scale-down rounded-lg
                         ${isLoaded ? `` : "opacity-50 blur-sm"}
                             `}
-            style={objStyle}
-            onLoad={() => setIsLoaded(true)}
-            fetchpriority="high"
-        />}
-        </div>
+                    style={objStyle}
+                    onLoad={() => setIsLoaded(true)}
+                    fetchpriority="high"
+                />}
+            </div>
             {<div className={!isLoaded ? `bg-zinc-900` : ""}>
                 <div className={!isLoaded ? `animate-pulse flex flex-row items-center justify-center 
                                             shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`: ""}>
@@ -89,20 +91,20 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                         <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
                         {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
                     </div>}
-                    
+
                     <Skeleton
                         variant="rectangular"
                         className={"" + !isLoaded ? " rounded-lg " : ""}
                         animation="wave"
-                        >
-                            <div
+                    >
+                        <div
                             style={{
                                 ...objStyle,
                                 aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1],
-                                
+
                             }}>
-                                <img src="favicon.ico" style = {{aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1], ...objStyle}} />
-                            </div>
+                            <img src="favicon.ico" style={{ aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1], ...objStyle }} />
+                        </div>
                     </Skeleton>
                 </div>
             </div>
@@ -121,7 +123,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                     <div className="h-full w-full flex items-center justify-center">
                         <div className="flex flex-col lg:flex-row justify-center">
                             <div className={"flex items-center justify-center lg:hidden"}>
-                                <ImageWithSkeleton isMobile = {true}/>
+                                <ImageWithSkeleton isMobile={true} />
                             </div>
                             <div className="flex flex-col justify-between 
                         lg:py-10 
@@ -150,7 +152,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
                                 </div>
                             </div>
                             <div className={" lg:flex items-center justify-center hidden"}>
-                                <div className="max-h-screen py-4"><ImageWithSkeleton isMobile = {false}/></div>
+                                <div className="max-h-screen py-4"><ImageWithSkeleton isMobile={false} /></div>
                             </div>
 
                             <div className="mt-4 w-full flex items-center justify-center lg:hidden">
@@ -194,6 +196,14 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
 
     }
 
+    function cloudinaryPath() {
+        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath().replaceAll(" ", "_")}`
+    }
+
+    function addDefaultSrc(e) {
+        e.target.src = "assets/pics/" + filePath()
+    }
+
     function thumbFilePath() {
         return filePath()
 
@@ -209,18 +219,19 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
 
     return <>
         <div className={`p-1 mx-1`}>
-            <div className = {`${isLoaded ? `transition border-2 border-green-400/0 hover:scale-105 
+            <div className={`${isLoaded ? `transition border-2 border-green-400/0 hover:scale-105 
                             hover:border-green-400 hover:cursor-pointer` : "opacity-50"} 
                             absolute z-10 rounded-lg overflow-hidden`}>
-            {<img src={"assets/pics/" + thumbFilePath()}
-                style={{}}
-                className={`${objSize} 
-                        ${!isLoaded &&"blur-sm"}
+                {<img src={cloudinaryPath()}
+                    onError={addDefaultSrc}
+                    style={{}}
+                    className={`${objSize} 
+                        ${!isLoaded && "blur-sm"}
                             `}
-                onClick={() => {isLoaded && handleOpen()}}
-                onLoad={() => setIsLoaded(true)}
-                fetchpriority="high"
-            />}
+                    onClick={() => { isLoaded && handleOpen() }}
+                    onLoad={() => setIsLoaded(true)}
+                    fetchpriority="high"
+                />}
             </div>
             {<div className={!isLoaded ? `bg-zinc-900` : ""}>
                 <div className={!isLoaded ? `animate-pulse flex flex-row items-center justify-center 
@@ -234,12 +245,12 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
                         variant="rectangular"
                         className={!isLoaded ? "bg-zinc-900 rounded-lg " : "bg-zinc-900/0"}
                         animation="wave">
-                        <div className = {objSize}
+                        <div className={objSize}
                             style={{
                                 aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
-                            }}><img src = "favicon.ico" style={{
+                            }}><img src="favicon.ico" style={{
                                 aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
-                            }} className ={`${objSize}`}/></div>
+                            }} className={`${objSize}`} /></div>
                     </Skeleton>
                 </div>
             </div>
@@ -301,7 +312,7 @@ export default function Gallery() {
     const [hiddenArt, setHiddenArt] = useState(null)
     //this is never getting closed for the sake of no rerenders, i guess
 
-    const numArtPerPage = 10
+    const numArtPerPage = 12
 
 
     useEffect(() => {
@@ -468,7 +479,7 @@ export default function Gallery() {
                 return false
             }
         } else {
-            if ((page - 1) * numArtPerPage + numArtPerPage >= artList.length - 1) {
+            if ((page - 1) * numArtPerPage + numArtPerPage > artList.length - 1) {
                 return false
             }
         }
@@ -541,18 +552,37 @@ export default function Gallery() {
                     pageDisplayMax={getLastPage(artList)} />
             </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
-                <div className="py-1 w-screen bg-orange-900 mb-2 flex flex-row items-center justify-center cursor-pointer select-none"
-                    onClick={() => handlePageNumber(1)}>
-                    <div className="text-2xl font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2">
-                        <Icon icon="clarity:eye-solid" className="text-2xl text-green-300/70" />
-                        <span>
-                            Gallery
-                        </span>
-                        <Icon icon="clarity:eye-solid" className="text-2xl text-green-300/70 -ml-0.5" />
+                <div className="mb-2 py-1 w-screen bg-orange-900">
+                    <div className="flex flex-row items-center">
+
+                        <div className="flex flex-row items-center justify-center select-none w-full ">
+                            <div className="text-2xl bg-orange-100/0 font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2
+                    cursor-pointer select-none"
+                                onClick={() => handlePageNumber(1)}>
+                                <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70" />
+                                <span>
+                                    Gallery
+                                </span>
+                                <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70 -ml-0.5" />
+
+                            </div>
+                        </div>
+                        <div className="absolute ml-5 text-white text-2xl 
+                        flex flex-row gap-x-2"
+                        >   
+                            <Link to="/"><Icon icon = "ic:sharp-home" className = "select-none cursor-pointer"/></Link>
+                            {/*<Icon icon="mdi:hamburger-menu" className = "select-none cursor-pointer"/>*/}
+                        </div>
 
                     </div>
+                    {/*<div className = "bg-zinc-900 text-white py-2">
+                    <div className = "flex flex-row">
+                        <div>Home</div>
+                        <div>Gallery</div>
+                        <div> Commissions</div>
+                    </div>
+                </div>*/}
                 </div>
-                <div className="hidden md:inline"><CommissionsButton /></div>
 
                 <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2 z-50">
                     <GalleryFilter
@@ -571,13 +601,18 @@ export default function Gallery() {
                     />
                 </div>
 
-                <div className="inline md:hidden mt-2"><CommissionsButton /></div>
+                <div className="mt-2">
+                    <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+                        <ContactButton />
+                        <CommissionsButton />
+                    </div>
+                </div>
 
 
 
 
-                <div className="flex flex-col md:flex-row justify-evenly items-center 
-                md:flex-wrap w-4/5 md:px-5 py-2 gap-y-2"
+                <div className="flex flex-col md:flex-row justify-center items-center 
+                md:flex-wrap w-5/6 md:w-auto md:px-10 py-2 gap-y-2"
                     key={selectedFilters}>
                     {getArtListPaginated().length === 0 &&
                         <ErrorMessage />}

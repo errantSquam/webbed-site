@@ -16,10 +16,19 @@ const ImageExample = ({ fileName, portfolioJson, height = "md:h-60" }) => {
     const handleClose = () => {
         setIsOpen(false)
     }
-    let filePath = "assets/pics/" + fileName + "." + portfolioJson[fileName].extension
+    let filePath = fileName + "." + portfolioJson[fileName].extension
+
+    function cloudinaryPath() { 
+        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath.replaceAll(" ", "_")}`
+    }
+
+    function addDefaultSrc(e) {
+        e.target.src = "assets/pics/" +filePath
+    }
 
     return <div>
-        <img src={filePath} className={`rounded-md ${height} cursor-pointer border-2 
+        <img src={cloudinaryPath()}
+            onError = {addDefaultSrc} className={`rounded-md ${height} cursor-pointer border-2 
             border-green-500/0 hover:border-green-500
             m-2
 
@@ -33,7 +42,9 @@ const ImageExample = ({ fileName, portfolioJson, height = "md:h-60" }) => {
                             data-closed:transform-[scale(95%)] data-closed:opacity-0"
                     >
                         <div className="flex flex-col items-center justify-center h-screen py-4 gap-y-2">
-                            <img src={filePath} className={"max-h-4/5 object-scale-down"} />
+                            <img src={cloudinaryPath()}
+                                onError = {addDefaultSrc} 
+                                className={"max-h-4/5 object-scale-down"} />
                             <div className="text-white">
                                 <Link to={{
                                     pathname: "/gallery",
@@ -343,6 +354,7 @@ const SpritesTab = ({ portfolioJson }) => {
         </div>
         <div className="flex flex-row flex-wrap">
             <ImageExample fileName="danarei comm sprite for publishing" portfolioJson={portfolioJson} />
+            <ImageExample fileName="silvally fe crop" portfolioJson={portfolioJson} />
             <ImageExample fileName="TalkAnim" portfolioJson={portfolioJson} />
             <ImageExample fileName="Tina_FE5" portfolioJson={portfolioJson} />
         </div>
@@ -427,7 +439,7 @@ export const ExampleTab = ({ portfolioJson, setCurrentTab }) => {
 
         }}><br />
             <p>The following shows various examples of art offered.</p>
-            <p>Price quoted is base price, though some of these examples are more detailed and may cost more. </p>
+            <p>Price quoted is base price, though some of these examples are more detailed and may cost more. All prices are in <b>USD.</b></p>
             <p>Please see <u className = "cursor-pointer" onClick = {() => setCurrentTab("fees")}>'Additional Fees'</u> for more information!</p>
             <br />
             <p>You can also <b className = "text-green-500">click on the images</b> to see a larger preview!</p>

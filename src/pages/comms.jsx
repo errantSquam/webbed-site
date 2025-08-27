@@ -15,7 +15,7 @@ import ExampleTab from "./tabs/exampleTab"
 import { useSearchParams } from "react-router-dom"
 
 
-const FeesTab = () => {
+const FeesTab = ({setCurrentTab}) => {
     const feesToC = {
         "real": {
             id:"real",
@@ -24,6 +24,10 @@ const FeesTab = () => {
         "geometric": {
             id: "geo",
             title: "Geometric Forms/Mecha"
+        },
+        "commercial":{
+            id:"commercial",
+            title:"Commercial Fee"
         },
         "other":{
             id:"other",
@@ -91,6 +95,17 @@ const FeesTab = () => {
             <br />
         </div>
         <hr />
+        <Header id  = "commercial">COMMERCIAL FEE</Header>
+        <div>Commercial fee is $100 per piece or 10% of the full price, 
+            whichever is higher. May be negotiable, let me know about your project specs.</div><br/>
+            (<u
+            className = "cursor-pointer"
+            onClick = {() => {
+            setCurrentTab("gen")
+            document.getElementById("rights")?.scrollIntoView({ behavior: 'smooth' })
+                }}
+            > See more detail under 'Image Rights' in General Info.</u>)<br/><br/>
+        <hr/>
         <Header id = "other">OTHER</Header>
         <div className="ml-2">
             <div className="italic">For stuff that doesn’t apply to most clients.</div>
@@ -162,8 +177,9 @@ const FeesTab = () => {
             <br/>
         </div>
         <hr/>
+        
         <Header id = "quote"> Discounts & Quotes</Header>
-        <b>IF ASKING FOR QUOTE:</b> Please reach out to me via Bluesky DMs. Include reference images (use something like Google Drive, since Bluesky doesn’t support uploads!) and a detailed description, same as if you were submitting the form.
+        <b>IF ASKING FOR QUOTE:</b> Please reach out to me via Bluesky DMs OR email at errantsquam@gmail.com. Include reference images (use something like Google Drive, since Bluesky doesn’t support uploads!) and a detailed description, same as if you were submitting the form.
         <br/><br/>
         If you have a budget, I encourage you to discuss this with me so I can see where to streamline things while working within your budget.
         <br/><br/>
@@ -243,7 +259,11 @@ const IntroTab = ({setCurrentTab}) => {
                 <div className="ml-3">(This is proof you agree to the terms, so please don't skip to the end.)</div></li>
             <li>Submit your request!</li>
         </ol>
+        
+        
         <br />
+        <div>My contact is also available at <b>errantsquam@gmail.com</b>.</div>
+        <br/>
         If this isn't your first time reading the ToS, here are some quick links for you:
         <div className="flex flex-col space-y-2 my-4">
             <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
@@ -277,22 +297,22 @@ export default function Commissions() {
     const tabDict = {
         "intro": {
             fullName: "Introduction",
-            tab: <IntroTab setCurrentTab = {setCurrentTab}/>,
+            tab: <IntroTab setCurrentTab = {handleTabSetting}/>,
             index: 0
         },
         "eg": {
             fullName: "Examples",
-            tab: <ExampleTab portfolioJson={portfolioJson} setCurrentTab = {setCurrentTab}/>,
+            tab: <ExampleTab portfolioJson={portfolioJson} setCurrentTab = {handleTabSetting}/>,
             index: 1
         },
         "gen": {
             fullName: "General Info",
-            tab: <GeneralTab />,
+            tab: <GeneralTab setCurrentTab = {handleTabSetting}/>,
             index: 2
         },
         "fees": {
             fullName: "Additional Fees",
-            tab: <FeesTab />,
+            tab: <FeesTab setCurrentTab = {handleTabSetting}/>,
             index: 3
         }
     }
