@@ -297,72 +297,74 @@ const HiddenModal = ({ filename, jsonData, tagData, handleParams }) => {
 }
 
 
-const TopNav = ({setHome, children}) =>{
+const TopNav = ({ setHome, children }) => {
     const [isMenuOpen, setMenuOpen] = useState(false)
 
     return <div><div className="py-2 w-screen bg-orange-900">
-                        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center">
 
-                            <div className="flex flex-row items-center justify-center select-none w-full mt-0.5">
-                                <div className="text-2xl bg-orange-100/0 font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2
+            <div className="flex flex-row items-center justify-center select-none w-full mt-0.5">
+                <div className="text-2xl bg-orange-100/0 font-bold text-orange-100 font-pirulen flex flex-row items-center gap-x-2
                     cursor-pointer select-none"
-                                    onClick={setHome}>
-                                    {children}
+                    onClick={setHome}>
+                    {children}
 
-                                </div>
-                            </div>
-                            <div className="absolute ml-5 text-zinc-200 text-2xl 
+                </div>
+            </div>
+            <div className="absolute ml-5 text-zinc-200 text-2xl 
                         flex flex-row gap-x-5"
-                            >
-                                <div>
-                                    <Icon icon={isMenuOpen ? "maki:cross":"mdi:hamburger-menu"} 
-                                    className={`select-none cursor-pointer ${isMenuOpen && "text-white"} hover:text-white`}
-                                    onClick = {() => setMenuOpen(!isMenuOpen)}/>
-                                </div>
-                                <Link to="/gallery"><Icon icon="ic:sharp-home"
-                                    className="hidden md:flex select-none cursor-pointer hover:text-white" /></Link>
-                            </div>
-                            <div className="absolute text-zinc-200 text-2xl 
+            >
+                <div>
+                    <Icon icon={isMenuOpen ? "maki:cross" : "mdi:hamburger-menu"}
+                        className={`select-none cursor-pointer ${isMenuOpen && "text-white"} hover:text-white`}
+                        onClick={() => setMenuOpen(!isMenuOpen)} />
+                </div>
+                <Link to="/gallery"><Icon icon="ic:sharp-home"
+                    className="hidden md:flex select-none cursor-pointer hover:text-white" /></Link>
+            </div>
+            <div className="absolute text-zinc-200 text-2xl 
                          right-0 mr-5"
-                            >
-                                <div className="hidden md:flex flex flex-row gap-x-5">
-                                    <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        <Icon icon="ri:bluesky-fill" className="select-none cursor-pointer hover:text-white" />
-                                    </a>
-                                    <a href="https://github.com/errantSquam"
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        <Icon icon="mdi:github" className="select-none cursor-pointer hover:text-white" />
-                                    </a>
-                                </div>
-                                <div className="flex md:hidden">
-                                    <Link to="/"><Icon icon="ic:sharp-home"
-                                        className="select-none cursor-pointer" /></Link>
-                                </div>
-                            </div>
+            >
+                <div className="hidden md:flex flex flex-row gap-x-5">
+                    <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon icon="ri:bluesky-fill" className="select-none cursor-pointer hover:text-white" />
+                    </a>
+                    <a href="https://github.com/errantSquam"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon icon="mdi:github" className="select-none cursor-pointer hover:text-white" />
+                    </a>
+                </div>
+                <div className="flex md:hidden">
+                    <Link to="/"><Icon icon="ic:sharp-home"
+                        className="select-none cursor-pointer" /></Link>
+                </div>
+            </div>
 
-                        </div>
-                    </div>
-                    {<div>
-                        <div className={`bg-zinc-900 text-zinc-300 py-2 w-full 
+        </div>
+    </div>
+        {<div
+        style = {!isMenuOpen ?{ pointerEvents: "none"} : {}}
+        >
+            <div className={`bg-zinc-900 text-zinc-300 py-2 w-full 
                         md:border-r-2 border-b-2 border-green-500
                         md:w-1/5 
                         md:h-full absolute z-60 select-none 
                         transition duration-0 md:duration-100 ${isMenuOpen ? "opacity-100" : `opacity-0 translate-x-0
                         md:translate-y-0 md:-translate-x-full`}`}>
-                            <div className="flex flex-col items-start text-start ml-5 gap-y-2">
-                                <Link to = "/"><div className = "hover:text-zinc-100 cursor-pointer">Home (WIP)</div></Link>
-                                <Link to = "/gallery"><div className = "hover:text-zinc-100 cursor-pointer">Gallery</div></Link>
-                                <Link to = "/commissions"><div className = "hover:text-zinc-100 cursor-pointer">Commissions</div></Link>
-                            </div>
-                        </div>
-                        {isMenuOpen && <div className = "fixed w-screen h-screen bg-black/40 z-59"
-                        onClick = {() => setMenuOpen(false)}/>}
-                    </div>
-                    }
-                    </div>
+                <div className="flex flex-col items-start text-start ml-5 gap-y-2">
+                    <Link to="/"><div className="hover:text-zinc-100 cursor-pointer">Home (WIP)</div></Link>
+                    <Link to="/gallery"><div className="hover:text-zinc-100 cursor-pointer">Gallery</div></Link>
+                    <Link to="/commissions"><div className="hover:text-zinc-100 cursor-pointer">Commissions</div></Link>
+                </div>
+            </div>
+            {isMenuOpen && <div className="fixed w-screen h-screen bg-black/40 z-59"
+                onClick={() => setMenuOpen(false)} />}
+        </div>
+        }
+    </div>
 }
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -622,14 +624,14 @@ export default function Gallery() {
             </div>
             <div className=" md:px-10 flex flex-col items-center text-center">
                 <div className="mb-2 ">
-                    <TopNav setHome = {() => handlePageNumber(1)}>
+                    <TopNav setHome={() => handlePageNumber(1)}>
                         <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70" />
-                                    <span>
-                                        Gallery
-                                    </span>
-                                    <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70 -ml-0.5" />
+                        <span>
+                            Gallery
+                        </span>
+                        <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70 -ml-0.5" />
                     </TopNav>
-                    
+
                 </div>
 
                 <div className="flex flex-row flex-wrap lg:flex-nowrap w-4/5 gap-x-4 mb-2 z-50">
