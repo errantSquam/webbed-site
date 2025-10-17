@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { HashRouter, Route, Routes, Link } from "react-router-dom";
 import DancingSnek from './pages/dancingsnek';

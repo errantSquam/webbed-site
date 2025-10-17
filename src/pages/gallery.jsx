@@ -397,7 +397,7 @@ export default function Gallery() {
 
     function getGroupTagData() {
 
-        if (!groupTagQuery.isSuccess) {
+        if (!groupTagQuery.isSuccess || !portfolioTagQuery.isSuccess) {
             return []
         }
 
