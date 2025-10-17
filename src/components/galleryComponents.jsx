@@ -62,7 +62,7 @@ export const ContactButton = () => {
             <div>Contact Me / Socials</div>
         </div>
 
-        <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={handleClose}>
+        <Dialog open={isOpen} as="div" className="relative z-99 focus:outline-none" onClose={handleClose}>
             <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
                 <div className="flex h-full items-center justify-center">
                     <DialogPanel

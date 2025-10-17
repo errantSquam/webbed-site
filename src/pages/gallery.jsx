@@ -23,16 +23,16 @@ import { chickenLoading } from "../components/splashscreen"
 
 import { ContactButton } from "../components/galleryComponents"
 import { useQuery } from '@tanstack/react-query'
-import { portfolioData, portfolioTagData, groupTagData} from "../api/galleryAPI"
+import { portfolioData, portfolioTagData, groupTagData } from "../api/galleryAPI"
 
 const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
 
-    
+
     const [isLoaded, setIsLoaded] = useState(false)
 
     const portfolioTagQuery = portfolioTagData()
     if (jsonData === undefined) {
-        return <div/>
+        return <div />
     }
 
     function getPortfolioTagData() {
@@ -378,13 +378,13 @@ export default function Gallery() {
 
     const numArtPerPage = 12
 
-    
+    const [isChickenLoading, setIsChickenLoading] = useState(true)
     const portfolioQuery = portfolioData()
     const portfolioTagQuery = portfolioTagData()
     const groupTagQuery = groupTagData()
 
     function isLoading() {
-        return !(portfolioQuery.isSuccess && portfolioTagQuery.isSuccess && groupTagQuery.isSuccess)
+        return isChickenLoading || !(portfolioQuery.isSuccess && portfolioTagQuery.isSuccess && groupTagQuery.isSuccess)
     }
 
     function getPortfolioData() {
@@ -421,7 +421,7 @@ export default function Gallery() {
         }
 
         //this has to be run After fetching grouptagdata...
-        if(portfolioTagQuery.isSuccess) {
+        if (portfolioTagQuery.isSuccess) {
             let tempSelectedFilters = ["include", "exclude"]
                 .reduce((accumulator, filterType) => {
                     return (handleFilterParams(filterType, tempSearchParams, accumulator, getPortfolioTagData()))
@@ -460,9 +460,13 @@ export default function Gallery() {
         if (currPage < 1 || isNaN(currPage)) {
             handlePageNumber(1)
         }
-        //chickenLoading(500, setIsLoading)
+
 
     }, [searchParams.get("page")])
+
+    useEffect(() => {
+        chickenLoading(500, setIsChickenLoading)
+    }, [])
 
 
 
@@ -573,18 +577,28 @@ export default function Gallery() {
     }
 
     function handlePageNumber(page, doLoad = true) {
+
+
         let currPage = getCurrentPage()
         if (page == currPage) {
             return
         }
 
         let tempSearchParams = searchParams
+
+        setIsChickenLoading(true)
         setTimeout(() => {
             window.scrollTo(0, 0);
             tempSearchParams.set("page", page)
 
             setSearchParams(tempSearchParams.toString())
         }, 300)
+
+
+        chickenLoading(400, setIsChickenLoading)
+
+
+
     }
 
     function getLatestPage(artList) {
