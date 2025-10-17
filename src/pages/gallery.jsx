@@ -369,7 +369,7 @@ export default function Gallery() {
         }
     )
     const [artList, setArtList] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+    //const [isLoading, setIsLoading] = useState(true)
     const [hiddenArt, setHiddenArt] = useState(null)
     //this is never getting closed for the sake of no rerenders, i guess
 
@@ -408,18 +408,22 @@ export default function Gallery() {
     }
 
 
-    function getGroupTagData(){
+    function getGroupTagData() {
 
         let data = groupTagData.isSuccess ? groupTagData.data : {}
         let tempGroupTagList = Object.keys(data).map((tagType) => {
-                        return {
-                            label: tagType,
-                            options: data[tagType].map((tagName) => {
-                                return convertTagToSelectLabel(tagName, getPortfolioTagData())
-                            })
-                        }
-                    })
+            return {
+                label: tagType,
+                options: data[tagType].map((tagName) => {
+                    return convertTagToSelectLabel(tagName, getPortfolioTagData())
+                })
+            }
+        })
         return tempGroupTagList
+    }
+
+    function isLoading() {
+        return !(portfolioData.isSuccess && portfolioTagData.isSuccess && groupTagData.isSuccess)
     }
 
 
@@ -433,61 +437,47 @@ export default function Gallery() {
             setSearchParams({ page: 1 })
         }
 
+        let tempSelectedFilters = ["include", "exclude"]
+            .reduce((accumulator, filterType) => {
+                return (handleFilterParams(filterType, tempSearchParams, accumulator, getPortfolioTagData()))
+            }, selectedFilters)
 
-        fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
-            fetch('assets/portfoliotags.json').then((res) => res.json()).then((portfolioTagData) => {
-                fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
-                    
-                    let tempSelectedFilters = ["include", "exclude"]
-                        .reduce((accumulator, filterType) => {
-                            return (handleFilterParams(filterType, tempSearchParams, accumulator, portfolioTagData))
-                        }, selectedFilters)
-
-                    //console.log(tempSelectedFilters)
-
-                    new Array("include", "exclude").forEach((filterType) => {
-                        if (tempSelectedFilters[filterType] === null) {
-                            return
-                        }
-                        if (tempSelectedFilters[filterType].length === 0) {
-                            searchParams.delete(filterType)
-                            setSearchParams(searchParams)
-                        }
-                    })
-
-                    let tempArtList = getFilteredArtByPriority(portfolioData, tempSelectedFilters)
-
-                    let hiddenArt = tempSearchParams.get("art")
-                    if (hiddenArt !== null) {
-                        let tempPageArtList = getArtListByPage(tempArtList, paramPage)
-                        if (tempPageArtList.includes(hiddenArt)) {
-                            hiddenArt = null
-                        }
-                    }
-
-                    setHiddenArt(hiddenArt)
-                    setSelectedFilters(tempSelectedFilters)
-                    setArtList(tempArtList)
-
-                }).then(() => {
-                    chickenLoading(2000, setIsLoading)
-                })
-
-            })
-
+        new Array("include", "exclude").forEach((filterType) => {
+            if (tempSelectedFilters[filterType] === null) {
+                return
+            }
+            if (tempSelectedFilters[filterType].length === 0) {
+                searchParams.delete(filterType)
+                setSearchParams(searchParams)
+            }
         })
 
+        let tempArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
 
-    }, [])
+        let hiddenArt = tempSearchParams.get("art")
+        if (hiddenArt !== null) {
+            let tempPageArtList = getArtListByPage(tempArtList, paramPage)
+            if (tempPageArtList.includes(hiddenArt)) {
+                hiddenArt = null
+            }
+        }
 
-    useEffect(() => {
+        setHiddenArt(hiddenArt)
+        setSelectedFilters(tempSelectedFilters)
+        setArtList(tempArtList)
+
+
+
+    }, [portfolioData.isSuccess, portfolioTagData.isSuccess, groupTagData.isSuccess])
+
+    /*useEffect(() => {
         let currPage = getCurrentPage()
         if (currPage < 1 || isNaN(currPage)) {
             handlePageNumber(1)
         }
         chickenLoading(500, setIsLoading)
 
-    }, [searchParams.get("page")])
+    }, [searchParams.get("page")])*/
 
 
 
@@ -604,18 +594,12 @@ export default function Gallery() {
         }
 
         let tempSearchParams = searchParams
-        if (doLoad) {
-            setIsLoading(true)
-        }
-
         setTimeout(() => {
             window.scrollTo(0, 0);
             tempSearchParams.set("page", page)
 
             setSearchParams(tempSearchParams.toString())
         }, 300)
-
-        chickenLoading(600, setIsLoading)
     }
 
     function getLatestPage(artList) {
@@ -640,7 +624,7 @@ export default function Gallery() {
 
     return (
         <div className="min-h-screen bg-zinc-800 overflow-x-hidden pb-15" >
-            {<SplashScreen isLoading={isLoading} />}
+            {<SplashScreen isLoading={isLoading()} />}
             <div>
                 <PaginationNav
                     isArrowActive={isArrowActive}
