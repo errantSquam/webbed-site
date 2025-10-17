@@ -626,7 +626,8 @@ export default function Gallery() {
     }
 
     function getLastPage(artList) {
-        return Math.floor(artList.length / numArtPerPage) + 1
+
+        return Math.ceil(artList.length / numArtPerPage)
     }
 
 
