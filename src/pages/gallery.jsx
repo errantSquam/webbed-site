@@ -23,12 +23,21 @@ import { chickenLoading } from "../components/splashscreen"
 
 import { ContactButton } from "../components/galleryComponents"
 import { useQuery } from '@tanstack/react-query'
+import { portfolioData, portfolioTagData, groupTagData} from "../api/galleryAPI"
 
-const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
+const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
+
+    
     const [isLoaded, setIsLoaded] = useState(false)
 
-    let portfolioTags = tagData
+    const portfolioTagQuery = portfolioTagData()
+    if (jsonData === undefined) {
+        return <div/>
+    }
 
+    function getPortfolioTagData() {
+        return portfolioTagQuery.isSuccess ? portfolioTagQuery.data : {}
+    }
 
     function filePath() {
         return filename + "." + jsonData.extension
@@ -45,7 +54,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
 
 
     let fullTags = jsonData.tags.map((tag) => {
-        return Object.keys(portfolioTags).length !== 0 && portfolioTags[tag]
+        return Object.keys(getPortfolioTagData()).length !== 0 && getPortfolioTagData()[tag]
     })
 
     let descString = jsonData.description
@@ -251,7 +260,6 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
         <GalleryModal isOpen={isOpen} handleClose={handleClose}
             filename={filename}
             jsonData={jsonData}
-            tagData={tagData}
         />
 
     </>
@@ -359,9 +367,6 @@ const TopNav = ({ setHome, children }) => {
 export default function Gallery() {
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const [portfolioJson, setPortfolioJson] = useState({})
-    const [portfolioTags, setPortfolioTags] = useState({})
-    const [groupedTaglist, setGroupedTaglist] = useState([])
     const [selectedFilters, setSelectedFilters] = useState(
         {
             include: [],
@@ -369,48 +374,29 @@ export default function Gallery() {
         }
     )
     const [artList, setArtList] = useState([])
-    //const [isLoading, setIsLoading] = useState(true)
     const [hiddenArt, setHiddenArt] = useState(null)
-    //this is never getting closed for the sake of no rerenders, i guess
 
     const numArtPerPage = 12
 
-    const portfolioData = useQuery({
-        queryKey: ["portfolioData"],
-        queryFn: async () => {
-            const data = fetch('assets/portfolio.json').then((res) => res.json())
-            return data
-        }
-    })
+    
+    const portfolioQuery = portfolioData()
+    const portfolioTagQuery = portfolioTagData()
+    const groupTagQuery = groupTagData()
 
-    const portfolioTagData = useQuery({
-        queryKey: ["portfolioTagData"],
-        queryFn: async () => {
-            const data = fetch('assets/portfoliotags.json').then((res) => res.json())
-            return data
-        }
-    })
-
-    const groupTagData = useQuery({
-        queryKey: ["groupTagData"],
-        queryFn: async () => {
-            const data = fetch('assets/grouptags.json').then((res) => res.json())
-            return data
-        }
-    })
+    function isLoading() {
+        return !(portfolioQuery.isSuccess && portfolioTagQuery.isSuccess && groupTagQuery.isSuccess)
+    }
 
     function getPortfolioData() {
-        return portfolioData.isSuccess ? portfolioData.data : {}
+        return portfolioQuery.isSuccess ? portfolioQuery.data : {}
     }
 
     function getPortfolioTagData() {
-        return portfolioTagData.isSuccess ? portfolioTagData.data : {}
+        return portfolioTagQuery.isSuccess ? portfolioTagQuery.data : {}
     }
 
-
     function getGroupTagData() {
-
-        let data = groupTagData.isSuccess ? groupTagData.data : {}
+        let data = groupTagQuery.isSuccess ? groupTagQuery.data : {}
         let tempGroupTagList = Object.keys(data).map((tagType) => {
             return {
                 label: tagType,
@@ -421,12 +407,6 @@ export default function Gallery() {
         })
         return tempGroupTagList
     }
-
-    function isLoading() {
-        return !(portfolioData.isSuccess && portfolioTagData.isSuccess && groupTagData.isSuccess)
-    }
-
-
 
     useEffect(() => {
         let tempSearchParams = searchParams
@@ -468,7 +448,7 @@ export default function Gallery() {
 
 
 
-    }, [portfolioData.isSuccess, portfolioTagData.isSuccess, groupTagData.isSuccess])
+    }, [portfolioQuery.isSuccess, portfolioTagQuery.isSuccess, groupTagQuery.isSuccess])
 
     /*useEffect(() => {
         let currPage = getCurrentPage()
