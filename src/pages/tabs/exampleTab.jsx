@@ -9,14 +9,27 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { Link } from 'react-router-dom';
 import { React, useState } from "react"
 import { useEffect } from "react"
+import { portfolioData } from '../../api/galleryAPI';
 
-const ImageExample = ({ fileName, portfolioJson, height = "md:h-60" }) => {
+
+
+const ImageExample = ({ fileName, height = "md:h-60" }) => {
     const [isOpen, setIsOpen] = useState(false)
+    
+    const portfolioQuery = portfolioData()
+
+    function getPortfolioData() {
+        return portfolioQuery.isSuccess ? portfolioQuery.data : {}
+    }
+
+    let filePath = ""
+    if (portfolioQuery.isSuccess){
+        filePath = fileName + "." + getPortfolioData()[fileName].extension
+    }
 
     const handleClose = () => {
         setIsOpen(false)
     }
-    let filePath = fileName + "." + portfolioJson[fileName].extension
 
     function cloudinaryPath() { 
         return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath.replaceAll(" ", "_")}`
@@ -26,7 +39,7 @@ const ImageExample = ({ fileName, portfolioJson, height = "md:h-60" }) => {
         e.target.src = "assets/pics/" +filePath
     }
 
-    return <div>
+    return <div key = {fileName}>
         <img src={cloudinaryPath()}
             onError = {addDefaultSrc} className={`rounded-md ${height} cursor-pointer border-2 
             border-green-500/0 hover:border-green-500
@@ -98,20 +111,20 @@ const MoreExamplesAccordion = ({ children }) => {
     </Accordion>
 }
 
-const ChibiTab = ({ portfolioJson }) => {
-    return <CommExample id="chibi" title="Chibi - $45+" portfolioJson={portfolioJson}>
+const ChibiTab = () => {
+    return <CommExample id="chibi" title="Chibi - $45+" >
         <div>Chibis have two styles:</div><br />
         <b className="font-jura text-lg">Clean</b>
         <div> Flat/minimally cel shaded by default! However, lines are cleaner and details are evident. More suitable if you want files to print acrylic charms/stickers with (please note commercial fee if not for personal use.)</div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="abel comm sig" portfolioJson={portfolioJson} />
-            <ImageExample fileName="rosch comm final" portfolioJson={portfolioJson} />
+            <ImageExample fileName="abel comm sig"  />
+            <ImageExample fileName="rosch comm final"  />
         </div>
         <b className="font-jura text-lg">Vibrant</b>
         <div> More vibrant/shaded by default, but messier on the details.    </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="rockuma af" portfolioJson={portfolioJson} />
-            <ImageExample fileName="niles af" portfolioJson={portfolioJson} />
+            <ImageExample fileName="rockuma af"  />
+            <ImageExample fileName="niles af"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -125,11 +138,11 @@ const ChibiTab = ({ portfolioJson }) => {
     </CommExample>
 }
 
-const BustTab = ({ portfolioJson }) => {
-    return <CommExample id="bust" title="Bust - $60+" portfolioJson={portfolioJson}>
+const BustTab = () => {
+    return <CommExample id="bust" title="Bust - $60+" >
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="yammark comm" portfolioJson={portfolioJson} />
-            <ImageExample fileName="trunswicked comm with sig" portfolioJson={portfolioJson} />
+            <ImageExample fileName="yammark comm"  />
+            <ImageExample fileName="trunswicked comm with sig"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -143,27 +156,27 @@ const BustTab = ({ portfolioJson }) => {
     </CommExample>
 }
 
-const HalfbodyTab = ({ portfolioJson }) => {
-    return <CommExample id = "halfbody" title="Halfbody - $120+" portfolioJson={portfolioJson}>
+const HalfbodyTab = () => {
+    return <CommExample id = "halfbody" title="Halfbody - $120+" >
         Standard halfbody. Most detailed textures come free (unless stated in Additional Fees), though please specify the level of realism if necessary.
         <br />(e.g. the cat anthros have different levels of fur detail)<br />
 
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="danarei comm sig" portfolioJson={portfolioJson} height="md:h-100" />
-            <ImageExample fileName="ordell card render 2 finalizing" portfolioJson={portfolioJson} height="md:h-100" />
+            <ImageExample fileName="danarei comm sig"  height="md:h-100" />
+            <ImageExample fileName="ordell card render 2 finalizing"  height="md:h-100" />
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="quill comm sig" portfolioJson={portfolioJson} height="md:h-65" />
-            <ImageExample fileName="rook comm journal with sig" portfolioJson={portfolioJson} height="md:h-65" />
+            <ImageExample fileName="quill comm sig"  height="md:h-65" />
+            <ImageExample fileName="rook comm journal with sig"  height="md:h-65" />
         </div>
         <div>
             <MoreExamplesAccordion>
                 <div className="flex flex-row flex-wrap">
-                    <ImageExample fileName="siren comm watermark" portfolioJson={portfolioJson} height="md:h-90" />
+                    <ImageExample fileName="siren comm watermark"  height="md:h-90" />
                 </div>
                 <div className="flex flex-row flex-wrap">
-                    <ImageExample fileName="xuqian doodle" portfolioJson={portfolioJson} height="md:h-65" />
-                    <ImageExample fileName="sarkis af" portfolioJson={portfolioJson} height="md:h-65" />
+                    <ImageExample fileName="xuqian doodle"  height="md:h-65" />
+                    <ImageExample fileName="sarkis af"  height="md:h-65" />
                 </div>
                 <div><Link to={{
                     pathname: "/gallery",
@@ -180,29 +193,29 @@ const HalfbodyTab = ({ portfolioJson }) => {
     </CommExample>
 }
 
-const FullbodyTab = ({ portfolioJson }) => {
-    return <CommExample id="fullbody" title="Fullbody - $180+" portfolioJson={portfolioJson}>
+const FullbodyTab = () => {
+    return <CommExample id="fullbody" title="Fullbody - $180+" >
         Standard fullbody render. Most of the rules from Halfbody apply here, as well.
 
 
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="ekaitz sword unsheathing small" portfolioJson={portfolioJson} height="md:h-100" />
-            <ImageExample fileName="duftmon comm siggy" portfolioJson={portfolioJson} height="md:h-100" />
+            <ImageExample fileName="ekaitz sword unsheathing small"  height="md:h-100" />
+            <ImageExample fileName="duftmon comm siggy"  height="md:h-100" />
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="medabots at" portfolioJson={portfolioJson} height="md:h-65" />
-            <ImageExample fileName="nick non af" portfolioJson={portfolioJson} height="md:h-65" />
+            <ImageExample fileName="medabots at"  height="md:h-65" />
+            <ImageExample fileName="nick non af"  height="md:h-65" />
         </div>
         <MoreExamplesAccordion>
             <div className="flex flex-row flex-wrap">
-                <ImageExample fileName="digigirl phoenixmon" portfolioJson={portfolioJson} height="md:h-90" />
+                <ImageExample fileName="digigirl phoenixmon"  height="md:h-90" />
             </div>
             <div className="flex flex-row flex-wrap">
-                <ImageExample fileName="more dell wings render" portfolioJson={portfolioJson} height="md:h-65" />
-                <ImageExample fileName="check out this sick new skell" portfolioJson={portfolioJson} height="md:h-65" />
+                <ImageExample fileName="more dell wings render"  height="md:h-65" />
+                <ImageExample fileName="check out this sick new skell"  height="md:h-65" />
             </div>
             <div className="flex flex-row flex-wrap">
-                <ImageExample fileName="slashy comm watermark" portfolioJson={portfolioJson} height="md:h-90" />
+                <ImageExample fileName="slashy comm watermark"  height="md:h-90" />
             </div>
             <div><Link to={{
                 pathname: "/gallery",
@@ -217,8 +230,8 @@ const FullbodyTab = ({ portfolioJson }) => {
     </CommExample>
 }
 
-const RefSheetsTab = ({ portfolioJson }) => {
-    return <CommExample id="refsheet" title="Reference Sheets ($400-500+)" portfolioJson={portfolioJson}>
+const RefSheetsTab = () => {
+    return <CommExample id="refsheet" title="Reference Sheets ($400-500+)" >
         Reference sheets! Can just be front/back flats, or even shaded. (More $$$ for shaded.)
         Please ask me for a quote so we can discuss. Price estimate is for <i>lightly shaded, front/side/back turnarounds.</i><br/><br />
         Unlike what's stated in the ToS, I will likely have a back-and-forth with you to finalize details.<br /><br />
@@ -260,8 +273,8 @@ const RefSheetsTab = ({ portfolioJson }) => {
         </Accordion>
 
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="chuji updated ref 2025" portfolioJson={portfolioJson} height="md:h-100" />
-            <ImageExample fileName="ankou redesign maybe" portfolioJson={portfolioJson} height="md:h-100" />
+            <ImageExample fileName="chuji updated ref 2025"  height="md:h-100" />
+            <ImageExample fileName="ankou redesign maybe"  height="md:h-100" />
 
         </div>
         <div>For character design, I also have my own original setting (inspired by JRPGs and speculative biology).&nbsp;
@@ -272,13 +285,13 @@ const RefSheetsTab = ({ portfolioJson }) => {
         </CommExample>
 }
 
-const BGTab = ({ portfolioJson }) => {
-    return <CommExample id="background" title="Backgrounds" portfolioJson={portfolioJson}>
+const BGTab = () => {
+    return <CommExample id="background" title="Backgrounds" >
         <b className="font-jura text-lg">Simple BG ($20+)</b>
         <div> Loose, painterly backgrounds.</div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="valen bagua study" portfolioJson={portfolioJson} />
-            <ImageExample fileName="chopper comm" portfolioJson={portfolioJson} />
+            <ImageExample fileName="valen bagua study"  />
+            <ImageExample fileName="chopper comm"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -293,8 +306,8 @@ const BGTab = ({ portfolioJson }) => {
         <div> Detailed painterly backgrounds with compositional elements or complex geometric forms. </div>
         <div>Layman rule of thumb: if you require accurate perspective, it goes here.</div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="armory alley redraw" portfolioJson={portfolioJson} />
-            <ImageExample fileName="skell sylvalum big ball" portfolioJson={portfolioJson} />
+            <ImageExample fileName="armory alley redraw"  />
+            <ImageExample fileName="skell sylvalum big ball"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -308,8 +321,8 @@ const BGTab = ({ portfolioJson }) => {
     </CommExample>
 }
 
-const SpritesTab = ({ portfolioJson }) => {
-    return <CommExample id="sprite" title="Other: Sprites & Animated Portraits" portfolioJson={portfolioJson}>
+const SpritesTab = () => {
+    return <CommExample id="sprite" title="Other: Sprites & Animated Portraits" >
         In general, I'm able to entertain any weird request you'd like, as long as it follows my guidelines (no NSFW).<br /><br />
         I'm an experienced artist (both illustration and pixelart), and can adapt to a variety of styles. However, you may see an additional 'Artstyle' charge, because it does take a bit of effort to draw outside my usual style!
         <br /><br />Please feel free to ask me anything, and I'll give you a quote. <br />
@@ -330,9 +343,9 @@ const SpritesTab = ({ portfolioJson }) => {
             Total: $200+
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="ocre-fe9-comm-neutral" portfolioJson={portfolioJson} />
-            <ImageExample fileName="stokori comm 1 anim" portfolioJson={portfolioJson} />
-            <ImageExample fileName="stokori comm 2 anim" portfolioJson={portfolioJson} />
+            <ImageExample fileName="ocre-fe9-comm-neutral"  />
+            <ImageExample fileName="stokori comm 1 anim"  />
+            <ImageExample fileName="stokori comm 2 anim"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -353,10 +366,10 @@ const SpritesTab = ({ portfolioJson }) => {
             Total: $120+
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="danarei comm sprite for publishing" portfolioJson={portfolioJson} />
-            <ImageExample fileName="silvally fe crop" portfolioJson={portfolioJson} />
-            <ImageExample fileName="TalkAnim" portfolioJson={portfolioJson} />
-            <ImageExample fileName="Tina_FE5" portfolioJson={portfolioJson} />
+            <ImageExample fileName="danarei comm sprite for publishing"  />
+            <ImageExample fileName="silvally fe crop"  />
+            <ImageExample fileName="TalkAnim"  />
+            <ImageExample fileName="Tina_FE5"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -388,10 +401,10 @@ const SpritesTab = ({ portfolioJson }) => {
 
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="metalgreymon pmd comm 500x" portfolioJson={portfolioJson} />
-            <ImageExample fileName="majima spritesheet large" portfolioJson={portfolioJson} />
-            <ImageExample fileName="sebastien pmd comm watermark" portfolioJson={portfolioJson} />
-            <ImageExample fileName="pick pmd comm large watermarked" portfolioJson={portfolioJson} />
+            <ImageExample fileName="metalgreymon pmd comm 500x"  />
+            <ImageExample fileName="majima spritesheet large"  />
+            <ImageExample fileName="sebastien pmd comm watermark"  />
+            <ImageExample fileName="pick pmd comm large watermarked"  />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -404,7 +417,7 @@ const SpritesTab = ({ portfolioJson }) => {
         </Link></div><br />
     </CommExample>
 }
-export const ExampleTab = ({ portfolioJson, setCurrentTab }) => {
+export const ExampleTab = ({ setCurrentTab }) => {
     return <div className="w-full space-y-4">
         <Header>Examples </Header>
         <TableOfContents tocDict={{
@@ -456,22 +469,22 @@ export const ExampleTab = ({ portfolioJson, setCurrentTab }) => {
                 </Link>
         </TableOfContents>
         <hr />
-        <ChibiTab portfolioJson={portfolioJson} />
+        <ChibiTab  />
         <hr />
-        <BustTab portfolioJson={portfolioJson} />
+        <BustTab  />
         <hr />
-        <HalfbodyTab portfolioJson={portfolioJson} />
+        <HalfbodyTab  />
         <hr />
-        <FullbodyTab portfolioJson={portfolioJson} />
+        <FullbodyTab  />
         <hr />
-        <RefSheetsTab portfolioJson={portfolioJson} />
+        <RefSheetsTab  />
         <hr />
-        <BGTab portfolioJson={portfolioJson} />
+        <BGTab  />
         <hr />
-        <SpritesTab portfolioJson={portfolioJson} />
+        <SpritesTab  />
         <hr />
 
-        <CommExample id="artcrit" title="BONUS: Art Critique" portfolioJson={portfolioJson}>
+        <CommExample id="artcrit" title="BONUS: Art Critique" >
             Send me your art! You can just drop money into my <a href="https://ko-fi.com/errantsquam">Ko-fi</a> and we’ll talk.
 
             <br /><br />

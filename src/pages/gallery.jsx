@@ -409,6 +409,9 @@ export default function Gallery() {
     }
 
     useEffect(() => {
+        console.log("I'm working")
+        console.log(portfolioQuery)
+        console.log(getPortfolioData())
         let tempSearchParams = searchParams
         let paramPage = tempSearchParams.get("page")
         if (paramPage === null || isNaN(paramPage)) {
@@ -450,18 +453,16 @@ export default function Gallery() {
             setArtList(tempArtList)
         }
 
-
-
     }, [portfolioQuery.isSuccess, portfolioTagQuery.isSuccess, groupTagQuery.isSuccess])
 
-    /*useEffect(() => {
+    useEffect(() => {
         let currPage = getCurrentPage()
         if (currPage < 1 || isNaN(currPage)) {
             handlePageNumber(1)
         }
-        chickenLoading(500, setIsLoading)
+        //chickenLoading(500, setIsLoading)
 
-    }, [searchParams.get("page")])*/
+    }, [searchParams.get("page")])
 
 
 

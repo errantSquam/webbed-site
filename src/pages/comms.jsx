@@ -13,6 +13,7 @@ import { TableOfContents } from "../components/tosComponents"
 import { chickenLoading } from "../components/splashscreen"
 import ExampleTab from "./tabs/exampleTab"
 import { useSearchParams } from "react-router-dom"
+import { portfolioData, portfolioTagData, groupTagData} from "../api/galleryAPI"
 
 
 const FeesTab = ({setCurrentTab}) => {
@@ -294,6 +295,8 @@ export default function Commissions() {
     const [portfolioJson, setPortfolioJson] = useState({})
     const [searchParams, setSearchParams] = useSearchParams()
 
+    const portfolioQuery = portfolioData()
+
     const tabDict = {
         "intro": {
             fullName: "Introduction",
@@ -302,7 +305,7 @@ export default function Commissions() {
         },
         "eg": {
             fullName: "Examples",
-            tab: <ExampleTab portfolioJson={portfolioJson} setCurrentTab = {handleTabSetting}/>,
+            tab: <ExampleTab setCurrentTab = {handleTabSetting}/>,
             index: 1
         },
         "gen": {
