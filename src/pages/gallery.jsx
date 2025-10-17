@@ -22,6 +22,7 @@ import { convertTagToSelectLabel, handleFilterParams } from "../stylesfunctions/
 import { chickenLoading } from "../components/splashscreen"
 
 import { ContactButton } from "../components/galleryComponents"
+import { useQuery } from '@tanstack/react-query'
 
 const GalleryModal = ({ isOpen, handleClose, filename, jsonData, tagData }) => {
     const [isLoaded, setIsLoaded] = useState(false)
@@ -204,17 +205,6 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
         e.target.src = "assets/pics/" + filePath()
     }
 
-    function thumbFilePath() {
-        return filePath()
-
-        if (jsonData.hasThumb) {
-            return `/thumb/${filename}_thumb.${jsonData.extension}`
-
-        } else {
-            return filePath()
-        }
-    }
-
     let objSize = `object-cover w-64 md:w-auto md:h-64`
 
     return <>
@@ -346,7 +336,7 @@ const TopNav = ({ setHome, children }) => {
         </div>
     </div>
         {<div
-        style = {!isMenuOpen ?{ pointerEvents: "none"} : {}}
+            style={!isMenuOpen ? { pointerEvents: "none" } : {}}
         >
             <div className={`bg-zinc-900 text-zinc-300 py-2 w-full 
                         md:border-r-2 border-b-2 border-green-500
@@ -384,6 +374,44 @@ export default function Gallery() {
     //this is never getting closed for the sake of no rerenders, i guess
 
     const numArtPerPage = 12
+
+    const portfolioData = useQuery({
+        queryKey: ["portfolioData"],
+        queryFn: async () => {
+            const data = fetch('assets/portfolio.json').then((res) => res.json())
+            return data
+        }
+    })
+
+    const portfolioTagData = useQuery({
+        queryKey: ["portfolioTagData"],
+        queryFn: async () => {
+            const data = fetch('assets/portfoliotags.json').then((res) => res.json())
+            return data
+        }
+    })
+
+    const groupTagData = useQuery({
+        queryKey: ["groupTagData"],
+        queryFn: async () => {
+            const data = fetch('assets/grouptags.json').then((res) => res.json())
+            return data
+        }
+    })
+
+    function getPortfolioData() {
+        return portfolioData.isSuccess ? portfolioData.data : {}
+    }
+
+    function getPortfolioTagData() {
+        return portfolioTagData.isSuccess ? portfolioTagData.data : {}
+    }
+
+
+    function getGroupTagData(){
+        return groupTagData.isSuccess ? groupTagData.data : {}
+    }
+
 
 
     useEffect(() => {
@@ -523,7 +551,7 @@ export default function Gallery() {
         })
 
         writeTagsToParams(tempSelectedFilters)
-        let newArtList = getFilteredArtByPriority(portfolioJson, tempSelectedFilters)
+        let newArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
 
         setSelectedFilters(tempSelectedFilters)
         setArtList(newArtList)
@@ -670,8 +698,8 @@ export default function Gallery() {
                         getArtListPaginated().map((filename) => {
                             return <div className="" key={filename}>
                                 <GalleryImage filename={filename}
-                                    jsonData={portfolioJson[filename]}
-                                    tagData={portfolioTags} />
+                                    jsonData={getPortfolioData()[filename]}
+                                    tagData={getPortfolioTagData()} />
                             </div>
 
                         })
@@ -679,7 +707,7 @@ export default function Gallery() {
                 </div>
                 <HiddenModal
                     key={hiddenArt}
-                    filename={hiddenArt} jsonData={portfolioJson[hiddenArt]} tagData={portfolioTags} />
+                    filename={hiddenArt} jsonData={getPortfolioData()[hiddenArt]} tagData={getPortfolioTagData()} />
 
             </div>
         </div>
