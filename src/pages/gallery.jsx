@@ -409,7 +409,17 @@ export default function Gallery() {
 
 
     function getGroupTagData(){
-        return groupTagData.isSuccess ? groupTagData.data : {}
+
+        let data = groupTagData.isSuccess ? groupTagData.data : {}
+        let tempGroupTagList = Object.keys(data).map((tagType) => {
+                        return {
+                            label: tagType,
+                            options: data[tagType].map((tagName) => {
+                                return convertTagToSelectLabel(tagName, getPortfolioTagData())
+                            })
+                        }
+                    })
+        return tempGroupTagList
     }
 
 
@@ -427,15 +437,7 @@ export default function Gallery() {
         fetch('assets/portfolio.json').then((res) => res.json()).then((portfolioData) => {
             fetch('assets/portfoliotags.json').then((res) => res.json()).then((portfolioTagData) => {
                 fetch('assets/grouptags.json').then((res) => res.json()).then((data) => {
-                    let tempTagList = data
-                    let tempGroupTagList = Object.keys(tempTagList).map((tagType) => {
-                        return {
-                            label: tagType,
-                            options: tempTagList[tagType].map((tagName) => {
-                                return convertTagToSelectLabel(tagName, portfolioTagData)
-                            })
-                        }
-                    })
+                    
                     let tempSelectedFilters = ["include", "exclude"]
                         .reduce((accumulator, filterType) => {
                             return (handleFilterParams(filterType, tempSearchParams, accumulator, portfolioTagData))
@@ -464,9 +466,6 @@ export default function Gallery() {
                     }
 
                     setHiddenArt(hiddenArt)
-                    setPortfolioJson(portfolioData)
-                    setPortfolioTags(portfolioTagData)
-                    setGroupedTaglist(tempGroupTagList)
                     setSelectedFilters(tempSelectedFilters)
                     setArtList(tempArtList)
 
@@ -667,14 +666,14 @@ export default function Gallery() {
                         title="#INCLUDES"
                         onChange={(options) => { handleSelect(options, "include", "exclude") }}
                         styles={selectStyles}
-                        options={groupedTaglist}
+                        options={getGroupTagData()}
                         value={selectedFilters.include}
                     />
                     <GalleryFilter
                         title="#EXCLUDES"
                         onChange={(options) => { handleSelect(options, "exclude", "include") }}
                         styles={selectStylesExclude()}
-                        options={groupedTaglist}
+                        options={getGroupTagData()}
                         value={selectedFilters.exclude}
                     />
                 </div>
