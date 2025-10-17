@@ -522,9 +522,14 @@ export default function Gallery() {
 
         range.forEach((index) => {
             let option = options[index]
-            if (tempSelectedFilters[oppKey].includes(option)) {
 
-                tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => i !== option)
+            //better way of array includes...because we can't have nice things
+            let oppContains = tempSelectedFilters[oppKey].some(oppOption =>{
+            return JSON.stringify(option) === JSON.stringify(oppOption);
+            });
+
+            if (oppContains) {
+                tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => JSON.stringify(i) !== JSON.stringify(option))
             }
         })
 
