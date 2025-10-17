@@ -614,7 +614,7 @@ export default function Gallery() {
 
     function getLatestPage(artList) {
         let page = getCurrentPage()
-        if ((page - 1) * numArtPerPage > artList.length) {
+        if (page > getLastPage(artList)) {
 
             //I have no idea if this calculation works but it currently works with my shitty test case
             handlePageNumber(getLastPage(artList), false)
