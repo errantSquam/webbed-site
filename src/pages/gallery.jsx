@@ -396,7 +396,13 @@ export default function Gallery() {
     }
 
     function getGroupTagData() {
+
+        if (!groupTagQuery.isSuccess) {
+            return []
+        }
+
         let data = groupTagQuery.isSuccess ? groupTagQuery.data : {}
+
         let tempGroupTagList = Object.keys(data).map((tagType) => {
             return {
                 label: tagType,
@@ -409,9 +415,9 @@ export default function Gallery() {
     }
 
     useEffect(() => {
-        console.log("I'm working")
-        console.log(portfolioQuery)
-        console.log(getPortfolioData())
+        console.log("Fetching...")
+        //console.log(portfolioQuery)
+        //console.log(getPortfolioData())
         let tempSearchParams = searchParams
         let paramPage = tempSearchParams.get("page")
         if (paramPage === null || isNaN(paramPage)) {
@@ -453,7 +459,7 @@ export default function Gallery() {
             setArtList(tempArtList)
         }
 
-    }, [portfolioQuery.isSuccess, portfolioTagQuery.isSuccess, groupTagQuery.isSuccess])
+    }, [portfolioQuery.isSuccess && portfolioTagQuery.isSuccess && groupTagQuery.isSuccess])
 
     useEffect(() => {
         let currPage = getCurrentPage()
