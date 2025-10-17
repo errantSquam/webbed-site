@@ -176,7 +176,7 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
     </Dialog>
 }
 
-const GalleryImage = ({ filename, jsonData, tagData }) => {
+const GalleryImage = ({ filename, jsonData }) => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
     const [isLoaded, setIsLoaded] = useState(false)
@@ -265,7 +265,7 @@ const GalleryImage = ({ filename, jsonData, tagData }) => {
     </>
 }
 
-const HiddenModal = ({ filename, jsonData, tagData, handleParams }) => {
+const HiddenModal = ({ filename, jsonData }) => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [isOpen, setIsOpen] = useState(false)
@@ -290,7 +290,7 @@ const HiddenModal = ({ filename, jsonData, tagData, handleParams }) => {
 
     return filename !== null && <GalleryModal isOpen={isOpen}
         filename={filename}
-        handleClose={handleClose} jsonData={jsonData} tagData={tagData} />
+        handleClose={handleClose} jsonData={jsonData} />
 
 }
 
@@ -417,34 +417,38 @@ export default function Gallery() {
             setSearchParams({ page: 1 })
         }
 
-        let tempSelectedFilters = ["include", "exclude"]
-            .reduce((accumulator, filterType) => {
-                return (handleFilterParams(filterType, tempSearchParams, accumulator, getPortfolioTagData()))
-            }, selectedFilters)
+        //this has to be run After fetching grouptagdata...
+        if(portfolioTagQuery.isSuccess) {
+            let tempSelectedFilters = ["include", "exclude"]
+                .reduce((accumulator, filterType) => {
+                    return (handleFilterParams(filterType, tempSearchParams, accumulator, getPortfolioTagData()))
+                }, selectedFilters)
 
-        new Array("include", "exclude").forEach((filterType) => {
-            if (tempSelectedFilters[filterType] === null) {
-                return
-            }
-            if (tempSelectedFilters[filterType].length === 0) {
-                searchParams.delete(filterType)
-                setSearchParams(searchParams)
-            }
-        })
 
-        let tempArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
+            new Array("include", "exclude").forEach((filterType) => {
+                if (tempSelectedFilters[filterType] === null) {
+                    return
+                }
+                if (tempSelectedFilters[filterType].length === 0) {
+                    searchParams.delete(filterType)
+                    setSearchParams(searchParams)
+                }
+            })
 
-        let hiddenArt = tempSearchParams.get("art")
-        if (hiddenArt !== null) {
-            let tempPageArtList = getArtListByPage(tempArtList, paramPage)
-            if (tempPageArtList.includes(hiddenArt)) {
-                hiddenArt = null
+            let tempArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
+
+            let hiddenArt = tempSearchParams.get("art")
+            if (hiddenArt !== null) {
+                let tempPageArtList = getArtListByPage(tempArtList, paramPage)
+                if (tempPageArtList.includes(hiddenArt)) {
+                    hiddenArt = null
+                }
             }
+
+            setHiddenArt(hiddenArt)
+            setSelectedFilters(tempSelectedFilters)
+            setArtList(tempArtList)
         }
-
-        setHiddenArt(hiddenArt)
-        setSelectedFilters(tempSelectedFilters)
-        setArtList(tempArtList)
 
 
 
@@ -661,8 +665,7 @@ export default function Gallery() {
                         getArtListPaginated().map((filename) => {
                             return <div className="" key={filename}>
                                 <GalleryImage filename={filename}
-                                    jsonData={getPortfolioData()[filename]}
-                                    tagData={getPortfolioTagData()} />
+                                    jsonData={getPortfolioData()[filename]} />
                             </div>
 
                         })
