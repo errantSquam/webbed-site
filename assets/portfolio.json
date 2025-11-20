@@ -92,6 +92,7 @@
             "human",
             "zephyr",
             "snake",
+			"reptile",
             "scales",
             "halfbody",
             "designbg",
@@ -371,6 +372,7 @@
             "oc",
             "ekaitz",
             "snake",
+			"reptile",
             "human",
             "sword",
             "simplebg",
@@ -878,6 +880,7 @@
             "ekaitz",
             "human",
             "snake",
+			"reptile",
             "fullbody",
             "sword",
             "illust"
@@ -983,6 +986,7 @@
             "ekaitz",
             "human",
             "snake",
+			"reptile",
             "pixelart",
             "fullbody",
             "animated"
@@ -1029,6 +1033,7 @@
             "human",
             "creature",
             "snake",
+			"reptile",
             "bird",
             "owl",
             "microraptor",
@@ -1198,6 +1203,7 @@
             "creature",
             "fanart",
             "gahoole",
+			"irl",
             "wings",
             "fullbody",
             "illust"
@@ -1222,7 +1228,8 @@
             "bust",
             "pokemon",
             "bird",
-            "creature"
+            "creature",
+            "otheroc"
         ],
         "isVertical": false,
         "priority": 0,
@@ -1793,6 +1800,257 @@
         "dimensions": [
             485,
             400
+        ],
+        "hasThumb": false
+    },
+    "cockatrice": {
+        "tags": [
+			"oc",
+			"bird",
+			"creature",
+			"illust",
+			"reptile",
+			"characterdesign"
+		],
+        "isVertical": false,
+        "priority": -4,
+        "description": "",
+        "date": 1763607554.551388,
+        "extension": "webp",
+        "dimensions": [
+            2227,
+            2035
+        ],
+        "hasThumb": false
+    },
+    "hss logo full watermark": {
+        "tags": [
+			"irl",
+			"reptile",
+			"snake",
+			"frog",
+			"lizard",
+			"turtle",
+			"illust",
+			"chibi",
+			"commission"
+		],
+        "isVertical": false,
+        "priority": 5,
+        "description": "Merch collaboration with <a target='_blank' rel='noopener noreferrer' href='https://herpsocsg.com/'>Herpetological Society of Singapore.</a>",
+        "date": 1763607559.7599435,
+        "extension": "webp",
+        "dimensions": [
+            2100,
+            2100
+        ],
+        "hasThumb": false
+    },
+    "imperialdramon doodle": {
+        "tags": [
+			"fanart",
+			"digimon",
+			"fullbody",
+			"illust"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1763607569.4566233,
+        "extension": "webp",
+        "dimensions": [
+            2227,
+            2227
+        ],
+        "hasThumb": false
+    },
+    "kimmy oc comm": {
+        "tags": [
+			"otheroc",
+			"fullbody",
+			"illust",
+			"irl",
+			"human",
+			"simplebg"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Commission. Character belongs to <u><a target='_blank' rel='noopener noreferrer' href='https://kimmyocs.onrender.com/'>Kimmy.</a></u>",
+        "date": 1763607584.221757,
+        "extension": "webp",
+        "dimensions": [
+            2480,
+            1761
+        ],
+        "hasThumb": false
+    },
+    "leaellynasaura": {
+        "tags": [
+			"dinosaur",
+			"fanart",
+			"irl",
+			"illust",
+			"fullbody",
+			"prehistorickingdom",
+			"simplebg"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "Fanart of Prehistoric Kingdom's Leaellynasaura.",
+        "date": 1763607606.3514657,
+        "extension": "webp",
+        "dimensions": [
+            1648,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "magneticdramon": {
+        "tags": [
+			"digimon",
+			"fanart",
+			"illust",
+			"chibi"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1763607615.2763333,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "nelly": {
+        "tags": [
+			"irl",
+			"owl",
+			"bird",
+			"illust",
+			"bust"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1763607626.5925949,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "peregrine falcon study": {
+        "tags": [
+			"irl",
+			"bird",
+			"illust",
+			"fullbody"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1763607636.012064,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "raiju update maybe": {
+        "tags": [
+			"oc",
+			"mecha",
+			"characterdesign",
+			"fullbody",
+			"illust"
+		],
+        "isVertical": false,
+        "priority": -3,
+        "description": "",
+        "date": 1763607640.8447673,
+        "extension": "webp",
+        "dimensions": [
+            2144,
+            2062
+        ],
+        "hasThumb": false
+    },
+    "sinornithosaurus": {
+        "tags": [
+			"dinosaur",
+			"irl",
+			"illust",
+			"fullbody"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1763607658.4090025,
+        "extension": "webp",
+        "dimensions": [
+            1613,
+            1594
+        ],
+        "hasThumb": false
+    },
+    "sooty oul": {
+        "tags": [
+			"owl",
+			"bird",
+			"irl",
+			"illust",
+			"chibi"
+		],
+        "isVertical": false,
+        "priority": 3,
+        "description": "",
+        "date": 1763607659.6309607,
+        "extension": "webp",
+        "dimensions": [
+            1025,
+            1025
+        ],
+        "hasThumb": false
+    },
+    "twin dragon blades zhurong": {
+        "tags": [
+			"oc",
+			"mecha",
+			"illust",
+			"fullbody",
+			"simplebg"
+		],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1763607678.2448385,
+        "extension": "webp",
+        "dimensions": [
+            1761,
+            2480
+        ],
+        "hasThumb": false
+    },
+    "xuanwu warrior mode maybe": {
+        "tags": [
+			"oc",
+			"characterdesign",
+			"turtle",
+			"snake",
+			"fullbody"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1763607685.2902842,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
         ],
         "hasThumb": false
     }

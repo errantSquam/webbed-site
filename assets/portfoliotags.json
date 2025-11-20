@@ -260,7 +260,7 @@
         "tagType": "source"
     },
     "irl": {
-        "fullName": "Real Life",
+        "fullName": "Realism",
         "tagType": "copyright"
     },
     "trinityblood": {
@@ -294,5 +294,25 @@
     "ankou": {
         "fullName": "Ankou",
         "tagType": "oc"
+    },
+    "reptile": {
+        "fullName": "Reptile",
+        "tagType": "species"
+    },
+    "characterdesign": {
+        "fullName": "Character Design",
+        "tagType": "scope"
+    },
+    "frog": {
+        "fullName": "Frog",
+        "tagType": "species"
+    },
+    "lizard": {
+        "fullName": "Lizard",
+        "tagType": "species"
+    },
+    "prehistorickingdom": {
+        "fullName": "Prehistoric Kingdom",
+        "tagType": "source"
     }
 }
