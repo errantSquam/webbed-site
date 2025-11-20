@@ -16,7 +16,8 @@
         "bust",
         "halfbody",
         "fullbody",
-        "charactersheet"
+        "charactersheet",
+        "characterdesign"
     ],
     "bg": [
         "simplebg",
@@ -44,7 +45,10 @@
         "owl",
         "duck",
         "insect",
-        "dragon"
+        "dragon",
+        "reptile",
+        "frog",
+        "lizard"
     ],
     "oc": [
         "arelis",
@@ -79,7 +83,8 @@
         "gahoole",
         "dafeng",
         "trinityblood",
-        "rhist"
+        "rhist",
+        "prehistorickingdom"
     ],
     "misc": [
         "scales",
