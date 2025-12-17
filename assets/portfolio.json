@@ -2105,7 +2105,7 @@
 		"illust"
 		],
         "isVertical": false,
-        "priority": -4,
+        "priority": -1,
         "description": "",
         "date": 1765962132.1172159,
         "extension": "webp",
@@ -2144,7 +2144,7 @@
 		"illust"
 		],
         "isVertical": true,
-        "priority": 0,
+        "priority": 2,
         "description": "",
         "date": 1765962145.2178853,
         "extension": "webp",
@@ -2162,7 +2162,7 @@
 		"illust"
 		],
         "isVertical": true,
-        "priority": 0,
+        "priority": 1,
         "description": "",
         "date": 1765962154.4207664,
         "extension": "webp",
