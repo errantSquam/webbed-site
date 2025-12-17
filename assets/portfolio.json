@@ -1773,7 +1773,7 @@
             "illust"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -2,
         "description": "",
         "date": 1755936953.0935557,
         "extension": "webp",
@@ -2094,6 +2094,101 @@
         "dimensions": [
             2100,
             2100
+        ],
+        "hasThumb": false
+    },
+    "dizzy bob the builder": {
+        "tags": [
+		"fanart",
+		"mecha",
+		"fullbody",
+		"illust"
+		],
+        "isVertical": false,
+        "priority": -4,
+        "description": "",
+        "date": 1765962132.1172159,
+        "extension": "webp",
+        "dimensions": [
+            1208,
+            1208
+        ],
+        "hasThumb": false
+    },
+    "duftmon chibi update": {
+        "tags": [
+		"fanart",
+		"digimon",
+		"wings",
+		"chibi",
+		"illust"
+		],
+        "isVertical": false,
+        "priority": 0,
+        "description": "",
+        "date": 1765962134.1543217,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "end of evangowlion": {
+        "tags": [
+		"fanart",
+		"complexbg",
+		"owl",
+		"bird",
+		"gahoole",
+		"illust"
+		],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1765962145.2178853,
+        "extension": "webp",
+        "dimensions": [
+            1761,
+            2480
+        ],
+        "hasThumb": false
+    },
+    "galactic nova spino fanart": {
+        "tags": [
+		"fanart",
+		"mecha",
+		"kirby",
+		"illust"
+		],
+        "isVertical": true,
+        "priority": 0,
+        "description": "",
+        "date": 1765962154.4207664,
+        "extension": "webp",
+        "dimensions": [
+            1240,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "monitor lizard guntank": {
+        "tags": [
+		"oc",
+		"characterdesign",
+		"fullbody",
+		"illust",
+		"mecha",
+		"reptile"
+		],
+        "isVertical": false,
+        "priority": -1,
+        "description": "",
+        "date": 1765962159.3458357,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
         ],
         "hasThumb": false
     }
