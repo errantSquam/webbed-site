@@ -1,9 +1,9 @@
 {
-"name": "worker-name",
+"name": "webbed-site",
 "compatibility_date": "2025-12-19",
 "main": "src/index.jsx",
 "assets": {
-    "directory":"public"
+    "directory":"./build"
 }
 
 }
