@@ -14,7 +14,7 @@ export const Header = ({ children, icon = "", id = "" }) => {
 }
 
 const ToCListing = ({ children, id }) => {
-    const handleScroll = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    const handleScroll = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
 
     return <li onClick={() => { handleScroll(id) }} className="select-none cursor-pointer"><u>{children}</u></li>
 }

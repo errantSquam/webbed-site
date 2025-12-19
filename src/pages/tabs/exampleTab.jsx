@@ -485,7 +485,7 @@ export const ExampleTab = ({ setCurrentTab }) => {
         <hr />
 
         <CommExample id="artcrit" title="BONUS: Art Critique" >
-            Send me your art! You can just drop money into my <a href="https://ko-fi.com/errantsquam">Ko-fi</a> and we’ll talk.
+            Send me your art! You can just drop money into my <a className = "underline cursor-pointer" href="https://ko-fi.com/errantsquam">Ko-fi</a> and we’ll talk.
 
             <br /><br />
             I usually give my best feedback if you:

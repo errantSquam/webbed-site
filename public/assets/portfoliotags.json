@@ -314,5 +314,9 @@
     "prehistorickingdom": {
         "fullName": "Prehistoric Kingdom",
         "tagType": "source"
+    },
+    "kirby": {
+        "fullName": "Kirby",
+        "tagType": "source"
     }
 }
