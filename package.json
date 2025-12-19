@@ -28,7 +28,7 @@
     "deploy": "gh-pages -d build",
     "start": "vite",
     "build": "$npm_execpath run build:css && vite build",
-    "build:css": "tailwindcss -i src/style.css -o public/static/style.css",
+    "build:css": "tailwindcss -i src/index.css -o public/static/index.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "vite"
