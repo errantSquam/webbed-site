@@ -15,7 +15,7 @@ import { portfolioData } from '../../api/galleryAPI';
 
 const ImageExample = ({ fileName, height = "md:h-60" }) => {
     const [isOpen, setIsOpen] = useState(false)
-    
+
     const portfolioQuery = portfolioData()
 
     function getPortfolioData() {
@@ -23,7 +23,7 @@ const ImageExample = ({ fileName, height = "md:h-60" }) => {
     }
 
     let filePath = ""
-    if (portfolioQuery.isSuccess){
+    if (portfolioQuery.isSuccess) {
         filePath = fileName + "." + getPortfolioData()[fileName].extension
     }
 
@@ -31,17 +31,17 @@ const ImageExample = ({ fileName, height = "md:h-60" }) => {
         setIsOpen(false)
     }
 
-    function cloudinaryPath() { 
+    function cloudinaryPath() {
         return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath.replaceAll(" ", "_")}`
     }
 
     function addDefaultSrc(e) {
-        e.target.src = "assets/pics/" +filePath
+        e.target.src = "assets/pics/" + filePath
     }
 
-    return <div key = {fileName}>
+    return <div key={fileName}>
         <img src={cloudinaryPath()}
-            onError = {addDefaultSrc} className={`rounded-md ${height} cursor-pointer border-2 
+            onError={addDefaultSrc} className={`rounded-md ${height} cursor-pointer border-2 
             border-green-500/0 hover:border-green-500
             m-2
 
@@ -56,7 +56,7 @@ const ImageExample = ({ fileName, height = "md:h-60" }) => {
                     >
                         <div className="flex flex-col items-center justify-center h-screen py-4 gap-y-2">
                             <img src={cloudinaryPath()}
-                                onError = {addDefaultSrc} 
+                                onError={addDefaultSrc}
                                 className={"max-h-4/5 object-scale-down"} />
                             <div className="text-white">
                                 <Link to={{
@@ -113,18 +113,24 @@ const MoreExamplesAccordion = ({ children }) => {
 
 const ChibiTab = () => {
     return <CommExample id="chibi" title="Chibi - $45+" >
+        <div className="italic">Note: I also offer <Link to="https://ko-fi.com/c/84efda28db"
+
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline font-bold">
+            Skeb-style chibis for $35.</Link></div><br />
         <div>Chibis have two styles:</div><br />
         <b className="font-jura text-lg">Clean</b>
         <div> Flat/minimally cel shaded by default! However, lines are cleaner and details are evident. More suitable if you want files to print acrylic charms/stickers with (please note commercial fee if not for personal use.)</div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="abel comm sig"  />
-            <ImageExample fileName="rosch comm final"  />
+            <ImageExample fileName="abel comm sig" />
+            <ImageExample fileName="rosch comm final" />
         </div>
         <b className="font-jura text-lg">Vibrant</b>
         <div> More vibrant/shaded by default, but messier on the details.    </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="rockuma af"  />
-            <ImageExample fileName="niles af"  />
+            <ImageExample fileName="rockuma af" />
+            <ImageExample fileName="niles af" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -141,8 +147,8 @@ const ChibiTab = () => {
 const BustTab = () => {
     return <CommExample id="bust" title="Bust - $60+" >
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="yammark comm"  />
-            <ImageExample fileName="trunswicked comm with sig"  />
+            <ImageExample fileName="yammark comm" />
+            <ImageExample fileName="trunswicked comm with sig" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -157,26 +163,26 @@ const BustTab = () => {
 }
 
 const HalfbodyTab = () => {
-    return <CommExample id = "halfbody" title="Halfbody - $120+" >
+    return <CommExample id="halfbody" title="Halfbody - $120+" >
         Standard halfbody. Most detailed textures come free (unless stated in Additional Fees), though please specify the level of realism if necessary.
         <br />(e.g. the cat anthros have different levels of fur detail)<br />
 
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="danarei comm sig"  height="md:h-100" />
-            <ImageExample fileName="ordell card render 2 finalizing"  height="md:h-100" />
+            <ImageExample fileName="danarei comm sig" height="md:h-100" />
+            <ImageExample fileName="ordell card render 2 finalizing" height="md:h-100" />
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="quill comm sig"  height="md:h-65" />
-            <ImageExample fileName="rook comm journal with sig"  height="md:h-65" />
+            <ImageExample fileName="quill comm sig" height="md:h-65" />
+            <ImageExample fileName="rook comm journal with sig" height="md:h-65" />
         </div>
         <div>
             <MoreExamplesAccordion>
                 <div className="flex flex-row flex-wrap">
-                    <ImageExample fileName="siren comm watermark"  height="md:h-90" />
+                    <ImageExample fileName="siren comm watermark" height="md:h-90" />
                 </div>
                 <div className="flex flex-row flex-wrap">
-                    <ImageExample fileName="xuqian doodle"  height="md:h-65" />
-                    <ImageExample fileName="sarkis af"  height="md:h-65" />
+                    <ImageExample fileName="xuqian doodle" height="md:h-65" />
+                    <ImageExample fileName="sarkis af" height="md:h-65" />
                 </div>
                 <div><Link to={{
                     pathname: "/gallery",
@@ -199,23 +205,23 @@ const FullbodyTab = () => {
 
 
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="ekaitz sword unsheathing small"  height="md:h-100" />
-            <ImageExample fileName="duftmon comm siggy"  height="md:h-100" />
+            <ImageExample fileName="ekaitz sword unsheathing small" height="md:h-100" />
+            <ImageExample fileName="duftmon comm siggy" height="md:h-100" />
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="medabots at"  height="md:h-65" />
-            <ImageExample fileName="nick non af"  height="md:h-65" />
+            <ImageExample fileName="medabots at" height="md:h-65" />
+            <ImageExample fileName="nick non af" height="md:h-65" />
         </div>
         <MoreExamplesAccordion>
             <div className="flex flex-row flex-wrap">
-                <ImageExample fileName="digigirl phoenixmon"  height="md:h-90" />
+                <ImageExample fileName="digigirl phoenixmon" height="md:h-90" />
             </div>
             <div className="flex flex-row flex-wrap">
-                <ImageExample fileName="more dell wings render"  height="md:h-65" />
-                <ImageExample fileName="check out this sick new skell"  height="md:h-65" />
+                <ImageExample fileName="more dell wings render" height="md:h-65" />
+                <ImageExample fileName="check out this sick new skell" height="md:h-65" />
             </div>
             <div className="flex flex-row flex-wrap">
-                <ImageExample fileName="slashy comm watermark"  height="md:h-90" />
+                <ImageExample fileName="slashy comm watermark" height="md:h-90" />
             </div>
             <div><Link to={{
                 pathname: "/gallery",
@@ -233,7 +239,7 @@ const FullbodyTab = () => {
 const RefSheetsTab = () => {
     return <CommExample id="refsheet" title="Reference Sheets ($400-500+)" >
         Reference sheets! Can just be front/back flats, or even shaded. (More $$$ for shaded.)
-        Please ask me for a quote so we can discuss. Price estimate is for <i>lightly shaded, front/side/back turnarounds.</i><br/><br />
+        Please ask me for a quote so we can discuss. Price estimate is for <i>lightly shaded, front/side/back turnarounds.</i><br /><br />
         Unlike what's stated in the ToS, I will likely have a back-and-forth with you to finalize details.<br /><br />
 
         If designing a character from scratch, there'll be an extra fee. Reference images/moodboards GREATLY preferred. I am unlikely to take on your commission if your request is unclear.
@@ -273,16 +279,16 @@ const RefSheetsTab = () => {
         </Accordion>
 
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="chuji updated ref 2025"  height="md:h-100" />
-            <ImageExample fileName="ankou redesign maybe"  height="md:h-100" />
+            <ImageExample fileName="chuji updated ref 2025" height="md:h-100" />
+            <ImageExample fileName="ankou redesign maybe" height="md:h-100" />
 
         </div>
         <div>For character design, I also have my own original setting (inspired by JRPGs and speculative biology).&nbsp;
-            <a href = "https://itaku.ee/profile/errantsquam/gallery/47487"
-            target="_blank"
-            rel="noopener noreferrer"><u>You can view a collection of the references here.</u></a> 
-            </div>
-        </CommExample>
+            <a href="https://itaku.ee/profile/errantsquam/gallery/47487"
+                target="_blank"
+                rel="noopener noreferrer"><u>You can view a collection of the references here.</u></a>
+        </div>
+    </CommExample>
 }
 
 const BGTab = () => {
@@ -290,8 +296,8 @@ const BGTab = () => {
         <b className="font-jura text-lg">Simple BG ($20+)</b>
         <div> Loose, painterly backgrounds.</div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="valen bagua study"  />
-            <ImageExample fileName="chopper comm"  />
+            <ImageExample fileName="valen bagua study" />
+            <ImageExample fileName="chopper comm" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -306,8 +312,8 @@ const BGTab = () => {
         <div> Detailed painterly backgrounds with compositional elements or complex geometric forms. </div>
         <div>Layman rule of thumb: if you require accurate perspective, it goes here.</div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="armory alley redraw"  />
-            <ImageExample fileName="skell sylvalum big ball"  />
+            <ImageExample fileName="armory alley redraw" />
+            <ImageExample fileName="skell sylvalum big ball" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -343,9 +349,9 @@ const SpritesTab = () => {
             Total: $200+
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="ocre-fe9-comm-neutral"  />
-            <ImageExample fileName="stokori comm 1 anim"  />
-            <ImageExample fileName="stokori comm 2 anim"  />
+            <ImageExample fileName="ocre-fe9-comm-neutral" />
+            <ImageExample fileName="stokori comm 1 anim" />
+            <ImageExample fileName="stokori comm 2 anim" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -366,10 +372,10 @@ const SpritesTab = () => {
             Total: $120+
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="danarei comm sprite for publishing"  />
-            <ImageExample fileName="silvally fe crop"  />
-            <ImageExample fileName="TalkAnim"  />
-            <ImageExample fileName="Tina_FE5"  />
+            <ImageExample fileName="danarei comm sprite for publishing" />
+            <ImageExample fileName="silvally fe crop" />
+            <ImageExample fileName="TalkAnim" />
+            <ImageExample fileName="Tina_FE5" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -389,22 +395,22 @@ const SpritesTab = () => {
         <b className="font-jura text-lg">PMD Portraits</b>
         <div>
             <b>Quote Breakdown:</b><br />
-            Initial First Portrait - $80<br/>
-            Portrait + ~2-4 Selected Expressions (less body language) - $100<br/>
-            Portrait + ~2-4 Selected Expressions (more body language) - $120<br/>
-            Portrait + All Expressions (less body language) - $180<br/>
-            Portrait + All Expressions (more body language) $220<br/>
-            <b>May go higher depending on character complexity!</b><br/><br/>
-            'Body language' refers to whether a character emotes more in their sprite (head tilt, limbs waving). 
+            Initial First Portrait - $80<br />
+            Portrait + ~2-4 Selected Expressions (less body language) - $100<br />
+            Portrait + ~2-4 Selected Expressions (more body language) - $120<br />
+            Portrait + All Expressions (less body language) - $180<br />
+            Portrait + All Expressions (more body language) $220<br />
+            <b>May go higher depending on character complexity!</b><br /><br />
+            'Body language' refers to whether a character emotes more in their sprite (head tilt, limbs waving).
             'Less body language' means mostly a copy+paste of the initial sprite with different facial expressions.
-            <br/><br/>
+            <br /><br />
 
         </div>
         <div className="flex flex-row flex-wrap">
-            <ImageExample fileName="metalgreymon pmd comm 500x"  />
-            <ImageExample fileName="majima spritesheet large"  />
-            <ImageExample fileName="sebastien pmd comm watermark"  />
-            <ImageExample fileName="pick pmd comm large watermarked"  />
+            <ImageExample fileName="metalgreymon pmd comm 500x" />
+            <ImageExample fileName="majima spritesheet large" />
+            <ImageExample fileName="sebastien pmd comm watermark" />
+            <ImageExample fileName="pick pmd comm large watermarked" />
         </div>
         <div><Link to={{
             pathname: "/gallery",
@@ -453,39 +459,39 @@ export const ExampleTab = ({ setCurrentTab }) => {
         }}><br />
             <p>The following shows various examples of art offered.</p>
             <p>Price quoted is base price, though some of these examples are more detailed and may cost more. All prices are in <b>USD.</b></p>
-            <p>Please see <u className = "cursor-pointer" onClick = {() => setCurrentTab("fees")}>'Additional Fees'</u> for more information!</p>
+            <p>Please see <u className="cursor-pointer" onClick={() => setCurrentTab("fees")}>'Additional Fees'</u> for more information!</p>
             <br />
-            <p>You can also <b className = "text-green-500">click on the images</b> to see a larger preview!</p>
+            <p>You can also <b className="text-green-500">click on the images</b> to see a larger preview!</p>
 
-        
-                <Link to="/gallery">
-                    <div className={`flex flex-row items-center gap-x-2 text-green-500 mt-2
+
+            <Link to="/gallery">
+                <div className={`flex flex-row items-center gap-x-2 text-green-500 mt-2
                     text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500
                     transition duration-100
                     hover:bg-zinc-700`}>
-                        <Icon icon="mdi:arrow-right-bold" className="text-lg" />
-                        <span>View more examples in the Gallery.</span>
-                    </div>
-                </Link>
+                    <Icon icon="mdi:arrow-right-bold" className="text-lg" />
+                    <span>View more examples in the Gallery.</span>
+                </div>
+            </Link>
         </TableOfContents>
         <hr />
-        <ChibiTab  />
+        <ChibiTab />
         <hr />
-        <BustTab  />
+        <BustTab />
         <hr />
-        <HalfbodyTab  />
+        <HalfbodyTab />
         <hr />
-        <FullbodyTab  />
+        <FullbodyTab />
         <hr />
-        <RefSheetsTab  />
+        <RefSheetsTab />
         <hr />
-        <BGTab  />
+        <BGTab />
         <hr />
-        <SpritesTab  />
+        <SpritesTab />
         <hr />
 
         <CommExample id="artcrit" title="BONUS: Art Critique" >
-            Send me your art! You can just drop money into my <a className = "underline cursor-pointer" href="https://ko-fi.com/errantsquam">Ko-fi</a> and we’ll talk.
+            Send me your art! You can just drop money into my <a className="underline cursor-pointer" href="https://ko-fi.com/errantsquam">Ko-fi</a> and we’ll talk.
 
             <br /><br />
             I usually give my best feedback if you:
