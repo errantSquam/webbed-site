@@ -15,12 +15,12 @@ export const TopNav = ({ setHome, children, color, accentColor }) => {
             <div className={`
             pt-15
             fixed bg-zinc-900 text-zinc-300 py-2 w-full 
-                        md:border-r-2 ${accentColor}
+                        border-b-2 md:border-b-0 md:border-r-2 ${accentColor}
                         md:w-1/5 
                         md:h-screen absolute z-60 select-none 
                         transition duration-0 md:duration-100 ${isMenuOpen ? "opacity-100" : `opacity-0 translate-x-0
                         md:translate-y-0 md:-translate-x-full`}`}>
-                <div className="flex flex-col items-start text-start ml-5 gap-y-2">
+                <div className="flex flex-col items-start text-start ml-8 gap-y-2 text-lg">
                     <Link to="/gallery"><div className="hover:text-zinc-100 cursor-pointer">Gallery</div></Link>
                     <Link to="/programming"><div className="hover:text-zinc-100 cursor-pointer">Programming</div></Link>
                     <Link to="/commissions"><div className="hover:text-zinc-100 cursor-pointer">Commissions</div></Link>
