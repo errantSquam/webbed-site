@@ -18,7 +18,7 @@ const ProgrammingSnippet = ({ title, children, image, link }) => {
 
         <Skeleton
             variant="rectangular"
-            className={imageLoading ? "bg-zinc-300 rounded-lg w-full absolute" : "cursor-pointer w-full bg-zinc-300/0 absolute"}
+            className={imageLoading ? "bg-zinc-300 rounded-lg w-full absolute" : "cursor-pointer w-full bg-zinc-300/0 absolute hidden"}
             animation="wave"
 
             onClick={() => openInNewTab(link)}
@@ -31,7 +31,8 @@ const ProgrammingSnippet = ({ title, children, image, link }) => {
         <img src={`/assets/code_examples/${image}`}
             style={{
                 aspectRatio: 4 / 3
-            }} className={"cursor-pointer border-2 rounded-lg border-zinc-500 object-cover h-54 sm:h-72 rounded-lg"}
+            }} className={`cursor-pointer border-2 rounded-lg border-zinc-500 object-cover h-54 sm:h-72 rounded-lg 
+                transition hover:scale-105`}
             onLoad={() => setImageLoading(false)}
             onClick={() => openInNewTab(link)} />
 
