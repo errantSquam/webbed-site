@@ -11,7 +11,7 @@ const MagicWord = () => {
     //If you're inspect elementing to find the magic word, uhhhhh congratulations. Go read the ToS.
 
     return <div><div className="flex flex-row flex-wrap">
-        {magicWordPreview.map((chara, index) => <span key = {chara + index}>{chara !== " " ? chara : <span>&nbsp;</span>}</span>)}
+        {magicWordPreview.map((chara, index) => <span key={chara + index}>{chara !== " " ? chara : <span>&nbsp;</span>}</span>)}
         <div className={`flex flex-row transition duration-300 border 
             
             ${!isPressed ? "border-zinc-400 hover:border-green-500" : "border-green-500"}
@@ -19,16 +19,16 @@ const MagicWord = () => {
             ${isPressed ? "text-zinc-300" : "text-zinc-800"} 
             px-2 
             ${"cursor-pointer"}`}
-            onClick={() => 
-            {setIsPressed(true)
+            onClick={() => {
+                setIsPressed(true)
                 navigator.clipboard.writeText("snemj")
             }}>
             snemj
         </div>
-        
+
     </div>
-    {isPressed &&   
-        <div className = "mt-2">You may submit your request <u><a href="https://forms.gle/hepVgfnUVBVBAtNm7">here</a></u> after copying it!</div>
+        {isPressed &&
+            <div className="mt-2">You may submit your request <u><a href="https://forms.gle/hepVgfnUVBVBAtNm7">here</a></u> after copying it!</div>
         }
     </div>
 }
@@ -52,7 +52,7 @@ const GeneralInfo = () => {
     </div>
 }
 
-const ImageRights = ({setCurrentTab}) => {
+const ImageRights = ({ setCurrentTab }) => {
     return <div id="rights">
         <Header icon="material-symbols:wall-art">IMAGE RIGHTS AND USAGE</Header>
 
@@ -62,13 +62,13 @@ const ImageRights = ({setCurrentTab}) => {
 
         The commissioner must not claim my work as theirs.<br /><br />
 
-        If you do not want the art to be posted until a certain date/time, please discuss with me ahead of time. If the art is for commercial purposes, I will likely discuss this with you further. 
-        <br/><br/>
-        <u className = "cursor-pointer"
-        onClick = {() => {
-            setCurrentTab("fees")
-            document.getElementById("commercial")?.scrollIntoView({ behavior: 'smooth' })
-        }}
+        If you do not want the art to be posted until a certain date/time, please discuss with me ahead of time. If the art is for commercial purposes, I will likely discuss this with you further.
+        <br /><br />
+        <u className="cursor-pointer"
+            onClick={() => {
+                setCurrentTab("fees")
+                document.getElementById("commercial")?.scrollIntoView({ behavior: 'smooth' })
+            }}
         >(See 'Commercial Fees' under the Additional Fees section.)</u><br />
 
         <LightHr />
@@ -96,16 +96,16 @@ const ImageRights = ({setCurrentTab}) => {
                     <li className="list-none">OR</li>
                     <li><u><a
                         className="break-all"
-                        href="https://heckingsne.cc/#/gallery">https://heckingsne.cc/#/gallery</a></u></li>
+                        href="https://heckingsne.cc/gallery">https://heckingsne.cc/gallery</a></u></li>
                 </ul>
             </li>
         </ul>
-        <LightHr/>
+        <LightHr />
         <div>Art dimensions are around 2000x2000px, 300dpi, and assumed to be displayed in RGB (digital) by default.&nbsp;
             <b>Please specify if you'd like it printed.</b>
-            <br/><br/>
-            I have experience working with prints and various forms of merchandise (stickers, badges, acrylic charms, some cloth-based products, etc.).<br/>I may be able to advise if you specify ahead of time.
-            </div>
+            <br /><br />
+            I have experience working with prints and various forms of merchandise (stickers, badges, acrylic charms, some cloth-based products, etc.).<br />I may be able to advise if you specify ahead of time.
+        </div>
     </div>
 }
 
@@ -118,7 +118,7 @@ const Guidelines = () => {
             Once a commission request has been approved and payment has been received, I will inform the commissioner of their place in the commissions queue as well as an estimate of when I will begin their commission.
             For more details regarding payment procedures, please read the <b className="cursor-pointer"
                 onClick={() => document.getElementById("payment")?.scrollIntoView({ behavior: 'smooth' })}><u>"Payment"</u></b> section.
-            <br /><br/>
+            <br /><br />
             I will send the commissioner a sketch for approval before continuing the commission.
             This is the only time the commissioner is permitted to request changes freely.
             During the sketch phase, the commissioner is allowed up to a limit of <b>TWO (2) significant change requests.</b>
@@ -134,8 +134,8 @@ const Guidelines = () => {
                 <li>“The proportions look slightly off” - I may already be aware/working on it but I still appreciate reminders</li>
                 <li>“It would be nice if you made this area slightly lighter/darker…” Minor value changes are a-okay.</li>
             </ul><br />
-            However, when it comes to technical critique, please try to batch your list of revisions instead of sending them one by one. <b>I will entertain a limit of TWO (2) <u>lists</u> of revisions per major update, which I will communicate.</b> 
-            <br/><br/>Typically, the two phases are <b>sketch/render</b>, though I may break the process up into more WIPs for larger commissions. <i>(&gt;100 USD)</i><br/> Please specify if you'd like more back and forth.
+            However, when it comes to technical critique, please try to batch your list of revisions instead of sending them one by one. <b>I will entertain a limit of TWO (2) <u>lists</u> of revisions per major update, which I will communicate.</b>
+            <br /><br />Typically, the two phases are <b>sketch/render</b>, though I may break the process up into more WIPs for larger commissions. <i>(&gt;100 USD)</i><br /> Please specify if you'd like more back and forth.
             <br /><br />
             At the end of the day what counts as significant will be up to my discretion, but I will inform you as such.
             A redraw of any type of commission will count as a separate commission, and will be charged as such.
@@ -202,60 +202,60 @@ const GeneralTableOfContents = () => {
             id: "general",
             title: "General Information"
         },
-        "rights" :{
+        "rights": {
             id: "rights",
-            title:"Image Rights and Usage"
+            title: "Image Rights and Usage"
         },
-        "guide" :{
+        "guide": {
             id: "guide",
-            title:"Commission Guidelines & Protocols"
+            title: "Commission Guidelines & Protocols"
         },
-        "pay" :{
+        "pay": {
             id: "payment",
-            title:"Payment"
+            title: "Payment"
         },
-        "cred" :{
+        "cred": {
             id: "credits",
-            title:"Credits & Licensing"
+            title: "Credits & Licensing"
         }
     }
-    return <TableOfContents tocDict = {generalToCDict}><br />
-        <div className = "flex flex-col space-y-2">
+    return <TableOfContents tocDict={generalToCDict}><br />
+        <div className="flex flex-col space-y-2">
 
-        <div>If you plan on utilizing the artwork for <b>environmental activism</b> (e.g. raising funds for wildlife conservation) or a&nbsp;
-        <b>collaborative project</b> for a fandom I've shown interest in (e.g. music album), I may be willing to discount my prices!
-        Do consider reaching out with your budget. 
-        
-        <br/><br/><i>(ToS terms still apply and I will be strict about my workload. Haggling/lowballing will not be entertained.)</i></div>
-        <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
-            <div className={`flex flex-row items-center gap-x-2 text-green-500 
+            <div>If you plan on utilizing the artwork for <b>environmental activism</b> (e.g. raising funds for wildlife conservation) or a&nbsp;
+                <b>collaborative project</b> for a fandom I've shown interest in (e.g. music album), I may be willing to discount my prices!
+                Do consider reaching out with your budget.
+
+                <br /><br /><i>(ToS terms still apply and I will be strict about my workload. Haggling/lowballing will not be entertained.)</i></div>
+            <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
+                <div className={`flex flex-row items-center gap-x-2 text-green-500 
             text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500
             transition duration-100
             hover:bg-zinc-700`}>
-                <Icon icon="mdi:arrow-right-bold" className="text-lg" />
-                <span>Submit your request in the form!</span>
-            </div>
-        </a>
+                    <Icon icon="mdi:arrow-right-bold" className="text-lg" />
+                    <span>Submit your request in the form!</span>
+                </div>
+            </a>
         </div></TableOfContents>
 }
 
-export const GeneralTab = ({setCurrentTab}) => {
-    
+export const GeneralTab = ({ setCurrentTab }) => {
+
     return <div className="w-full space-y-4">
         <Header> General </Header>
-        <GeneralTableOfContents/>
+        <GeneralTableOfContents />
         <hr />
         <GeneralInfo />
         <hr />
-        <ImageRights setCurrentTab={setCurrentTab}/>
+        <ImageRights setCurrentTab={setCurrentTab} />
         <hr />
         <Guidelines />
         <hr />
         <Payment />
         <MagicWord />
         <hr />
-        <img src = "assets/gangnamsnake.webp"/>
-        <hr/>
+        <img src="assets/gangnamsnake.webp" />
+        <hr />
         <Licensing />
 
     </div>
