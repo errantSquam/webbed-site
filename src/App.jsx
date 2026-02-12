@@ -1,13 +1,15 @@
 import './App.css';
 import { HashRouter, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import DancingSnek from './pages/dancingsnek';
 import Gallery from './pages/gallery';
 import Commissions from './pages/comms';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Programming from './pages/programming';
 
-function preloadImage(src){
+function preloadImage(src) {
   const toPreload = new Image();
-  toPreload.src = src 
+  toPreload.src = src
   window[src] = toPreload
 }
 
@@ -20,13 +22,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HashRouter>
-              <Routes>
-                  <Route path = "/" element = {<Gallery/>}/> 
-                  <Route path="/gallery" element={<Gallery/>} />
-                  <Route path="/commissions" element = {<Commissions/>}/>
-              </Routes>
-          </HashRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Gallery />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/commissions" element={<Commissions />} />
+          <Route path="/programming" element={<Programming />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }
