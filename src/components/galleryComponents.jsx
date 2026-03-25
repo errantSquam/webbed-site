@@ -88,16 +88,16 @@ export const ContactButton = () => {
                                 </a>
 
                             </div>
-                            <br/>
+                            <br />
                             <div>
-                                <p>Found a bug? Leave a report in the Issues tab:</p>
+                                <p>Found a bug? Leave a report here:</p>
 
                                 <a href="https://github.com/errantSquam/webbed-site/issues"
                                     target="_blank"
                                     rel="noopener noreferrer">
                                     <div className="flex flex-row items-center space-x-1 underline md:ml-4 align-middle">
                                         <Icon icon="mdi:github" />
-                                        <p>https://github.com/errantSquam/webbed-site/issues</p>
+                                        <p>GitHub Issues</p>
                                     </div>
                                 </a>
 
