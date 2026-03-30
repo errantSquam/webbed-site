@@ -86,8 +86,25 @@ export const ContactButton = () => {
                                         <p>errantsquam.heckingsne.cc</p>
                                     </div>
                                 </a>
+                                <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <div className="flex flex-row items-center space-x-1 underline align-middle">
+                                        <Icon icon="simple-icons:xiaohongshu" className="text-xl bg-red-700 p-0.5" />
+                                        <p>e蝰 errantSquam</p>
+                                    </div>
+                                </a>
+                                <a href="https://www.instagram.com/errantsquam/"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    <div className="flex flex-row items-center space-x-1 underline align-middle">
+                                        <Icon icon="mdi:instagram" />
+                                        <p>errantsquam</p>
+                                    </div>
+                                </a>
 
                             </div>
+                            <div className="ml-2 italic text-white/50">NOTE: Most active on Bluesky.</div>
                             <br />
                             <div>
                                 <p>Found a bug? Leave a report here:</p>
