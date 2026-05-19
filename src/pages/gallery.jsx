@@ -186,14 +186,14 @@ const GalleryImage = ({ filename, jsonData }) => {
 
     function handleOpen() {
         setIsOpen(true)
-        let urlString = window.location.hash
+        let urlString = window.location.search
         urlString = handleUrlQuery(urlString, "art", paramName)
         history.pushState({}, "Gallery", urlString)
     }
 
     function handleClose() {
         setIsOpen(false)
-        let newUrl = window.location.hash.replace(`&art=${paramName}`, "")
+        let newUrl = window.location.search.replace(`&art=${paramName}`, "")
         newUrl = newUrl.replace(`art=${paramName}`, "")
 
         history.pushState({}, "Gallery", newUrl)
@@ -432,10 +432,8 @@ export default function Gallery() {
         includeFilters = includeFilters.join(",")
         excludeFilters = excludeFilters.join(",")
 
-        let urlString = window.location.hash
+        let urlString = window.location.search
         urlString = handleUrlQuery(urlString, "include", includeFilters)
-
-
         urlString = handleUrlQuery(urlString, "exclude", excludeFilters)
 
 

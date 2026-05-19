@@ -1,4 +1,8 @@
 export default function handleUrlQuery(urlString, paramName, data) {
+
+    if (urlString === "") {
+        urlString = "?"
+    }
     let paramString = `${paramName}=`
     if (data === "") {
         urlString = urlString.replace(new RegExp(`&${paramName}=([^&]*)`), ``)
