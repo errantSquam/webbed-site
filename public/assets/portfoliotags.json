@@ -318,5 +318,13 @@
     "kirby": {
         "fullName": "Kirby",
         "tagType": "source"
+    },
+    "jojo": {
+        "fullName": "JoJo's Bizarre Adventure",
+        "tagType": "source"
+    },
+    "horse": {
+        "fullName": "horse",
+        "tagType": "species"
     }
 }
