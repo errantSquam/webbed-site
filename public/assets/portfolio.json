@@ -2399,5 +2399,26 @@
             994
         ],
         "hasThumb": false
+    },
+    "snake book": {
+        "tags": [
+            "snake",
+            "creature",
+            "fullbody",
+            "illust",
+            "simplebg",
+            "irl",
+            "reptile"
+        ],
+        "isVertical": true,
+        "priority": 5,
+        "description": "",
+        "date": 1779630374.8440855,
+        "extension": "webp",
+        "dimensions": [
+            1207,
+            1786
+        ],
+        "hasThumb": false
     }
 }
