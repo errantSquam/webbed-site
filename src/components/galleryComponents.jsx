@@ -76,30 +76,35 @@ export const ContactButton = () => {
                             <div className="md:ml-4">
                                 <div className="flex flex-row items-center space-x-1 align-middle">
                                     <Icon icon="material-symbols:mail" />
+                                    <p>Email:</p>
+                                    <br />
                                     <p>errantsquam@gmail.com</p>
                                 </div>
                                 <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
                                     target="_blank"
                                     rel="noopener noreferrer">
-                                    <div className="flex flex-row items-center space-x-1 underline align-middle">
+                                    <div className="flex flex-row items-center space-x-1 align-middle">
                                         <Icon icon="ri:bluesky-fill" />
-                                        <p>errantsquam.heckingsne.cc</p>
+                                        <p> Bluesky:</p><br />
+                                        <p className=" underline">errantsquam.heckingsne.cc</p>
                                     </div>
                                 </a>
                                 <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
                                     target="_blank"
                                     rel="noopener noreferrer">
-                                    <div className="flex flex-row items-center space-x-1 underline align-middle">
+                                    <div className="flex flex-row items-center space-x-1 align-middle">
                                         <Icon icon="simple-icons:xiaohongshu" className="text-xl bg-red-700 p-0.5" />
-                                        <p>e蝰 errantSquam</p>
+                                        <p>Xiaohongshu: </p>
+                                        <p className=" underline">e蝰 errantSquam</p>
                                     </div>
                                 </a>
                                 <a href="https://www.instagram.com/errantsquam/"
                                     target="_blank"
                                     rel="noopener noreferrer">
-                                    <div className="flex flex-row items-center space-x-1 underline align-middle">
+                                    <div className="flex flex-row items-center space-x-1 align-middle">
                                         <Icon icon="mdi:instagram" />
-                                        <p>errantsquam</p>
+                                        <p> Instagram:</p>
+                                        <p className="underline ">errantsquam</p>
                                     </div>
                                 </a>
 
