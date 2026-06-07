@@ -47,6 +47,18 @@ export const CommissionsButton = () => {
     </div></Link>
 }
 
+const ContactListing = ({ listingName, listingIcon, listingData }) => {
+    return <Link to={listingData} target="_blank" rel="noopener noreferrer">
+
+        <div className="flex flex-row items-center space-x-1 align-middle 
+    py-1 px-5 border-green-700 hover:border-green-300 rounded-md border-2
+    shrink cursor-pointer justify-center bg-zinc-800 drop-shadow-lg">
+            <Icon icon={listingIcon} />
+            <p>{listingName}</p>
+
+        </div>
+    </Link>
+}
 
 export const ContactButton = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -74,42 +86,33 @@ export const ContactButton = () => {
                         <div>
                             <div> Hello! Feel free to reach out via the following avenues:</div>
                             <div className="md:ml-4">
-                                <div className="flex flex-row items-center space-x-1 align-middle">
-                                    <Icon icon="material-symbols:mail" />
-                                    <p>Email:</p>
-                                    <br />
-                                    <p>errantsquam@gmail.com</p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 w-full md:w-1/2 gap-2 py-2">
+
+                                    <ContactListing listingName="Email Me!"
+                                        listingData="mailto:errantsquam@gmail.com"
+                                        listingIcon="material-symbols:mail" />
+
+                                    <ContactListing listingName="Bluesky"
+                                        listingData="https://bsky.app/profile/errantsquam.heckingsne.cc"
+                                        listingIcon="ri:bluesky-fill" />
+
+                                    <ContactListing listingName="XHS / Rednote"
+                                        listingData="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
+                                        listingIcon="simple-icons:xiaohongshu" />
+
+                                    <ContactListing listingName="Instagram"
+                                        listingData="https://www.instagram.com/errantsquam/"
+                                        listingIcon="mdi:instagram" />
                                 </div>
-                                <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    <div className="flex flex-row items-center space-x-1 align-middle">
-                                        <Icon icon="ri:bluesky-fill" />
-                                        <p> Bluesky:</p><br />
-                                        <p className=" underline">errantsquam.heckingsne.cc</p>
-                                    </div>
-                                </a>
-                                <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    <div className="flex flex-row items-center space-x-1 align-middle">
-                                        <Icon icon="simple-icons:xiaohongshu" className="text-xl bg-red-700 p-0.5" />
-                                        <p>Xiaohongshu: </p>
-                                        <p className=" underline">e蝰 errantSquam</p>
-                                    </div>
-                                </a>
-                                <a href="https://www.instagram.com/errantsquam/"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    <div className="flex flex-row items-center space-x-1 align-middle">
-                                        <Icon icon="mdi:instagram" />
-                                        <p> Instagram:</p>
-                                        <p className="underline ">errantsquam</p>
-                                    </div>
-                                </a>
+
+
 
                             </div>
-                            <div className="ml-2 italic text-white/50">NOTE: Most active on Bluesky.</div>
+                            <div className="ml-2 italic text-white/50">
+                                NOTE: Most active via email or Bluesky.<br /><br />
+                                You can also reach me by errantSquam@gmail.com. <br />
+
+                            </div>
                             <br />
                             <div>
                                 <p>Found a bug? Leave a report here:</p>
