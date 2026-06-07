@@ -108,8 +108,14 @@ export const ContactButton = () => {
 
 
                             </div>
-                            <div className="ml-2 italic text-white/50">
+                            <div className="ml-2 italic text-white/50 block md:hidden">
                                 NOTE: Most active via email or Bluesky.<br /><br />
+                                You can also reach me by errantSquam@gmail.com. <br />
+
+                            </div>
+
+                            <div className="ml-2 italic text-white/50 hidden md:block">
+                                NOTE: Most active via email or Bluesky.<br />
                                 You can also reach me by errantSquam@gmail.com. <br />
 
                             </div>
