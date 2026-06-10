@@ -83,7 +83,7 @@ export const ContactButton = () => {
                         duration-100 ease-in 
                                     data-closed:transform-[scale(95%)] data-closed:opacity-0"
                     >
-                        <div>
+                        <div className="max-h-120 overflow-y-auto scroll-y-auto px-1 md:px-0">
                             <div> Hello! Feel free to reach out via the following avenues:</div>
                             <div className="md:ml-4">
                                 <div className="grid grid-cols-1 md:grid-cols-2 w-full md:w-1/2 gap-2 py-2">
@@ -121,7 +121,8 @@ export const ContactButton = () => {
                             </div>
                             <br />
                             <div>
-                                <p><b> Hey there!&nbsp;</b><Icon inline icon="noto:snake" className="text-3xl text-green-500 inline animate-bounce" /><br /> Art is my side gig, but I'm actually a <Link to="/programming"><b><u>software dev</u></b></Link> by trade and looking for work.<br />
+                                <p><b> Hey there!&nbsp;</b><Icon inline icon="noto:snake" className="text-3xl text-green-500 inline animate-bounce" /><br /> Art is my side gig, but I'm actually a <Link to="/programming"><b>
+                                    <u>software dev</u></b></Link> by trade and looking for work.<br /><br className="inline md:hidden" />
                                     If you need someone who's well-versed in frontend/GUIs, consider reaching out to me via email.<br /></p><br />
                                 <p className="text-zinc-400">Found a bug? Leave a report here:</p>
 
