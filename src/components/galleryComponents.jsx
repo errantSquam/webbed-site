@@ -83,7 +83,7 @@ export const ContactButton = () => {
                         duration-100 ease-in 
                                     data-closed:transform-[scale(95%)] data-closed:opacity-0"
                     >
-                        <div className="max-h-120 overflow-y-auto scroll-y-auto px-1 md:px-0">
+                        <div className="max-h-90 md:max-h-auto overflow-y-auto scroll-y-auto px-1 md:px-0">
                             <div> Hello! Feel free to reach out via the following avenues:</div>
                             <div className="md:ml-4">
                                 <div className="grid grid-cols-1 md:grid-cols-2 w-full md:w-1/2 gap-2 py-2">
