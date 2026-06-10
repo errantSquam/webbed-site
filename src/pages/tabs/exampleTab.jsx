@@ -73,7 +73,7 @@ const ImageExample = ({ fileName, height = "md:h-60" }) => {
                                 className="flex items-center justify-center
                                                                             gap-2 rounded-md 
                                                                 bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
-                                                                shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
+                                                                 focus:not-data-focus:outline-none 
                                                                 data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
                                                                 data-open:bg-gray-700 cursor-pointer select-none"
                                 onClick={handleClose}

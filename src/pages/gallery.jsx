@@ -68,9 +68,9 @@ const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
     const CloseButton = () => {
         return <Button
             className="w-2/3 flex items-center justify-center
-                                        gap-2 rounded-md 
-                            bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
-                            shadow-inner shadow-white/10 cursor-pointer select-none"
+                            gap-2 rounded-md 
+                            bg-gray-700 transition-100 hover:bg-gray-600 px-3 py-1.5 text-sm font-semibold text-white 
+                            cursor-pointer select-none"
             onClick={handleClose}
         >
             Close

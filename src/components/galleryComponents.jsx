@@ -121,11 +121,14 @@ export const ContactButton = () => {
                             </div>
                             <br />
                             <div>
-                                <p>Found a bug? Leave a report here:</p>
+                                <p><b> Hey there!&nbsp;</b><Icon inline icon="noto:snake" className="text-3xl text-green-500 inline animate-bounce" /><br /> Art is my side gig, but I'm actually a <Link to="/programming"><b><u>software dev</u></b></Link> by trade and looking for work.<br />
+                                    If you need someone who's well-versed in frontend/GUIs, consider reaching out to me via email.<br /></p><br />
+                                <p className="text-zinc-400">Found a bug? Leave a report here:</p>
 
                                 <a href="https://github.com/errantSquam/webbed-site/issues"
                                     target="_blank"
-                                    rel="noopener noreferrer">
+                                    rel="noopener noreferrer"
+                                    className="text-zinc-400">
                                     <div className="flex flex-row items-center space-x-1 underline md:ml-4 align-middle">
                                         <Icon icon="mdi:github" />
                                         <p>GitHub Issues</p>
@@ -137,8 +140,7 @@ export const ContactButton = () => {
                         <Button
                             className="flex items-center justify-center
                                         gap-2 rounded-md 
-                            bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white 
-                            shadow-inner shadow-white/10 focus:not-data-focus:outline-none 
+                            bg-gray-700 px-3 py-1.5 text-sm font-semibold text-white focus:not-data-focus:outline-none 
                             data-focus:outline data-focus:outline-white data-hover:bg-gray-600 
                             data-open:bg-gray-700 cursor-pointer select-none"
                             onClick={handleClose}
