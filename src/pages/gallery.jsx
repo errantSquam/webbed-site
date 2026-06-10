@@ -315,6 +315,18 @@ export default function Gallery() {
     const portfolioTagQuery = portfolioTagData()
     const groupTagQuery = groupTagData()
 
+    const [isClosed, setClosed] = useState(() => {
+        const storageClosed = localStorage.getItem('popup_closed');
+        return storageClosed ? storageClosed : 'false';
+    }
+    );
+
+    function closePopup() {
+        //Localstorage can't handle booleans so we use this
+        localStorage.setItem('popup_closed', 'true');
+        setClosed('true');
+    }
+
     function isLoading() {
         return isChickenLoading || !(portfolioQuery.isSuccess && portfolioTagQuery.isSuccess && groupTagQuery.isSuccess)
     }
@@ -563,6 +575,7 @@ export default function Gallery() {
 
 
 
+
     return (
         <div className="min-h-screen bg-zinc-800 overflow-x-hidden pb-15" >
             {<SplashScreen isLoading={isLoading()} />}
@@ -605,13 +618,41 @@ export default function Gallery() {
                     />
                 </div>
 
+
+
                 <div className="mt-2">
                     <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
                         <ContactButton />
                         <CommissionsButton />
                     </div>
                 </div>
+                {
+                    isClosed !== "true" &&
+                    <div className={`flex flex-col items-center py-2 px-4 rounded-md border-2 border-green-800 text-zinc-300 bg-zinc-900 
+                mt-4 mb-2`}>
+                        <div className="flex flex-row items-center gap-x-4 text-left">
 
+                            <div>
+                                <Icon icon="zondicons:exclamation-outline" className="text-lg" />
+                            </div>
+                            <p>
+                                <div className="flex flex-row justify-between items-center">
+                                    <b >Hey there!</b>
+                                    <div> <Icon icon="at-icons:cross" className="bg-red-900 
+                                hover:bg-red-600 hover:text-white cursor-pointer
+                                p-0.5 rounded-md 
+                                text-xl -m-2"
+                                        onClick={() => { closePopup() }} /></div>
+                                </div>
+                                <div>Art is my side gig, but I'm actually a <Link to="/programming"><b><u>software dev</u></b></Link> by trade and looking for work.<br />
+                                    If you need someone who's well-versed in frontend/GUIs, consider reaching out to me via email.<br />
+                                    <span className="text-sm text-zinc-400">(Currently located in Singapore). Closing this popup closes it forever.</span>
+                                </div>
+                            </p>
+                        </div>
+
+                    </div>
+                }
 
 
 
@@ -635,7 +676,7 @@ export default function Gallery() {
                     filename={hiddenArt} jsonData={getPortfolioData()[hiddenArt]} tagData={getPortfolioTagData()} />
 
             </div>
-        </div>
+        </div >
 
     )
 
