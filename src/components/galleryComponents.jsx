@@ -40,13 +40,13 @@ const BackToHome = () => {
 
 
 export const CommissionsButton = () => {
-    return <Link to="/commissions"><div className={`text-green-500 flex flex-row space-x-1 items-center justify-center font-jura font-bold
+    return <Link to="/commissions"><div className={`text-green-500 flex flex-row space-x-2 items-center justify-center font-jura font-bold
         bg-gradient-to-b from-zinc-700 to-zinc-950 
         border-green-800 border
         px-2 py-1 rounded-md cursor-pointer select-none transition hover:scale-105
         text-lg`}>
         <Icon icon="mdi:art" />
-        <div>Order a Commission</div>
+        <div className="text-zinc-300">Order a Commission</div>
     </div></Link>
 }
 
@@ -70,14 +70,14 @@ export const ContactButton = () => {
     }
 
     return <>
-        <div className={`text-green-500 flex flex-row space-x-1 items-center justify-center font-jura font-bold
+        <div className={`text-green-500 flex flex-row space-x-2 items-center justify-center font-jura font-bold
         bg-gradient-to-b from-zinc-700 to-zinc-950 
         border-green-800 border
         px-2 py-1 rounded-md cursor-pointer select-none transition hover:scale-105
         text-lg`}
             onClick={() => setIsOpen(true)}>
             <Icon icon="material-symbols:mail" />
-            <div><b>CLICK</b> for Contact/Socials</div>
+            <div className="text-zinc-300"><b>CLICK</b> for Contact/Socials</div>
         </div>
 
         <Dialog open={isOpen} as="div" className="relative z-99 focus:outline-none" onClose={handleClose}>

@@ -670,6 +670,7 @@ export default function Gallery() {
                         })
                     }
                 </div>
+
                 <HiddenModal
                     key={hiddenArt}
                     filename={hiddenArt} jsonData={getPortfolioData()[hiddenArt]} tagData={getPortfolioTagData()} />

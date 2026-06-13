@@ -67,6 +67,16 @@ export const TopNav = ({ setHome, children, color, accentColor }) => {
                             rel="noopener noreferrer">
                             <Icon icon="mdi:github" className="select-none cursor-pointer hover:text-white" />
                         </a>
+                        <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Icon icon="simple-icons:xiaohongshu" className="select-none cursor-pointer hover:text-white" />
+                        </a>
+                        <a href="https://www.instagram.com/errantsquam/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Icon icon="mdi:instagram" className="select-none cursor-pointer hover:text-white" />
+                        </a>
                     </div>
                     <div className="flex md:hidden">
                         <Link to="/"><Icon icon="ic:sharp-home"
