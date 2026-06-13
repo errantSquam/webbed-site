@@ -620,14 +620,13 @@ export default function Gallery() {
 
 
 
-                <div className="mt-2">
-                    <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
-                        <ContactButton />
-                        <CommissionsButton />
-                    </div>
+
+                <div className="-mx-10 mt-2 flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+                    <ContactButton />
+                    <CommissionsButton />
                 </div>
                 {
-                    isClosed !== "true" &&
+                    /*isClosed !== "true" &&
                     <div className={`flex flex-col items-center py-2 px-4 rounded-md border-2 border-green-800 text-zinc-300 bg-zinc-900 
                 mt-4 mb-2`}>
                         <div className="flex flex-row items-center gap-x-4 text-left">
@@ -651,7 +650,7 @@ export default function Gallery() {
                             </p>
                         </div>
 
-                    </div>
+                    </div>*/
                 }
 
 
