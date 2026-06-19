@@ -6,6 +6,13 @@ import { Icon } from "@iconify/react/dist/iconify.js"
 import { Link } from "react-router-dom"
 import { Dialog, DialogPanel, DialogTitle, Description } from "@headlessui/react"
 import { Button } from "@headlessui/react"
+import { useSearchParams } from "react-router-dom"
+import { useEffect } from "react"
+import { Skeleton } from "@mui/material"
+import { portfolioTagData } from "../api/galleryAPI"
+import { createElement } from "react"
+
+import tagsColorDict from "../stylesfunctions/tagsColorDict"
 const BackToHome = () => {
 
     return <Link to="/"><div className="text-green-400 flex flex-row items-center space-x-2">
@@ -223,4 +230,274 @@ export const GalleryFilter = ({ title, onChange, styles, options, value }) => {
             />
         </div>
     </div>
+}
+
+
+export const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
+
+
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    const portfolioTagQuery = portfolioTagData()
+    if (jsonData === undefined) {
+        return <div />
+    }
+
+    function getPortfolioTagData() {
+        return portfolioTagQuery.isSuccess ? portfolioTagQuery.data : {}
+    }
+
+    function filePath() {
+        return filename + "." + jsonData.extension
+
+    }
+
+    function cloudinaryPath() {
+        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath().replaceAll(" ", "_")}`
+    }
+
+    function addDefaultSrc(e) {
+        e.target.src = "assets/pics/" + filePath()
+    }
+
+
+    let fullTags = jsonData.tags.map((tag) => {
+        return Object.keys(getPortfolioTagData()).length !== 0 && getPortfolioTagData()[tag]
+    })
+
+    let descString = jsonData.description
+
+
+    let artDesc = createElement('span',
+        { dangerouslySetInnerHTML: { __html: descString } },
+    );
+
+    const CloseButton = () => {
+        return <Button
+            className="w-2/3 flex items-center justify-center
+                            gap-2 rounded-md 
+                            bg-gray-700 transition-100 hover:bg-gray-600 px-3 py-1.5 text-sm font-semibold text-white 
+                            cursor-pointer select-none"
+            onClick={handleClose}
+        >
+            Close
+        </Button>
+    }
+
+    //console.log(isLoaded)
+
+    const ImageWithSkeleton = ({ isMobile = true }) => {
+
+        let objStyle = !isMobile ? (jsonData.isVertical ? { height: "90vh" } : { height: "75vh" }) : { width: "75vw" }
+
+        return <div className="flex py-2">
+            <div className="absolute z-10">
+                {<img src={cloudinaryPath()}
+                    onError={addDefaultSrc}
+                    className={`object-scale-down rounded-lg
+                        ${isLoaded ? `` : "opacity-50 blur-sm"}
+                            `}
+                    style={objStyle}
+                    onLoad={() => setIsLoaded(true)}
+                    fetchpriority="high"
+                />}
+            </div>
+            {<div className={!isLoaded ? `bg-zinc-900` : ""}>
+                <div className={!isLoaded ? `animate-pulse flex flex-row items-center justify-center 
+                                            shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`: ""}>
+                    {!isLoaded && <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
+                        <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
+                        {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
+                    </div>}
+
+                    <Skeleton
+                        variant="rectangular"
+                        className={"" + !isLoaded ? " rounded-lg " : ""}
+                        animation="wave"
+                    >
+                        <div
+                            style={{
+                                ...objStyle,
+                                aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1],
+
+                            }}>
+                            <img src="favicon.ico" style={{ aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1], ...objStyle }} />
+                        </div>
+                    </Skeleton>
+                </div>
+            </div>
+            }
+        </div>
+    }
+
+    return <Dialog open={isOpen} as="div" className="relative z-100 focus:outline-none w-full" onClose={handleClose}>
+        <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
+            <div className="px-10 flex max-w-screen min-h-full items-center justify-center">
+                <DialogPanel
+                    transition
+                    className="duration-50 ease-in 
+                data-closed:transform-[scale(95%)] data-closed:opacity-0"
+                >
+                    <div className="h-full w-full flex items-center justify-center">
+                        <div className="flex flex-col lg:flex-row justify-center">
+                            <div className={"flex items-center justify-center lg:hidden"}>
+                                <ImageWithSkeleton isMobile={true} />
+                            </div>
+                            <div className="flex flex-col justify-between 
+                        lg:py-10 
+                        pr-2 lg:max-w-1/3"
+                                onClick={handleClose}>
+                                <div className="flex flex-col space-y-2 items-center lg:items-start"
+                                    onClick={(e) => (e.stopPropagation())}>
+                                    <div className="mt-2 text-sm/6 text-white/50">
+                                        <div className="flex flex-row 
+                                    items-center justify-center 
+                                    lg:justify-start
+                                    flex-wrap space-x-2 gap-y-2
+                                    ">
+                                            {fullTags.map((tag, index) =>
+                                                (<TagBlock tagData={tag} tagsColorDict={tagsColorDict} key={index} />))}
+                                        </div>
+                                    </div>
+                                    <p className="text-white text-sm"
+
+                                    ><b>Description: </b>
+                                        {descString !== "" ? artDesc : <i>None</i>}
+                                    </p>
+                                </div>
+                                <div className="mt-4 w-full hidden lg:inline">
+                                    <CloseButton />
+                                </div>
+                            </div>
+                            <div className={" lg:flex items-center justify-center hidden"}>
+                                <div className="max-h-screen py-4"><ImageWithSkeleton isMobile={false} /></div>
+                            </div>
+
+                            <div className="mt-4 w-full flex items-center justify-center lg:hidden">
+                                <CloseButton />
+                            </div>
+                        </div>
+                    </div>
+                </DialogPanel>
+            </div>
+        </div>
+    </Dialog>
+}
+
+export const GalleryImage = ({ filename, jsonData }) => {
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [isOpen, setIsOpen] = useState(filename === searchParams.get("art"))
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    let paramName = filename.split(" ").join("+")
+
+    function handleOpen() {
+        setIsOpen(true)
+        let urlString = window.location.search
+        urlString = handleUrlQuery(urlString, "art", paramName)
+        history.pushState({}, "Gallery", urlString)
+    }
+
+    function handleClose() {
+        setIsOpen(false)
+        let newUrl = window.location.search.replace(`&art=${paramName}`, "")
+        newUrl = newUrl.replace(`art=${paramName}`, "")
+
+        history.pushState({}, "Gallery", newUrl)
+        searchParams.delete("art")
+        setSearchParams(searchParams)
+
+    }
+
+    function filePath() {
+        return filename + "." + jsonData.extension
+
+    }
+
+    function cloudinaryPath() {
+        return `https://res.cloudinary.com/dpybxskau/image/upload/${filePath().replaceAll(" ", "_")}`
+    }
+
+    function addDefaultSrc(e) {
+        e.target.src = "assets/pics/" + filePath()
+    }
+
+    let objSize = `object-cover w-64 md:w-auto md:h-64`
+
+    return <>
+        <div className={`p-1 mx-1`}>
+            <div className={`${isLoaded ? `transition border-2 border-green-400/0 hover:scale-105 
+                            hover:border-green-400 hover:cursor-pointer` : "opacity-50"} 
+                            absolute z-10 rounded-lg overflow-hidden`}>
+                {<img src={cloudinaryPath()}
+                    onError={addDefaultSrc}
+                    style={{}}
+                    className={`${objSize} 
+                        ${!isLoaded && "blur-sm"}
+                            `}
+                    onClick={() => { isLoaded && handleOpen() }}
+                    onLoad={() => setIsLoaded(true)}
+                    fetchpriority="high"
+                />}
+            </div>
+            {<div className={!isLoaded ? `bg-zinc-900` : ""}>
+                <div className={!isLoaded ? `animate-pulse flex flex-row items-center justify-center 
+                        shadow-lg ring-2 rounded-lg ring-green-500 shadow-green-500`: ""}>
+                    {!isLoaded && <div className="absolute z-10 text-green-500 font-bold font-pirulen flex flex-col">
+                        <div>LOADING{jsonData.tags.includes("3d") && " 3D"}...</div>
+                        {jsonData.tags.includes("3d") && <div className="text-xs">this may take some time...</div>}
+                    </div>}
+
+                    <Skeleton
+                        variant="rectangular"
+                        className={!isLoaded ? "bg-zinc-900 rounded-lg " : "bg-zinc-900/0"}
+                        animation="wave">
+                        <div className={objSize}
+                            style={{
+                                aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
+                            }}><img src="favicon.ico" style={{
+                                aspectRatio: jsonData.dimensions[0] / jsonData.dimensions[1]
+                            }} className={`${objSize}`} /></div>
+                    </Skeleton>
+                </div>
+            </div>
+            }
+
+
+        </div>
+        <GalleryModal isOpen={isOpen} handleClose={handleClose}
+            filename={filename}
+            jsonData={jsonData}
+        />
+
+    </>
+}
+
+export const HiddenModal = ({ filename, jsonData }) => {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const [isOpen, setIsOpen] = useState(false)
+    useEffect(() => {
+        setIsOpen(filename !== null)
+
+    }, [])
+
+
+
+
+    function handleClose() {
+        let paramName = ""
+        if (filename !== null) {
+            paramName = filename.split(" ").join("+")
+        }
+        setIsOpen(false)
+        searchParams.delete("art")
+        setSearchParams(searchParams)
+
+    }
+
+    return filename !== null && <GalleryModal isOpen={isOpen}
+        filename={filename}
+        handleClose={handleClose} jsonData={jsonData} />
+
 }
