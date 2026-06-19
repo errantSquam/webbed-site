@@ -25,5 +25,8 @@ jobs:
       - name: Install dependencies
         run:  npm install
 
+      - name: Run website for public asset access
+        run: npm run dev
+
       - name: Run tests
         run: npm run test
