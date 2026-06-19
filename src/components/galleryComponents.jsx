@@ -77,6 +77,28 @@ export const ContactButton = () => {
     }
 
     return <>
+        <div className="flex md:hidden flex flex-row gap-x-5 items-center text-white justify-center text-3xl">
+            <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
+                target="_blank"
+                rel="noopener noreferrer">
+                <Icon icon="ri:bluesky-fill" className="select-none cursor-pointer hover:text-white" />
+            </a>
+            <a href="https://github.com/errantSquam"
+                target="_blank"
+                rel="noopener noreferrer">
+                <Icon icon="mdi:github" className="select-none cursor-pointer hover:text-white" />
+            </a>
+            <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
+                target="_blank"
+                rel="noopener noreferrer">
+                <Icon icon="simple-icons:xiaohongshu" className="select-none cursor-pointer hover:text-white" />
+            </a>
+            <a href="https://www.instagram.com/errantsquam/"
+                target="_blank"
+                rel="noopener noreferrer">
+                <Icon icon="mdi:instagram" className="select-none cursor-pointer hover:text-white" />
+            </a>
+        </div>
         <div className={`text-green-500 flex flex-row space-x-2 items-center justify-center font-jura font-bold
         bg-gradient-to-b from-zinc-700 to-zinc-950 
         border-green-800 border
@@ -84,7 +106,7 @@ export const ContactButton = () => {
         text-lg`}
             onClick={() => setIsOpen(true)}>
             <Icon icon="material-symbols:mail" />
-            <div className="text-zinc-300"><b>CLICK</b> for Contact/Socials</div>
+            <div className="text-zinc-300">Contact Me / Socials</div>
         </div>
 
         <Dialog open={isOpen} as="div" className="relative z-99 focus:outline-none" onClose={handleClose}>

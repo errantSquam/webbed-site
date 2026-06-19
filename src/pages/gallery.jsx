@@ -217,6 +217,32 @@ export default function Gallery() {
                     }
                 </div>
 
+                <div className="flex md:hidden flex flex-row gap-x-5 items-center text-white justify-center 
+                text-3xl py-4
+                bg-gradient-to-t from-black to-black-0 w-full">
+                    <span className="text-xl"> SOCIALS:</span>
+                    <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon icon="ri:bluesky-fill" className="select-none cursor-pointer hover:text-white" />
+                    </a>
+                    <a href="https://github.com/errantSquam"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon icon="mdi:github" className="select-none cursor-pointer hover:text-white" />
+                    </a>
+                    <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon icon="simple-icons:xiaohongshu" className="select-none cursor-pointer hover:text-white" />
+                    </a>
+                    <a href="https://www.instagram.com/errantsquam/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Icon icon="mdi:instagram" className="select-none cursor-pointer hover:text-white" />
+                    </a>
+                </div>
+
                 <HiddenModal
                     key={hiddenArt}
                     filename={hiddenArt} jsonData={getPortfolioData()[hiddenArt]} tagData={getPortfolioTagData()} />
