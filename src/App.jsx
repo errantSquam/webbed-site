@@ -6,6 +6,7 @@ import Gallery from './pages/gallery';
 import Commissions from './pages/comms';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Programming from './pages/programming';
+import { GalleryContext, GalleryProvider } from './components/galleryContext';
 
 function preloadImage(src) {
   const toPreload = new Image();
@@ -24,8 +25,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Gallery />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/" element={<GalleryProvider><Gallery /></GalleryProvider>} />
+          <Route path="/gallery" element={<GalleryProvider><Gallery /></GalleryProvider>} />
+
           <Route path="/commissions" element={<Commissions />} />
           <Route path="/programming" element={<Programming />} />
         </Routes>

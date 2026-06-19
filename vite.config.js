@@ -23,6 +23,10 @@ export default defineConfig(({ mode }) => {
             svgrPlugin(),
             tailwindcss()
         ],
+        test: {
+            environment: "jsdom"
+        },
+        publicDir: 'public'
     };
 });
 function setEnv(mode) {
