@@ -99,8 +99,8 @@ const FeesTab = ({setCurrentTab}) => {
         <Header id  = "commercial">COMMERCIAL FEE</Header>
         <div>For smaller clients, commercial fee is $100 per piece or 10% of the full price, 
             whichever is higher. May be negotiable, let me know about your project specs.</div><br/>
-            <br/>
             For larger clients/print runs, please reach out to discuss with me.
+            <br/>
 
             (<u
             className = "cursor-pointer"
