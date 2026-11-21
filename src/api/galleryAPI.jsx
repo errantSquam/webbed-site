@@ -105,7 +105,7 @@ export function writeTagsToParams(selectedFilters) {
 
 
     console.log(urlString)
-    history.replaceState({}, "Gallery", urlString)
+    history.pushState({}, "Gallery", urlString)
 
     /*
     if (includeFilters !== "") {
