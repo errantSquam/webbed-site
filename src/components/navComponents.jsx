@@ -15,7 +15,7 @@ export const GalleryNav = ({ activePage }) => {
             </span>
             <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70 -ml-0.5" />
         </div>
-        <div className="text-xl hidden md:flex md:flex-row md:gap-x-2">
+        <div className="text-xl hidden lg:flex lg:flex-row lg:gap-x-2">
             |&nbsp;
             {
                 "Illustration Creatures Mecha".split(" ").map((i) => {
