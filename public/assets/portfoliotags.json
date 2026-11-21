@@ -324,7 +324,19 @@
         "tagType": "source"
     },
     "horse": {
-        "fullName": "horse",
+        "fullName": "Horse",
         "tagType": "species"
+    },
+    "fefw": {
+        "fullName": "Fortune's Weave",
+        "tagType": "source"
+    },
+    "zhurong": {
+        "fullName": "ZhuRong",
+        "tagType": "oc"
+    },
+    "halo": {
+        "fullName": "Halo",
+        "tagType": "source"
     }
 }

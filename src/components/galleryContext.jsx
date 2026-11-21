@@ -247,7 +247,7 @@ export const GalleryProvider = ({ activePage = "Index", children }) => {
                 tempSelectedFilters = tabFilters[activePage]
             }
 
-            let tempArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
+            let tempArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters, activePage !== "Other")
 
             let hiddenArt = searchParams.get("art")
             if (hiddenArt !== null) {

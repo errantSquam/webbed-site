@@ -125,7 +125,7 @@
             "illust"
         ],
         "isVertical": true,
-        "priority": -1,
+        "priority": -3,
         "description": "",
         "date": 1741006446.0,
         "extension": "webp",
@@ -2535,5 +2535,364 @@
         ],
         "hasThumb": false,
         "isCurated": true
+    },
+    "bluck terra revenge": {
+        "tags": [
+            "artfight",
+            "fullbody",
+            "anthro",
+            "illust",
+            "otheroc",
+            "simplebg"
+        ],
+        "isVertical": false,
+        "isCurated": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a target='_blank' rel='noopener noreferrer'href='https://bsky.app/profile/justanampharos.bsky.social'>amph.</a></u>",
+        "date": 1795252072.5827668,
+        "extension": "webp",
+        "dimensions": [
+            1814,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "cephalomon": {
+        "tags": [
+            "artfight",
+            "fullbody",
+            "otheroc",
+            "digimon",
+            "creature",
+            "illust"
+        ],
+        "isVertical": false,
+        "isCurated": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a target='_blank' rel='noopener noreferrer'href='https://bsky.app/profile/garrrzzz.bsky.social'>Garmmy.</a></u>",
+        "date": 1795252078.8520846,
+        "extension": "webp",
+        "dimensions": [
+            1814,
+            1814
+        ],
+        "hasThumb": false
+    },
+    "crimson sunbird": {
+        "tags": [
+            "bird",
+            "illust",
+            "simplebg",
+            "creature"
+        ],
+        "isVertical": true,
+        "isCurated": true,
+        "priority": 4,
+        "description": "",
+        "date": 1795252092.8847082,
+        "extension": "webp",
+        "dimensions": [
+            1786,
+            2505
+        ],
+        "hasThumb": false
+    },
+    "diefab yaoi angst spoiler free": {
+        "tags": [
+            "fireemblem",
+            "human",
+            "fanart",
+            "illust",
+            "fullbody",
+            "fefw",
+            "simplebg"
+        ],
+        "isVertical": true,
+        "isCurated": false,
+        "priority": 0,
+        "description": "",
+        "date": 1795252111.184964,
+        "extension": "webp",
+        "dimensions": [
+            2800,
+            3947
+        ],
+        "hasThumb": false
+    },
+    "dietrich malos": {
+        "tags": [
+            "fireemblem",
+            "fefw",
+            "human",
+            "fanart",
+            "illust",
+            "fullbody"
+        ],
+        "isVertical": false,
+        "isCurated": false,
+        "priority": 0,
+        "description": "",
+        "date": 1795252138.256555,
+        "extension": "webp",
+        "dimensions": [
+            3048,
+            2416
+        ],
+        "hasThumb": false
+    },
+    "dietrich oul": {
+        "tags": [
+            "bird",
+            "fireemblem",
+            "owl",
+            "fanart",
+            "fefw",
+            "illust",
+            "fullbody",
+            "creature"
+        ],
+        "isVertical": false,
+        "isCurated": true,
+        "priority": 2,
+        "description": "",
+        "date": 1795252148.8969948,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "dietrich tellius animate": {
+        "tags": [
+            "fireemblem",
+            "fefw",
+            "human",
+            "fe10",
+            "animated",
+            "halfbody",
+            "illust"
+        ],
+        "isVertical": true,
+        "isCurated": false,
+        "priority": 0,
+        "description": "",
+        "date": 1795251244.907027,
+        "extension": "webp",
+        "dimensions": [
+            2000,
+            2552
+        ],
+        "hasThumb": false
+    },
+    "ekaitz zhurong garage": {
+        "tags": [
+            "oc",
+            "ekaitz",
+            "zhurong",
+            "mecha",
+            "illust",
+            "fullbody",
+            "complexbg",
+            "human"
+        ],
+        "isVertical": false,
+        "isCurated": true,
+        "priority": -1,
+        "description": "",
+        "date": 1795252182.7901251,
+        "extension": "webp",
+        "dimensions": [
+            4911,
+            3500
+        ],
+        "hasThumb": false
+    },
+    "eugent revenge": {
+        "tags": [
+            "human",
+            "illust",
+            "otheroc",
+            "artfight",
+            "fullbody",
+            "complexbg"
+        ],
+        "isVertical": true,
+        "isCurated": true,
+        "priority": 4,
+        "description": "Art Fight attack. Character belongs to <u><a target='_blank' rel='noopener noreferrer'href='https://kimmyocs.onrender.com/'>Kimmy.</a></u>",
+        "date": 1795252191.8098624,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1955
+        ],
+        "hasThumb": false
+    },
+    "halo comm siggy": {
+        "tags": [
+            "human",
+            "mecha",
+            "commission",
+            "fanart",
+            "halo",
+            "simplebg",
+            "illust"
+        ],
+        "isVertical": false,
+        "isCurated": true,
+        "priority": 4,
+        "description": "Commision for Stokori.",
+        "date": 1795252208.762171,
+        "extension": "webp",
+        "dimensions": [
+            2505,
+            1786
+        ],
+        "hasThumb": false
+    },
+    "joseph kudamon": {
+        "tags": [
+            "jojo",
+            "human",
+            "digimon",
+            "fanart",
+            "halfbody",
+            "illust"
+        ],
+        "isVertical": true,
+        "isCurated": false,
+        "priority": 0,
+        "description": "",
+        "date": 1795252222.0042164,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1814
+        ],
+        "hasThumb": false
+    },
+    "loptyr comm sig": {
+        "tags": [
+            "human",
+            "reptile",
+            "otheroc",
+            "commission",
+            "fullbody",
+            "simplebg",
+            "illust"
+        ],
+        "isVertical": true,
+        "isCurated": false,
+        "priority": 0,
+        "description": "Commission. Character belongs to <u><a target='_blank' rel='noopener noreferrer'href='https://bsky.app/profile/loptyr.bsky.social'>Fell.</a></u>",
+        "date": 1795252258.7492828,
+        "extension": "webp",
+        "dimensions": [
+            2100,
+            2946
+        ],
+        "hasThumb": false
+    },
+    "mona fabio sig": {
+        "tags": [
+            "fireemblem",
+            "fefw",
+            "halfbody",
+            "fanart",
+            "illust"
+        ],
+        "isVertical": true,
+        "isCurated": false,
+        "priority": 0,
+        "description": "",
+        "date": 1795252270.6774693,
+        "extension": "webp",
+        "dimensions": [
+            1786,
+            2516
+        ],
+        "hasThumb": false
+    },
+    "racecar vence comm": {
+        "tags": [
+            "illust",
+            "bird",
+            "anthro",
+            "fanart",
+            "commission",
+            "fullbody",
+            "simplebg"
+        ],
+        "isVertical": true,
+        "isCurated": true,
+        "priority": 3,
+        "description": "Commission for RacecarArt.",
+        "date": 1795252276.1798444,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            2100
+        ],
+        "hasThumb": false
+    },
+    "random diego render ig": {
+        "tags": [
+            "human",
+            "fanart",
+            "jojo",
+            "illust",
+            "fullbody"
+        ],
+        "isVertical": true,
+        "isCurated": true,
+        "priority": 4,
+        "description": "",
+        "date": 1795252290.0200908,
+        "extension": "webp",
+        "dimensions": [
+            1786,
+            2505
+        ],
+        "hasThumb": false
+    },
+    "sumiko af": {
+        "tags": [
+            "digimon",
+            "otheroc",
+            "halfbody",
+            "illust",
+            "artfight"
+        ],
+        "isVertical": false,
+        "isCurated": false,
+        "priority": 0,
+        "description": "Art Fight attack. Character belongs to <u><a target='_blank' rel='noopener noreferrer'href='https://bsky.app/profile/j3rry1ce.bsky.social'>Jerry.</a></u>",
+        "date": 1795252300.2984738,
+        "extension": "webp",
+        "dimensions": [
+            1400,
+            1400
+        ],
+        "hasThumb": false
+    },
+    "sve monitor linzer attack": {
+        "tags": [
+            "halfbody",
+            "anthro",
+            "illust",
+            "otheroc"
+        ],
+        "isVertical": false,
+        "isCurated": true,
+        "priority": 2,
+        "description": "Art Fight attack. Character belongs to <u><a target='_blank' rel='noopener noreferrer'href='https://bsky.app/profile/trunswicked.bsky.social'>Sve.</a></u>",
+        "date": 1795252307.6284354,
+        "extension": "webp",
+        "dimensions": [
+            2309,
+            1400
+        ],
+        "hasThumb": false
     }
 }

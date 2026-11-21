@@ -60,7 +60,8 @@
         "pyre",
         "janus",
         "owlcroraptor",
-        "ankou"
+        "ankou",
+        "zhurong"
     ],
     "source": [
         "xenoblade2",
@@ -87,7 +88,9 @@
         "rhist",
         "prehistorickingdom",
         "kirby",
-        "jojo"
+        "jojo",
+        "fefw",
+        "halo"
     ],
     "misc": [
         "scales",
