@@ -50,7 +50,7 @@ export const HomelessTopNav = ({ children, color, accentColor }) => {
                 <div className="flex flex-col items-start text-start ml-8 gap-y-2 text-lg">
                     <Link to="/gallery"><div className="hover:text-zinc-100 cursor-pointer">Gallery</div></Link>
                     {
-                        "Illustration Creatures Mecha".split(" ").map((i) => {
+                        "Illustration Creatures Mecha Other".split(" ").map((i) => {
                             return <Link to={`/gallery/${i}`}><div className="hover:text-zinc-100 cursor-pointer">{i}</div></Link>
                         })
                     }
