@@ -352,7 +352,7 @@ export default function Commissions() {
         setCurrentTab(tab)
         searchParams.set("tab", tab)
         let urlString = window.location.hash.split("?")[0] + "?tab=" + tab
-        history.pushState({}, "Commissions", urlString)
+        history.replaceState({}, "Commissions", urlString)
 
     }
 

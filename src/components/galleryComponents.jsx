@@ -456,7 +456,7 @@ export const GalleryImage = ({ filename, jsonData }) => {
         setIsOpen(true)
         let urlString = window.location.search
         urlString = handleUrlQuery(urlString, "art", paramName)
-        history.pushState({}, "Gallery", urlString)
+        history.replaceState({}, "Gallery", urlString)
     }
 
     function handleClose() {
@@ -464,7 +464,7 @@ export const GalleryImage = ({ filename, jsonData }) => {
         let newUrl = window.location.search.replace(`&art=${paramName}`, "")
         newUrl = newUrl.replace(`art=${paramName}`, "")
 
-        history.pushState({}, "Gallery", newUrl)
+        history.replaceState({}, "Gallery", newUrl)
         searchParams.delete("art")
         setSearchParams(searchParams)
 
