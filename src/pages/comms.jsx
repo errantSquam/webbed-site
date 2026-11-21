@@ -345,14 +345,6 @@ export default function Commissions() {
     }, [])
 
 
-    useEffect(() => {
-        if (searchParams.get("tab") !== null) {
-
-            setPrevTab(currentTab)
-            setCurrentTab(searchParams.get("tab"))
-        }
-    }, [searchParams.get("tab")])
-
     let direction = tabDict[prevTab].index > tabDict[currentTab].index
 
     function handleTabSetting(tab) {
