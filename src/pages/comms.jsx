@@ -344,6 +344,7 @@ export default function Commissions() {
         })
     }, [])
 
+    //TODO: Change to nested routes instead of old queryparam implementation
 
     let direction = tabDict[prevTab].index > tabDict[currentTab].index
 
