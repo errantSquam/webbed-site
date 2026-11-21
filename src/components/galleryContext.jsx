@@ -72,9 +72,9 @@ export const GalleryProvider = ({ activePage = "Index", children }) => {
                     "tagType": "charatype"
                 },
                 {
-                    "value": "characterdesign",
-                    "label": "Character Design",
-                    "tagType": "scope"
+                    "value": "fanart",
+                    "label": "Fanart",
+                    "tagType": "copyright"
                 }
             ]
         },

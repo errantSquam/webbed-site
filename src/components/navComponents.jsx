@@ -23,7 +23,6 @@ export const GalleryNav = ({ activePage }) => {
                         {i}</Link> | </span>
                 })
             }
-            <Link to="/gallery/other" className={activePage === "Other" && "underline"}> other </Link>
         </div>
     </HomelessTopNav>
 

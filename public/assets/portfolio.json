@@ -226,7 +226,7 @@
             2150
         ],
         "hasThumb": true,
-        "isCurated": true
+        "isCurated": false
     },
     "coda dino edition af": {
         "tags": [
@@ -2094,7 +2094,7 @@
             1594
         ],
         "hasThumb": false,
-        "isCurated": false
+        "isCurated": true
     },
     "sooty oul": {
         "tags": [
@@ -2313,7 +2313,7 @@
             "creature"
         ],
         "isVertical": true,
-        "priority": 5,
+        "priority": 6,
         "description": "",
         "date": 1779162108.0398242,
         "extension": "webp",
@@ -2421,7 +2421,7 @@
             "complexbg"
         ],
         "isVertical": false,
-        "priority": 4,
+        "priority": 0,
         "description": "",
         "date": 1779162581.9752097,
         "extension": "webp",
@@ -2456,9 +2456,10 @@
         "tags": [
             "oc",
             "creature",
-            "illust",
             "fullbody",
-            "characterdesign"
+            "illust",
+            "characterdesign",
+            "creature"
         ],
         "isVertical": false,
         "priority": 0,
@@ -2470,7 +2471,7 @@
             1814
         ],
         "hasThumb": false,
-        "isCurated": false
+        "isCurated": true
     },
     "umbrella bird": {
         "tags": [

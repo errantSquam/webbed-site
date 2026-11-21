@@ -13,43 +13,43 @@ import { TableOfContents } from "../components/tosComponents"
 import { chickenLoading } from "../components/splashscreen"
 import ExampleTab from "./tabs/exampleTab"
 import { useSearchParams } from "react-router-dom"
-import { portfolioData, portfolioTagData, groupTagData} from "../api/galleryAPI"
+import { portfolioData, portfolioTagData, groupTagData } from "../api/galleryAPI"
 
 
-const FeesTab = ({setCurrentTab}) => {
+const FeesTab = ({ setCurrentTab }) => {
     const feesToC = {
         "real": {
-            id:"real",
-            title:"Realism/Details"
+            id: "real",
+            title: "Realism/Details"
         },
         "geometric": {
             id: "geo",
             title: "Geometric Forms/Mecha"
         },
-        "commercial":{
-            id:"commercial",
-            title:"Commercial Fee"
+        "commercial": {
+            id: "commercial",
+            title: "Commercial Fee"
         },
-        "other":{
-            id:"other",
+        "other": {
+            id: "other",
             title: "Other"
         },
-        "quote":{
+        "quote": {
             id: "quote",
             title: "Discounts & Quotes"
         }
 
     }
     return <div>
-        
+
         <Header>Additional Fees</Header>
-        <TableOfContents tocDict={feesToC}/>
-        <br/>
+        <TableOfContents tocDict={feesToC} />
+        <br />
         These are generally a rule of thumb for my own consistency.<br />
         Many of these fees can be waived/scoped down. Please reach out and discuss with me!
         <br /><br />
         <hr />
-        <Header id = "real">REALISM/DETAILS</Header>
+        <Header id="real">REALISM/DETAILS</Header>
         <div className="ml-2">
             <div className="font-bold font-jura">Realistic Human Faces (IRL pictures, Yakuza characters):</div>
             <div className="ml-2"><p className="italic">(Render only. Chibis will be stylized. Please provide detailed and high quality references.)</p>
@@ -66,7 +66,7 @@ const FeesTab = ({setCurrentTab}) => {
         </div>
         <br />
         <hr />
-        <Header id = "geo">GEOMETRIC FORMS/MECHA </Header>
+        <Header id="geo">GEOMETRIC FORMS/MECHA </Header>
         <div className="ml-2">
             <div className="italic">Rigid, hard surfaces go here.</div>
             <div className="font-bold font-jura">Props</div>
@@ -96,21 +96,21 @@ const FeesTab = ({setCurrentTab}) => {
             <br />
         </div>
         <hr />
-        <Header id  = "commercial">COMMERCIAL FEE</Header>
-        <div>For smaller clients, commercial fee is $100 per piece or 10% of the full price, 
-            whichever is higher. May be negotiable, let me know about your project specs.</div><br/>
-            For larger clients/print runs, please reach out to discuss with me.
-            <br/>
+        <Header id="commercial">COMMERCIAL FEE</Header>
+        <div>For smaller clients, commercial fee is $100 per piece or 10% of the full price,
+            whichever is higher. May be negotiable, let me know about your project specs.</div><br />
+        For larger clients/print runs, please reach out to discuss with me.
+        <br />
 
-            (<u
-            className = "cursor-pointer"
-            onClick = {() => {
-            setCurrentTab("gen")
-            document.getElementById("rights")?.scrollIntoView({ behavior: 'smooth' })
-                }}
-            > See more detail under 'Image Rights' in General Info.</u>)<br/><br/>
-        <hr/>
-        <Header id = "other">OTHER</Header>
+        (<u
+            className="cursor-pointer"
+            onClick={() => {
+                setCurrentTab("gen")
+                document.getElementById("rights")?.scrollIntoView({ behavior: 'smooth' })
+            }}
+        > See more detail under 'Image Rights' in General Info.</u>)<br /><br />
+        <hr />
+        <Header id="other">OTHER</Header>
         <div className="ml-2">
             <div className="italic">For stuff that doesn’t apply to most clients.</div>
             <br />
@@ -178,17 +178,17 @@ const FeesTab = ({setCurrentTab}) => {
                 ‘Extremely Clean Lineart’. In fact, most of the time it’s not even noticeable.
                 Highly <b>not recommended,</b> but the option is there.
             </div>
-            <br/>
+            <br />
         </div>
-        <hr/>
-        
-        <Header id = "quote"> Discounts & Quotes</Header>
+        <hr />
+
+        <Header id="quote"> Discounts & Quotes</Header>
         <b>IF ASKING FOR QUOTE:</b> Please reach out to me via Bluesky DMs OR email at errantsquam@gmail.com. Include reference images (use something like Google Drive, since Bluesky doesn’t support uploads!) and a detailed description, same as if you were submitting the form.
-        <br/><br/>
+        <br /><br />
         If you have a budget, I encourage you to discuss this with me so I can see where to streamline things while working within your budget.
-        <br/><br/>
+        <br /><br />
         If going through discounted options, you accept that I reserve the right to reject technical critique pertaining to the art piece, as I am intentionally keeping things simpler and looser for the sake of working within your budget.
-        <br/><br/>
+        <br /><br />
         (There used to be a section on discounted examples here, but it's clipped for the sake of brevity. Just drop in and ask.)
 
 
@@ -251,23 +251,23 @@ const TabDisplay = ({ tabDict, handleTabSetting, currentTab }) => {
 
 }
 
-const IntroTab = ({setCurrentTab}) => {
+const IntroTab = ({ setCurrentTab }) => {
     return <div className="flex flex-col w-full">
         <Header>INTRO</Header>
         <div>Hello, and welcome to my commissions page! <br />
             Here's what you need to get started <i className="text-green-500">(see the tabs above)</i>:</div>
         <ol className="list-decimal ml-10 space-y-1">
-            <li>Check the <u className = "cursor-pointer" onClick = {() => setCurrentTab("eg")}>Examples</u> section to see what you'd like.</li>
-            <li>Read the <u className = "cursor-pointer" onClick = {() => setCurrentTab("gen")}>General Information</u> section.
+            <li>Check the <u className="cursor-pointer" onClick={() => setCurrentTab("eg")}>Examples</u> section to see what you'd like.</li>
+            <li>Read the <u className="cursor-pointer" onClick={() => setCurrentTab("gen")}>General Information</u> section.
                 <div className="list-none ml-3">❗ <b>Important!</b> Once you reach the end, you'll find a <i>magic word</i> to submit your request.</div>
                 <div className="ml-3">(This is proof you agree to the terms, so please don't skip to the end.)</div></li>
             <li>Submit your request!</li>
         </ol>
-        
-        
+
+
         <br />
         <div>My contact is also available at <b>errantsquam@gmail.com</b>.</div>
-        <br/>
+        <br />
         If this isn't your first time reading the ToS, here are some quick links for you:
         <div className="flex flex-col space-y-2 my-4">
             <a href="https://forms.gle/hepVgfnUVBVBAtNm7">
@@ -285,7 +285,18 @@ const IntroTab = ({setCurrentTab}) => {
                 transition duration-100
                 hover:bg-zinc-700`}>
                     <Icon icon="mdi:arrow-right-bold" className="text-lg" />
-                    <span>View more examples in the Gallery.</span>
+                    <span>View curated examples in the Gallery.</span>
+                </div>
+            </Link>
+            <div />
+            <div>Or if you're a casual client who'd like to search for more niche examples:</div>
+            <Link to="/gallery/other">
+                <div className={`flex flex-row items-center gap-x-2 text-green-500 
+                text-lg bg-zinc-900 rounded-lg w-fit px-2 py-2 font-jura font-bold border-2 border-zinc-500
+                transition duration-100
+                hover:bg-zinc-700`}>
+                    <Icon icon="mdi:arrow-right-bold" className="text-lg" />
+                    <span>View the FULL gallery here.</span>
                 </div>
             </Link>
         </div>
@@ -303,22 +314,22 @@ export default function Commissions() {
     const tabDict = {
         "intro": {
             fullName: "Introduction",
-            tab: <IntroTab setCurrentTab = {handleTabSetting}/>,
+            tab: <IntroTab setCurrentTab={handleTabSetting} />,
             index: 0
         },
         "eg": {
             fullName: "Examples",
-            tab: <ExampleTab setCurrentTab = {handleTabSetting}/>,
+            tab: <ExampleTab setCurrentTab={handleTabSetting} />,
             index: 1
         },
         "gen": {
             fullName: "General Info",
-            tab: <GeneralTab setCurrentTab = {handleTabSetting}/>,
+            tab: <GeneralTab setCurrentTab={handleTabSetting} />,
             index: 2
         },
         "fees": {
             fullName: "Additional Fees",
-            tab: <FeesTab setCurrentTab = {handleTabSetting}/>,
+            tab: <FeesTab setCurrentTab={handleTabSetting} />,
             index: 3
         }
     }
