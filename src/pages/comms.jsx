@@ -344,6 +344,15 @@ export default function Commissions() {
         })
     }, [])
 
+
+    useEffect(() => {
+        if (searchParams.get("tab") !== null) {
+
+            setPrevTab(currentTab)
+            setCurrentTab(searchParams.get("tab"))
+        }
+    }, [searchParams.get("tab")])
+
     let direction = tabDict[prevTab].index > tabDict[currentTab].index
 
     function handleTabSetting(tab) {
@@ -351,7 +360,7 @@ export default function Commissions() {
         setPrevTab(currentTab)
         setCurrentTab(tab)
         searchParams.set("tab", tab)
-        let urlString = window.location.hash.split("?")[0] + "?tab=" + tab
+        let urlString = window.location.href.split(/[?#]/)[0] + "?tab=" + tab
         history.pushState({}, "Commissions", urlString)
 
     }
