@@ -2,6 +2,7 @@ import './App.css';
 import { HashRouter, Route, Routes, Link } from "react-router-dom";
 import { BrowserRouter } from 'react-router-dom';
 import DancingSnek from './pages/dancingsnek';
+import GalleryOther from './pages/galleryPages/galleryOther';
 import Gallery from './pages/gallery';
 import Commissions from './pages/comms';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -16,7 +17,7 @@ function preloadImage(src) {
 
 function App() {
 
-  preloadImage("assets/shake him.gif")
+  preloadImage("/assets/shake him.gif")
   preloadImage("favicon.ico")
   //preloadImage("assets/gangnamsnake.webp")
   const queryClient = new QueryClient()
@@ -26,10 +27,19 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<GalleryProvider><Gallery /></GalleryProvider>} />
-          <Route path="/gallery" element={<GalleryProvider><Gallery /></GalleryProvider>} />
+          <Route path="gallery">
+            <Route index element={<GalleryProvider activePage="Illustration"><Gallery /></GalleryProvider>} />
+            <Route path="illustration" element={<GalleryProvider activePage="Illustration"><Gallery /></GalleryProvider>} />
 
-          <Route path="/commissions" element={<Commissions />} />
-          <Route path="/programming" element={<Programming />} />
+            <Route path="fantasy" element={<GalleryProvider activePage="Fantasy"><Gallery /></GalleryProvider>} />
+
+            <Route path="mecha" element={<GalleryProvider activePage="Mecha"><Gallery /></GalleryProvider>} />
+            <Route path="creatures" element={<GalleryProvider activePage="Creatures" ><Gallery /></GalleryProvider>} />
+            <Route path="other" element={<GalleryProvider activePage="Other"><GalleryOther /></GalleryProvider>} />
+          </Route>
+
+          <Route path="commissions" element={<Commissions />} />
+          <Route path="programming" element={<Programming />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

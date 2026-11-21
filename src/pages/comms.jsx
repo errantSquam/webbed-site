@@ -157,7 +157,7 @@ const FeesTab = ({setCurrentTab}) => {
                 This fee may also apply to backgrounds that lack clarity. Fee may be halved if the design is much simpler (possibly some Digimon), but assume full fees for the most part.
                 <br /><br />
                 Example: A study of Logos’ Siren from Xenoblade 2 (image greatly compressed to save on load times)
-                <img src="assets/misc/siren study logos.webp" />
+                <img src="/assets/misc/siren study logos.webp" />
             </div>
 
             <br />

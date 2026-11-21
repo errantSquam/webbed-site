@@ -13,7 +13,8 @@ import { portfolioData } from '../../api/galleryAPI';
 
 
 
-const ImageExample = ({ fileName, height = "md:h-60" }) => {
+
+export const ImageExample = ({ fileName, height = "md:h-60" }) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const portfolioQuery = portfolioData()
@@ -36,7 +37,7 @@ const ImageExample = ({ fileName, height = "md:h-60" }) => {
     }
 
     function addDefaultSrc(e) {
-        e.target.src = "assets/pics/" + filePath
+        e.target.src = "/assets/pics/" + filePath
     }
 
     return <div key={fileName}>

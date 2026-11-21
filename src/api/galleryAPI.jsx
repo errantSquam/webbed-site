@@ -9,7 +9,7 @@ export function portfolioData() {
     const result = useQuery({
         queryKey: ["portfolioData"],
         queryFn: async () => {
-            const data = fetch('assets/portfolio.json').then((res) => res.json())
+            const data = fetch('/assets/portfolio.json').then((res) => res.json())
             return data
         }
 
@@ -22,7 +22,7 @@ export function portfolioTagData() {
     const result = useQuery({
         queryKey: ["portfolioTagData"],
         queryFn: async () => {
-            const data = fetch('assets/portfoliotags.json').then((res) => res.json())
+            const data = fetch('/assets/portfoliotags.json').then((res) => res.json())
             return data
         }
     })
@@ -33,7 +33,7 @@ export function groupTagData() {
     const result = useQuery({
         queryKey: ["groupTagData"],
         queryFn: async () => {
-            const data = fetch('assets/grouptags.json').then((res) => res.json())
+            const data = fetch('/assets/grouptags.json').then((res) => res.json())
             return data
         }
     })

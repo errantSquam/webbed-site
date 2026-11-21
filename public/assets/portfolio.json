@@ -19,7 +19,8 @@
             2900,
             2000
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "metalgreymon pmd comm 500x": {
         "tags": [
@@ -40,7 +41,8 @@
             1000,
             800
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "stokori comm 1 anim": {
         "tags": [
@@ -62,7 +64,8 @@
             1714,
             1965
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "stokori comm 2 anim": {
         "tags": [
@@ -84,7 +87,8 @@
             2034,
             2066
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "another zeph render": {
         "tags": [
@@ -107,7 +111,8 @@
             1523,
             1814
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "arelis renaissance study": {
         "tags": [
@@ -128,7 +133,8 @@
             1736,
             2456
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "ares mr donut": {
         "tags": [
@@ -147,7 +153,8 @@
             1250,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "armory alley redraw": {
         "tags": [
@@ -164,7 +171,7 @@
             "illust"
         ],
         "isVertical": false,
-        "priority": 0,
+        "priority": -2,
         "description": "Xenoblade X fanart. Includes my OC with a few other cameos. <br/>Character credits: <li><u><a target='_blank' rel='noopener noreferrer'href='https://bsky.app/profile/chuji.bsky.social'>Chuji</a></u></li><li><u><a target='_blank' rel='noopener noreferrer'href = 'https://bsky.app/profile/pixelwhatever.bsky.social'>Augur</a></u></li>",
         "date": 1746508588.0,
         "extension": "webp",
@@ -172,7 +179,8 @@
             2965,
             1814
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "chuji updated ref 2025": {
         "tags": [
@@ -192,7 +200,8 @@
             2640,
             2227
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "cinogard mrt comm sig": {
         "tags": [
@@ -216,7 +225,8 @@
             2867,
             2150
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "coda dino edition af": {
         "tags": [
@@ -237,7 +247,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "dana af cubism": {
         "tags": [
@@ -259,7 +270,8 @@
             2480,
             1761
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "danarei comm sig": {
         "tags": [
@@ -281,7 +293,8 @@
             2310,
             3570
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "darious af 2025": {
         "tags": [
@@ -301,7 +314,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "digigirl phoenixmon": {
         "tags": [
@@ -323,7 +337,8 @@
             5741,
             4042
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "dk ostrich": {
         "tags": [
@@ -343,7 +358,8 @@
             1814,
             1814
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "duftmon comm siggy": {
         "tags": [
@@ -365,7 +381,8 @@
             1792,
             2867
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "ekaitz sword unsheathing small": {
         "tags": [
@@ -388,7 +405,8 @@
             1786,
             2505
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "gekkomon": {
         "tags": [
@@ -407,7 +425,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "janus vs arelis": {
         "tags": [
@@ -428,7 +447,8 @@
             2227,
             3053
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "microraptor vermy": {
         "tags": [
@@ -450,7 +470,8 @@
             2386,
             1706
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "more dell wings render": {
         "tags": [
@@ -475,7 +496,8 @@
             3767,
             3536
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "moth dragon scribble": {
         "tags": [
@@ -495,7 +517,8 @@
             2227,
             2557
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "niles af": {
         "tags": [
@@ -514,7 +537,8 @@
             1240,
             1240
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "ordell card render 2 finalizing": {
         "tags": [
@@ -526,7 +550,6 @@
             "owl",
             "dinosaur",
             "microraptor",
-            "mecha",
             "simplebg",
             "halfbody",
             "illust"
@@ -540,7 +563,8 @@
             1761,
             2480
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "ordell guitar chibi proll": {
         "tags": [
@@ -565,7 +589,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "rockuma af": {
         "tags": [
@@ -584,7 +609,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "rook comm journal with sig": {
         "tags": [
@@ -605,7 +631,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "sarkis af": {
         "tags": [
@@ -627,7 +654,8 @@
             1761,
             2480
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "selena af": {
         "tags": [
@@ -646,7 +674,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "shury af": {
         "tags": [
@@ -667,7 +696,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "siren comm watermark": {
         "tags": [
@@ -687,7 +717,8 @@
             3497,
             2480
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "star af": {
         "tags": [
@@ -708,7 +739,8 @@
             1400,
             1548
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "trunswicked comm with sig": {
         "tags": [
@@ -729,7 +761,8 @@
             1721,
             1818
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "valen bagua study": {
         "tags": [
@@ -750,7 +783,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "valen render": {
         "tags": [
@@ -770,7 +804,8 @@
             1814,
             1814
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "vithaar af": {
         "tags": [
@@ -789,7 +824,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "yammark comm": {
         "tags": [
@@ -809,7 +845,8 @@
             1400,
             1565
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "desdemona": {
         "tags": [
@@ -830,7 +867,8 @@
             975,
             988
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "taxraptor model turnaround": {
         "tags": [
@@ -852,7 +890,8 @@
             575,
             564
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "1 lesser whistling duck": {
         "tags": [
@@ -872,7 +911,8 @@
             1162,
             1162
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "another a4 render maybe ekaitz": {
         "tags": [
@@ -894,7 +934,8 @@
             1761,
             2480
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "baby ordell render": {
         "tags": [
@@ -916,7 +957,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "cassowary chibi": {
         "tags": [
@@ -935,7 +977,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "choona": {
         "tags": [
@@ -956,7 +999,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "chopper comm": {
         "tags": [
@@ -978,7 +1022,8 @@
             1761,
             2480
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "ekaitz walk cycle large": {
         "tags": [
@@ -1000,7 +1045,8 @@
             320,
             480
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "ekaitz-face-animated": {
         "tags": [
@@ -1020,7 +1066,8 @@
             400,
             555
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "env study that turned into ekaitz fishing": {
         "tags": [
@@ -1049,7 +1096,8 @@
             2227,
             1814
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "garet comm pmd large": {
         "tags": [
@@ -1070,7 +1118,8 @@
             1000,
             800
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "majima spritesheet large": {
         "tags": [
@@ -1090,7 +1139,8 @@
             1000,
             1600
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "medabots at": {
         "tags": [
@@ -1110,7 +1160,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "nick non af": {
         "tags": [
@@ -1130,7 +1181,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "ocre-fe9-comm-neutral": {
         "tags": [
@@ -1152,7 +1204,8 @@
             1160,
             1480
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "one snillion dollars very very small": {
         "tags": [
@@ -1172,7 +1225,8 @@
             480,
             500
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "ordell walk cycle": {
         "tags": [
@@ -1194,7 +1248,8 @@
             320,
             480
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "otulissa martin": {
         "tags": [
@@ -1217,7 +1272,8 @@
             2143,
             1917
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "pick pmd comm large watermarked": {
         "tags": [
@@ -1240,7 +1296,8 @@
             1000,
             800
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "sebastien pmd comm watermark": {
         "tags": [
@@ -1262,7 +1319,8 @@
             1000,
             800
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "shepherd af 1": {
         "tags": [
@@ -1283,7 +1341,8 @@
             2480,
             1761
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "stormy shield comm": {
         "tags": [
@@ -1305,7 +1364,8 @@
             1400,
             1945
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "TalkAnim": {
         "tags": [
@@ -1327,7 +1387,8 @@
             264,
             264
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "utyaviknes": {
         "tags": [
@@ -1348,7 +1409,8 @@
             500,
             500
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "xuqian doodle": {
         "tags": [
@@ -1367,7 +1429,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "abel comm sig": {
         "tags": [
@@ -1388,7 +1451,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "another rock study": {
         "tags": [
@@ -1409,7 +1473,8 @@
             1400,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "August_FE5": {
         "tags": [
@@ -1429,7 +1494,8 @@
             80,
             64
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "check out this sick new skell": {
         "tags": [
@@ -1450,7 +1516,8 @@
             3214,
             2800
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "Diarmuid_FE5": {
         "tags": [
@@ -1470,7 +1537,8 @@
             80,
             64
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "Karin_FE5": {
         "tags": [
@@ -1490,7 +1558,8 @@
             80,
             64
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "kiyu spritesheet large": {
         "tags": [
@@ -1510,7 +1579,8 @@
             1000,
             800
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "ordell creature 2": {
         "tags": [
@@ -1534,7 +1604,8 @@
             2231,
             1406
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "otter crow comm": {
         "tags": [
@@ -1555,7 +1626,8 @@
             2100,
             2721
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "quill comm sig": {
         "tags": [
@@ -1575,7 +1647,8 @@
             1814,
             1814
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "rhino hippo qilin": {
         "tags": [
@@ -1593,7 +1666,8 @@
             1752,
             1628
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "rosch comm final": {
         "tags": [
@@ -1613,7 +1687,8 @@
             1299,
             1299
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "Safy_FE5": {
         "tags": [
@@ -1633,7 +1708,8 @@
             80,
             64
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "sea rock study": {
         "tags": [
@@ -1654,7 +1730,8 @@
             1400,
             1261
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "skell sylvalum big ball": {
         "tags": [
@@ -1674,7 +1751,8 @@
             1609,
             1131
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": true
     },
     "skell zine render v2": {
         "tags": [
@@ -1694,7 +1772,8 @@
             2456,
             1736
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "slashy comm watermark": {
         "tags": [
@@ -1714,7 +1793,8 @@
             2227,
             1400
         ],
-        "hasThumb": true
+        "hasThumb": true,
+        "isCurated": false
     },
     "Tina_FE5": {
         "tags": [
@@ -1734,7 +1814,8 @@
             80,
             64
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "ankou redesign maybe": {
         "tags": [
@@ -1755,7 +1836,8 @@
             1397,
             1000
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "snow environment study": {
         "tags": [
@@ -1781,7 +1863,8 @@
             1409,
             1000
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "silvally fe crop": {
         "tags": [
@@ -1801,7 +1884,8 @@
             485,
             400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "cockatrice": {
         "tags": [
@@ -1821,7 +1905,8 @@
             2227,
             2035
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "hss logo full watermark": {
         "tags": [
@@ -1845,7 +1930,8 @@
             2100,
             2100
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "imperialdramon doodle": {
         "tags": [
@@ -1863,7 +1949,8 @@
             2227,
             2227
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "kimmy oc comm": {
         "tags": [
@@ -1883,7 +1970,8 @@
             2480,
             1761
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "leaellynasaura": {
         "tags": [
@@ -1905,7 +1993,8 @@
             1648,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "magneticdramon": {
         "tags": [
@@ -1923,7 +2012,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "nelly": {
         "tags": [
@@ -1943,7 +2033,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "peregrine falcon study": {
         "tags": [
@@ -1962,7 +2053,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "raiju update maybe": {
         "tags": [
@@ -1981,7 +2073,8 @@
             2144,
             2062
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "sinornithosaurus": {
         "tags": [
@@ -2000,7 +2093,8 @@
             1613,
             1594
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "sooty oul": {
         "tags": [
@@ -2020,7 +2114,8 @@
             1025,
             1025
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "twin dragon blades zhurong": {
         "tags": [
@@ -2039,7 +2134,8 @@
             1761,
             2480
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "xuanwu warrior mode maybe": {
         "tags": [
@@ -2058,7 +2154,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "ordell another guitar piece idk": {
         "tags": [
@@ -2073,7 +2170,7 @@
             "owl"
         ],
         "isVertical": false,
-        "priority": 4,
+        "priority": 2,
         "description": "",
         "date": 1765960523.0848036,
         "extension": "webp",
@@ -2081,7 +2178,8 @@
             2480,
             1761
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "stahn phoenix": {
         "tags": [
@@ -2093,7 +2191,7 @@
             "illust"
         ],
         "isVertical": false,
-        "priority": 3,
+        "priority": 1,
         "description": "",
         "date": 1765960506.807423,
         "extension": "webp",
@@ -2101,7 +2199,8 @@
             2100,
             2100
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "dizzy bob the builder": {
         "tags": [
@@ -2119,7 +2218,8 @@
             1208,
             1208
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "duftmon chibi update": {
         "tags": [
@@ -2138,7 +2238,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "end of evangowlion": {
         "tags": [
@@ -2147,7 +2248,8 @@
             "owl",
             "bird",
             "gahoole",
-            "illust"
+            "illust",
+            "creature"
         ],
         "isVertical": true,
         "priority": 2,
@@ -2158,7 +2260,8 @@
             1761,
             2480
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "galactic nova spino fanart": {
         "tags": [
@@ -2176,7 +2279,8 @@
             1240,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "monitor lizard guntank": {
         "tags": [
@@ -2196,7 +2300,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "oul stickerbook": {
         "tags": [
@@ -2217,7 +2322,8 @@
             1761,
             2480
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "another bone vermy draw": {
         "tags": [
@@ -2240,7 +2346,8 @@
             2100,
             2100
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "baby deinocheirus": {
         "tags": [
@@ -2259,7 +2366,8 @@
             1400,
             965
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "cernunnos revamp": {
         "tags": [
@@ -2278,7 +2386,8 @@
             2227,
             2227
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "crazy diamond": {
         "tags": [
@@ -2297,7 +2406,8 @@
             1814,
             2227
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "diego dinosaur horse riding": {
         "tags": [
@@ -2320,7 +2430,8 @@
             1814,
             1565
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "narancia painting maybe": {
         "tags": [
@@ -2339,7 +2450,8 @@
             1786,
             2505
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "petrel wyvern": {
         "tags": [
@@ -2358,7 +2470,8 @@
             2227,
             1814
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "umbrella bird": {
         "tags": [
@@ -2379,7 +2492,8 @@
             1400,
             1400
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": false
     },
     "zephagamon preview": {
         "tags": [
@@ -2398,7 +2512,8 @@
             700,
             994
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     },
     "snake book": {
         "tags": [
@@ -2419,6 +2534,7 @@
             1207,
             1786
         ],
-        "hasThumb": false
+        "hasThumb": false,
+        "isCurated": true
     }
 }

@@ -19,7 +19,6 @@ const getFilteredArt = (portfolioJson, selectedFilters) => {
     }
 
     return includedArt.filter((filename) => {
-
         return selectedFilters.exclude.every((tag) => {
             return !portfolioJson[filename].tags.includes(tag.value)
         })
@@ -27,12 +26,23 @@ const getFilteredArt = (portfolioJson, selectedFilters) => {
 
 }
 
-const getFilteredArtByDate = (portfolioJson, selectedFilters) => {
-    return getFilteredArt(portfolioJson, selectedFilters).toSorted((a, b) => portfolioJson[b].date - portfolioJson[a].date)
+const filterArtByDate = (artJson, portfolioJson) => {
+    return artJson.toSorted((a, b) => portfolioJson[b].date - portfolioJson[a].date)
 }
 
-export const getFilteredArtByPriority = (portfolioJson, selectedFilters) => {
-    return getFilteredArtByDate(portfolioJson, selectedFilters).toSorted((a, b) => {
+const filterArtByCurated = (artJson, portfolioJson) => {
+    return artJson.filter((entry) => portfolioJson[entry].isCurated)
+}
+
+export const getFilteredArtByPriority = (portfolioJson, selectedFilters, useCurated = false) => {
+    let filteredArt = getFilteredArt(portfolioJson, selectedFilters)
+    filteredArt = filterArtByDate(filteredArt, portfolioJson)
+    if (useCurated) {
+        filteredArt = filterArtByCurated(filteredArt, portfolioJson)
+        console.log(filteredArt)
+    }
+
+    return filteredArt.toSorted((a, b) => {
         let artArray = [portfolioJson[a], portfolioJson[b]]
         let compareArray = [0, 0]
 
@@ -69,11 +79,11 @@ export const getFilteredArtByPriority = (portfolioJson, selectedFilters) => {
             }
 
             if (artArray[i].tags.includes("3d")) {
-                compareArray[i] -=4 //good lord the loading times
+                compareArray[i] -= 4 //good lord the loading times
             }
 
             if (artArray[i].tags.includes("fe5")) {
-                compareArray[i]-=2
+                compareArray[i] -= 2
             }
 
             compareArray[i] += artArray[i].priority

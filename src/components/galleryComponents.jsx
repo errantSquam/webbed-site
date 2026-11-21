@@ -190,6 +190,45 @@ export const ContactButton = () => {
     </>
 }
 
+
+
+export const AboutButton = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    const handleClose = () => {
+        setIsOpen(false)
+    }
+
+    return <>
+        <div className={`text-green-500 flex flex-row space-x-2 items-center justify-center font-jura font-bold
+        bg-gradient-to-b from-zinc-700 to-zinc-950 
+        border-green-800 border
+        px-2 py-1 rounded-md cursor-pointer select-none transition hover:scale-105
+        text-lg`}
+            onClick={() => setIsOpen(true)}>
+            <Icon icon="mdi:help-circle" />
+            <div className="text-zinc-300">How To: Filters</div>
+        </div>
+
+        <Dialog open={isOpen} as="div" className="relative z-99 focus:outline-none" onClose={handleClose}>
+            <div className="fixed inset-0 z-10 w-full h-screen overflow-y-auto bg-black/70">
+                <div className="flex h-full items-center justify-center">
+                    <DialogPanel
+                        transition
+                        className="w-3/4 space-y-4 border-2 border-green-500 rounded bg-zinc-900 text-zinc-200 p-3 md:p-12
+                        duration-100 ease-in 
+                                    data-closed:transform-[scale(95%)] data-closed:opacity-0"
+                    >
+                        <div className="max-h-90 md:max-h-auto overflow-y-auto scroll-y-auto px-1 md:px-0">
+                            <div>Using the #INCLUDES and #EXCLUDES filters, you can search for art based on specific tags.</div>
+                            <div>Use this to search for specific species, fandoms, or mediums!</div>
+                        </div>
+                    </DialogPanel>
+                </div>
+            </div>
+        </Dialog>
+    </>
+}
+
 export const ErrorMessage = () => {
     const [gangnamSnake, setGangnamSnake] = useState(false)
     return <div className="flex flex-col items-center justify-center h-full text-green-500/70">
@@ -306,8 +345,6 @@ export const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
         </Button>
     }
 
-    //console.log(isLoaded)
-
     const ImageWithSkeleton = ({ isMobile = true }) => {
 
         let objStyle = !isMobile ? (jsonData.isVertical ? { height: "90vh" } : { height: "75vh" }) : { width: "75vw" }
@@ -369,6 +406,7 @@ export const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
                         lg:py-10 
                         pr-2 lg:max-w-1/3"
                                 onClick={handleClose}>
+
                                 <div className="flex flex-col space-y-2 items-center lg:items-start"
                                     onClick={(e) => (e.stopPropagation())}>
                                     <div className="mt-2 text-sm/6 text-white/50">
@@ -405,6 +443,7 @@ export const GalleryModal = ({ isOpen, handleClose, filename, jsonData }) => {
         </div>
     </Dialog>
 }
+
 
 export const GalleryImage = ({ filename, jsonData }) => {
     const [searchParams, setSearchParams] = useSearchParams()

@@ -2,6 +2,123 @@
 import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
 import { useState } from "react"
+
+
+export const GalleryNav = ({ activePage }) => {
+    return <HomelessTopNav
+        color="bg-orange-900"
+        accentColor="border-green-500">
+        <div className="flex flex-row items-center justify-center gap-x-2 text-green-300/80">
+            <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70" />
+            <span>
+                <Link to="/gallery">Gallery</Link>
+            </span>
+            <Icon icon="clarity:eye-solid" className="hidden md:flex text-2xl text-green-300/70 -ml-0.5" />
+        </div>
+        <div className="text-xl hidden md:flex md:flex-row md:gap-x-2">
+            |&nbsp;
+            {
+                "Illustration Creatures Mecha".split(" ").map((i) => {
+                    return <span><Link to={`/gallery/${i.toLowerCase()}`} className={activePage === i && "underline"}>
+                        {i}</Link> | </span>
+                })
+            }
+            <Link to="/gallery/other" className={activePage === "Other" && "underline"}> other </Link>
+        </div>
+    </HomelessTopNav>
+
+}
+
+export const HomelessTopNav = ({ children, color, accentColor }) => {
+    const [isMenuOpen, setMenuOpen] = useState(false)
+
+
+    return <div className="w-screen">
+        {isMenuOpen && <div className="fixed w-screen min-h-screen bg-black/40 z-59"
+            onClick={() => setMenuOpen(false)} />}
+        {<div
+            style={!isMenuOpen ? { pointerEvents: "none" } : {}}
+        >
+            <div className={`
+            pt-15
+            fixed bg-zinc-900 text-zinc-300 py-2 w-full 
+                        border-b-2 md:border-b-0 md:border-r-2 ${accentColor}
+                        md:w-1/5 
+                        md:h-screen absolute z-60 select-none 
+                        transition duration-0 md:duration-100 ${isMenuOpen ? "opacity-100" : `opacity-0 translate-x-0
+                        md:translate-y-0 md:-translate-x-full`}`}>
+                <div className="flex flex-col items-start text-start ml-8 gap-y-2 text-lg">
+                    <Link to="/gallery"><div className="hover:text-zinc-100 cursor-pointer">Gallery</div></Link>
+                    {
+                        "Illustration Creatures Mecha".split(" ").map((i) => {
+                            return <Link to={`/gallery/${i}`}><div className="hover:text-zinc-100 cursor-pointer">{i}</div></Link>
+                        })
+                    }
+                    <Link to="/commissions"><div className="hover:text-zinc-100 cursor-pointer">Commissions</div></Link>
+
+                </div>
+            </div>
+
+        </div>
+        }
+        <div className={`${isMenuOpen ? "fixed" : "sticky"} py-2 w-screen ${color} z-70`}>
+
+            <div className="flex flex-row items-center">
+
+                <div className="flex flex-row items-center justify-center select-none w-full mt-0.5">
+                    <div className="text-2xl font-bold text-zinc-200 font-pirulen flex flex-row items-center gap-x-2
+                    select-none">
+                        {children}
+
+                    </div>
+                </div>
+                <div className="absolute ml-5 text-zinc-200 text-2xl 
+                        flex flex-row gap-x-5"
+                >
+                    <div className="z-20">
+                        <Icon icon={isMenuOpen ? "maki:cross" : "mdi:hamburger-menu"}
+                            className={`select-none cursor-pointer ${isMenuOpen && "text-white"} hover:text-white`}
+                            onClick={() => setMenuOpen(!isMenuOpen)} />
+                    </div>
+                    <Link to="/gallery"><Icon icon="ic:sharp-home"
+                        className="hidden md:flex select-none cursor-pointer hover:text-white" /></Link>
+                </div>
+                <div className="absolute text-zinc-200 text-2xl 
+                         right-0 mr-5"
+                >
+                    <div className="hidden md:flex flex flex-row gap-x-5">
+                        <a href="https://bsky.app/profile/errantsquam.heckingsne.cc"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Icon icon="ri:bluesky-fill" className="select-none cursor-pointer hover:text-white" />
+                        </a>
+                        <a href="https://github.com/errantSquam"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Icon icon="mdi:github" className="select-none cursor-pointer hover:text-white" />
+                        </a>
+                        <a href="https://www.xiaohongshu.com/user/profile/677689c50000000018014b73"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Icon icon="simple-icons:xiaohongshu" className="select-none cursor-pointer hover:text-white" />
+                        </a>
+                        <a href="https://www.instagram.com/errantsquam/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Icon icon="mdi:instagram" className="select-none cursor-pointer hover:text-white" />
+                        </a>
+                    </div>
+                    <div className="flex md:hidden">
+                        <Link to="/"><Icon icon="ic:sharp-home"
+                            className="select-none cursor-pointer" /></Link>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+}
 export const TopNav = ({ setHome, children, color, accentColor }) => {
     const [isMenuOpen, setMenuOpen] = useState(false)
 

@@ -22,6 +22,7 @@ describe("Gallery", async () => {
 
     let portfolioTagData = {}
 
+    //Site needs to be run while testing also!
     portfolioTagData = await fetch(window.location + '/assets/portfoliotags.json').then((response) => response.json())
 
     it("pulls portfolio data properly", () => {

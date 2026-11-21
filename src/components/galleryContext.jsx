@@ -10,19 +10,95 @@ import { writeTagsToParams } from "../api/galleryAPI"
 
 export const GalleryContext = createContext()
 
-export const GalleryProvider = ({ children }) => {
+export const GalleryProvider = ({ activePage = "Index", children }) => {
+
+    const tabFilters = {
+        "Index": { "include": [], "exclude": [] },
+        "Other": { "include": [], "exclude": [] },
+        "Illustration": {
+            "include": [
+                {
+                    "value": "illust",
+                    "label": "Illustration",
+                    "tagType": "medium"
+                }
+            ],
+            "exclude": [
+                {
+                    "value": "chibi",
+                    "label": "Chibi",
+                    "tagType": "scope"
+                },
+                {
+                    "value": "charactersheet",
+                    "label": "Character Sheet",
+                    "tagType": "scope"
+                },
+                {
+                    "value": "animated",
+                    "label": "Animated",
+                    "tagType": "medium"
+                }
+            ]
+        },
+
+        "Fantasy": {
+            "include": [],
+            "exclude": [
+                {
+                    "value": "mecha",
+                    "label": "Mecha",
+                    "tagType": "charatype"
+                }
+            ]
+        },
+        "Creatures": {
+            "include": [
+                {
+                    "value": "creature",
+                    "label": "Creature",
+                    "tagType": "charatype"
+                },
+                {
+                    "value": "illust",
+                    "label": "Illustration",
+                    "tagType": "medium"
+                }
+            ],
+            "exclude": [
+                {
+                    "value": "human",
+                    "label": "Human",
+                    "tagType": "charatype"
+                },
+                {
+                    "value": "characterdesign",
+                    "label": "Character Design",
+                    "tagType": "scope"
+                }
+            ]
+        },
+        "Mecha": {
+            "include": [
+                {
+                    "value": "mecha",
+                    "label": "Mecha",
+                    "tagType": "charatype"
+                }
+            ],
+            "exclude": []
+        }
+
+    }
     const [searchParams, setSearchParams] = useSearchParams()
 
     const [selectedFilters, setSelectedFilters] = useState(
-        {
-            include: [],
-            exclude: []
-        }
+        tabFilters[activePage]
     )
     const [artList, setArtList] = useState([])
     const [hiddenArt, setHiddenArt] = useState(null)
 
-    const numArtPerPage = 12
+    const numArtPerPage = 14
 
     const [isChickenLoading, setIsChickenLoading] = useState(true)
     const portfolioQuery = portfolioData()
@@ -32,9 +108,9 @@ export const GalleryProvider = ({ children }) => {
 
 
 
-    function handlePageNumber(page, doLoad = true) {
+    function handlePageNumber(page, doLoad = true, loadTime = 500) {
         let currPage = getCurrentPage()
-        if (page == currPage) {
+        if (page == currPage && !doLoad) {
             return
         }
 
@@ -47,7 +123,7 @@ export const GalleryProvider = ({ children }) => {
             tempSearchParams.set("page", page)
 
             setSearchParams(tempSearchParams.toString())
-        }, 300)
+        }, loadTime)
         chickenLoading(400, setIsChickenLoading)
     }
 
@@ -138,6 +214,7 @@ export const GalleryProvider = ({ children }) => {
                 tempSelectedFilters[oppKey] = tempSelectedFilters[oppKey].filter((i) => JSON.stringify(i) !== JSON.stringify(option))
             }
         })
+        console.log(tempSelectedFilters)
         writeTagsToParams(tempSelectedFilters)
         let newArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
         setSelectedFilters(tempSelectedFilters)
@@ -146,13 +223,29 @@ export const GalleryProvider = ({ children }) => {
 
     }
 
+    function updateFilters(newSelectedFilters) {
+        let newArtList = getFilteredArtByPriority(getPortfolioData(), newSelectedFilters, activePage !== "Other")
+        setSelectedFilters(newSelectedFilters)
+        setArtList(newArtList)
+        handlePageNumber(1, true)
 
+    }
+
+    useEffect(() => {
+        updateFilters(tabFilters[activePage])
+
+    }, [activePage])
+
+    //Run when initialized!
     useEffect(() => {
         handlePageViaSearchParams();
 
         //this has to be run After fetching grouptagdata...
         if (portfolioTagQuery.isSuccess) {
             let tempSelectedFilters = handlePageFilters(getPortfolioTagData())
+            if (activePage !== "Other") {
+                tempSelectedFilters = tabFilters[activePage]
+            }
 
             let tempArtList = getFilteredArtByPriority(getPortfolioData(), tempSelectedFilters)
 
@@ -163,7 +256,6 @@ export const GalleryProvider = ({ children }) => {
                     hiddenArt = null
                 }
             }
-
             setHiddenArt(hiddenArt)
             setSelectedFilters(tempSelectedFilters)
             setArtList(tempArtList)
@@ -190,7 +282,8 @@ export const GalleryProvider = ({ children }) => {
         getCurrentPage, getArtListPaginated,
         getArtListByPage, getLatestPage,
         handlePageNumber,
-        getLastPage, handleSelect
+        getLastPage, handleSelect,
+        updateFilters, activePage
 
     }}>
         {children}

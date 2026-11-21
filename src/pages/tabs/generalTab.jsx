@@ -254,7 +254,7 @@ export const GeneralTab = ({ setCurrentTab }) => {
         <Payment />
         <MagicWord />
         <hr />
-        <img src="assets/gangnamsnake.webp" />
+        <img src="/assets/gangnamsnake.webp" />
         <hr />
         <Licensing />
 
